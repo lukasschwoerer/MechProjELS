@@ -1,0 +1,930 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - f28004x_sysctrl.c</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (typeof rtwannotate === 'function') {rtwannotate('f28004x_sysctrl_c_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../../../../../../../ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_sysctrl.c" target="rtwreport_document_frame" id="linkToText_plain">f28004x_sysctrl.c</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="2">    2   </a><span class="CT">//</span>
+</span><span><a class="LN" name="3">    3   </a><span class="CT">// FILE:   f28004x_sysctrl.c</span>
+</span><span><a class="LN" name="4">    4   </a><span class="CT">//</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT">// TITLE:  f28004x Device System Control Initialization & Support Functions.</span>
+</span><span><a class="LN" name="6">    6   </a><span class="CT">//</span>
+</span><span><a class="LN" name="7">    7   </a><span class="CT">// DESCRIPTION:  Example initialization of system resources.</span>
+</span><span><a class="LN" name="8">    8   </a><span class="CT">//</span>
+</span><span><a class="LN" name="9">    9   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT">// $TI Release: F28004x Support Library v1.10.00.00 $</span>
+</span><span><a class="LN" name="11">   11   </a><span class="CT">// $Release Date: Tue May 26 17:06:03 IST 2020 $</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT">// $Copyright:</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT">// Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/</span>
+</span><span><a class="LN" name="14">   14   </a><span class="CT">//</span>
+</span><span><a class="LN" name="15">   15   </a><span class="CT">// Redistribution and use in source and binary forms, with or without </span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT">// modification, are permitted provided that the following conditions </span>
+</span><span><a class="LN" name="17">   17   </a><span class="CT">// are met:</span>
+</span><span><a class="LN" name="18">   18   </a><span class="CT">// </span>
+</span><span><a class="LN" name="19">   19   </a><span class="CT">//   Redistributions of source code must retain the above copyright </span>
+</span><span><a class="LN" name="20">   20   </a><span class="CT">//   notice, this list of conditions and the following disclaimer.</span>
+</span><span><a class="LN" name="21">   21   </a><span class="CT">// </span>
+</span><span><a class="LN" name="22">   22   </a><span class="CT">//   Redistributions in binary form must reproduce the above copyright</span>
+</span><span><a class="LN" name="23">   23   </a><span class="CT">//   notice, this list of conditions and the following disclaimer in the </span>
+</span><span><a class="LN" name="24">   24   </a><span class="CT">//   documentation and/or other materials provided with the   </span>
+</span><span><a class="LN" name="25">   25   </a><span class="CT">//   distribution.</span>
+</span><span><a class="LN" name="26">   26   </a><span class="CT">// </span>
+</span><span><a class="LN" name="27">   27   </a><span class="CT">//   Neither the name of Texas Instruments Incorporated nor the names of</span>
+</span><span><a class="LN" name="28">   28   </a><span class="CT">//   its contributors may be used to endorse or promote products derived</span>
+</span><span><a class="LN" name="29">   29   </a><span class="CT">//   from this software without specific prior written permission.</span>
+</span><span><a class="LN" name="30">   30   </a><span class="CT">// </span>
+</span><span><a class="LN" name="31">   31   </a><span class="CT">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS </span>
+</span><span><a class="LN" name="32">   32   </a><span class="CT">// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="33">   33   </a><span class="CT">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+</span><span><a class="LN" name="34">   34   </a><span class="CT">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT </span>
+</span><span><a class="LN" name="35">   35   </a><span class="CT">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, </span>
+</span><span><a class="LN" name="36">   36   </a><span class="CT">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="37">   37   </a><span class="CT">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+</span><span><a class="LN" name="38">   38   </a><span class="CT">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+</span><span><a class="LN" name="39">   39   </a><span class="CT">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT </span>
+</span><span><a class="LN" name="40">   40   </a><span class="CT">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE </span>
+</span><span><a class="LN" name="41">   41   </a><span class="CT">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+</span><span><a class="LN" name="42">   42   </a><span class="CT">// $</span>
+</span><span><a class="LN" name="43">   43   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="44">   44   </a>
+</span><span><a class="LN" name="45">   45   </a><span class="CT">//</span>
+</span><span><a class="LN" name="46">   46   </a><span class="CT">// Included Files</span>
+</span><span><a class="LN" name="47">   47   </a><span class="CT">//</span>
+</span><span><a class="LN" name="48">   48   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_device.h&quot;</font>     <span class="CT">// Headerfile Include File</span>
+</span><span><a class="LN" name="49">   49   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_examples.h&quot;</font>   <span class="CT">// Examples Include File</span>
+</span><span><a class="LN" name="50">   50   </a><font color="#992211">#</font><span class="PP">ifdef</span> __cplusplus
+</span><span><a class="LN" name="51">   51   </a>using std::<a name="var_memcpy">memcpy</a>;
+</span><span><a class="LN" name="52">   52   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="53">   53   </a>
+</span><span><a class="LN" name="54">   54   </a><span class="CT">//</span>
+</span><span><a class="LN" name="55">   55   </a><span class="CT">// Functions that will be run from RAM need to be assigned to</span>
+</span><span><a class="LN" name="56">   56   </a><span class="CT">// a different section.  This section will then be mapped to a load and</span>
+</span><span><a class="LN" name="57">   57   </a><span class="CT">// run address using the linker cmd file.</span>
+</span><span><a class="LN" name="58">   58   </a><span class="CT">//</span>
+</span><span><a class="LN" name="59">   59   </a><span class="CT">// *IMPORTANT*</span>
+</span><span><a class="LN" name="60">   60   </a><span class="CT">// IF RUNNING FROM FLASH, PLEASE COPY OVER THE SECTION ".TI.ramfunc"  FROM FLASH</span>
+</span><span><a class="LN" name="61">   61   </a><span class="CT">// TO RAM PRIOR TO CALLING InitSysCtrl(). THIS PREVENTS THE MCU FROM THROWING</span>
+</span><span><a class="LN" name="62">   62   </a><span class="CT">// AN EXCEPTION WHEN A CALL TO DELAY_US() IS MADE.</span>
+</span><span><a class="LN" name="63">   63   </a><span class="CT">//</span>
+</span><span><a class="LN" name="64">   64   </a><font color="#992211">#</font><span class="PP">ifndef</span> __cplusplus
+</span><span><a class="LN" name="65">   65   </a><font color="#992211">#</font><span class="PP">pragma</span> CODE_SECTION(<a href="#fcn_InitFlash" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitFlash');" target="_self"><font color="#1122aa">InitFlash</font></a>, <font color="#1122ff">&quot;.TI.ramfunc&quot;</font>);
+</span><span><a class="LN" name="66">   66   </a><font color="#992211">#</font><span class="PP">pragma</span> CODE_SECTION(<a href="#fcn_FlashOff" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_FlashOff');" target="_self"><font color="#1122aa">FlashOff</font></a>, <font color="#1122ff">&quot;.TI.ramfunc&quot;</font>);
+</span><span><a class="LN" name="67">   67   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="68">   68   </a>
+</span><span><a class="LN" name="69">   69   </a><span class="CT">//</span>
+</span><span><a class="LN" name="70">   70   </a><span class="CT">// The following values are used to validate PLL Frequency using DCC</span>
+</span><span><a class="LN" name="71">   71   </a><span class="CT">//</span>
+</span><span><a class="LN" name="72">   72   </a><font color="#992211">#</font><span class="PP">define</span>   PLL_RETRIES              100
+</span><span><a class="LN" name="73">   73   </a><font color="#992211">#</font><span class="PP">define</span>   PLL_LOCK_TIMEOUT        2000
+</span><span><a class="LN" name="74">   74   </a><font color="#992211">#</font><span class="PP">define</span>   DCC_COUNTER0_WINDOW      100
+</span><span><a class="LN" name="75">   75   </a>
+</span><span><a class="LN" name="76">   76   </a><span class="CT">//</span>
+</span><span><a class="LN" name="77">   77   </a><span class="CT">// Macro used for adding delay between 2 consecutive writes to CLKSRCCTL1</span>
+</span><span><a class="LN" name="78">   78   </a><span class="CT">// register.</span>
+</span><span><a class="LN" name="79">   79   </a><span class="CT">// Delay = 300 NOPs</span>
+</span><span><a class="LN" name="80">   80   </a><span class="CT">//</span>
+</span><span><a class="LN" name="81">   81   </a><font color="#992211">#</font><span class="PP">define</span> SYSCTRL_CLKSRCCTL1_DELAY  asm(<font color="#1122ff">&quot; RPT #250 || NOP \n RPT #50 || NOP&quot;</font>)
+</span><span><a class="LN" name="82">   82   </a>
+</span><span><a class="LN" name="83">   83   </a><span class="CT">//</span>
+</span><span><a class="LN" name="84">   84   </a><span class="CT">// InitSysCtrl - Initialization of system resources.</span>
+</span><span><a class="LN" name="85">   85   </a><span class="CT">//</span>
+</span><span><a class="LN" name="86">   86   </a><span class="DT">void</span>
+</span><span><a class="LN" name="87">   87   </a><a name="fcn_InitSysCtrl">InitSysCtrl</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="88">   88   </a><b>{</b>
+</span><span><a class="LN" name="89">   89   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="90">   90   </a>    <span class="CT">// Disable the watchdog</span>
+</span><span><a class="LN" name="91">   91   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="92">   92   </a>    <a href="#fcn_DisableDog" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_DisableDog');" target="_self"><font color="#1122aa">DisableDog</font></a>();
+</span><span><a class="LN" name="93">   93   </a>
+</span><span><a class="LN" name="94">   94   </a><font color="#992211">#</font><span class="PP">ifdef</span> _FLASH
+</span><span><a class="LN" name="95">   95   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="96">   96   </a>    <span class="CT">// Copy time critical code and Flash setup code to RAM</span>
+</span><span><a class="LN" name="97">   97   </a>    <span class="CT">// This includes the following functions:  InitFlash();</span>
+</span><span><a class="LN" name="98">   98   </a>    <span class="CT">// The  RamfuncsLoadStart, RamfuncsLoadSize, and RamfuncsRunStart</span>
+</span><span><a class="LN" name="99">   99   </a>    <span class="CT">// symbols are created by the linker. Refer to the device .cmd file.</span>
+</span><span><a class="LN" name="100">  100   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="101">  101   </a>    <a href="#var_memcpy" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_memcpy');" target="_self"><font color="#1122aa">memcpy</font></a>(&amp;RamfuncsRunStart, &amp;RamfuncsLoadStart, (size_t)&amp;RamfuncsLoadSize);
+</span><span><a class="LN" name="102">  102   </a>
+</span><span><a class="LN" name="103">  103   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="104">  104   </a>    <span class="CT">// Call Flash Initialization to setup flash waitstates</span>
+</span><span><a class="LN" name="105">  105   </a>    <span class="CT">// This function must reside in RAM</span>
+</span><span><a class="LN" name="106">  106   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="107">  107   </a>    <a href="#fcn_InitFlash" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitFlash');" target="_self"><font color="#1122aa">InitFlash</font></a>();
+</span><span><a class="LN" name="108">  108   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="109">  109   </a>
+</span><span><a class="LN" name="110">  110   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="111">  111   </a>    <span class="CT">// PLLSYSCLK = (XTAL_OSC) * (IMULT + FMULT) / (PLLSYSCLKDIV)</span>
+</span><span><a class="LN" name="112">  112   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="113">  113   </a>    <a href="#fcn_InitSysPll" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitSysPll');" target="_self"><font color="#1122aa">InitSysPll</font></a>(XTAL_OSC,IMULT_10,FMULT_0,PLLCLK_BY_2);
+</span><span><a class="LN" name="114">  114   </a>
+</span><span><a class="LN" name="115">  115   </a><font color="#992211">#</font><span class="PP">ifndef</span> _FLASH
+</span><span><a class="LN" name="116">  116   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="117">  117   </a>    <span class="CT">// Call Device_cal function when run using debugger</span>
+</span><span><a class="LN" name="118">  118   </a>    <span class="CT">// This function is called as part of the Boot code. The function is called</span>
+</span><span><a class="LN" name="119">  119   </a>    <span class="CT">// in the InitSysCtrl function since during debug time resets, the boot code</span>
+</span><span><a class="LN" name="120">  120   </a>    <span class="CT">// will not be executed and the gel script will reinitialize all the</span>
+</span><span><a class="LN" name="121">  121   </a>    <span class="CT">// registers and the calibrated values will be lost.</span>
+</span><span><a class="LN" name="122">  122   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="123">  123   </a>    Device_cal();
+</span><span><a class="LN" name="124">  124   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="125">  125   </a>
+</span><span><a class="LN" name="126">  126   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="127">  127   </a>    <span class="CT">// Turn on all peripherals</span>
+</span><span><a class="LN" name="128">  128   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="129">  129   </a>    <a href="#fcn_InitPeripheralClocks" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitPeripheralClocks');" target="_self"><font color="#1122aa">InitPeripheralClocks</font></a>();
+</span><span><a class="LN" name="130">  130   </a><b>}</b>
+</span><span><a class="LN" name="131">  131   </a>
+</span><span><a class="LN" name="132">  132   </a><span class="CT">//</span>
+</span><span><a class="LN" name="133">  133   </a><span class="CT">// InitPeripheralClocks - This function initializes the clocks for the</span>
+</span><span><a class="LN" name="134">  134   </a><span class="CT">// peripherals. Note: In order to reduce power consumption, turn off the</span>
+</span><span><a class="LN" name="135">  135   </a><span class="CT">// clocks to any peripheral that is not specified for your part-number or is</span>
+</span><span><a class="LN" name="136">  136   </a><span class="CT">// not used in the application</span>
+</span><span><a class="LN" name="137">  137   </a><span class="CT">//</span>
+</span><span><a class="LN" name="138">  138   </a><span class="DT">void</span>
+</span><span><a class="LN" name="139">  139   </a><a name="fcn_InitPeripheralClocks">InitPeripheralClocks</a>()
+</span><span><a class="LN" name="140">  140   </a><b>{</b>
+</span><span><a class="LN" name="141">  141   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="142">  142   </a>
+</span><span><a class="LN" name="143">  143   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CLA1 = 1;
+</span><span><a class="LN" name="144">  144   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.DMA = 1;
+</span><span><a class="LN" name="145">  145   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER0 = 1;
+</span><span><a class="LN" name="146">  146   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER1 = 1;
+</span><span><a class="LN" name="147">  147   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER2 = 1;
+</span><span><a class="LN" name="148">  148   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.HRPWM = 1;
+</span><span><a class="LN" name="149">  149   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.TBCLKSYNC = 1;
+</span><span><a class="LN" name="150">  150   </a>
+</span><span><a class="LN" name="151">  151   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM1 = 1;
+</span><span><a class="LN" name="152">  152   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM2 = 1;
+</span><span><a class="LN" name="153">  153   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM3 = 1;
+</span><span><a class="LN" name="154">  154   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM4 = 1;
+</span><span><a class="LN" name="155">  155   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM5 = 1;
+</span><span><a class="LN" name="156">  156   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM6 = 1;
+</span><span><a class="LN" name="157">  157   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM7 = 1;
+</span><span><a class="LN" name="158">  158   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.bit.EPWM8 = 1;
+</span><span><a class="LN" name="159">  159   </a>
+</span><span><a class="LN" name="160">  160   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP1 = 1;
+</span><span><a class="LN" name="161">  161   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP2 = 1;
+</span><span><a class="LN" name="162">  162   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP3 = 1;
+</span><span><a class="LN" name="163">  163   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP4 = 1;
+</span><span><a class="LN" name="164">  164   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP5 = 1;
+</span><span><a class="LN" name="165">  165   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP6 = 1;
+</span><span><a class="LN" name="166">  166   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.bit.ECAP7 = 1;
+</span><span><a class="LN" name="167">  167   </a>
+</span><span><a class="LN" name="168">  168   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR4.bit.EQEP1 = 1;
+</span><span><a class="LN" name="169">  169   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR4.bit.EQEP2 = 1;
+</span><span><a class="LN" name="170">  170   </a>
+</span><span><a class="LN" name="171">  171   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR6.bit.SD1 = 1;
+</span><span><a class="LN" name="172">  172   </a>
+</span><span><a class="LN" name="173">  173   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR7.bit.SCI_A = 1;
+</span><span><a class="LN" name="174">  174   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR7.bit.SCI_B = 1;
+</span><span><a class="LN" name="175">  175   </a>
+</span><span><a class="LN" name="176">  176   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR8.bit.SPI_A = 1;
+</span><span><a class="LN" name="177">  177   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR8.bit.SPI_B = 1;
+</span><span><a class="LN" name="178">  178   </a>
+</span><span><a class="LN" name="179">  179   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR9.bit.I2C_A = 1;
+</span><span><a class="LN" name="180">  180   </a>
+</span><span><a class="LN" name="181">  181   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR10.bit.CAN_A = 1;
+</span><span><a class="LN" name="182">  182   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR10.bit.CAN_B = 1;
+</span><span><a class="LN" name="183">  183   </a>
+</span><span><a class="LN" name="184">  184   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR13.bit.ADC_A = 1;
+</span><span><a class="LN" name="185">  185   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR13.bit.ADC_B = 1;
+</span><span><a class="LN" name="186">  186   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR13.bit.ADC_C = 1;
+</span><span><a class="LN" name="187">  187   </a>
+</span><span><a class="LN" name="188">  188   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS1 = 1;
+</span><span><a class="LN" name="189">  189   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS2 = 1;
+</span><span><a class="LN" name="190">  190   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS3 = 1;
+</span><span><a class="LN" name="191">  191   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS4 = 1;
+</span><span><a class="LN" name="192">  192   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS5 = 1;
+</span><span><a class="LN" name="193">  193   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS6 = 1;
+</span><span><a class="LN" name="194">  194   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.bit.CMPSS7 = 1;
+</span><span><a class="LN" name="195">  195   </a>
+</span><span><a class="LN" name="196">  196   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA1 = 1;
+</span><span><a class="LN" name="197">  197   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA2 = 1;
+</span><span><a class="LN" name="198">  198   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA3 = 1;
+</span><span><a class="LN" name="199">  199   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA4 = 1;
+</span><span><a class="LN" name="200">  200   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA5 = 1;
+</span><span><a class="LN" name="201">  201   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA6 = 1;
+</span><span><a class="LN" name="202">  202   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.bit.PGA7 = 1;
+</span><span><a class="LN" name="203">  203   </a>
+</span><span><a class="LN" name="204">  204   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR18.bit.FSIRX_A = 1;
+</span><span><a class="LN" name="205">  205   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR18.bit.FSITX_A = 1;
+</span><span><a class="LN" name="206">  206   </a>
+</span><span><a class="LN" name="207">  207   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR16.bit.DAC_A = 1;
+</span><span><a class="LN" name="208">  208   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR16.bit.DAC_B = 1;
+</span><span><a class="LN" name="209">  209   </a>
+</span><span><a class="LN" name="210">  210   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR19.bit.LIN_A = 1;
+</span><span><a class="LN" name="211">  211   </a>
+</span><span><a class="LN" name="212">  212   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR20.bit.PMBUS_A = 1;
+</span><span><a class="LN" name="213">  213   </a>
+</span><span><a class="LN" name="214">  214   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR21.bit.DCC_0 = 1;
+</span><span><a class="LN" name="215">  215   </a>
+</span><span><a class="LN" name="216">  216   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="217">  217   </a><b>}</b>
+</span><span><a class="LN" name="218">  218   </a>
+</span><span><a class="LN" name="219">  219   </a><span class="CT">//</span>
+</span><span><a class="LN" name="220">  220   </a><span class="CT">// DisablePeripheralClocks -</span>
+</span><span><a class="LN" name="221">  221   </a><span class="CT">//</span>
+</span><span><a class="LN" name="222">  222   </a><span class="DT">void</span>
+</span><span><a class="LN" name="223">  223   </a><a name="fcn_DisablePeripheralClocks">DisablePeripheralClocks</a>()
+</span><span><a class="LN" name="224">  224   </a><b>{</b>
+</span><span><a class="LN" name="225">  225   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="226">  226   </a>
+</span><span><a class="LN" name="227">  227   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.all = 0;
+</span><span><a class="LN" name="228">  228   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR2.all = 0;
+</span><span><a class="LN" name="229">  229   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR3.all = 0;
+</span><span><a class="LN" name="230">  230   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR4.all = 0;
+</span><span><a class="LN" name="231">  231   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR6.all = 0;
+</span><span><a class="LN" name="232">  232   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR7.all = 0;
+</span><span><a class="LN" name="233">  233   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR8.all = 0;
+</span><span><a class="LN" name="234">  234   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR9.all = 0;
+</span><span><a class="LN" name="235">  235   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR10.all = 0;
+</span><span><a class="LN" name="236">  236   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR13.all = 0;
+</span><span><a class="LN" name="237">  237   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR14.all = 0;
+</span><span><a class="LN" name="238">  238   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR15.all = 0;
+</span><span><a class="LN" name="239">  239   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR16.all = 0;
+</span><span><a class="LN" name="240">  240   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR18.all = 0;
+</span><span><a class="LN" name="241">  241   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR19.all = 0;
+</span><span><a class="LN" name="242">  242   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR20.all = 0;
+</span><span><a class="LN" name="243">  243   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR21.all = 0;
+</span><span><a class="LN" name="244">  244   </a>
+</span><span><a class="LN" name="245">  245   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="246">  246   </a><b>}</b>
+</span><span><a class="LN" name="247">  247   </a>
+</span><span><a class="LN" name="248">  248   </a><span class="CT">//</span>
+</span><span><a class="LN" name="249">  249   </a><span class="CT">// InitFlash - This function initializes the Flash Control registers</span>
+</span><span><a class="LN" name="250">  250   </a><span class="CT">//                  CAUTION</span>
+</span><span><a class="LN" name="251">  251   </a><span class="CT">// This function MUST be executed out of RAM. Executing it</span>
+</span><span><a class="LN" name="252">  252   </a><span class="CT">// out of OTP/Flash will yield unpredictable results</span>
+</span><span><a class="LN" name="253">  253   </a><span class="CT">//</span>
+</span><span><a class="LN" name="254">  254   </a><font color="#992211">#</font><span class="PP">ifdef</span> __cplusplus
+</span><span><a class="LN" name="255">  255   </a><font color="#992211">#</font><span class="PP">pragma</span> CODE_SECTION(<font color="#1122ff">&quot;.TI.ramfunc&quot;</font>);
+</span><span><a class="LN" name="256">  256   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="257">  257   </a><span class="DT">void</span>
+</span><span><a class="LN" name="258">  258   </a><a name="fcn_InitFlash">InitFlash</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="259">  259   </a><b>{</b>
+</span><span><a class="LN" name="260">  260   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="261">  261   </a>
+</span><span><a class="LN" name="262">  262   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="263">  263   </a>    <span class="CT">// At reset bank and pump are in sleep</span>
+</span><span><a class="LN" name="264">  264   </a>    <span class="CT">// A Flash access will power up the bank and pump automatically</span>
+</span><span><a class="LN" name="265">  265   </a>    <span class="CT">// After a Flash access, bank and pump go to low power mode (configurable</span>
+</span><span><a class="LN" name="266">  266   </a>    <span class="CT">// in FBFALLBACK/FPAC1 registers)- if there is no further access to flash</span>
+</span><span><a class="LN" name="267">  267   </a>    <span class="CT">// Power up Flash bank and pump and this also sets the fall back mode of</span>
+</span><span><a class="LN" name="268">  268   </a>    <span class="CT">// flash and pump as active</span>
+</span><span><a class="LN" name="269">  269   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="270">  270   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FPAC1.bit.PMPPWR = 0x1;
+</span><span><a class="LN" name="271">  271   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FBFALLBACK.bit.BNKPWR0 = 0x3;
+</span><span><a class="LN" name="272">  272   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FBFALLBACK.bit.BNKPWR1 = 0x3;
+</span><span><a class="LN" name="273">  273   </a>
+</span><span><a class="LN" name="274">  274   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="275">  275   </a>    <span class="CT">// Disable Cache and prefetch mechanism before changing wait states</span>
+</span><span><a class="LN" name="276">  276   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="277">  277   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRD_INTF_CTRL.bit.DATA_CACHE_EN = 0;
+</span><span><a class="LN" name="278">  278   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRD_INTF_CTRL.bit.PREFETCH_EN = 0;
+</span><span><a class="LN" name="279">  279   </a>
+</span><span><a class="LN" name="280">  280   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="281">  281   </a>    <span class="CT">// Set waitstates according to frequency</span>
+</span><span><a class="LN" name="282">  282   </a>    <span class="CT">//                CAUTION</span>
+</span><span><a class="LN" name="283">  283   </a>    <span class="CT">// Minimum waitstates required for the flash operating</span>
+</span><span><a class="LN" name="284">  284   </a>    <span class="CT">// at a given CPU rate must be characterized by TI.</span>
+</span><span><a class="LN" name="285">  285   </a>    <span class="CT">// Refer to the datasheet for the latest information.</span>
+</span><span><a class="LN" name="286">  286   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="287">  287   </a><font color="#992211">#</font><span class="PP">if</span> CPU_FRQ_100MHZ
+</span><span><a class="LN" name="288">  288   </a>    <span class="KW">if</span>((<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL == 0x0)   ||
+</span><span><a class="LN" name="289">  289   </a>       (<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL == 0x2)   ||
+</span><span><a class="LN" name="290">  290   </a>       (<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL == 0x3))
+</span><span><a class="LN" name="291">  291   </a>    <b>{</b>
+</span><span><a class="LN" name="292">  292   </a>        <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRDCNTL.bit.RWAIT = 0x5;
+</span><span><a class="LN" name="293">  293   </a>    <b>}</b>
+</span><span><a class="LN" name="294">  294   </a>    <span class="KW">else</span>
+</span><span><a class="LN" name="295">  295   </a>    <b>{</b>
+</span><span><a class="LN" name="296">  296   </a>        <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRDCNTL.bit.RWAIT = 0x4;
+</span><span><a class="LN" name="297">  297   </a>    <b>}</b>
+</span><span><a class="LN" name="298">  298   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="299">  299   </a>
+</span><span><a class="LN" name="300">  300   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="301">  301   </a>    <span class="CT">// Enable Cache and prefetch mechanism to improve performance</span>
+</span><span><a class="LN" name="302">  302   </a>    <span class="CT">// of code executed from Flash.</span>
+</span><span><a class="LN" name="303">  303   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="304">  304   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRD_INTF_CTRL.bit.DATA_CACHE_EN = 1;
+</span><span><a class="LN" name="305">  305   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FRD_INTF_CTRL.bit.PREFETCH_EN = 1;
+</span><span><a class="LN" name="306">  306   </a>
+</span><span><a class="LN" name="307">  307   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="308">  308   </a>    <span class="CT">// At reset, ECC is enabled. If it is disabled by application software</span>
+</span><span><a class="LN" name="309">  309   </a>    <span class="CT">// and if application again wants to enable ECC</span>
+</span><span><a class="LN" name="310">  310   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="311">  311   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0EccRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0EccRegs');" target="_self"><font color="#1122aa">Flash0EccRegs</font></a>.ECC_ENABLE.bit.ENABLE = 0xA;
+</span><span><a class="LN" name="312">  312   </a>
+</span><span><a class="LN" name="313">  313   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="314">  314   </a>
+</span><span><a class="LN" name="315">  315   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="316">  316   </a>    <span class="CT">// Force a pipeline flush to ensure that the write to</span>
+</span><span><a class="LN" name="317">  317   </a>    <span class="CT">// the last register configured occurs before returning.</span>
+</span><span><a class="LN" name="318">  318   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="319">  319   </a>    __asm(<font color="#1122ff">&quot; RPT #7 || NOP&quot;</font>);
+</span><span><a class="LN" name="320">  320   </a><b>}</b>
+</span><span><a class="LN" name="321">  321   </a>
+</span><span><a class="LN" name="322">  322   </a><span class="CT">//</span>
+</span><span><a class="LN" name="323">  323   </a><span class="CT">// FlashOff - This function powers down the flash</span>
+</span><span><a class="LN" name="324">  324   </a><span class="CT">//                   CAUTION</span>
+</span><span><a class="LN" name="325">  325   </a><span class="CT">// This function MUST be executed out of RAM. Executing it</span>
+</span><span><a class="LN" name="326">  326   </a><span class="CT">// out of OTP/Flash will yield unpredictable results.</span>
+</span><span><a class="LN" name="327">  327   </a><span class="CT">// Note: a flash access after the flash pump and banks are powered down will</span>
+</span><span><a class="LN" name="328">  328   </a><span class="CT">// wake the pump and bank</span>
+</span><span><a class="LN" name="329">  329   </a><span class="CT">//</span>
+</span><span><a class="LN" name="330">  330   </a><font color="#992211">#</font><span class="PP">ifdef</span> __cplusplus
+</span><span><a class="LN" name="331">  331   </a><font color="#992211">#</font><span class="PP">pragma</span> CODE_SECTION(<font color="#1122ff">&quot;.TI.ramfunc&quot;</font>);
+</span><span><a class="LN" name="332">  332   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="333">  333   </a><span class="DT">void</span>
+</span><span><a class="LN" name="334">  334   </a><a name="fcn_FlashOff">FlashOff</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="335">  335   </a><b>{</b>
+</span><span><a class="LN" name="336">  336   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="337">  337   </a>
+</span><span><a class="LN" name="338">  338   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="339">  339   </a>    <span class="CT">// Configure the fallback power mode as sleep</span>
+</span><span><a class="LN" name="340">  340   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="341">  341   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FBFALLBACK.bit.BNKPWR0 = 0;
+</span><span><a class="LN" name="342">  342   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FBFALLBACK.bit.BNKPWR1 = 0;
+</span><span><a class="LN" name="343">  343   </a>
+</span><span><a class="LN" name="344">  344   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="345">  345   </a>    <span class="CT">// Configure the fallback power mode as sleep</span>
+</span><span><a class="LN" name="346">  346   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="347">  347   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Flash0CtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Flash0CtrlRegs');" target="_self"><font color="#1122aa">Flash0CtrlRegs</font></a>.FPAC1.bit.PMPPWR = 0;
+</span><span><a class="LN" name="348">  348   </a>
+</span><span><a class="LN" name="349">  349   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="350">  350   </a><b>}</b>
+</span><span><a class="LN" name="351">  351   </a>
+</span><span><a class="LN" name="352">  352   </a><span class="CT">//</span>
+</span><span><a class="LN" name="353">  353   </a><span class="CT">// ServiceDog - This function resets the watchdog timer.</span>
+</span><span><a class="LN" name="354">  354   </a><span class="CT">// Enable this function for using ServiceDog in the application</span>
+</span><span><a class="LN" name="355">  355   </a><span class="CT">//</span>
+</span><span><a class="LN" name="356">  356   </a><span class="DT">void</span>
+</span><span><a class="LN" name="357">  357   </a><a name="fcn_ServiceDog">ServiceDog</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="358">  358   </a><b>{</b>
+</span><span><a class="LN" name="359">  359   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="360">  360   </a>    <a href="f28004x_globalvariabledefs_c.html#var_WdRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_WdRegs');" target="_self"><font color="#1122aa">WdRegs</font></a>.WDKEY.bit.WDKEY = 0x0055;
+</span><span><a class="LN" name="361">  361   </a>    <a href="f28004x_globalvariabledefs_c.html#var_WdRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_WdRegs');" target="_self"><font color="#1122aa">WdRegs</font></a>.WDKEY.bit.WDKEY = 0x00AA;
+</span><span><a class="LN" name="362">  362   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="363">  363   </a><b>}</b>
+</span><span><a class="LN" name="364">  364   </a>
+</span><span><a class="LN" name="365">  365   </a><span class="CT">//</span>
+</span><span><a class="LN" name="366">  366   </a><span class="CT">// DisableDog - This function disables the watchdog timer.</span>
+</span><span><a class="LN" name="367">  367   </a><span class="CT">//</span>
+</span><span><a class="LN" name="368">  368   </a><span class="DT">void</span>
+</span><span><a class="LN" name="369">  369   </a><a name="fcn_DisableDog">DisableDog</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="370">  370   </a><b>{</b>
+</span><span><a class="LN" name="371">  371   </a>    <span class="DT">volatile</span> Uint16 temp;
+</span><span><a class="LN" name="372">  372   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="373">  373   </a>
+</span><span><a class="LN" name="374">  374   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="375">  375   </a>    <span class="CT">// Grab the clock config so we don't clobber it</span>
+</span><span><a class="LN" name="376">  376   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="377">  377   </a>    temp = <a href="f28004x_globalvariabledefs_c.html#var_WdRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_WdRegs');" target="_self"><font color="#1122aa">WdRegs</font></a>.WDCR.all &amp; 0x0007;
+</span><span><a class="LN" name="378">  378   </a>    <a href="f28004x_globalvariabledefs_c.html#var_WdRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_WdRegs');" target="_self"><font color="#1122aa">WdRegs</font></a>.WDCR.all = 0x0068 | temp;
+</span><span><a class="LN" name="379">  379   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="380">  380   </a><b>}</b>
+</span><span><a class="LN" name="381">  381   </a>
+</span><span><a class="LN" name="382">  382   </a><span class="CT">//</span>
+</span><span><a class="LN" name="383">  383   </a><span class="CT">// InitPll - This function initializes the PLL registers.</span>
+</span><span><a class="LN" name="384">  384   </a><span class="CT">//</span>
+</span><span><a class="LN" name="385">  385   </a><span class="CT">// Note: This function uses the DCC to check that the PLLRAWCLK is running at</span>
+</span><span><a class="LN" name="386">  386   </a><span class="CT">// the expected rate. If you are using the DCC, you must back up its</span>
+</span><span><a class="LN" name="387">  387   </a><span class="CT">// configuration before calling this function and restore it afterward.</span>
+</span><span><a class="LN" name="388">  388   </a><span class="CT">//</span>
+</span><span><a class="LN" name="389">  389   </a><span class="DT">void</span>
+</span><span><a class="LN" name="390">  390   </a><a name="fcn_InitSysPll">InitSysPll</a>(Uint16 clock_source, Uint16 imult, Uint16 fmult, Uint16 divsel)
+</span><span><a class="LN" name="391">  391   </a><b>{</b>
+</span><span><a class="LN" name="392">  392   </a>    Uint32 timeout, retries, temp_syspllmult, pllLockStatus;
+</span><span><a class="LN" name="393">  393   </a>    bool status;
+</span><span><a class="LN" name="394">  394   </a>
+</span><span><a class="LN" name="395">  395   </a>    <span class="KW">if</span>(((clock_source &amp; 0x3) == <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL)    &amp;&amp;
+</span><span><a class="LN" name="396">  396   </a>       (((clock_source &amp; 0x4) &gt;&gt; 2) == <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.SE)           &amp;&amp;
+</span><span><a class="LN" name="397">  397   </a>                     (imult  == <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLMULT.bit.IMULT)           &amp;&amp;
+</span><span><a class="LN" name="398">  398   </a>                     (fmult  == <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLMULT.bit.FMULT)           &amp;&amp;
+</span><span><a class="LN" name="399">  399   </a>                     (divsel == <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSCLKDIVSEL.bit.PLLSYSCLKDIV))
+</span><span><a class="LN" name="400">  400   </a>    <b>{</b>
+</span><span><a class="LN" name="401">  401   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="402">  402   </a>        <span class="CT">// Everything is set as required, so just return</span>
+</span><span><a class="LN" name="403">  403   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="404">  404   </a>        <span class="KW">return</span>;
+</span><span><a class="LN" name="405">  405   </a>    <b>}</b>
+</span><span><a class="LN" name="406">  406   </a>
+</span><span><a class="LN" name="407">  407   </a>    <span class="KW">if</span>(((clock_source &amp; 0x3) != <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL) ||
+</span><span><a class="LN" name="408">  408   </a>       (((clock_source &amp; 0x4) &gt;&gt; 2) != <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.SE))
+</span><span><a class="LN" name="409">  409   </a>    <b>{</b>
+</span><span><a class="LN" name="410">  410   </a>        <span class="KW">switch</span> (clock_source)
+</span><span><a class="LN" name="411">  411   </a>        <b>{</b>
+</span><span><a class="LN" name="412">  412   </a>            <span class="KW">case</span> INT_OSC1:
+</span><span><a class="LN" name="413">  413   </a>                <a href="#fcn_SysIntOsc1Sel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_SysIntOsc1Sel');" target="_self"><font color="#1122aa">SysIntOsc1Sel</font></a>();
+</span><span><a class="LN" name="414">  414   </a>                <span class="KW">break</span>;
+</span><span><a class="LN" name="415">  415   </a>
+</span><span><a class="LN" name="416">  416   </a>            <span class="KW">case</span> INT_OSC2:
+</span><span><a class="LN" name="417">  417   </a>                <a href="#fcn_SysIntOsc2Sel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_SysIntOsc2Sel');" target="_self"><font color="#1122aa">SysIntOsc2Sel</font></a>();
+</span><span><a class="LN" name="418">  418   </a>                <span class="KW">break</span>;
+</span><span><a class="LN" name="419">  419   </a>
+</span><span><a class="LN" name="420">  420   </a>            <span class="KW">case</span> XTAL_OSC:
+</span><span><a class="LN" name="421">  421   </a>                <a href="#fcn_SysXtalOscSel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_SysXtalOscSel');" target="_self"><font color="#1122aa">SysXtalOscSel</font></a>();
+</span><span><a class="LN" name="422">  422   </a>                <span class="KW">break</span>;
+</span><span><a class="LN" name="423">  423   </a>
+</span><span><a class="LN" name="424">  424   </a>            <span class="KW">case</span> XTAL_OSC_SE:
+</span><span><a class="LN" name="425">  425   </a>                <a href="#fcn_SysXtalOscSESel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_SysXtalOscSESel');" target="_self"><font color="#1122aa">SysXtalOscSESel</font></a>();
+</span><span><a class="LN" name="426">  426   </a>                <span class="KW">break</span>;
+</span><span><a class="LN" name="427">  427   </a>        <b>}</b>
+</span><span><a class="LN" name="428">  428   </a>    <b>}</b>
+</span><span><a class="LN" name="429">  429   </a>
+</span><span><a class="LN" name="430">  430   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="431">  431   </a>
+</span><span><a class="LN" name="432">  432   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="433">  433   </a>    <span class="CT">// First modify the PLL multipliers</span>
+</span><span><a class="LN" name="434">  434   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="435">  435   </a>    <span class="KW">if</span>(imult != <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLMULT.bit.IMULT ||
+</span><span><a class="LN" name="436">  436   </a>       fmult != <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLMULT.bit.FMULT)
+</span><span><a class="LN" name="437">  437   </a>    <b>{</b>
+</span><span><a class="LN" name="438">  438   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="439">  439   </a>        <span class="CT">// Bypass PLL and set dividers to /1</span>
+</span><span><a class="LN" name="440">  440   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="441">  441   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLCLKEN = 0;
+</span><span><a class="LN" name="442">  442   </a>
+</span><span><a class="LN" name="443">  443   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="444">  444   </a>        <span class="CT">// Delay of at least 60 OSCCLK cycles required post PLL bypass</span>
+</span><span><a class="LN" name="445">  445   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="446">  446   </a>        asm(<font color="#1122ff">&quot; RPT #60 || NOP&quot;</font>);
+</span><span><a class="LN" name="447">  447   </a>
+</span><span><a class="LN" name="448">  448   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSCLKDIVSEL.bit.PLLSYSCLKDIV = 0;
+</span><span><a class="LN" name="449">  449   </a>
+</span><span><a class="LN" name="450">  450   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="451">  451   </a>        <span class="CT">// Evaluate PLL multipliers</span>
+</span><span><a class="LN" name="452">  452   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="453">  453   </a>        temp_syspllmult = ((fmult &lt;&lt; 8U) | imult);
+</span><span><a class="LN" name="454">  454   </a>
+</span><span><a class="LN" name="455">  455   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="456">  456   </a>        <span class="CT">// Loop to retry locking the PLL should the DCC module indicate</span>
+</span><span><a class="LN" name="457">  457   </a>        <span class="CT">// that it was not successful.</span>
+</span><span><a class="LN" name="458">  458   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="459">  459   </a>        <span class="KW">for</span>(retries = 0; (retries &lt; PLL_RETRIES); retries++)
+</span><span><a class="LN" name="460">  460   </a>        <b>{</b>
+</span><span><a class="LN" name="461">  461   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="462">  462   </a>            <span class="CT">// Disable SYSPLL (Turn off PLL)</span>
+</span><span><a class="LN" name="463">  463   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="464">  464   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLEN = 0;
+</span><span><a class="LN" name="465">  465   </a>
+</span><span><a class="LN" name="466">  466   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="467">  467   </a>            <span class="CT">// Atleast 33 cycle delay between powerdown to powerup</span>
+</span><span><a class="LN" name="468">  468   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="469">  469   </a>            asm(<font color="#1122ff">&quot; RPT #33 || NOP&quot;</font>);
+</span><span><a class="LN" name="470">  470   </a>
+</span><span><a class="LN" name="471">  471   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="472">  472   </a>            <span class="CT">// Program PLL multipliers</span>
+</span><span><a class="LN" name="473">  473   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="474">  474   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLMULT.all = temp_syspllmult;
+</span><span><a class="LN" name="475">  475   </a>
+</span><span><a class="LN" name="476">  476   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="477">  477   </a>            <span class="CT">// Enable SYSPLL</span>
+</span><span><a class="LN" name="478">  478   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="479">  479   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLEN = 1;
+</span><span><a class="LN" name="480">  480   </a>
+</span><span><a class="LN" name="481">  481   </a>            timeout = PLL_LOCK_TIMEOUT;
+</span><span><a class="LN" name="482">  482   </a>            pllLockStatus = <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLSTS.bit.LOCKS;
+</span><span><a class="LN" name="483">  483   </a>
+</span><span><a class="LN" name="484">  484   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="485">  485   </a>            <span class="CT">// Wait for the SYSPLL lock</span>
+</span><span><a class="LN" name="486">  486   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="487">  487   </a>            <span class="KW">while</span>((pllLockStatus != 1) &amp;&amp; (timeout != 0U))
+</span><span><a class="LN" name="488">  488   </a>            <b>{</b>
+</span><span><a class="LN" name="489">  489   </a>                pllLockStatus = <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLSTS.bit.LOCKS;
+</span><span><a class="LN" name="490">  490   </a>                timeout--;
+</span><span><a class="LN" name="491">  491   </a>            <b>}</b>
+</span><span><a class="LN" name="492">  492   </a>
+</span><span><a class="LN" name="493">  493   </a>            <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="494">  494   </a>
+</span><span><a class="LN" name="495">  495   </a>            status = IsPLLValid(clock_source, imult, fmult);
+</span><span><a class="LN" name="496">  496   </a>
+</span><span><a class="LN" name="497">  497   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="498">  498   </a>            <span class="CT">// Check DCC Status, if no error break the loop</span>
+</span><span><a class="LN" name="499">  499   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="500">  500   </a>            <span class="KW">if</span>(status)
+</span><span><a class="LN" name="501">  501   </a>            <b>{</b>
+</span><span><a class="LN" name="502">  502   </a>                <span class="KW">break</span>;
+</span><span><a class="LN" name="503">  503   </a>            <b>}</b>
+</span><span><a class="LN" name="504">  504   </a>        <b>}</b>
+</span><span><a class="LN" name="505">  505   </a>    <b>}</b>
+</span><span><a class="LN" name="506">  506   </a>    <span class="KW">else</span>
+</span><span><a class="LN" name="507">  507   </a>    <b>{</b>
+</span><span><a class="LN" name="508">  508   </a>        status = true;
+</span><span><a class="LN" name="509">  509   </a>    <b>}</b>
+</span><span><a class="LN" name="510">  510   </a>
+</span><span><a class="LN" name="511">  511   </a>    <span class="KW">if</span>(status)
+</span><span><a class="LN" name="512">  512   </a>    <b>{</b>
+</span><span><a class="LN" name="513">  513   </a>        <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="514">  514   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="515">  515   </a>        <span class="CT">// Set divider to produce slower output frequency to limit current increase</span>
+</span><span><a class="LN" name="516">  516   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="517">  517   </a>        <span class="KW">if</span>(divsel != PLLCLK_BY_126)
+</span><span><a class="LN" name="518">  518   </a>        <b>{</b>
+</span><span><a class="LN" name="519">  519   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSCLKDIVSEL.bit.PLLSYSCLKDIV = divsel + 1;
+</span><span><a class="LN" name="520">  520   </a>        <b>}</b>
+</span><span><a class="LN" name="521">  521   </a>        <span class="KW">else</span>
+</span><span><a class="LN" name="522">  522   </a>        <b>{</b>
+</span><span><a class="LN" name="523">  523   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSCLKDIVSEL.bit.PLLSYSCLKDIV = divsel;
+</span><span><a class="LN" name="524">  524   </a>        <b>}</b>
+</span><span><a class="LN" name="525">  525   </a>
+</span><span><a class="LN" name="526">  526   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="527">  527   </a>        <span class="CT">// Enable PLLSYSCLK is fed from system PLL clock</span>
+</span><span><a class="LN" name="528">  528   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="529">  529   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLCLKEN = 1;
+</span><span><a class="LN" name="530">  530   </a>
+</span><span><a class="LN" name="531">  531   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="532">  532   </a>        <span class="CT">// Small 100 cycle delay</span>
+</span><span><a class="LN" name="533">  533   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="534">  534   </a>        asm(<font color="#1122ff">&quot; RPT #100 || NOP&quot;</font>);
+</span><span><a class="LN" name="535">  535   </a>
+</span><span><a class="LN" name="536">  536   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="537">  537   </a>        <span class="CT">// Set the divider to user value</span>
+</span><span><a class="LN" name="538">  538   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="539">  539   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSCLKDIVSEL.bit.PLLSYSCLKDIV = divsel;
+</span><span><a class="LN" name="540">  540   </a>        <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="541">  541   </a>    <b>}</b>
+</span><span><a class="LN" name="542">  542   </a><b>}</b>
+</span><span><a class="LN" name="543">  543   </a>
+</span><span><a class="LN" name="544">  544   </a><span class="CT">//</span>
+</span><span><a class="LN" name="545">  545   </a><span class="CT">// CsmUnlock - This function unlocks the CSM. User must replace 0xFFFF's with</span>
+</span><span><a class="LN" name="546">  546   </a><span class="CT">// current password for the DSP.</span>
+</span><span><a class="LN" name="547">  547   </a><span class="CT">//</span>
+</span><span><a class="LN" name="548">  548   </a>Uint16
+</span><span><a class="LN" name="549">  549   </a>CsmUnlock()
+</span><span><a class="LN" name="550">  550   </a><b>{</b>
+</span><span><a class="LN" name="551">  551   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="552">  552   </a>    <span class="CT">// Write to the key registers to unlock the device. The 0x0FFFFFFFF's</span>
+</span><span><a class="LN" name="553">  553   </a>    <span class="CT">// are dummmy passwords. User should replace them with the correct password</span>
+</span><span><a class="LN" name="554">  554   </a>    <span class="CT">// for the DSP.</span>
+</span><span><a class="LN" name="555">  555   </a>    <span class="CT">// Note: F28004x has default password keys which are not all 0xFFFFFFFF.</span>
+</span><span><a class="LN" name="556">  556   </a>    <span class="CT">// See DCSM chapter of Technical Reference Manual for default passwords.</span>
+</span><span><a class="LN" name="557">  557   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="558">  558   </a>
+</span><span><a class="LN" name="559">  559   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z1Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z1Regs');" target="_self"><font color="#1122aa">DcsmBank0Z1Regs</font></a>.Z1_CSMKEY0 = 0xFFFFFFFF;
+</span><span><a class="LN" name="560">  560   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z1Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z1Regs');" target="_self"><font color="#1122aa">DcsmBank0Z1Regs</font></a>.Z1_CSMKEY1 = 0xFFFFFFFF;
+</span><span><a class="LN" name="561">  561   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z1Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z1Regs');" target="_self"><font color="#1122aa">DcsmBank0Z1Regs</font></a>.Z1_CSMKEY2 = 0xFFFFFFFF;
+</span><span><a class="LN" name="562">  562   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z1Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z1Regs');" target="_self"><font color="#1122aa">DcsmBank0Z1Regs</font></a>.Z1_CSMKEY3 = 0xFFFFFFFF;
+</span><span><a class="LN" name="563">  563   </a>
+</span><span><a class="LN" name="564">  564   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z2Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z2Regs');" target="_self"><font color="#1122aa">DcsmBank0Z2Regs</font></a>.Z2_CSMKEY0 = 0xFFFFFFFF;
+</span><span><a class="LN" name="565">  565   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z2Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z2Regs');" target="_self"><font color="#1122aa">DcsmBank0Z2Regs</font></a>.Z2_CSMKEY1 = 0xFFFFFFFF;
+</span><span><a class="LN" name="566">  566   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z2Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z2Regs');" target="_self"><font color="#1122aa">DcsmBank0Z2Regs</font></a>.Z2_CSMKEY2 = 0xFFFFFFFF;
+</span><span><a class="LN" name="567">  567   </a>    <a href="f28004x_globalvariabledefs_c.html#var_DcsmBank0Z2Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_DcsmBank0Z2Regs');" target="_self"><font color="#1122aa">DcsmBank0Z2Regs</font></a>.Z2_CSMKEY3 = 0xFFFFFFFF;
+</span><span><a class="LN" name="568">  568   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="569">  569   </a>
+</span><span><a class="LN" name="570">  570   </a>    <span class="KW">return</span> 0;
+</span><span><a class="LN" name="571">  571   </a><b>}</b>
+</span><span><a class="LN" name="572">  572   </a>
+</span><span><a class="LN" name="573">  573   </a><span class="CT">//</span>
+</span><span><a class="LN" name="574">  574   </a><span class="CT">// SysIntOsc1Sel - This function switches to Internal Oscillator 1 and turns</span>
+</span><span><a class="LN" name="575">  575   </a><span class="CT">// off all other clock sources to minimize power consumption</span>
+</span><span><a class="LN" name="576">  576   </a><span class="CT">//</span>
+</span><span><a class="LN" name="577">  577   </a><span class="DT">void</span>
+</span><span><a class="LN" name="578">  578   </a><a name="fcn_SysIntOsc1Sel">SysIntOsc1Sel</a> (<span class="DT">void</span>)
+</span><span><a class="LN" name="579">  579   </a><b>{</b>
+</span><span><a class="LN" name="580">  580   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="581">  581   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL = 2; <span class="CT">// Clk Src = INTOSC1</span>
+</span><span><a class="LN" name="582">  582   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.OSCOFF=1;             <span class="CT">// Turn off XTALOSC</span>
+</span><span><a class="LN" name="583">  583   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="584">  584   </a><b>}</b>
+</span><span><a class="LN" name="585">  585   </a>
+</span><span><a class="LN" name="586">  586   </a><span class="CT">//</span>
+</span><span><a class="LN" name="587">  587   </a><span class="CT">// SysIntOsc2Sel - This function switches to Internal oscillator 2 from</span>
+</span><span><a class="LN" name="588">  588   </a><span class="CT">// External Oscillator and turns off all other clock sources to minimize</span>
+</span><span><a class="LN" name="589">  589   </a><span class="CT">// power consumption</span>
+</span><span><a class="LN" name="590">  590   </a><span class="CT">// NOTE: If there is no external clock connection, when switching from</span>
+</span><span><a class="LN" name="591">  591   </a><span class="CT">//       INTOSC1 to INTOSC2, EXTOSC and XLCKIN must be turned OFF prior</span>
+</span><span><a class="LN" name="592">  592   </a><span class="CT">//       to switching to internal oscillator 1</span>
+</span><span><a class="LN" name="593">  593   </a><span class="CT">//</span>
+</span><span><a class="LN" name="594">  594   </a><span class="DT">void</span>
+</span><span><a class="LN" name="595">  595   </a><a name="fcn_SysIntOsc2Sel">SysIntOsc2Sel</a> (<span class="DT">void</span>)
+</span><span><a class="LN" name="596">  596   </a><b>{</b>
+</span><span><a class="LN" name="597">  597   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="598">  598   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.INTOSC2OFF=0;         <span class="CT">// Turn on INTOSC2</span>
+</span><span><a class="LN" name="599">  599   </a>    SYSCTRL_CLKSRCCTL1_DELAY;
+</span><span><a class="LN" name="600">  600   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL = 0;     <span class="CT">// Clk Src = INTOSC2</span>
+</span><span><a class="LN" name="601">  601   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.OSCOFF=1;                 <span class="CT">// Turn off XTALOSC</span>
+</span><span><a class="LN" name="602">  602   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="603">  603   </a><b>}</b>
+</span><span><a class="LN" name="604">  604   </a>
+</span><span><a class="LN" name="605">  605   </a><span class="CT">//</span>
+</span><span><a class="LN" name="606">  606   </a><span class="CT">// PollX1Counter - Clear the X1CNT counter and then wait for it to saturate</span>
+</span><span><a class="LN" name="607">  607   </a><span class="CT">// four times.</span>
+</span><span><a class="LN" name="608">  608   </a><span class="CT">//</span>
+</span><span><a class="LN" name="609">  609   </a><span class="DT">static</span> <span class="DT">void</span>
+</span><span><a class="LN" name="610">  610   </a><a name="fcn_PollX1Counter">PollX1Counter</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="611">  611   </a><b>{</b>
+</span><span><a class="LN" name="612">  612   </a>    Uint16 loopCount = 0;
+</span><span><a class="LN" name="613">  613   </a>
+</span><span><a class="LN" name="614">  614   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="615">  615   </a>    <span class="CT">// Delay for 1 ms while the XTAL powers up</span>
+</span><span><a class="LN" name="616">  616   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="617">  617   </a>    <span class="CT">// 2000 loops, 5 cycles per loop + 9 cycles overhead = 10009 cycles</span>
+</span><span><a class="LN" name="618">  618   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="619">  619   </a>    F28x_usDelay(2000);
+</span><span><a class="LN" name="620">  620   </a>
+</span><span><a class="LN" name="621">  621   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="622">  622   </a>    <span class="CT">// Clear and saturate X1CNT 4 times to guarantee operation</span>
+</span><span><a class="LN" name="623">  623   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="624">  624   </a>    <span class="KW">do</span>
+</span><span><a class="LN" name="625">  625   </a>    <b>{</b>
+</span><span><a class="LN" name="626">  626   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="627">  627   </a>        <span class="CT">// Keep clearing the counter until it is no longer saturated</span>
+</span><span><a class="LN" name="628">  628   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="629">  629   </a>        <span class="KW">while</span>(<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.X1CNT.all &gt; 0x1FF)
+</span><span><a class="LN" name="630">  630   </a>        <b>{</b>
+</span><span><a class="LN" name="631">  631   </a>            <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.X1CNT.bit.CLR = 1;
+</span><span><a class="LN" name="632">  632   </a>        <b>}</b>
+</span><span><a class="LN" name="633">  633   </a>
+</span><span><a class="LN" name="634">  634   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="635">  635   </a>        <span class="CT">// Wait for the X1 clock to saturate</span>
+</span><span><a class="LN" name="636">  636   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="637">  637   </a>        <span class="KW">while</span>(<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.X1CNT.all != 0x3FFU)
+</span><span><a class="LN" name="638">  638   </a>        <b>{</b>
+</span><span><a class="LN" name="639">  639   </a>            ;
+</span><span><a class="LN" name="640">  640   </a>        <b>}</b>
+</span><span><a class="LN" name="641">  641   </a>
+</span><span><a class="LN" name="642">  642   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="643">  643   </a>        <span class="CT">// Increment the counter</span>
+</span><span><a class="LN" name="644">  644   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="645">  645   </a>        loopCount++;
+</span><span><a class="LN" name="646">  646   </a>    <b>}</b><span class="KW">while</span>(loopCount &lt; 4);
+</span><span><a class="LN" name="647">  647   </a><b>}</b>
+</span><span><a class="LN" name="648">  648   </a>
+</span><span><a class="LN" name="649">  649   </a><span class="CT">//</span>
+</span><span><a class="LN" name="650">  650   </a><span class="CT">// SysXtalOscSel - This function switches to External CRYSTAL oscillator and</span>
+</span><span><a class="LN" name="651">  651   </a><span class="CT">// turns off all other clock sources to minimize power consumption. This option</span>
+</span><span><a class="LN" name="652">  652   </a><span class="CT">// may not be available on all device packages</span>
+</span><span><a class="LN" name="653">  653   </a><span class="CT">//</span>
+</span><span><a class="LN" name="654">  654   </a><span class="DT">void</span>
+</span><span><a class="LN" name="655">  655   </a><a name="fcn_SysXtalOscSel">SysXtalOscSel</a> (<span class="DT">void</span>)
+</span><span><a class="LN" name="656">  656   </a><b>{</b>
+</span><span><a class="LN" name="657">  657   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="658">  658   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.OSCOFF = 0;     <span class="CT">// Turn on XTALOSC</span>
+</span><span><a class="LN" name="659">  659   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.SE = 0;         <span class="CT">// Select crystal mode</span>
+</span><span><a class="LN" name="660">  660   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="661">  661   </a>
+</span><span><a class="LN" name="662">  662   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="663">  663   </a>    <span class="CT">// Wait for the X1 clock to saturate</span>
+</span><span><a class="LN" name="664">  664   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="665">  665   </a>    <a href="#fcn_PollX1Counter" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_PollX1Counter');" target="_self"><font color="#1122aa">PollX1Counter</font></a>();
+</span><span><a class="LN" name="666">  666   </a>
+</span><span><a class="LN" name="667">  667   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="668">  668   </a>    <span class="CT">// Select XTAL as the oscillator source</span>
+</span><span><a class="LN" name="669">  669   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="670">  670   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="671">  671   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL = 1;
+</span><span><a class="LN" name="672">  672   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="673">  673   </a>
+</span><span><a class="LN" name="674">  674   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="675">  675   </a>    <span class="CT">// If a missing clock failure was detected, try waiting for the X1 counter</span>
+</span><span><a class="LN" name="676">  676   </a>    <span class="CT">// to saturate again. Consider modifying this code to add a 10ms timeout.</span>
+</span><span><a class="LN" name="677">  677   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="678">  678   </a>    <span class="KW">while</span>(<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.MCDCR.bit.MCLKSTS != 0)
+</span><span><a class="LN" name="679">  679   </a>    <b>{</b>
+</span><span><a class="LN" name="680">  680   </a>        <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="681">  681   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.MCDCR.bit.MCLKCLR = 1;
+</span><span><a class="LN" name="682">  682   </a>        <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="683">  683   </a>
+</span><span><a class="LN" name="684">  684   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="685">  685   </a>        <span class="CT">// Wait for the X1 clock to saturate</span>
+</span><span><a class="LN" name="686">  686   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="687">  687   </a>        <a href="#fcn_PollX1Counter" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_PollX1Counter');" target="_self"><font color="#1122aa">PollX1Counter</font></a>();
+</span><span><a class="LN" name="688">  688   </a>
+</span><span><a class="LN" name="689">  689   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="690">  690   </a>        <span class="CT">// Select XTAL as the oscillator source</span>
+</span><span><a class="LN" name="691">  691   </a>        <span class="CT">//</span>
+</span><span><a class="LN" name="692">  692   </a>        <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="693">  693   </a>        <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL = 1;
+</span><span><a class="LN" name="694">  694   </a>        <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="695">  695   </a>    <b>}</b>
+</span><span><a class="LN" name="696">  696   </a><b>}</b>
+</span><span><a class="LN" name="697">  697   </a>
+</span><span><a class="LN" name="698">  698   </a><span class="CT">//</span>
+</span><span><a class="LN" name="699">  699   </a><span class="CT">// SysXtalOscSESel - This function switches to external oscillator in</span>
+</span><span><a class="LN" name="700">  700   </a><span class="CT">// single-ended mode and turns off all other clock sources to minimize power</span>
+</span><span><a class="LN" name="701">  701   </a><span class="CT">// consumption. This option may not be available on all device packages</span>
+</span><span><a class="LN" name="702">  702   </a><span class="CT">//</span>
+</span><span><a class="LN" name="703">  703   </a><span class="DT">void</span>
+</span><span><a class="LN" name="704">  704   </a><a name="fcn_SysXtalOscSESel">SysXtalOscSESel</a> (<span class="DT">void</span>)
+</span><span><a class="LN" name="705">  705   </a><b>{</b>
+</span><span><a class="LN" name="706">  706   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="707">  707   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.OSCOFF = 0;     <span class="CT">// Turn on XTALOSC</span>
+</span><span><a class="LN" name="708">  708   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.XTALCR.bit.SE = 1;         <span class="CT">// Select single-ended mode</span>
+</span><span><a class="LN" name="709">  709   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="710">  710   </a>
+</span><span><a class="LN" name="711">  711   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="712">  712   </a>    <span class="CT">// Wait for the X1 clock to saturate</span>
+</span><span><a class="LN" name="713">  713   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="714">  714   </a>    <a href="#fcn_PollX1Counter" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_PollX1Counter');" target="_self"><font color="#1122aa">PollX1Counter</font></a>();
+</span><span><a class="LN" name="715">  715   </a>
+</span><span><a class="LN" name="716">  716   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="717">  717   </a>    <span class="CT">// Select XTALOSC as the oscillator source</span>
+</span><span><a class="LN" name="718">  718   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="719">  719   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="720">  720   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.CLKSRCCTL1.bit.OSCCLKSRCSEL = 1;
+</span><span><a class="LN" name="721">  721   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="722">  722   </a>
+</span><span><a class="LN" name="723">  723   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="724">  724   </a>    <span class="CT">// If missing clock detected, there is something wrong with the oscillator</span>
+</span><span><a class="LN" name="725">  725   </a>    <span class="CT">// module.</span>
+</span><span><a class="LN" name="726">  726   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="727">  727   </a>    <span class="KW">if</span>(<a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.MCDCR.bit.MCLKSTS != 0)
+</span><span><a class="LN" name="728">  728   </a>    <b>{</b>
+</span><span><a class="LN" name="729">  729   </a>        ESTOP0;
+</span><span><a class="LN" name="730">  730   </a>    <b>}</b>
+</span><span><a class="LN" name="731">  731   </a><b>}</b>
+</span><span><a class="LN" name="732">  732   </a>
+</span><span><a class="LN" name="733">  733   </a><span class="CT">//</span>
+</span><span><a class="LN" name="734">  734   </a><span class="CT">// IDLE - Enter IDLE mode</span>
+</span><span><a class="LN" name="735">  735   </a><span class="CT">//</span>
+</span><span><a class="LN" name="736">  736   </a><span class="DT">void</span>
+</span><span><a class="LN" name="737">  737   </a><a name="fcn_IDLE">IDLE</a>()
+</span><span><a class="LN" name="738">  738   </a><b>{</b>
+</span><span><a class="LN" name="739">  739   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="740">  740   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.LPMCR.bit.LPM = LPM_IDLE;
+</span><span><a class="LN" name="741">  741   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="742">  742   </a>    asm(<font color="#1122ff">&quot; IDLE&quot;</font>);
+</span><span><a class="LN" name="743">  743   </a><b>}</b>
+</span><span><a class="LN" name="744">  744   </a>
+</span><span><a class="LN" name="745">  745   </a><span class="CT">//</span>
+</span><span><a class="LN" name="746">  746   </a><span class="CT">// HALT - Enter HALT mode</span>
+</span><span><a class="LN" name="747">  747   </a><span class="CT">//</span>
+</span><span><a class="LN" name="748">  748   </a><span class="DT">void</span>
+</span><span><a class="LN" name="749">  749   </a><a name="fcn_HALT">HALT</a>()
+</span><span><a class="LN" name="750">  750   </a><b>{</b>
+</span><span><a class="LN" name="751">  751   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="752">  752   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.LPMCR.bit.LPM = LPM_HALT;
+</span><span><a class="LN" name="753">  753   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLCLKEN = 0;
+</span><span><a class="LN" name="754">  754   </a>    <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.SYSPLLCTL1.bit.PLLEN = 0;
+</span><span><a class="LN" name="755">  755   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="756">  756   </a>    asm(<font color="#1122ff">&quot; IDLE&quot;</font>);
+</span><span><a class="LN" name="757">  757   </a><b>}</b>
+</span><span><a class="LN" name="758">  758   </a>
+</span><span><a class="LN" name="759">  759   </a><span class="CT">//*****************************************************************************</span>
+</span><span><a class="LN" name="760">  760   </a><span class="CT">//</span>
+</span><span><a class="LN" name="761">  761   </a><span class="CT">// SysCtl_isPLLValid()</span>
+</span><span><a class="LN" name="762">  762   </a><span class="CT">//</span>
+</span><span><a class="LN" name="763">  763   </a><span class="CT">//*****************************************************************************</span>
+</span><span><a class="LN" name="764">  764   </a>bool
+</span><span><a class="LN" name="765">  765   </a>IsPLLValid(Uint16 oscSource, Uint16 imult, Uint16 fmult)
+</span><span><a class="LN" name="766">  766   </a><b>{</b>
+</span><span><a class="LN" name="767">  767   </a>    Uint32 dccCounterSeed0, dccCounterSeed1, dccValidSeed0;
+</span><span><a class="LN" name="768">  768   </a>
+</span><span><a class="LN" name="769">  769   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="770">  770   </a>    <span class="CT">// Setting Counter0 & Valid Seed Value with +/-2% tolerance</span>
+</span><span><a class="LN" name="771">  771   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="772">  772   </a>    dccCounterSeed0 = DCC_COUNTER0_WINDOW - 2U;
+</span><span><a class="LN" name="773">  773   </a>    dccValidSeed0 = 4U;
+</span><span><a class="LN" name="774">  774   </a>
+</span><span><a class="LN" name="775">  775   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="776">  776   </a>    <span class="CT">// Multiplying Counter-0 window with PLL Integer Multiplier</span>
+</span><span><a class="LN" name="777">  777   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="778">  778   </a>    dccCounterSeed1 = DCC_COUNTER0_WINDOW * imult;
+</span><span><a class="LN" name="779">  779   </a>
+</span><span><a class="LN" name="780">  780   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="781">  781   </a>    <span class="CT">// Multiplying Counter-0 window with PLL Fractional Multiplier</span>
+</span><span><a class="LN" name="782">  782   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="783">  783   </a>    <span class="KW">switch</span>(fmult)
+</span><span><a class="LN" name="784">  784   </a>    <b>{</b>
+</span><span><a class="LN" name="785">  785   </a>        <span class="KW">case</span> FMULT_0pt25:
+</span><span><a class="LN" name="786">  786   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="787">  787   </a>            <span class="CT">// FMULT * CNTR0 Window = 0.25 * 100 = 25, gets added to cntr0</span>
+</span><span><a class="LN" name="788">  788   </a>            <span class="CT">// seed value</span>
+</span><span><a class="LN" name="789">  789   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="790">  790   </a>            dccCounterSeed1 = dccCounterSeed1 + 25U;
+</span><span><a class="LN" name="791">  791   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="792">  792   </a>        <span class="KW">case</span> FMULT_0pt5:
+</span><span><a class="LN" name="793">  793   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="794">  794   </a>            <span class="CT">// FMULT * CNTR0 Window = 0.5 * 100 = 50, gets added to cntr0</span>
+</span><span><a class="LN" name="795">  795   </a>            <span class="CT">// seed value</span>
+</span><span><a class="LN" name="796">  796   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="797">  797   </a>            dccCounterSeed1 = dccCounterSeed1 + 50U;
+</span><span><a class="LN" name="798">  798   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="799">  799   </a>        <span class="KW">case</span> FMULT_0pt75:
+</span><span><a class="LN" name="800">  800   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="801">  801   </a>            <span class="CT">// FMULT * CNTR0 Window = 0.75 * 100 = 75, gets added to cntr0</span>
+</span><span><a class="LN" name="802">  802   </a>            <span class="CT">// seed value</span>
+</span><span><a class="LN" name="803">  803   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="804">  804   </a>            dccCounterSeed1 = dccCounterSeed1 + 75U;
+</span><span><a class="LN" name="805">  805   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="806">  806   </a>        <span class="KW">default</span>:
+</span><span><a class="LN" name="807">  807   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="808">  808   </a>            <span class="CT">// No fractional multiplier</span>
+</span><span><a class="LN" name="809">  809   </a>            <span class="CT">//</span>
+</span><span><a class="LN" name="810">  810   </a>            dccCounterSeed1 = dccCounterSeed1;
+</span><span><a class="LN" name="811">  811   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="812">  812   </a>    <b>}</b>
+</span><span><a class="LN" name="813">  813   </a>
+</span><span><a class="LN" name="814">  814   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="815">  815   </a>    <span class="CT">// Enable Peripheral Clock Domain PCLKCR21 for DCC</span>
+</span><span><a class="LN" name="816">  816   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="817">  817   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="818">  818   </a>    <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR21.bit.DCC_0 = 1;
+</span><span><a class="LN" name="819">  819   </a>
+</span><span><a class="LN" name="820">  820   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="821">  821   </a>    <span class="CT">// Clear Error & Done Flag</span>
+</span><span><a class="LN" name="822">  822   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="823">  823   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCSTATUS.bit.ERR = 1;
+</span><span><a class="LN" name="824">  824   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCSTATUS.bit.DONE = 1;
+</span><span><a class="LN" name="825">  825   </a>
+</span><span><a class="LN" name="826">  826   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="827">  827   </a>    <span class="CT">// Disable DCC</span>
+</span><span><a class="LN" name="828">  828   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="829">  829   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.DCCENA = 0x5;
+</span><span><a class="LN" name="830">  830   </a>
+</span><span><a class="LN" name="831">  831   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="832">  832   </a>    <span class="CT">// Disable Error Signal</span>
+</span><span><a class="LN" name="833">  833   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="834">  834   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.ERRENA = 0x5;
+</span><span><a class="LN" name="835">  835   </a>
+</span><span><a class="LN" name="836">  836   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="837">  837   </a>    <span class="CT">// Disable Done Signal</span>
+</span><span><a class="LN" name="838">  838   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="839">  839   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.DONEENA = 0x5;
+</span><span><a class="LN" name="840">  840   </a>
+</span><span><a class="LN" name="841">  841   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="842">  842   </a>    <span class="CT">// Configure Clock Source0 to whatever is set as a clock source for PLL</span>
+</span><span><a class="LN" name="843">  843   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="844">  844   </a>    <span class="KW">switch</span>(oscSource)
+</span><span><a class="LN" name="845">  845   </a>    <b>{</b>
+</span><span><a class="LN" name="846">  846   </a>        <span class="KW">case</span> INT_OSC1:
+</span><span><a class="LN" name="847">  847   </a>            <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCLKSRC0.bit.CLKSRC0 = 1; <span class="CT">// Clk Src0 = INTOSC1</span>
+</span><span><a class="LN" name="848">  848   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="849">  849   </a>
+</span><span><a class="LN" name="850">  850   </a>        <span class="KW">case</span> INT_OSC2:
+</span><span><a class="LN" name="851">  851   </a>            <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCLKSRC0.bit.CLKSRC0 = 2; <span class="CT">// Clk Src0 = INTOSC2</span>
+</span><span><a class="LN" name="852">  852   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="853">  853   </a>
+</span><span><a class="LN" name="854">  854   </a>        <span class="KW">case</span> XTAL_OSC:
+</span><span><a class="LN" name="855">  855   </a>        <span class="KW">case</span> XTAL_OSC_SE:
+</span><span><a class="LN" name="856">  856   </a>            <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCLKSRC0.bit.CLKSRC0 = 0; <span class="CT">// Clk Src0 = XTAL</span>
+</span><span><a class="LN" name="857">  857   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="858">  858   </a>    <b>}</b>
+</span><span><a class="LN" name="859">  859   </a>
+</span><span><a class="LN" name="860">  860   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="861">  861   </a>    <span class="CT">// Configure Clock Source1 to PLL</span>
+</span><span><a class="LN" name="862">  862   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="863">  863   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCLKSRC1.bit.KEY = 0xA; <span class="CT">// Clk Src1 Key to enable clock source selection for count1</span>
+</span><span><a class="LN" name="864">  864   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCLKSRC1.bit.CLKSRC1 = 0; <span class="CT">// Clk Src1 = PLL</span>
+</span><span><a class="LN" name="865">  865   </a>
+</span><span><a class="LN" name="866">  866   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="867">  867   </a>    <span class="CT">// Configure COUNTER-0, COUNTER-1 & Valid Window</span>
+</span><span><a class="LN" name="868">  868   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="869">  869   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCNTSEED0.bit.COUNTSEED0 = dccCounterSeed0; <span class="CT">// Loaded Counter0 Value</span>
+</span><span><a class="LN" name="870">  870   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCVALIDSEED0.bit.VALIDSEED = dccValidSeed0;  <span class="CT">// Loaded Valid Value</span>
+</span><span><a class="LN" name="871">  871   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCCNTSEED1.bit.COUNTSEED1 = dccCounterSeed1; <span class="CT">// Loaded Counter1 Value</span>
+</span><span><a class="LN" name="872">  872   </a>
+</span><span><a class="LN" name="873">  873   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="874">  874   </a>    <span class="CT">// Enable Single Shot Mode</span>
+</span><span><a class="LN" name="875">  875   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="876">  876   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.SINGLESHOT = 0xA;
+</span><span><a class="LN" name="877">  877   </a>
+</span><span><a class="LN" name="878">  878   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="879">  879   </a>    <span class="CT">// Enable Error Signal</span>
+</span><span><a class="LN" name="880">  880   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="881">  881   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.ERRENA = 0xA;
+</span><span><a class="LN" name="882">  882   </a>
+</span><span><a class="LN" name="883">  883   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="884">  884   </a>    <span class="CT">// Enable Done Signal</span>
+</span><span><a class="LN" name="885">  885   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="886">  886   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.DONEENA = 0xA;
+</span><span><a class="LN" name="887">  887   </a>
+</span><span><a class="LN" name="888">  888   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="889">  889   </a>    <span class="CT">// Enable DCC to start counting</span>
+</span><span><a class="LN" name="890">  890   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="891">  891   </a>    <a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCGCTRL.bit.DCCENA = 0xA;
+</span><span><a class="LN" name="892">  892   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="893">  893   </a>
+</span><span><a class="LN" name="894">  894   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="895">  895   </a>    <span class="CT">// Wait until Error or Done Flag is generated</span>
+</span><span><a class="LN" name="896">  896   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="897">  897   </a>    <span class="KW">while</span>((<a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCSTATUS.all &amp; 3) == 0)
+</span><span><a class="LN" name="898">  898   </a>    <b>{</b>
+</span><span><a class="LN" name="899">  899   </a>    <b>}</b>
+</span><span><a class="LN" name="900">  900   </a>
+</span><span><a class="LN" name="901">  901   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="902">  902   </a>    <span class="CT">// Returns true if DCC completes without error</span>
+</span><span><a class="LN" name="903">  903   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="904">  904   </a>    <span class="KW">return</span>((<a href="f28004x_globalvariabledefs_c.html#var_Dcc0Regs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_Dcc0Regs');" target="_self"><font color="#1122aa">Dcc0Regs</font></a>.DCCSTATUS.all &amp; 3) == 2);
+</span><span><a class="LN" name="905">  905   </a>
+</span><span><a class="LN" name="906">  906   </a><b>}</b>
+</span><span><a class="LN" name="907">  907   </a><span class="CT">//</span>
+</span><span><a class="LN" name="908">  908   </a><span class="CT">// End of File</span>
+</span><span><a class="LN" name="909">  909   </a><span class="CT">//</span>
+</span><span><a class="LN" name="910">  910   </a>
+</span><span><a class="LN" name="911">  911   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

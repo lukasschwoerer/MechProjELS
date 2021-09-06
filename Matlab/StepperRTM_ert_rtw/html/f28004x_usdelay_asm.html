@@ -1,0 +1,112 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - f28004x_usdelay.asm</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (typeof rtwannotate === 'function') {rtwannotate('f28004x_usdelay_asm_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../../../../../../../ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_usdelay.asm" target="rtwreport_document_frame" id="linkToText_plain">f28004x_usdelay.asm</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a>;;#############################################################################
+</span><span><a class="LN" name="2">    2   </a>;;
+</span><span><a class="LN" name="3">    3   </a>;; FILE:   f28004x_usdelay.asm
+</span><span><a class="LN" name="4">    4   </a>;;
+</span><span><a class="LN" name="5">    5   </a>;; TITLE:  Simple Delay <a name="var_Function">Function</a>
+</span><span><a class="LN" name="6">    6   </a>;;
+</span><span><a class="LN" name="7">    7   </a>;; DESCRIPTION:
+</span><span><a class="LN" name="8">    8   </a>;;
+</span><span><a class="LN" name="9">    9   </a>;;  This is a simple <a href="#var_delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_delay');" target="_self"><font color="#1122aa">delay</font></a> <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a> that can <a href="#var_be" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_be');" target="_self"><font color="#1122aa">be</font></a> used to insert a <a href="#var_specified" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_specified');" target="_self"><font color="#1122aa">specified</font></a>
+</span><span><a class="LN" name="10">   10   </a>;;  <a href="#var_delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_delay');" target="_self"><font color="#1122aa">delay</font></a> into <a name="var_code">code</a>.
+</span><span><a class="LN" name="11">   11   </a>;;  This <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a> is only accurate <span class="KW">if</span> executed from internal zero-<a name="var_waitstate">waitstate</a>
+</span><span><a class="LN" name="12">   12   </a>;;  SARAM. If it is executed from <a href="#var_waitstate" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_waitstate');" target="_self"><font color="#1122aa">waitstate</font></a> memory then the <a href="#var_delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_delay');" target="_self"><font color="#1122aa">delay</font></a> will <a name="var_be">be</a>
+</span><span><a class="LN" name="13">   13   </a>;;  <a href="#var_longer" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_longer');" target="_self"><font color="#1122aa">longer</font></a> then <a href="#var_specified" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_specified');" target="_self"><font color="#1122aa">specified</font></a>.
+</span><span><a class="LN" name="14">   14   </a>;;  To use this <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a>:
+</span><span><a class="LN" name="15">   15   </a>;;   1 - update the CPU clock speed in the f28004x_examples.<a name="var_h">h</a>
+</span><span><a class="LN" name="16">   16   </a>;;     <a href="#var_file" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_file');" target="_self"><font color="#1122aa">file</font></a>.
+</span><span><a class="LN" name="17">   17   </a>;;   2 - Call this <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a> <a href="#var_by" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_by');" target="_self"><font color="#1122aa">by</font></a> using the DELAY_US(A) <a href="#var_macro" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_macro');" target="_self"><font color="#1122aa">macro</font></a>
+</span><span><a class="LN" name="18">   18   </a>;;     that is defined in the f28004x_device.h <a href="#var_file" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_file');" target="_self"><font color="#1122aa">file</font></a>.  This <a name="var_macro">macro</a>
+</span><span><a class="LN" name="19">   19   </a>;;     will convert the number <a href="#var_of" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_of');" target="_self"><font color="#1122aa">of</font></a> microseconds <a name="var_specified">specified</a>
+</span><span><a class="LN" name="20">   20   </a>;;     into a <a href="#var_loop" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_loop');" target="_self"><font color="#1122aa">loop</font></a> count <span class="KW">for</span> use with this <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a>.
+</span><span><a class="LN" name="21">   21   </a>;;     This count will <a href="#var_be" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_be');" target="_self"><font color="#1122aa">be</font></a> based on the CPU frequency <a href="#var_you" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_you');" target="_self"><font color="#1122aa">you</font></a> <a name="var_specify">specify</a>.
+</span><span><a class="LN" name="22">   22   </a>;;   3 - For the most accurate <a name="var_delay">delay</a>
+</span><span><a class="LN" name="23">   23   </a>;;     - Execute this <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a> in 0 <a href="#var_waitstate" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_waitstate');" target="_self"><font color="#1122aa">waitstate</font></a> <a name="var_RAM">RAM</a>.
+</span><span><a class="LN" name="24">   24   </a>;;     - Disable interrupts before calling the <a name="var_function">function</a>
+</span><span><a class="LN" name="25">   25   </a>;;       If <a href="#var_you" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_you');" target="_self"><font color="#1122aa">you</font></a> <span class="KW">do</span> not disable interrupts, then think <a name="var_of">of</a>
+</span><span><a class="LN" name="26">   26   </a>;;       this as an <font color="#1122ff">&quot;at least&quot;</font> <a href="#var_delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_delay');" target="_self"><font color="#1122aa">delay</font></a> <a href="#var_function" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_function');" target="_self"><font color="#1122aa">function</font></a> as the <a name="var_actual">actual</a>
+</span><span><a class="LN" name="27">   27   </a>;;       <a href="#var_delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_delay');" target="_self"><font color="#1122aa">delay</font></a> may <a href="#var_be" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_be');" target="_self"><font color="#1122aa">be</font></a> <a name="var_longer">longer</a>.
+</span><span><a class="LN" name="28">   28   </a>;;   The C assembly call from the DELAY_US(time) <a href="#var_macro" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_macro');" target="_self"><font color="#1122aa">macro</font></a> will
+</span><span><a class="LN" name="29">   29   </a>;;   look as <a name="var_follows">follows</a>:
+</span><span><a class="LN" name="30">   30   </a>;;   <span class="DT">extern</span> <span class="DT">void</span> Delay(<span class="DT">long</span> <a href="#var_LoopCount" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_LoopCount');" target="_self"><font color="#1122aa">LoopCount</font></a>);
+</span><span><a class="LN" name="31">   31   </a>;;         MOV   AL,#<a name="var_LowLoopCount">LowLoopCount</a>
+</span><span><a class="LN" name="32">   32   </a>;;         MOV   AH,#<a name="var_HighLoopCount">HighLoopCount</a>
+</span><span><a class="LN" name="33">   33   </a>;;         LCR   <a href="#var__Delay" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var__Delay');" target="_self"><font color="#1122aa">_Delay</font></a>
+</span><span><a class="LN" name="34">   34   </a>;;   Or as <a href="#var_follows" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_follows');" target="_self"><font color="#1122aa">follows</font></a> (<span class="KW">if</span> count is less then 16-bits):
+</span><span><a class="LN" name="35">   35   </a>;;         MOV   <a href="#var_ACC" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ACC');" target="_self"><font color="#1122aa">ACC</font></a>,#<a name="var_LoopCount">LoopCount</a>
+</span><span><a class="LN" name="36">   36   </a>;;         LCR   <a name="var__Delay">_Delay</a>
+</span><span><a class="LN" name="37">   37   </a>;;#############################################################################
+</span><span><a class="LN" name="38">   38   </a>;; $TI Release: F28004x Support Library <a name="var_v1">v1</a>.10.00.00 $
+</span><span><a class="LN" name="39">   39   </a>;; $Release Date: Tue May 26 17:06:03 <a name="var_IST">IST</a> 2020 $
+</span><span><a class="LN" name="40">   40   </a>;; $Copyright:
+</span><span><a class="LN" name="41">   41   </a>;<span class="CT">// Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/</span>
+</span><span><a class="LN" name="42">   42   </a>;<span class="CT">//</span>
+</span><span><a class="LN" name="43">   43   </a>;<span class="CT">// Redistribution and use in source and binary forms, with or without </span>
+</span><span><a class="LN" name="44">   44   </a>;<span class="CT">// modification, are permitted provided that the following conditions </span>
+</span><span><a class="LN" name="45">   45   </a>;<span class="CT">// are met:</span>
+</span><span><a class="LN" name="46">   46   </a>;<span class="CT">// </span>
+</span><span><a class="LN" name="47">   47   </a>;<span class="CT">//   Redistributions of source code must retain the above copyright </span>
+</span><span><a class="LN" name="48">   48   </a>;<span class="CT">//   notice, this list of conditions and the following disclaimer.</span>
+</span><span><a class="LN" name="49">   49   </a>;<span class="CT">// </span>
+</span><span><a class="LN" name="50">   50   </a>;<span class="CT">//   Redistributions in binary form must reproduce the above copyright</span>
+</span><span><a class="LN" name="51">   51   </a>;<span class="CT">//   notice, this list of conditions and the following disclaimer in the </span>
+</span><span><a class="LN" name="52">   52   </a>;<span class="CT">//   documentation and/or other materials provided with the   </span>
+</span><span><a class="LN" name="53">   53   </a>;<span class="CT">//   distribution.</span>
+</span><span><a class="LN" name="54">   54   </a>;<span class="CT">// </span>
+</span><span><a class="LN" name="55">   55   </a>;<span class="CT">//   Neither the name of Texas Instruments Incorporated nor the names of</span>
+</span><span><a class="LN" name="56">   56   </a>;<span class="CT">//   its contributors may be used to endorse or promote products derived</span>
+</span><span><a class="LN" name="57">   57   </a>;<span class="CT">//   from this software without specific prior written permission.</span>
+</span><span><a class="LN" name="58">   58   </a>;<span class="CT">// </span>
+</span><span><a class="LN" name="59">   59   </a>;<span class="CT">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS </span>
+</span><span><a class="LN" name="60">   60   </a>;<span class="CT">// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="61">   61   </a>;<span class="CT">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+</span><span><a class="LN" name="62">   62   </a>;<span class="CT">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT </span>
+</span><span><a class="LN" name="63">   63   </a>;<span class="CT">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, </span>
+</span><span><a class="LN" name="64">   64   </a>;<span class="CT">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="65">   65   </a>;<span class="CT">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+</span><span><a class="LN" name="66">   66   </a>;<span class="CT">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+</span><span><a class="LN" name="67">   67   </a>;<span class="CT">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT </span>
+</span><span><a class="LN" name="68">   68   </a>;<span class="CT">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE </span>
+</span><span><a class="LN" name="69">   69   </a>;<span class="CT">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+</span><span><a class="LN" name="70">   70   </a>;<span class="CT">// $</span>
+</span><span><a class="LN" name="71">   71   </a>;;#############################################################################
+</span><span><a class="LN" name="72">   72   </a>
+</span><span><a class="LN" name="73">   73   </a>       .def _F28x_usDelay
+</span><span><a class="LN" name="74">   74   </a>       .sect <font color="#1122ff">&quot;.TI.ramfunc&quot;</font>
+</span><span><a class="LN" name="75">   75   </a>
+</span><span><a class="LN" name="76">   76   </a>        .global  __F28x_usDelay
+</span><span><a class="LN" name="77">   77   </a>_F28x_usDelay:
+</span><span><a class="LN" name="78">   78   </a>        SUB    <a href="#var_ACC" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ACC');" target="_self"><font color="#1122aa">ACC</font></a>,#1
+</span><span><a class="LN" name="79">   79   </a>        BF     _F28x_usDelay,<a name="var_GEQ">GEQ</a>    ;; Loop <span class="KW">if</span> <a name="var_ACC">ACC</a> &gt;= 0
+</span><span><a class="LN" name="80">   80   </a>        LRETR
+</span><span><a class="LN" name="81">   81   </a>
+</span><span><a class="LN" name="82">   82   </a>;There is a 9/10 cycle overhead and each <a name="var_loop">loop</a>
+</span><span><a class="LN" name="83">   83   </a>;takes five cycles. The <a href="#var_LoopCount" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_LoopCount');" target="_self"><font color="#1122aa">LoopCount</font></a> is given <a name="var_by">by</a>
+</span><span><a class="LN" name="84">   84   </a>;the following <a name="var_formula">formula</a>:
+</span><span><a class="LN" name="85">   85   </a>;  DELAY_CPU_CYCLES = 9 + 5*<a href="#var_LoopCount" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_LoopCount');" target="_self"><font color="#1122aa">LoopCount</font></a>
+</span><span><a class="LN" name="86">   86   </a>; <a href="#var_LoopCount" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_LoopCount');" target="_self"><font color="#1122aa">LoopCount</font></a> = (DELAY_CPU_CYCLES - 9) / 5
+</span><span><a class="LN" name="87">   87   </a>; The <a href="#var_macro" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_macro');" target="_self"><font color="#1122aa">macro</font></a> DELAY_US(A) performs this calculation <span class="KW">for</span> <a name="var_you">you</a>
+</span><span><a class="LN" name="88">   88   </a>
+</span><span><a class="LN" name="89">   89   </a>;;#############################################################################
+</span><span><a class="LN" name="90">   90   </a>;; End <a href="#var_of" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_of');" target="_self"><font color="#1122aa">of</font></a> <a name="var_file">file</a>
+</span><span><a class="LN" name="91">   91   </a>;;#############################################################################
+</span><span><a class="LN" name="92">   92   </a>
+</span><span><a class="LN" name="93">   93   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

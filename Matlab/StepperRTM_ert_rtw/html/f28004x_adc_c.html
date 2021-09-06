@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - f28004x_adc.c</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (typeof rtwannotate === 'function') {rtwannotate('f28004x_adc_c_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../../../../../../../ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_adc.c" target="rtwreport_document_frame" id="linkToText_plain">f28004x_adc.c</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="2">    2   </a><span class="CT">//</span>
+</span><span><a class="LN" name="3">    3   </a><span class="CT">// FILE:    f28004x_adc.c</span>
+</span><span><a class="LN" name="4">    4   </a><span class="CT">//</span>
+</span><span><a class="LN" name="5">    5   </a><span class="CT">// TITLE:   F28004x ADC Support Functions.</span>
+</span><span><a class="LN" name="6">    6   </a><span class="CT">//</span>
+</span><span><a class="LN" name="7">    7   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="8">    8   </a><span class="CT">// $TI Release: F28004x Support Library v1.10.00.00 $</span>
+</span><span><a class="LN" name="9">    9   </a><span class="CT">// $Release Date: Tue May 26 17:06:03 IST 2020 $</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT">// $Copyright:</span>
+</span><span><a class="LN" name="11">   11   </a><span class="CT">// Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT">//</span>
+</span><span><a class="LN" name="13">   13   </a><span class="CT">// Redistribution and use in source and binary forms, with or without </span>
+</span><span><a class="LN" name="14">   14   </a><span class="CT">// modification, are permitted provided that the following conditions </span>
+</span><span><a class="LN" name="15">   15   </a><span class="CT">// are met:</span>
+</span><span><a class="LN" name="16">   16   </a><span class="CT">// </span>
+</span><span><a class="LN" name="17">   17   </a><span class="CT">//   Redistributions of source code must retain the above copyright </span>
+</span><span><a class="LN" name="18">   18   </a><span class="CT">//   notice, this list of conditions and the following disclaimer.</span>
+</span><span><a class="LN" name="19">   19   </a><span class="CT">// </span>
+</span><span><a class="LN" name="20">   20   </a><span class="CT">//   Redistributions in binary form must reproduce the above copyright</span>
+</span><span><a class="LN" name="21">   21   </a><span class="CT">//   notice, this list of conditions and the following disclaimer in the </span>
+</span><span><a class="LN" name="22">   22   </a><span class="CT">//   documentation and/or other materials provided with the   </span>
+</span><span><a class="LN" name="23">   23   </a><span class="CT">//   distribution.</span>
+</span><span><a class="LN" name="24">   24   </a><span class="CT">// </span>
+</span><span><a class="LN" name="25">   25   </a><span class="CT">//   Neither the name of Texas Instruments Incorporated nor the names of</span>
+</span><span><a class="LN" name="26">   26   </a><span class="CT">//   its contributors may be used to endorse or promote products derived</span>
+</span><span><a class="LN" name="27">   27   </a><span class="CT">//   from this software without specific prior written permission.</span>
+</span><span><a class="LN" name="28">   28   </a><span class="CT">// </span>
+</span><span><a class="LN" name="29">   29   </a><span class="CT">// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS </span>
+</span><span><a class="LN" name="30">   30   </a><span class="CT">// "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="31">   31   </a><span class="CT">// LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR</span>
+</span><span><a class="LN" name="32">   32   </a><span class="CT">// A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT </span>
+</span><span><a class="LN" name="33">   33   </a><span class="CT">// OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, </span>
+</span><span><a class="LN" name="34">   34   </a><span class="CT">// SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT </span>
+</span><span><a class="LN" name="35">   35   </a><span class="CT">// LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,</span>
+</span><span><a class="LN" name="36">   36   </a><span class="CT">// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY</span>
+</span><span><a class="LN" name="37">   37   </a><span class="CT">// THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT </span>
+</span><span><a class="LN" name="38">   38   </a><span class="CT">// (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE </span>
+</span><span><a class="LN" name="39">   39   </a><span class="CT">// OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+</span><span><a class="LN" name="40">   40   </a><span class="CT">// $</span>
+</span><span><a class="LN" name="41">   41   </a><span class="CT">//###########################################################################</span>
+</span><span><a class="LN" name="42">   42   </a>
+</span><span><a class="LN" name="43">   43   </a><span class="CT">//</span>
+</span><span><a class="LN" name="44">   44   </a><span class="CT">// Included Files</span>
+</span><span><a class="LN" name="45">   45   </a><span class="CT">//</span>
+</span><span><a class="LN" name="46">   46   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_device.h&quot;</font>      <span class="CT">// Header File Include File</span>
+</span><span><a class="LN" name="47">   47   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_examples.h&quot;</font>    <span class="CT">// Examples Include File</span>
+</span><span><a class="LN" name="48">   48   </a>
+</span><span><a class="LN" name="49">   49   </a><span class="CT">//</span>
+</span><span><a class="LN" name="50">   50   </a><span class="CT">// SetVREF - Set Vref mode. Function to select reference mode and offset trim.</span>
+</span><span><a class="LN" name="51">   51   </a><span class="CT">// Offset trim for Internal VREF 3.3 is unique.  All other modes use the same</span>
+</span><span><a class="LN" name="52">   52   </a><span class="CT">// offset trim. Also note that when the mode parameter is ADC_EXTERNAL, the</span>
+</span><span><a class="LN" name="53">   53   </a><span class="CT">// ref parameter has no effect.</span>
+</span><span><a class="LN" name="54">   54   </a><span class="CT">//</span>
+</span><span><a class="LN" name="55">   55   </a><span class="DT">void</span> <a name="fcn_SetVREF">SetVREF</a>(<span class="DT">int</span> module, <span class="DT">int</span> mode, <span class="DT">int</span> ref)
+</span><span><a class="LN" name="56">   56   </a><b>{</b>
+</span><span><a class="LN" name="57">   57   </a>    Uint16 *offset, offval;
+</span><span><a class="LN" name="58">   58   </a>
+</span><span><a class="LN" name="59">   59   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="60">   60   </a>    <span class="CT">// Define offset locations from OTP</span>
+</span><span><a class="LN" name="61">   61   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="62">   62   </a>    offset = (Uint16 *)(0x70594 + (module * 6));
+</span><span><a class="LN" name="63">   63   </a>
+</span><span><a class="LN" name="64">   64   </a>    <span class="KW">if</span>((mode == ADC_INTERNAL) &amp;&amp; (ref == ADC_VREF3P3))
+</span><span><a class="LN" name="65">   65   </a>    <b>{</b>
+</span><span><a class="LN" name="66">   66   </a>        offval = (*offset) &gt;&gt; 8;    <span class="CT">// Internal / 1.65v mode offset</span>
+</span><span><a class="LN" name="67">   67   </a>    <b>}</b>
+</span><span><a class="LN" name="68">   68   </a>    <span class="KW">else</span>
+</span><span><a class="LN" name="69">   69   </a>    <b>{</b>
+</span><span><a class="LN" name="70">   70   </a>        offval = (*offset) &amp; 0xFF;  <span class="CT">// All other modes</span>
+</span><span><a class="LN" name="71">   71   </a>    <b>}</b>
+</span><span><a class="LN" name="72">   72   </a>
+</span><span><a class="LN" name="73">   73   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="74">   74   </a>    <span class="CT">// Write offset trim values and configure reference modes</span>
+</span><span><a class="LN" name="75">   75   </a>    <span class="CT">//</span>
+</span><span><a class="LN" name="76">   76   </a>    <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="77">   77   </a>    <span class="KW">switch</span>(module)
+</span><span><a class="LN" name="78">   78   </a>    <b>{</b>
+</span><span><a class="LN" name="79">   79   </a>        <span class="KW">case</span> 0:
+</span><span><a class="LN" name="80">   80   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AdcaRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AdcaRegs');" target="_self"><font color="#1122aa">AdcaRegs</font></a>.ADCOFFTRIM.bit.OFFTRIM = offval;
+</span><span><a class="LN" name="81">   81   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFASEL = mode;
+</span><span><a class="LN" name="82">   82   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFA2P5SEL = ref;
+</span><span><a class="LN" name="83">   83   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="84">   84   </a>        <span class="KW">case</span> 1:
+</span><span><a class="LN" name="85">   85   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AdcbRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AdcbRegs');" target="_self"><font color="#1122aa">AdcbRegs</font></a>.ADCOFFTRIM.bit.OFFTRIM = offval;
+</span><span><a class="LN" name="86">   86   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFBSEL = mode;
+</span><span><a class="LN" name="87">   87   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFB2P5SEL = ref;
+</span><span><a class="LN" name="88">   88   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="89">   89   </a>        <span class="KW">case</span> 2:
+</span><span><a class="LN" name="90">   90   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AdccRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AdccRegs');" target="_self"><font color="#1122aa">AdccRegs</font></a>.ADCOFFTRIM.bit.OFFTRIM = offval;
+</span><span><a class="LN" name="91">   91   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFCSEL = mode;
+</span><span><a class="LN" name="92">   92   </a>            <a href="f28004x_globalvariabledefs_c.html#var_AnalogSubsysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_AnalogSubsysRegs');" target="_self"><font color="#1122aa">AnalogSubsysRegs</font></a>.ANAREFCTL.bit.ANAREFC2P5SEL = ref;
+</span><span><a class="LN" name="93">   93   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="94">   94   </a>        <span class="KW">default</span>:
+</span><span><a class="LN" name="95">   95   </a>            <span class="KW">break</span>;
+</span><span><a class="LN" name="96">   96   </a>    <b>}</b>
+</span><span><a class="LN" name="97">   97   </a>    <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="98">   98   </a><b>}</b>
+</span><span><a class="LN" name="99">   99   </a>
+</span><span><a class="LN" name="100">  100   </a><span class="CT">//</span>
+</span><span><a class="LN" name="101">  101   </a><span class="CT">// End of File</span>
+</span><span><a class="LN" name="102">  102   </a><span class="CT">//</span>
+</span><span><a class="LN" name="103">  103   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

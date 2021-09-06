@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>RTW Report - MW_c28xx_board.c</title>
+<link rel="stylesheet" type="text/css" href="rtwreport.css"></link><script language="JavaScript" type="text/javascript" src="rtwreport_utils.js"></script>
+<SCRIPT type="text/javascript" language="JavaScript" src="slwebview.js"></SCRIPT>
+<SCRIPT type="text/javascript" language="JavaScript" src="id_mapping.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="rtwannotate.js"></SCRIPT>
+</head>
+<body bgcolor="#eeeeee" onload="try {if (top) { if (top.rtwFileOnLoad) top.rtwFileOnLoad(window.document); else local_onload();}} catch(err) {};if (typeof rtwannotate === 'function') {rtwannotate('MW_c28xx_board_c_cov.xml');}">
+<p>
+<table border="0" cellspacing="0" cellpadding="6" width="100%%" height="100%%"><tr><td width="100%%" valign="top" bgcolor="#ffffff">
+<h4>File: <a href="../MW_c28xx_board.c" target="rtwreport_document_frame" id="linkToText_plain">MW_c28xx_board.c</a></h4>
+<pre id="RTWcode">
+<span><a class="LN" name="1">    1   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;c2000BoardSupport.h&quot;</font>
+</span><span><a class="LN" name="2">    2   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_device.h&quot;</font>
+</span><span><a class="LN" name="3">    3   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_examples.h&quot;</font>
+</span><span><a class="LN" name="4">    4   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;f28004x_globalprototypes.h&quot;</font>
+</span><span><a class="LN" name="5">    5   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;rtwtypes.h&quot;</font>
+</span><span><a class="LN" name="6">    6   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;RealTimeMachine.h&quot;</font>
+</span><span><a class="LN" name="7">    7   </a><font color="#992211">#</font><span class="PP">include</span> <font color="#992211">&quot;RealTimeMachine_private.h&quot;</font>
+</span><span><a class="LN" name="8">    8   </a>
+</span><span><a class="LN" name="9">    9   </a><span class="DT">void</span> <a name="fcn_init_board">init_board</a> ()
+</span><span><a class="LN" name="10">   10   </a><b>{</b>
+</span><span><a class="LN" name="11">   11   </a>  <a href="f28004x_sysctrl_c.html#fcn_DisableDog" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_DisableDog');" target="_self"><font color="#1122aa">DisableDog</font></a>();
+</span><span><a class="LN" name="12">   12   </a>  <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="13">   13   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.DMA = 1;
+</span><span><a class="LN" name="14">   14   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR6.bit.SD1 = 1;
+</span><span><a class="LN" name="15">   15   </a>  <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="16">   16   </a>
+</span><span><a class="LN" name="17">   17   </a><font color="#992211">#</font><span class="PP">ifdef</span> CPU1
+</span><span><a class="LN" name="18">   18   </a>
+</span><span><a class="LN" name="19">   19   </a>  <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="20">   20   </a>  <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="21">   21   </a>  <a href="c28004xBoard_Realtime_Support_c.html#fcn_MW_InitSysPll" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_MW_InitSysPll');" target="_self"><font color="#1122aa">MW_InitSysPll</font></a>(XTAL_OSC,10,0,0,1);
+</span><span><a class="LN" name="22">   22   </a>
+</span><span><a class="LN" name="23">   23   </a>  <span class="CT">//Turn on all peripherals</span>
+</span><span><a class="LN" name="24">   24   </a>  <span class="CT">//InitPeripheralClocks();</span>
+</span><span><a class="LN" name="25">   25   </a>  <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="26">   26   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER0 = 1;
+</span><span><a class="LN" name="27">   27   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER1 = 1;
+</span><span><a class="LN" name="28">   28   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.CPUTIMER2 = 1;
+</span><span><a class="LN" name="29">   29   </a>  <a href="f28004x_globalvariabledefs_c.html#var_CpuSysRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_CpuSysRegs');" target="_self"><font color="#1122aa">CpuSysRegs</font></a>.PCLKCR0.bit.HRPWM = 1;
+</span><span><a class="LN" name="30">   30   </a>  <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="31">   31   </a>
+</span><span><a class="LN" name="32">   32   </a><font color="#992211">#</font><span class="PP">endif</span>
+</span><span><a class="LN" name="33">   33   </a>
+</span><span><a class="LN" name="34">   34   </a>  <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="35">   35   </a>
+</span><span><a class="LN" name="36">   36   </a>  <span class="CT">/* Configure low speed peripheral clocks */</span>
+</span><span><a class="LN" name="37">   37   </a>  <a href="f28004x_globalvariabledefs_c.html#var_ClkCfgRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_ClkCfgRegs');" target="_self"><font color="#1122aa">ClkCfgRegs</font></a>.LOSPCP.bit.LSPCLKDIV = 0U;
+</span><span><a class="LN" name="38">   38   </a>  <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="39">   39   </a>
+</span><span><a class="LN" name="40">   40   </a>  <span class="CT">/* Disable and clear all CPU interrupts */</span>
+</span><span><a class="LN" name="41">   41   </a>  DINT;
+</span><span><a class="LN" name="42">   42   </a>  IER = 0x0000;
+</span><span><a class="LN" name="43">   43   </a>  IFR = 0x0000;
+</span><span><a class="LN" name="44">   44   </a>  <a href="f28004x_piectrl_c.html#fcn_InitPieCtrl" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitPieCtrl');" target="_self"><font color="#1122aa">InitPieCtrl</font></a>();
+</span><span><a class="LN" name="45">   45   </a>  <a href="f28004x_pievect_c.html#fcn_InitPieVectTable" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitPieVectTable');" target="_self"><font color="#1122aa">InitPieVectTable</font></a>();
+</span><span><a class="LN" name="46">   46   </a>  <a href="f28004x_cputimers_c.html#fcn_InitCpuTimers" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_InitCpuTimers');" target="_self"><font color="#1122aa">InitCpuTimers</font></a>();
+</span><span><a class="LN" name="47">   47   </a>  <a href="MW_c28xx_xbar_c.html#fcn_configureIXbar" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_configureIXbar');" target="_self"><font color="#1122aa">configureIXbar</font></a>();
+</span><span><a class="LN" name="48">   48   </a>
+</span><span><a class="LN" name="49">   49   </a>  <span class="CT">/* initial GPIO qualification settings.... */</span>
+</span><span><a class="LN" name="50">   50   </a>  <a href="f28004x_codestartbranch_asm.html#var_EALLOW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EALLOW');" target="_self"><font color="#1122aa">EALLOW</font></a>;
+</span><span><a class="LN" name="51">   51   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPAQSEL1.all = 0x0;
+</span><span><a class="LN" name="52">   52   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPAQSEL2.all = 0x0;
+</span><span><a class="LN" name="53">   53   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPBQSEL1.all = 0x0;
+</span><span><a class="LN" name="54">   54   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPBQSEL2.all = 0x0;
+</span><span><a class="LN" name="55">   55   </a>
+</span><span><a class="LN" name="56">   56   </a>  <span class="CT">// Set the pin to digital mode by default</span>
+</span><span><a class="LN" name="57">   57   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPAAMSEL.bit.GPIO22 = 0;
+</span><span><a class="LN" name="58">   58   </a>  <a href="f28004x_globalvariabledefs_c.html#var_GpioCtrlRegs" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_GpioCtrlRegs');" target="_self"><font color="#1122aa">GpioCtrlRegs</font></a>.GPAAMSEL.bit.GPIO23 = 0;
+</span><span><a class="LN" name="59">   59   </a>  <a href="f28004x_codestartbranch_asm.html#var_EDIS" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_EDIS');" target="_self"><font color="#1122aa">EDIS</font></a>;
+</span><span><a class="LN" name="60">   60   </a><b>}</b>
+</span><span><a class="LN" name="61">   61   </a>
+</span></pre>
+</td></tr></table>
+</p>
+</body>
+</html>

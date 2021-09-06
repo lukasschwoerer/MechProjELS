@@ -1,0 +1,26 @@
+{
+ "baseUrl":"support/slwebview_files",
+ "homeHid":1,
+ "initialElement":"",
+ "sections":[
+  {
+   "hid":1,
+   "sid":"StepperRTM",
+   "name":"StepperRTM",
+   "fullname":"StepperRTM",
+   "label":"StepperRTM*",
+   "parent":0,
+   "descendants":[
+    2
+   ],
+   "hierarchyUrl":"support/slwebview_files/StepperRTM_h_1.json",
+   "backingUrl":"support/slwebview_files/StepperRTM_m.json"
+  }
+ ],
+ "optViews":[
+ ],
+ "display":{
+  "informer":false
+ },
+ "iconsUrl":"support/slwebview_files/StepperRTM_icons.css"
+}

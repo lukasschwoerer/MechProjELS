@@ -1,0 +1,27 @@
+{
+ "baseUrl":"support/slwebview_files",
+ "homeHid":1,
+ "initialElement":"",
+ "sections":[
+  {
+   "hid":1,
+   "sid":"RealTimeMachine",
+   "name":"RealTimeMachine",
+   "fullname":"RealTimeMachine",
+   "label":"RealTimeMachine",
+   "parent":0,
+   "descendants":[
+    2,
+    3
+   ],
+   "hierarchyUrl":"support/slwebview_files/RealTimeMachine_h_1.json",
+   "backingUrl":"support/slwebview_files/RealTimeMachine_m.json"
+  }
+ ],
+ "optViews":[
+ ],
+ "display":{
+  "informer":false
+ },
+ "iconsUrl":"support/slwebview_files/RealTimeMachine_icons.css"
+}

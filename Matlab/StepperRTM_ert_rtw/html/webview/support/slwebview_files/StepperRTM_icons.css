@@ -1,0 +1,13 @@
+.StepperRTM0,
+.StepperRTM1,
+.StepperRTM2,
+.StepperRTM3,
+.StepperRTM4,
+.StepperRTM5 { background-image: url('StepperRTM_icons.png'); width: 16px; height: 16px; }
+
+.StepperRTM0 { background-position: -0px; }
+.StepperRTM1 { background-position: -16px; }
+.StepperRTM2 { background-position: -32px; }
+.StepperRTM3 { background-position: -48px; }
+.StepperRTM4 { background-position: -64px; }
+.StepperRTM5 { background-position: -80px; }
