@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'MainUIFMXNMy.ui'
+## Form generated from reading UI file 'MainUIOtEqEd.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.14.1
 ##
@@ -20,15 +20,15 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(1248, 755)
+        Dialog.resize(613, 288)
         self.buttonBox = QDialogButtonBox(Dialog)
         self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(1010, 710, 192, 28))
+        self.buttonBox.setGeometry(QRect(20, 230, 192, 28))
         self.buttonBox.setOrientation(Qt.Horizontal)
         self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.textBrowser = QTextBrowser(Dialog)
         self.textBrowser.setObjectName(u"textBrowser")
-        self.textBrowser.setGeometry(QRect(170, 90, 701, 471))
+        self.textBrowser.setGeometry(QRect(10, 10, 581, 201))
 
         self.retranslateUi(Dialog)
         self.buttonBox.accepted.connect(Dialog.accept)
