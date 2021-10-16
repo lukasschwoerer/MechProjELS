@@ -1,0 +1,331 @@
+WindowManager:
+    Startseite:
+    MetrischeGewinde:
+    ZollGewinde:
+    SpezialGewinde:
+    SchnittdatenRechner:
+    Einstellungen:
+
+<Startseite>
+    name: "startseite"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "metrische"
+                    root.manager.transition.direction = "left"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "zoll"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "spezial"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+                on_release:
+                    app.root.current = "rechner"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+                on_release:
+                    app.root.current = "einstellungen"
+                    root.manager.transition.direction = "left"
+
+        Label:
+            text: "Section Startseite"
+            size_hint: 1, .9
+
+<MetrischeGewinde>
+    name: "metrische"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+                on_release:
+                    app.root.current = "startseite"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "zoll"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "spezial"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+                on_release:
+                    app.root.current = "rechner"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+                on_release:
+                    app.root.current = "einstellungen"
+                    root.manager.transition.direction = "left"
+
+        Label:
+            text: "Section Metrische Gewinde"
+            size_hint: 1, .9
+
+<ZollGewinde>
+    name: "zoll"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+                on_release:
+                    app.root.current = "startseite"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "metrische"
+                    root.manager.transition.direction = "right"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "spezial"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+                on_release:
+                    app.root.current = "rechner"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+                on_release:
+                    app.root.current = "einstellungen"
+                    root.manager.transition.direction = "left"
+
+        Label:
+            text: "Section Zoll Gewinde"
+            size_hint: 1, .9
+
+<SpezialGewinde>
+    name: "spezial"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+                on_release:
+                    app.root.current = "startseite"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "metrische"
+                    root.manager.transition.direction = "right"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "zoll"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+                on_release:
+                    app.root.current = "rechner"
+                    root.manager.transition.direction = "left"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+                on_release:
+                    app.root.current = "einstellungen"
+                    root.manager.transition.direction = "left"
+
+        Label:
+            text: "Section Spezial Gewinde"
+            size_hint: 1, .9
+
+<SchnittdatenRechner>
+    name: "rechner"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+                on_release:
+                    app.root.current = "startseite"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "metrische"
+                    root.manager.transition.direction = "right"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "zoll"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "spezial"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+                on_release:
+                    app.root.current = "einstellungen"
+                    root.manager.transition.direction = "left"
+
+        Label:
+            text: "Section Schnittdaten Rechner"
+            size_hint: 1, .9
+
+<Einstellungen>
+    name: "einstellungen"
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        GridLayout:
+            cols:6
+            size_hint: 1, .1
+
+            Button:
+                text: "Startseite"
+                halign: "center"
+                on_release:
+                    app.root.current = "startseite"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Metrische\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "metrische"
+                    root.manager.transition.direction = "right"
+                    
+
+            Button:
+                text: "Zoll\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "zoll"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Spezial\nGewinde"
+                halign: "center"
+                on_release:
+                    app.root.current = "spezial"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Schnittdaten\nRechner"
+                halign: "center"
+                on_release:
+                    app.root.current = "rechner"
+                    root.manager.transition.direction = "right"
+
+            Button:
+                text: "Einstellungen"
+                halign: "center"
+
+        Label:
+            text: "Section Einstellungen"
+            size_hint: 1, .9
