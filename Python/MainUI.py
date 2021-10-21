@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.core.window import Window
 
 class Startseite(Screen):
     pass
@@ -32,4 +33,5 @@ class MainApp(App):
         return kv
 
 if __name__ == "__main__":
+    Window.fullscreen = True
     MainApp().run()
