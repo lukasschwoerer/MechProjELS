@@ -35,3 +35,4 @@ class MainApp(App):
 if __name__ == "__main__":
     Window.fullscreen = True
     MainApp().run()
+    Window.size = (1200, 768)
