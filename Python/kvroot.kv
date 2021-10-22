@@ -7,7 +7,6 @@ WindowManager:
     SchnittdatenRechner:
     Einstellungen:
 
-size: 800,600
 <Startseite>
     name: "startseite"
     BoxLayout:
@@ -58,9 +57,46 @@ size: 800,600
                     app.root.current = "einstellungen"
                     root.manager.transition.direction = "left"
 
-        Label:
-            text: "Section Startseite"
-            size_hint: 1, .9
+        BoxLayout:
+            orientation: 'horizontal'
+
+            Label:
+                text:'Section 2'
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                Label:
+                    text: ''
+                    size_hint: 1, .2
+
+                GridLayout:
+                    cols: 2
+                    size_hint: 1, .2
+
+                    Button:
+                        text: 'Normal'
+
+                    Button:
+                        text: 'Gewinde'
+
+                Label:
+                    text: 'Anzeige'
+
+                GridLayout:
+                    cols: 2
+                    size_hint: 1, .2
+
+                    Button:
+                        text: 'Zurück'
+
+                    Button:
+                        text: 'Vor'
+
+                Label:
+                    text: ''
+                    size_hint: 1, .2
+
 
 <MetrischeGewinde>
     name: "metrische"
