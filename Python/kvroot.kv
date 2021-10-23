@@ -7,12 +7,15 @@ WindowManager:
     SchnittdatenRechner:
     Einstellungen:
 
+
+#: set LabelBackground 0.2, 0.2, 0.2, 1
+#: set HeadingLabelBackground 0.4, 0.4, 0.4, 0.8
 <Startseite>
+    
     name: "startseite"
     BoxLayout:
         orientation: 'vertical'
         size: root.width, root.height
-
         GridLayout:
             cols:6
             size_hint: 1, .1
@@ -58,12 +61,52 @@ WindowManager:
                     root.manager.transition.direction = "left"
 
         BoxLayout:
+            spacing: 5
             orientation: 'horizontal'
 
-            Label:
-                text:'Section 2'
+            BoxLayout:
+                spacing: 3
+                orientation:'vertical'
+                
+                Label:
+                    text: ''
+                    size_hint: 1, .2
+
+                Label:
+                    text: 'Spindel [rpm]'
+                    font_size: '24dp'
+                    size_hint: 1, .2
+                    canvas.before:
+                        Color:
+                            rgba: HeadingLabelBackground
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+
+                Label:
+                    text: '1000'
+                    font_size: '40dp'
+                    canvas.before:
+                        Color:
+                            rgba: LabelBackground
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                    
+                Label:
+                    text: ''
+                    size_hint: 1, .2
+
+                Label:
+                    text: ''
+                    size_hint: 1, .2
+
+
+
 
             BoxLayout:
+                spacing: 3
                 orientation: 'vertical'
 
                 Label:
@@ -81,8 +124,15 @@ WindowManager:
                         text: 'Gewinde'
 
                 Label:
-                    text: '0.018 mm/rev'
-
+                    text: '0.90 mm/rev'
+                    font_size: '40dp'
+                    canvas.before:
+                        Color:
+                            rgba: LabelBackground
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                    
                 GridLayout:
                     cols: 2
                     size_hint: 1, .2
