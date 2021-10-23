@@ -2,7 +2,7 @@
 <link_info>
    <banner>TMS320C2000 Linker PC v20.2.5.LTS</banner>
    <copyright>Copyright (c) 1996-2018 Texas Instruments Incorporated</copyright>
-   <link_time>0x612df3e8</link_time>
+   <link_time>0x6173f6f2</link_time>
    <link_errors>0x0</link_errors>
    <output_file>ELS.out</output_file>
    <entry_point>
