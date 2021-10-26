@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.113
+ * Model version                  : 2.117
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Oct 26 22:50:53 2021
+ * C/C++ source code generated on : Wed Oct 27 00:09:09 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -26,6 +26,9 @@ void rt_OneStep(void)
 {
   /* '<Root>/DesSteps' */
   static uint16_T arg_DesSteps = 0U;
+
+  /* '<Root>/DutyCycle' */
+  static uint16_T arg_DutyCycle = 0U;
 
   /* '<Root>/Stepper_Trigger' */
   static uint16_T arg_Stepper_Trigger[2] = { 0U, 0U };
@@ -44,7 +47,7 @@ void rt_OneStep(void)
   }
 
   enableTimer0Interrupt();
-  StepperRTM_step(arg_DesSteps, arg_Stepper_Trigger, &arg_StepBit,
+  StepperRTM_step(arg_DesSteps, arg_DutyCycle, arg_Stepper_Trigger, &arg_StepBit,
                   &arg_NewDesSteps);
 
   /* Get model outputs here */

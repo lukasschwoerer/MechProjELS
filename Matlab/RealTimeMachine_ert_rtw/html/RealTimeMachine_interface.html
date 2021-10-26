@@ -126,7 +126,7 @@ Prototype
 </td>
 <td width="75%" align="left" valign="top">
 <b>
-void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, boolean_T&nbsp;*arg_Enable, boolean_T&nbsp;*arg_Dir, boolean_T&nbsp;*arg_ComBit, uint16_T&nbsp;*arg_RPM)
+void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, boolean_T&nbsp;*arg_Enable, boolean_T&nbsp;*arg_Dir, boolean_T&nbsp;*arg_ComBit, uint16_T&nbsp;*arg_RPM, uint16_T&nbsp;*arg_DutyCycle)
 </b>
 
 </td>
@@ -330,6 +330,21 @@ uint16_T&nbsp;*
 </td>
 <td align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model" class="code2model">&lt;Root&gt;/RPM</a>
+</td>
+
+</tr>
+<tr class="even">
+<td align="right" valign="top">
+11
+</td>
+<td align="left" valign="top">
+arg_DutyCycle
+</td>
+<td align="left" valign="top">
+uint16_T&nbsp;*
+</td>
+<td align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:42')" name="code2model" class="code2model">&lt;Root&gt;/DutyCycle</a>
 </td>
 
 </tr>
@@ -594,6 +609,24 @@ boolean_T
 <tr class="even">
 <td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model" class="code2model">&lt;Root&gt;/RPM</a>
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+uint16_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:42')" name="code2model" class="code2model">&lt;Root&gt;/DutyCycle</a>
 </td>
 <td width="26%" align="left" valign="top">
 <i>

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.113
+ * Model version                  : 2.117
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Oct 26 22:50:53 2021
+ * C/C++ source code generated on : Wed Oct 27 00:09:09 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -50,6 +50,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
 {
   /* Chart: '<Root>/Chart' incorporates:
    *  Inport: '<Root>/DesSteps'
+   *  Inport: '<Root>/DutyCycle'
    */
   /* During: Chart */
   if (StepperRTM_DW.is_active_c3_StepperRTM == 0U) {
@@ -67,8 +68,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
     switch (StepperRTM_DW.is_Main) {
      case StepperRTM_IN_CWStepHigh:
       /* During 'CWStepHigh': '<S1>:138' */
-      if ((int16_T)StepperRTM_DW.temporalCounter_i1 >= (int16_T)
-          StepperRTM_P.StpPulsDur) {
+      if (StepperRTM_DW.temporalCounter_i1 >= StepperRTM_U.DutyCycle) {
         /* Transition: '<S1>:144' */
         StepperRTM_DW.is_Main = StepperRTM_IN_CWStepLow;
         StepperRTM_DW.temporalCounter_i1 = 0U;
@@ -80,7 +80,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
 
      case StepperRTM_IN_CWStepLow:
       /* During 'CWStepLow': '<S1>:143' */
-      if ((int16_T)StepperRTM_DW.temporalCounter_i1 >= 20) {
+      if (StepperRTM_DW.temporalCounter_i1 >= StepperRTM_U.DutyCycle) {
         /* Transition: '<S1>:141' */
         StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps - /*MW:OvSatOk*/ 1U;
         if (StepperRTM_U.DesSteps - 1U > StepperRTM_U.DesSteps) {
@@ -119,8 +119,9 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
 }
 
 /* Model step function */
-void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_Stepper_Trigger[2],
-                     boolean_T *arg_StepBit, uint16_T *arg_NewDesSteps)
+void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_DutyCycle, uint16_T
+                     arg_Stepper_Trigger[2], boolean_T *arg_StepBit, uint16_T
+                     *arg_NewDesSteps)
 {
   int32_T sfEvent;
   int16_T tmp;
@@ -130,6 +131,9 @@ void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_Stepper_Trigger[2],
 
   /* Copy value for root inport '<Root>/DesSteps' since it is accessed globally */
   StepperRTM_U.DesSteps = arg_DesSteps;
+
+  /* Copy value for root inport '<Root>/DutyCycle' since it is accessed globally */
+  StepperRTM_U.DutyCycle = arg_DutyCycle;
 
   /* Chart: '<Root>/Chart' incorporates:
    *  TriggerPort: '<S1>/input events'
@@ -150,9 +154,8 @@ void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_Stepper_Trigger[2],
 
     /* Gateway: Chart */
     if (((tmp_0 & 128U) != 0U ? tmp_0 | -128 : tmp_0 & 127) != 0) {
-      if (StepperRTM_DW.temporalCounter_i1 < 255U) {
-        StepperRTM_DW.temporalCounter_i1 = ((int16_T)
-          StepperRTM_DW.temporalCounter_i1 + 1) & 255U;
+      if (StepperRTM_DW.temporalCounter_i1 < MAX_uint16_T) {
+        StepperRTM_DW.temporalCounter_i1++;
       }
 
       /* Event: '<S1>:14' */

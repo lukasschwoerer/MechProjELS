@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.125
+ * Model version                  : 2.128
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Oct 26 22:53:34 2021
+ * C/C++ source code generated on : Wed Oct 27 00:07:14 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -49,6 +49,22 @@ ExtU_RealTimeMachine_T RealTimeMachine_U;
 
 /* Forward declaration for local functions */
 static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent);
+uint16_T div_usu16_sat(int16_T numerator, uint16_T denominator)
+{
+  uint16_T quotient;
+  if (denominator == 0U) {
+    quotient = numerator >= 0 ? MAX_uint16_T : 0U;
+
+    /* Divide by zero handler */
+  } else if (numerator < 0) {
+    quotient = 0U;
+  } else {
+    quotient = (numerator < 0 ? ~(uint16_T)numerator + 1U : (uint16_T)numerator)
+      / denominator;
+  }
+
+  return quotient;
+}
 
 /* Function for Chart: '<Root>/Chart' */
 static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
@@ -86,6 +102,9 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
      case RealTimeMachine_IN_CalcDesSteps:
       /* During 'CalcDesSteps': '<S1>:146' */
       /* Transition: '<S1>:148' */
+      /* Exit 'CalcDesSteps': '<S1>:146' */
+      RealTimeMachine_B.DutyCycle = (uint16_T)((int16_T)((div_usu16_sat(10000,
+        RealTimeMachine_B.DesSteps) / 3U) >> 1U) + 1);
       RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_Idle;
 
       /* Entry 'Idle': '<S1>:23' */
@@ -388,7 +407,7 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2],
   uint16_T *arg_DesSteps, boolean_T *arg_Enable, boolean_T *arg_Dir, boolean_T
-  *arg_ComBit, uint16_T *arg_RPM)
+  *arg_ComBit, uint16_T *arg_RPM, uint16_T *arg_DutyCycle)
 {
   int32_T sfEvent;
   int16_T tmp;
@@ -464,6 +483,9 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
   /* Outport: '<Root>/RPM' */
   *arg_RPM = RealTimeMachine_B.RPM;
+
+  /* Outport: '<Root>/DutyCycle' */
+  *arg_DutyCycle = RealTimeMachine_B.DutyCycle;
 }
 
 /* Model initialize function */
@@ -496,6 +518,7 @@ void RealTimeMachine_initialize(void)
   RealTimeMachine_B.DirectionBit = false;
   RealTimeMachine_B.ComBit = false;
   RealTimeMachine_B.RPM = 0U;
+  RealTimeMachine_B.DutyCycle = 0U;
 }
 
 /*

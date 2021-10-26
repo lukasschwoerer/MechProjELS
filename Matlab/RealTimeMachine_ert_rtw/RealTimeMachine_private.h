@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.125
+ * Model version                  : 2.128
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Oct 26 22:53:34 2021
+ * C/C++ source code generated on : Wed Oct 27 00:07:14 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -21,6 +21,9 @@
 #define RTW_HEADER_RealTimeMachine_private_h_
 #include "rtwtypes.h"
 #include "zero_crossing_types.h"
+
+extern uint16_T div_usu16_sat(int16_T numerator, uint16_T denominator);
+
 #endif                               /* RTW_HEADER_RealTimeMachine_private_h_ */
 
 /*

@@ -177,81 +177,11 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:120",
+  "sid":"RealTimeMachine:20:122",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine5",
   "name":"",
-  "label":"[SpindelPos < PrevSpindelPos]{SpindelDiv = (PrevSpindelPos - SpindelPos);}",
-  "parent":"RealTimeMachine:20:94",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    4,
-    false,
-    "[SpindelPos < PrevSpindelPos]{SpindelDiv = (PrevSpindelPos - SpindelPos);}",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20:117",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine5",
-  "name":"",
-  "label":"[SpindelPos > PrevSpindelPos]{SpindelDiv = (SpindelPos - PrevSpindelPos);}",
-  "parent":"RealTimeMachine:20:94",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    3,
-    false,
-    "[SpindelPos > PrevSpindelPos]{SpindelDiv = (SpindelPos - PrevSpindelPos);}",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20:102",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine5",
-  "name":"",
-  "label":"[SpindelPos < PrevSpindelPos && (PrevSpindelPos - SpindelPos) > (MaxPos/2)]",
+  "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 0;}",
   "parent":"RealTimeMachine:20:94",
   "inspector":{
    "params":[
@@ -264,7 +194,42 @@
    "values":[
     1,
     false,
-    "[SpindelPos < PrevSpindelPos && (PrevSpindelPos - SpindelPos) > (MaxPos/2)]",
+    "{PrevSpindelPos = SpindelPos; DirectionBit = 0;}",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:118",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 1;}",
+  "parent":"RealTimeMachine:20:94",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "{PrevSpindelPos = SpindelPos; DirectionBit = 1;}",
     "",
     ""
    ],
@@ -300,6 +265,41 @@
     1,
     false,
     "",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:117",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"[SpindelPos > PrevSpindelPos]{SpindelDiv = (SpindelPos - PrevSpindelPos);}",
+  "parent":"RealTimeMachine:20:94",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    3,
+    false,
+    "[SpindelPos > PrevSpindelPos]{SpindelDiv = (SpindelPos - PrevSpindelPos);}",
     "",
     ""
    ],
@@ -387,11 +387,11 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:118",
+  "sid":"RealTimeMachine:20:120",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine5",
   "name":"",
-  "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 1;}",
+  "label":"[SpindelPos < PrevSpindelPos]{SpindelDiv = (PrevSpindelPos - SpindelPos);}",
   "parent":"RealTimeMachine:20:94",
   "inspector":{
    "params":[
@@ -402,9 +402,9 @@
     "Document"
    ],
    "values":[
-    1,
+    4,
     false,
-    "{PrevSpindelPos = SpindelPos; DirectionBit = 1;}",
+    "[SpindelPos < PrevSpindelPos]{SpindelDiv = (PrevSpindelPos - SpindelPos);}",
     "",
     ""
    ],
@@ -457,11 +457,11 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:122",
+  "sid":"RealTimeMachine:20:102",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine5",
   "name":"",
-  "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 0;}",
+  "label":"[SpindelPos < PrevSpindelPos && (PrevSpindelPos - SpindelPos) > (MaxPos/2)]",
   "parent":"RealTimeMachine:20:94",
   "inspector":{
    "params":[
@@ -474,7 +474,7 @@
    "values":[
     1,
     false,
-    "{PrevSpindelPos = SpindelPos; DirectionBit = 0;}",
+    "[SpindelPos < PrevSpindelPos && (PrevSpindelPos - SpindelPos) > (MaxPos/2)]",
     "",
     ""
    ],

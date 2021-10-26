@@ -80,8 +80,6 @@ main.obj: ../../Matlab/StepperRTM_ert_rtw/rtwtypes.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/zero_crossing_types.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/StepperRTM_types.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/MW_target_hardware_resources.h
-main.obj: ../../Matlab/StepperRTM_ert_rtw/StepperRTM_data.c
-main.obj: ../../Matlab/StepperRTM_ert_rtw/StepperRTM_private.h
 
 ../main.c:
 
@@ -242,8 +240,4 @@ C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string
 ../../Matlab/StepperRTM_ert_rtw/StepperRTM_types.h:
 
 ../../Matlab/StepperRTM_ert_rtw/MW_target_hardware_resources.h:
-
-../../Matlab/StepperRTM_ert_rtw/StepperRTM_data.c:
-
-../../Matlab/StepperRTM_ert_rtw/StepperRTM_private.h:
 

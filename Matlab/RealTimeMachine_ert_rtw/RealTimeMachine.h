@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.125
+ * Model version                  : 2.128
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Oct 26 22:53:34 2021
+ * C/C++ source code generated on : Wed Oct 27 00:07:14 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -39,6 +39,7 @@ extern void configureIXbar(void);
 typedef struct {
   uint16_T DesSteps;                   /* '<Root>/Chart' */
   uint16_T RPM;                        /* '<Root>/Chart' */
+  uint16_T DutyCycle;                  /* '<Root>/Chart' */
   boolean_T EnableBit;                 /* '<Root>/Chart' */
   boolean_T DirectionBit;              /* '<Root>/Chart' */
   boolean_T ComBit;                    /* '<Root>/Chart' */
@@ -89,7 +90,7 @@ extern void RealTimeMachine_initialize(void);
 extern void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2],
   uint16_T *arg_DesSteps, boolean_T *arg_Enable, boolean_T *arg_Dir, boolean_T
-  *arg_ComBit, uint16_T *arg_RPM);
+  *arg_ComBit, uint16_T *arg_RPM, uint16_T *arg_DutyCycle);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 

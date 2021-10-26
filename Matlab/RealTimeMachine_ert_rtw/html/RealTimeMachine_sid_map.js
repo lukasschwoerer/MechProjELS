@@ -11,6 +11,7 @@ function RTW_SidParentMap() {
     this.sidParentMap["RealTimeMachine:31"] = "RealTimeMachine";
     this.sidParentMap["RealTimeMachine:40"] = "RealTimeMachine";
     this.sidParentMap["RealTimeMachine:41"] = "RealTimeMachine";
+    this.sidParentMap["RealTimeMachine:42"] = "RealTimeMachine";
     this.sidParentMap["RealTimeMachine:20:4"] = "RealTimeMachine:20";
     this.sidParentMap["RealTimeMachine:20:164"] = "RealTimeMachine:20";
     this.sidParentMap["RealTimeMachine:20:146"] = "RealTimeMachine:20";

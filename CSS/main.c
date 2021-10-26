@@ -9,7 +9,6 @@
 #include "..\Matlab\RealTimeMachine_ert_rtw\zero_crossing_types.h"
 
 #include "..\Matlab\StepperRTM_ert_rtw\StepperRTM.h"
-#include "..\Matlab\StepperRTM_ert_rtw\StepperRTM_data.c"
 #include "..\Matlab\StepperRTM_ert_rtw\rtwtypes.h"
 #include "..\Matlab\StepperRTM_ert_rtw\zero_crossing_types.h"
 
@@ -18,10 +17,11 @@
 // Global Variables Inputs
 //
 static uint32_T arg_SpindelPos = 0U;
-static real_T arg_CountFactor = 0.048825; // 1/1 Translation for Stepper with 1.8°/Step and 16x uSteps
+static real_T arg_CountFactor = 0.7812; // 1/1 Translation for Stepper with 1.8°/Step and 16x uSteps
 static boolean_T arg_StopSwitch = false;
 static uint16_T var_StepBacklog;
 static uint16_T var_RefrRate = RefreshRate;
+static uint16_T var_DutyCycle;
 
 //
 // Global Variables Outputs
@@ -102,7 +102,7 @@ __interrupt void cpuTimer0ISR(void)
         Stepper_Trigger[1] = 1; //Power on Reset
     }
 
-    StepperRTM_step(var_StepBacklog, (uint16_t*)&Stepper_Trigger, &arg_StepBit, &var_StepBacklog);
+    StepperRTM_step(var_StepBacklog, var_DutyCycle, (uint16_t*)&Stepper_Trigger, &arg_StepBit, &var_StepBacklog);
 
     //
     // Stepper Clock for Debugging
@@ -135,7 +135,7 @@ __interrupt void cpuTimer2ISR(void)
 
     RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_StopSwitch, var_RefrRate,
                            (uint16_t*)&System_Trigger, &arg_DesSteps, &arg_Enable,
-                           &arg_Dir, &arg_ComBit, &arg_RPM);
+                           &arg_Dir, &arg_ComBit, &arg_RPM, &var_DutyCycle);
 
 
     var_StepBacklog = var_StepBacklog + arg_DesSteps;
