@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.104
+ * Model version                  : 2.113
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Fri Aug 27 23:26:34 2021
+ * C/C++ source code generated on : Tue Oct 26 22:50:53 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -25,7 +25,7 @@ P_StepperRTM_T StepperRTM_P = {
   /* Variable: StpPulsDur
    * Referenced by: '<Root>/Chart'
    */
-  2U
+  4U
 };
 
 /*

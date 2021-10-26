@@ -236,11 +236,11 @@
   ]
  },
  {
-  "sid":"StepperRTM:20:141",
+  "sid":"StepperRTM:20:144",
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[after(2 * StpPulsDur,Takt)]{NewDesSteps = (DesSteps - 1);}",
+  "label":"[after(StpPulsDur,Takt)]",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -253,7 +253,42 @@
    "values":[
     1,
     false,
-    "[after(2 * StpPulsDur,Takt)]{NewDesSteps = (DesSteps - 1);}",
+    "[after(StpPulsDur,Takt)]",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"StepperRTM:20:141",
+  "className":"Stateflow.Transition",
+  "icon":"StepperRTM5",
+  "name":"",
+  "label":"[after(20,Takt)]{NewDesSteps = (DesSteps - 1);}",
+  "parent":"StepperRTM:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "[after(20,Takt)]{NewDesSteps = (DesSteps - 1);}",
     "",
     ""
    ],
@@ -275,7 +310,7 @@
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[DesSteps > 0]{NewDesSteps = DesSteps}",
+  "label":"[DesSteps > 0]{NewDesSteps = DesSteps;}",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -288,42 +323,7 @@
    "values":[
     1,
     false,
-    "[DesSteps > 0]{NewDesSteps = DesSteps}",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"StepperRTM:20:144",
-  "className":"Stateflow.Transition",
-  "icon":"StepperRTM5",
-  "name":"",
-  "label":"[after(StpPulsDur,Takt)]",
-  "parent":"StepperRTM:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "[after(StpPulsDur,Takt)]",
+    "[DesSteps > 0]{NewDesSteps = DesSteps;}",
     "",
     ""
    ],
@@ -435,41 +435,6 @@
   ]
  },
  {
-  "sid":"StepperRTM:20:12",
-  "className":"Stateflow.Transition",
-  "icon":"StepperRTM5",
-  "name":"",
-  "label":"",
-  "parent":"StepperRTM:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"StepperRTM:20:11",
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
@@ -488,6 +453,41 @@
     1,
     false,
     "POR",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"StepperRTM:20:12",
+  "className":"Stateflow.Transition",
+  "icon":"StepperRTM5",
+  "name":"",
+  "label":"",
+  "parent":"StepperRTM:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "",
     "",
     ""
    ],

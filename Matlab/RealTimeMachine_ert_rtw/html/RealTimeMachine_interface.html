@@ -126,7 +126,7 @@ Prototype
 </td>
 <td width="75%" align="left" valign="top">
 <b>
-void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, boolean_T arg_StopSwitch, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, boolean_T&nbsp;*arg_Enable, boolean_T&nbsp;*arg_Dir)
+void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, boolean_T&nbsp;*arg_Enable, boolean_T&nbsp;*arg_Dir, boolean_T&nbsp;*arg_ComBit, uint16_T&nbsp;*arg_RPM)
 </b>
 
 </td>
@@ -146,7 +146,7 @@ Output entry point of generated code
 Timing
 </td>
 <td width="75%" align="left" valign="top">
-Must be called periodically, every 0.001 seconds
+Must be called periodically, every 0.01 seconds
 </td>
 
 </tr>
@@ -233,6 +233,21 @@ boolean_T
 4
 </td>
 <td align="left" valign="top">
+arg_RefrRate
+</td>
+<td align="left" valign="top">
+uint16_T
+</td>
+<td align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:39')" name="code2model" class="code2model">&lt;Root&gt;/RefrRate</a>
+</td>
+
+</tr>
+<tr class="even">
+<td align="right" valign="top">
+5
+</td>
+<td align="left" valign="top">
 arg_System_Trigger
 </td>
 <td align="left" valign="top">
@@ -243,9 +258,9 @@ uint8_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right" valign="top">
-5
+6
 </td>
 <td align="left" valign="top">
 arg_DesSteps
@@ -258,9 +273,9 @@ uint16_T&nbsp;*
 </td>
 
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right" valign="top">
-6
+7
 </td>
 <td align="left" valign="top">
 arg_Enable
@@ -273,9 +288,9 @@ boolean_T&nbsp;*
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right" valign="top">
-7
+8
 </td>
 <td align="left" valign="top">
 arg_Dir
@@ -285,6 +300,36 @@ boolean_T&nbsp;*
 </td>
 <td align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:31')" name="code2model" class="code2model">&lt;Root&gt;/Dir</a>
+</td>
+
+</tr>
+<tr class="even">
+<td align="right" valign="top">
+9
+</td>
+<td align="left" valign="top">
+arg_ComBit
+</td>
+<td align="left" valign="top">
+boolean_T&nbsp;*
+</td>
+<td align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:40')" name="code2model" class="code2model">&lt;Root&gt;/ComBit</a>
+</td>
+
+</tr>
+<tr class="odd">
+<td align="right" valign="top">
+10
+</td>
+<td align="left" valign="top">
+arg_RPM
+</td>
+<td align="left" valign="top">
+uint16_T&nbsp;*
+</td>
+<td align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model" class="code2model">&lt;Root&gt;/RPM</a>
 </td>
 
 </tr>
@@ -404,6 +449,24 @@ boolean_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:39')" name="code2model" class="code2model">&lt;Root&gt;/RefrRate</a>
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+uint16_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model" class="code2model">&lt;Root&gt;/System_Trigger</a>
 </td>
 <td width="26%" align="left" valign="top">
@@ -504,6 +567,42 @@ Defined externally
 </td>
 <td width="21%" align="left" valign="top">
 boolean_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:40')" name="code2model" class="code2model">&lt;Root&gt;/ComBit</a>
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+boolean_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model" class="code2model">&lt;Root&gt;/RPM</a>
+</td>
+<td width="26%" align="left" valign="top">
+<i>
+Defined externally
+</i>
+
+</td>
+<td width="21%" align="left" valign="top">
+uint16_T
 </td>
 <td width="10%" align="right" valign="top">
 1

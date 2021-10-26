@@ -64,6 +64,7 @@ main.obj: C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_sysctrl_defines.h
 main.obj: C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_dma_defines.h
 main.obj: C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_cla_defines.h
 main.obj: C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_defaultisr.h
+main.obj: ../Configuration.h
 main.obj: ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.h
 main.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/math.h
 main.obj: C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/_defs.h
@@ -209,6 +210,8 @@ C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_dma_defines.h:
 C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_cla_defines.h:
 
 C:/Users/lu/ti/MechProj/CSS/common/include/f28004x_defaultisr.h:
+
+../Configuration.h:
 
 ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.h:
 

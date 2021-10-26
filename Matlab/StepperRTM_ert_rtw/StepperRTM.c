@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.104
+ * Model version                  : 2.113
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Fri Aug 27 23:26:34 2021
+ * C/C++ source code generated on : Tue Oct 26 22:50:53 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -67,10 +67,11 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
     switch (StepperRTM_DW.is_Main) {
      case StepperRTM_IN_CWStepHigh:
       /* During 'CWStepHigh': '<S1>:138' */
-      if (StepperRTM_DW.temporalCounter_i1 >= StepperRTM_P.StpPulsDur) {
+      if ((int16_T)StepperRTM_DW.temporalCounter_i1 >= (int16_T)
+          StepperRTM_P.StpPulsDur) {
         /* Transition: '<S1>:144' */
         StepperRTM_DW.is_Main = StepperRTM_IN_CWStepLow;
-        StepperRTM_DW.temporalCounter_i1 = 0UL;
+        StepperRTM_DW.temporalCounter_i1 = 0U;
 
         /* Entry 'CWStepLow': '<S1>:143' */
         StepperRTM_B.StepBit = false;
@@ -79,8 +80,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
 
      case StepperRTM_IN_CWStepLow:
       /* During 'CWStepLow': '<S1>:143' */
-      if (StepperRTM_DW.temporalCounter_i1 >= (uint32_T)((int16_T)
-           StepperRTM_P.StpPulsDur << 1U)) {
+      if ((int16_T)StepperRTM_DW.temporalCounter_i1 >= 20) {
         /* Transition: '<S1>:141' */
         StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps - /*MW:OvSatOk*/ 1U;
         if (StepperRTM_U.DesSteps - 1U > StepperRTM_U.DesSteps) {
@@ -97,7 +97,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
         /* Transition: '<S1>:153' */
         StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps;
         StepperRTM_DW.is_Main = StepperRTM_IN_CWStepHigh;
-        StepperRTM_DW.temporalCounter_i1 = 0UL;
+        StepperRTM_DW.temporalCounter_i1 = 0U;
 
         /* Entry 'CWStepHigh': '<S1>:138' */
         StepperRTM_B.StepBit = true;
@@ -150,8 +150,9 @@ void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_Stepper_Trigger[2],
 
     /* Gateway: Chart */
     if (((tmp_0 & 128U) != 0U ? tmp_0 | -128 : tmp_0 & 127) != 0) {
-      if (StepperRTM_DW.temporalCounter_i1 < MAX_uint32_T) {
-        StepperRTM_DW.temporalCounter_i1++;
+      if (StepperRTM_DW.temporalCounter_i1 < 255U) {
+        StepperRTM_DW.temporalCounter_i1 = ((int16_T)
+          StepperRTM_DW.temporalCounter_i1 + 1) & 255U;
       }
 
       /* Event: '<S1>:14' */
@@ -196,7 +197,7 @@ void StepperRTM_initialize(void)
 
   /* SystemInitialize for Chart: '<Root>/Chart' */
   StepperRTM_DW.is_Main = StepperRTM_IN_NO_ACTIVE_CHILD;
-  StepperRTM_DW.temporalCounter_i1 = 0UL;
+  StepperRTM_DW.temporalCounter_i1 = 0U;
   StepperRTM_DW.is_active_c3_StepperRTM = 0U;
   StepperRTM_DW.is_c3_StepperRTM = StepperRTM_IN_NO_ACTIVE_CHILD;
   StepperRTM_B.StepBit = false;

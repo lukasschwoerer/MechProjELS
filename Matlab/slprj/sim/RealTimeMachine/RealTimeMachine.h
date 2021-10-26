@@ -15,11 +15,13 @@
 #endif
 #include "RealTimeMachine_types.h"
 #include "multiword_types.h"
+#include "mwmathutil.h"
 #include "rt_nonfinite.h"
 #ifndef RealTimeMachine_MDLREF_HIDE_CHILD_
-typedef struct { int32_T gv1rqrtqi0 ; uint32_T lv4vsckgcy ; uint32_T
-c1oaufpit0 ; int8_T nh1ezicw0l ; uint8_T fisynvgih3 ; uint8_T i13xy2biy1 ;
-uint8_T h2qcunvc5q ; uint8_T ohkser5hbn ; } hadqqzcymvl ;
+typedef struct { real_T fjuagy55mx ; int32_T gv1rqrtqi0 ; uint32_T pqcdhfoo0i
+; uint32_T ibktalusb3 ; uint16_T g4vojqkw54 ; int8_T nh1ezicw0l ; uint8_T
+fisynvgih3 ; uint8_T i13xy2biy1 ; uint8_T dtwn22wnpy ; uint8_T ozi3d3zro3 ;
+uint8_T iabzhsbkbf ; } hadqqzcymvl ;
 #endif
 #ifndef RealTimeMachine_MDLREF_HIDE_CHILD_
 typedef struct { real_T adqjlvgiyw [ 2 ] ; } b1fg01aqxnd ;
@@ -37,16 +39,17 @@ mmiLogInstanceInfo ; sysRanDType * systemRan [ 3 ] ; int_T systemTid [ 3 ] ;
 typedef struct { on3hfz0u4t rtm ; } ggeylsohepc ;
 #endif
 extern void f05bofh2ui ( uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 ,
-boolean_T * jmg1zzvvlv ) ; extern void ai1r34gglr ( uint16_T * iai0lzaoiu ,
-boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ) ; extern void
-RealTimeMachine ( const uint32_T * p1wkyth5j4 , const real_T * frzlt3rcmj ,
-const uint8_T bycobgjg5v [ 2 ] , uint16_T * iai0lzaoiu , boolean_T *
-c3fhpejm23 , boolean_T * jmg1zzvvlv ) ; extern void fub4xrbtkg ( void ) ;
-extern void pjqcq1rgoo ( SimStruct * _mdlRefSfcnS , int_T mdlref_TID0 , void
-* sysRanPtr , int contextTid , rtwCAPI_ModelMappingInfo * rt_ParentMMI ,
-const char_T * rt_ChildPath , int_T rt_ChildMMIIdx , int_T rt_CSTATEIdx ) ;
-extern void mr_RealTimeMachine_MdlInfoRegFcn ( SimStruct * mdlRefSfcnS ,
-char_T * modelName , int_T * retVal ) ; extern mxArray *
+boolean_T * jmg1zzvvlv , boolean_T * kkq3emhdsj ) ; extern void ai1r34gglr (
+uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ,
+boolean_T * kkq3emhdsj ) ; extern void RealTimeMachine ( const uint32_T *
+p1wkyth5j4 , const real_T * frzlt3rcmj , const uint8_T bycobgjg5v [ 2 ] ,
+const uint16_T * iqne4m0ue5 , uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23
+, boolean_T * jmg1zzvvlv , boolean_T * kkq3emhdsj ) ; extern void fub4xrbtkg
+( void ) ; extern void pjqcq1rgoo ( SimStruct * _mdlRefSfcnS , int_T
+mdlref_TID0 , void * sysRanPtr , int contextTid , rtwCAPI_ModelMappingInfo *
+rt_ParentMMI , const char_T * rt_ChildPath , int_T rt_ChildMMIIdx , int_T
+rt_CSTATEIdx ) ; extern void mr_RealTimeMachine_MdlInfoRegFcn ( SimStruct *
+mdlRefSfcnS , char_T * modelName , int_T * retVal ) ; extern mxArray *
 mr_RealTimeMachine_GetDWork ( ) ; extern void mr_RealTimeMachine_SetDWork (
 const mxArray * ssDW ) ; extern void
 mr_RealTimeMachine_RegisterSimStateChecksum ( SimStruct * S ) ; extern

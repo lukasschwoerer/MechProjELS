@@ -4,6 +4,8 @@
 #define b5bja1idiv ((uint8_T)2U)
 #define dpynqeliy4 ((uint8_T)3U)
 #define eyufsylgkd ((uint8_T)1U)
+#define f1degymi4h ((uint8_T)1U)
+#define g2vegfymxw ((uint8_T)2U)
 #define h5dg5lc3gx (1)
 #define hwzpc50yk3 ((uint8_T)0U)
 #define iupihgb3yx ((uint8_T)2U)
@@ -95,88 +97,110 @@ MDL_INFO_ID_MODEL_FCN_NAME , 0 , - 1 , ( void * ) "RealTimeMachine" } , {
 , - 1 , ( NULL ) } , { "RealTimeMachine.c" , MDL_INFO_MODEL_FILENAME , 0 , -
 1 , ( void * ) "RealTimeMachine" } } ; ggeylsohepc ggeylsohep ; hadqqzcymvl
 gda34ypjdnl ; puuiicuwqpv aql5tvsbak3 ; static void jljmnydeaj ( const
-uint32_T * p1wkyth5j4 , const real_T * frzlt3rcmj , uint16_T * iai0lzaoiu ,
-boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ) ; static void jljmnydeaj (
-const uint32_T * p1wkyth5j4 , const real_T * frzlt3rcmj , uint16_T *
-iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ) { real_T tmp ;
-uint32_T qY ; uint32_T qY_tmp ; boolean_T guard1 = false ; if ( gda34ypjdnl .
-fisynvgih3 == 0U ) { gda34ypjdnl . fisynvgih3 = 1U ; gda34ypjdnl . i13xy2biy1
-= iupihgb3yx ; * iai0lzaoiu = 0U ; gda34ypjdnl . c1oaufpit0 = 0U ; *
-c3fhpejm23 = false ; * jmg1zzvvlv = false ; } else if ( gda34ypjdnl .
-i13xy2biy1 == nbjc0sdrvs ) { guard1 = false ; switch ( gda34ypjdnl .
-h2qcunvc5q ) { case pfuf3gatl1 : gda34ypjdnl . h2qcunvc5q = ne54iuomcl ; *
-c3fhpejm23 = true ; gda34ypjdnl . lv4vsckgcy = 0U ; break ; case ne54iuomcl :
-if ( * p1wkyth5j4 != gda34ypjdnl . c1oaufpit0 ) { gda34ypjdnl . h2qcunvc5q =
-krb5imvato ; gda34ypjdnl . ohkser5hbn = eyufsylgkd ; } break ; default :
-switch ( gda34ypjdnl . ohkser5hbn ) { case eyufsylgkd : qY = gda34ypjdnl .
-c1oaufpit0 - * p1wkyth5j4 ; if ( qY > gda34ypjdnl . c1oaufpit0 ) { qY = 0U ;
-} if ( ( * p1wkyth5j4 < gda34ypjdnl . c1oaufpit0 ) && ( qY > 8388607U ) ) {
-gda34ypjdnl . ohkser5hbn = b5bja1idiv ; qY = 16777215U - gda34ypjdnl .
-c1oaufpit0 ; if ( 16777215U - gda34ypjdnl . c1oaufpit0 > 16777215U ) { qY =
+uint32_T * p1wkyth5j4 , const real_T * frzlt3rcmj , const uint16_T *
+iqne4m0ue5 , uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T *
+jmg1zzvvlv , boolean_T * kkq3emhdsj ) ; static void jljmnydeaj ( const
+uint32_T * p1wkyth5j4 , const real_T * frzlt3rcmj , const uint16_T *
+iqne4m0ue5 , uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T *
+jmg1zzvvlv , boolean_T * kkq3emhdsj ) { real_T tmp ; uint32_T qY ; uint32_T
+qY_tmp ; boolean_T guard1 = false ; if ( gda34ypjdnl . fisynvgih3 == 0U ) {
+gda34ypjdnl . fisynvgih3 = 1U ; gda34ypjdnl . i13xy2biy1 = iupihgb3yx ; *
+iai0lzaoiu = 0U ; gda34ypjdnl . ibktalusb3 = 0U ; * c3fhpejm23 = false ; *
+jmg1zzvvlv = false ; } else if ( gda34ypjdnl . i13xy2biy1 == nbjc0sdrvs ) {
+guard1 = false ; switch ( gda34ypjdnl . ozi3d3zro3 ) { case pfuf3gatl1 :
+gda34ypjdnl . ozi3d3zro3 = ne54iuomcl ; * c3fhpejm23 = true ; gda34ypjdnl .
+pqcdhfoo0i = 0U ; * iai0lzaoiu = 0U ; break ; case ne54iuomcl : if ( *
+p1wkyth5j4 != gda34ypjdnl . ibktalusb3 ) { gda34ypjdnl . ozi3d3zro3 =
+krb5imvato ; gda34ypjdnl . dtwn22wnpy = eyufsylgkd ; } break ; default :
+switch ( gda34ypjdnl . dtwn22wnpy ) { case eyufsylgkd : qY = gda34ypjdnl .
+ibktalusb3 - * p1wkyth5j4 ; if ( qY > gda34ypjdnl . ibktalusb3 ) { qY = 0U ;
+} if ( ( * p1wkyth5j4 < gda34ypjdnl . ibktalusb3 ) && ( qY > 8388607U ) ) {
+gda34ypjdnl . dtwn22wnpy = b5bja1idiv ; qY = 16777215U - gda34ypjdnl .
+ibktalusb3 ; if ( 16777215U - gda34ypjdnl . ibktalusb3 > 16777215U ) { qY =
 0U ; } qY_tmp = qY + * p1wkyth5j4 ; if ( qY_tmp < qY ) { qY_tmp =
-MAX_uint32_T ; } gda34ypjdnl . lv4vsckgcy = qY_tmp ; } else { qY_tmp = *
-p1wkyth5j4 - gda34ypjdnl . c1oaufpit0 ; qY = qY_tmp ; if ( qY_tmp > *
-p1wkyth5j4 ) { qY = 0U ; } if ( ( * p1wkyth5j4 > gda34ypjdnl . c1oaufpit0 )
-&& ( qY > 8388607U ) ) { gda34ypjdnl . ohkser5hbn = dpynqeliy4 ; qY =
+MAX_uint32_T ; } gda34ypjdnl . pqcdhfoo0i = qY_tmp ; } else { qY_tmp = *
+p1wkyth5j4 - gda34ypjdnl . ibktalusb3 ; qY = qY_tmp ; if ( qY_tmp > *
+p1wkyth5j4 ) { qY = 0U ; } if ( ( * p1wkyth5j4 > gda34ypjdnl . ibktalusb3 )
+&& ( qY > 8388607U ) ) { gda34ypjdnl . dtwn22wnpy = dpynqeliy4 ; qY =
 16777215U - * p1wkyth5j4 ; if ( 16777215U - * p1wkyth5j4 > 16777215U ) { qY =
-0U ; } qY_tmp = qY + gda34ypjdnl . c1oaufpit0 ; if ( qY_tmp < qY ) { qY_tmp =
-MAX_uint32_T ; } gda34ypjdnl . lv4vsckgcy = qY_tmp ; } else if ( * p1wkyth5j4
-> gda34ypjdnl . c1oaufpit0 ) { if ( qY_tmp > * p1wkyth5j4 ) { qY_tmp = 0U ; }
-gda34ypjdnl . lv4vsckgcy = qY_tmp ; gda34ypjdnl . c1oaufpit0 = * p1wkyth5j4 ;
+0U ; } qY_tmp = qY + gda34ypjdnl . ibktalusb3 ; if ( qY_tmp < qY ) { qY_tmp =
+MAX_uint32_T ; } gda34ypjdnl . pqcdhfoo0i = qY_tmp ; } else if ( * p1wkyth5j4
+> gda34ypjdnl . ibktalusb3 ) { if ( qY_tmp > * p1wkyth5j4 ) { qY_tmp = 0U ; }
+gda34ypjdnl . pqcdhfoo0i = qY_tmp ; gda34ypjdnl . ibktalusb3 = * p1wkyth5j4 ;
 * jmg1zzvvlv = true ; guard1 = true ; } else if ( * p1wkyth5j4 < gda34ypjdnl
-. c1oaufpit0 ) { qY = gda34ypjdnl . c1oaufpit0 - * p1wkyth5j4 ; if ( qY >
-gda34ypjdnl . c1oaufpit0 ) { qY = 0U ; } gda34ypjdnl . lv4vsckgcy = qY ;
-gda34ypjdnl . c1oaufpit0 = * p1wkyth5j4 ; * jmg1zzvvlv = false ; guard1 =
-true ; } } break ; case b5bja1idiv : gda34ypjdnl . c1oaufpit0 = * p1wkyth5j4
-; * jmg1zzvvlv = true ; gda34ypjdnl . ohkser5hbn = hwzpc50yk3 ; gda34ypjdnl .
-h2qcunvc5q = pfuf3gatl1 ; tmp = * frzlt3rcmj * ( real_T ) gda34ypjdnl .
-lv4vsckgcy ; if ( tmp < 65536.0 ) { if ( tmp >= 0.0 ) { * iai0lzaoiu = (
+. ibktalusb3 ) { qY = gda34ypjdnl . ibktalusb3 - * p1wkyth5j4 ; if ( qY >
+gda34ypjdnl . ibktalusb3 ) { qY = 0U ; } gda34ypjdnl . pqcdhfoo0i = qY ;
+gda34ypjdnl . ibktalusb3 = * p1wkyth5j4 ; * jmg1zzvvlv = false ; guard1 =
+true ; } } break ; case b5bja1idiv : gda34ypjdnl . ibktalusb3 = * p1wkyth5j4
+; * jmg1zzvvlv = true ; gda34ypjdnl . dtwn22wnpy = hwzpc50yk3 ; gda34ypjdnl .
+ozi3d3zro3 = pfuf3gatl1 ; gda34ypjdnl . fjuagy55mx += * frzlt3rcmj * ( real_T
+) gda34ypjdnl . pqcdhfoo0i ; tmp = muDoubleScalarFloor ( gda34ypjdnl .
+fjuagy55mx ) ; if ( tmp < 65536.0 ) { if ( tmp >= 0.0 ) { * iai0lzaoiu = (
 uint16_T ) tmp ; } else { * iai0lzaoiu = 0U ; } } else if ( tmp >= 65536.0 )
-{ * iai0lzaoiu = MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } break ;
-default : gda34ypjdnl . c1oaufpit0 = * p1wkyth5j4 ; * jmg1zzvvlv = false ;
-gda34ypjdnl . ohkser5hbn = hwzpc50yk3 ; gda34ypjdnl . h2qcunvc5q = pfuf3gatl1
-; tmp = * frzlt3rcmj * ( real_T ) gda34ypjdnl . lv4vsckgcy ; if ( tmp <
-65536.0 ) { if ( tmp >= 0.0 ) { * iai0lzaoiu = ( uint16_T ) tmp ; } else { *
-iai0lzaoiu = 0U ; } } else if ( tmp >= 65536.0 ) { * iai0lzaoiu =
-MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } break ; } break ; } if ( guard1
-) { gda34ypjdnl . ohkser5hbn = hwzpc50yk3 ; gda34ypjdnl . h2qcunvc5q =
-pfuf3gatl1 ; tmp = * frzlt3rcmj * ( real_T ) gda34ypjdnl . lv4vsckgcy ; if (
+{ * iai0lzaoiu = MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } gda34ypjdnl .
+fjuagy55mx -= muDoubleScalarFloor ( gda34ypjdnl . fjuagy55mx ) ; break ;
+default : gda34ypjdnl . ibktalusb3 = * p1wkyth5j4 ; * jmg1zzvvlv = false ;
+gda34ypjdnl . dtwn22wnpy = hwzpc50yk3 ; gda34ypjdnl . ozi3d3zro3 = pfuf3gatl1
+; gda34ypjdnl . fjuagy55mx += * frzlt3rcmj * ( real_T ) gda34ypjdnl .
+pqcdhfoo0i ; tmp = muDoubleScalarFloor ( gda34ypjdnl . fjuagy55mx ) ; if (
 tmp < 65536.0 ) { if ( tmp >= 0.0 ) { * iai0lzaoiu = ( uint16_T ) tmp ; }
 else { * iai0lzaoiu = 0U ; } } else if ( tmp >= 65536.0 ) { * iai0lzaoiu =
-MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } } } else if ( gda34ypjdnl .
-gv1rqrtqi0 == h5dg5lc3gx ) { gda34ypjdnl . i13xy2biy1 = nbjc0sdrvs ;
-gda34ypjdnl . h2qcunvc5q = ne54iuomcl ; * c3fhpejm23 = true ; gda34ypjdnl .
-lv4vsckgcy = 0U ; } } void f05bofh2ui ( uint16_T * iai0lzaoiu , boolean_T *
-c3fhpejm23 , boolean_T * jmg1zzvvlv ) { gda34ypjdnl . h2qcunvc5q = hwzpc50yk3
-; gda34ypjdnl . ohkser5hbn = hwzpc50yk3 ; gda34ypjdnl . fisynvgih3 = 0U ;
-gda34ypjdnl . i13xy2biy1 = hwzpc50yk3 ; gda34ypjdnl . lv4vsckgcy = 0U ;
-gda34ypjdnl . c1oaufpit0 = 0U ; * iai0lzaoiu = 0U ; * c3fhpejm23 = false ; *
-jmg1zzvvlv = false ; } void ai1r34gglr ( uint16_T * iai0lzaoiu , boolean_T *
-c3fhpejm23 , boolean_T * jmg1zzvvlv ) { gda34ypjdnl . h2qcunvc5q = hwzpc50yk3
-; gda34ypjdnl . ohkser5hbn = hwzpc50yk3 ; gda34ypjdnl . fisynvgih3 = 0U ;
-gda34ypjdnl . i13xy2biy1 = hwzpc50yk3 ; gda34ypjdnl . lv4vsckgcy = 0U ;
-gda34ypjdnl . c1oaufpit0 = 0U ; * iai0lzaoiu = 0U ; * c3fhpejm23 = false ; *
-jmg1zzvvlv = false ; } void RealTimeMachine ( const uint32_T * p1wkyth5j4 ,
-const real_T * frzlt3rcmj , const uint8_T bycobgjg5v [ 2 ] , uint16_T *
-iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ) { boolean_T
-zcEvent ; boolean_T zcEvent_idx_0 ; boolean_T zcEvent_p ; zcEvent_p = ( ( (
-bycobgjg5v [ 0 ] > 0 ) != ( aql5tvsbak3 . khmrujbhfq [ 0 ] == POS_ZCSIG ) )
-&& ( aql5tvsbak3 . khmrujbhfq [ 0 ] != UNINITIALIZED_ZCSIG ) ) ; zcEvent =
-zcEvent_p ; zcEvent_idx_0 = zcEvent_p ; zcEvent_p = ( ( ( bycobgjg5v [ 1 ] >
-0 ) != ( aql5tvsbak3 . khmrujbhfq [ 1 ] == POS_ZCSIG ) ) && ( aql5tvsbak3 .
-khmrujbhfq [ 1 ] != UNINITIALIZED_ZCSIG ) ) ; zcEvent = ( zcEvent ||
-zcEvent_p ) ; if ( zcEvent ) { if ( ( int8_T ) ( zcEvent_idx_0 ? bycobgjg5v [
-0 ] > 0 ? RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT ) != 0 ) {
-gda34ypjdnl . gv1rqrtqi0 = mhzajis335 ; jljmnydeaj ( p1wkyth5j4 , frzlt3rcmj
-, iai0lzaoiu , c3fhpejm23 , jmg1zzvvlv ) ; } if ( ( int8_T ) ( zcEvent_p ?
+MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } gda34ypjdnl . fjuagy55mx -=
+muDoubleScalarFloor ( gda34ypjdnl . fjuagy55mx ) ; break ; } break ; } if (
+guard1 ) { gda34ypjdnl . dtwn22wnpy = hwzpc50yk3 ; gda34ypjdnl . ozi3d3zro3 =
+pfuf3gatl1 ; gda34ypjdnl . fjuagy55mx += * frzlt3rcmj * ( real_T )
+gda34ypjdnl . pqcdhfoo0i ; tmp = muDoubleScalarFloor ( gda34ypjdnl .
+fjuagy55mx ) ; if ( tmp < 65536.0 ) { if ( tmp >= 0.0 ) { * iai0lzaoiu = (
+uint16_T ) tmp ; } else { * iai0lzaoiu = 0U ; } } else if ( tmp >= 65536.0 )
+{ * iai0lzaoiu = MAX_uint16_T ; } else { * iai0lzaoiu = 0U ; } gda34ypjdnl .
+fjuagy55mx -= muDoubleScalarFloor ( gda34ypjdnl . fjuagy55mx ) ; } if (
+gda34ypjdnl . iabzhsbkbf == f1degymi4h ) { if ( gda34ypjdnl . g4vojqkw54 >= *
+iqne4m0ue5 ) { gda34ypjdnl . iabzhsbkbf = g2vegfymxw ; gda34ypjdnl .
+g4vojqkw54 = 0U ; * kkq3emhdsj = true ; } } else if ( gda34ypjdnl .
+g4vojqkw54 >= * iqne4m0ue5 ) { gda34ypjdnl . iabzhsbkbf = f1degymi4h ;
+gda34ypjdnl . g4vojqkw54 = 0U ; * kkq3emhdsj = false ; } } else if (
+gda34ypjdnl . gv1rqrtqi0 == h5dg5lc3gx ) { gda34ypjdnl . i13xy2biy1 =
+nbjc0sdrvs ; gda34ypjdnl . ozi3d3zro3 = ne54iuomcl ; * c3fhpejm23 = true ;
+gda34ypjdnl . pqcdhfoo0i = 0U ; * iai0lzaoiu = 0U ; gda34ypjdnl . iabzhsbkbf
+= g2vegfymxw ; gda34ypjdnl . g4vojqkw54 = 0U ; * kkq3emhdsj = true ; } } void
+f05bofh2ui ( uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T *
+jmg1zzvvlv , boolean_T * kkq3emhdsj ) { gda34ypjdnl . ozi3d3zro3 = hwzpc50yk3
+; gda34ypjdnl . dtwn22wnpy = hwzpc50yk3 ; gda34ypjdnl . iabzhsbkbf =
+hwzpc50yk3 ; gda34ypjdnl . g4vojqkw54 = 0U ; gda34ypjdnl . fisynvgih3 = 0U ;
+gda34ypjdnl . i13xy2biy1 = hwzpc50yk3 ; gda34ypjdnl . pqcdhfoo0i = 0U ;
+gda34ypjdnl . ibktalusb3 = 0U ; gda34ypjdnl . fjuagy55mx = 0.0 ; * iai0lzaoiu
+= 0U ; * c3fhpejm23 = false ; * jmg1zzvvlv = false ; * kkq3emhdsj = false ; }
+void ai1r34gglr ( uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T
+* jmg1zzvvlv , boolean_T * kkq3emhdsj ) { gda34ypjdnl . ozi3d3zro3 =
+hwzpc50yk3 ; gda34ypjdnl . dtwn22wnpy = hwzpc50yk3 ; gda34ypjdnl . iabzhsbkbf
+= hwzpc50yk3 ; gda34ypjdnl . g4vojqkw54 = 0U ; gda34ypjdnl . fisynvgih3 = 0U
+; gda34ypjdnl . i13xy2biy1 = hwzpc50yk3 ; gda34ypjdnl . pqcdhfoo0i = 0U ;
+gda34ypjdnl . ibktalusb3 = 0U ; gda34ypjdnl . fjuagy55mx = 0.0 ; * iai0lzaoiu
+= 0U ; * c3fhpejm23 = false ; * jmg1zzvvlv = false ; * kkq3emhdsj = false ; }
+void RealTimeMachine ( const uint32_T * p1wkyth5j4 , const real_T *
+frzlt3rcmj , const uint8_T bycobgjg5v [ 2 ] , const uint16_T * iqne4m0ue5 ,
+uint16_T * iai0lzaoiu , boolean_T * c3fhpejm23 , boolean_T * jmg1zzvvlv ,
+boolean_T * kkq3emhdsj ) { boolean_T zcEvent ; boolean_T zcEvent_idx_0 ;
+boolean_T zcEvent_p ; zcEvent_p = ( ( ( bycobgjg5v [ 0 ] > 0 ) != (
+aql5tvsbak3 . khmrujbhfq [ 0 ] == POS_ZCSIG ) ) && ( aql5tvsbak3 . khmrujbhfq
+[ 0 ] != UNINITIALIZED_ZCSIG ) ) ; zcEvent = zcEvent_p ; zcEvent_idx_0 =
+zcEvent_p ; zcEvent_p = ( ( ( bycobgjg5v [ 1 ] > 0 ) != ( aql5tvsbak3 .
+khmrujbhfq [ 1 ] == POS_ZCSIG ) ) && ( aql5tvsbak3 . khmrujbhfq [ 1 ] !=
+UNINITIALIZED_ZCSIG ) ) ; zcEvent = ( zcEvent || zcEvent_p ) ; if ( zcEvent )
+{ if ( ( int8_T ) ( zcEvent_idx_0 ? bycobgjg5v [ 0 ] > 0 ? RISING_ZCEVENT :
+FALLING_ZCEVENT : NO_ZCEVENT ) != 0 ) { if ( gda34ypjdnl . g4vojqkw54 <
+65535U ) { gda34ypjdnl . g4vojqkw54 ++ ; } gda34ypjdnl . gv1rqrtqi0 =
+mhzajis335 ; jljmnydeaj ( p1wkyth5j4 , frzlt3rcmj , iqne4m0ue5 , iai0lzaoiu ,
+c3fhpejm23 , jmg1zzvvlv , kkq3emhdsj ) ; } if ( ( int8_T ) ( zcEvent_p ?
 bycobgjg5v [ 1 ] > 0 ? RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT ) == 1 )
 { gda34ypjdnl . gv1rqrtqi0 = h5dg5lc3gx ; jljmnydeaj ( p1wkyth5j4 ,
-frzlt3rcmj , iai0lzaoiu , c3fhpejm23 , jmg1zzvvlv ) ; } gda34ypjdnl .
-nh1ezicw0l = 4 ; } aql5tvsbak3 . khmrujbhfq [ 0 ] = ( ZCSigState ) (
-bycobgjg5v [ 0 ] > 0 ) ; aql5tvsbak3 . khmrujbhfq [ 1 ] = ( ZCSigState ) (
-bycobgjg5v [ 1 ] > 0 ) ; } void fub4xrbtkg ( void ) { on3hfz0u4t * const
-i0go2lfvcw = & ( ggeylsohep . rtm ) ; if ( ! slIsRapidAcceleratorSimulating (
-) ) { slmrRunPluginEvent ( i0go2lfvcw -> _mdlRefSfcnS , "RealTimeMachine" ,
+frzlt3rcmj , iqne4m0ue5 , iai0lzaoiu , c3fhpejm23 , jmg1zzvvlv , kkq3emhdsj )
+; } gda34ypjdnl . nh1ezicw0l = 4 ; } aql5tvsbak3 . khmrujbhfq [ 0 ] = (
+ZCSigState ) ( bycobgjg5v [ 0 ] > 0 ) ; aql5tvsbak3 . khmrujbhfq [ 1 ] = (
+ZCSigState ) ( bycobgjg5v [ 1 ] > 0 ) ; } void fub4xrbtkg ( void ) {
+on3hfz0u4t * const i0go2lfvcw = & ( ggeylsohep . rtm ) ; if ( !
+slIsRapidAcceleratorSimulating ( ) ) { slmrRunPluginEvent ( i0go2lfvcw ->
+_mdlRefSfcnS , "RealTimeMachine" ,
 "SIMSTATUS_TERMINATING_MODELREF_ACCEL_EVENT" ) ; } } void pjqcq1rgoo (
 SimStruct * _mdlRefSfcnS , int_T mdlref_TID0 , void * sysRanPtr , int
 contextTid , rtwCAPI_ModelMappingInfo * rt_ParentMMI , const char_T *
@@ -187,9 +211,9 @@ on3hfz0u4t ) ) ; htcuuvbehv [ 0 ] = mdlref_TID0 ; i0go2lfvcw -> _mdlRefSfcnS
 = ( _mdlRefSfcnS ) ; if ( ! slIsRapidAcceleratorSimulating ( ) ) {
 slmrRunPluginEvent ( i0go2lfvcw -> _mdlRefSfcnS , "RealTimeMachine" ,
 "START_OF_SIM_MODEL_MODELREF_ACCEL_EVENT" ) ; } ( void ) memset ( ( void * )
-& gda34ypjdnl , 0 , sizeof ( hadqqzcymvl ) ) ;
-RealTimeMachine_InitializeDataMapInfo ( i0go2lfvcw , sysRanPtr , contextTid )
-; if ( ( rt_ParentMMI != ( NULL ) ) && ( rt_ChildPath != ( NULL ) ) ) {
+& gda34ypjdnl , 0 , sizeof ( hadqqzcymvl ) ) ; gda34ypjdnl . fjuagy55mx = 0.0
+; RealTimeMachine_InitializeDataMapInfo ( i0go2lfvcw , sysRanPtr , contextTid
+) ; if ( ( rt_ParentMMI != ( NULL ) ) && ( rt_ChildPath != ( NULL ) ) ) {
 rtwCAPI_SetChildMMI ( * rt_ParentMMI , rt_ChildMMIIdx , & ( i0go2lfvcw ->
 DataMapInfo . mmi ) ) ; rtwCAPI_SetPath ( i0go2lfvcw -> DataMapInfo . mmi ,
 rt_ChildPath ) ; rtwCAPI_MMISetContStateStartIndex ( i0go2lfvcw ->
@@ -253,58 +277,70 @@ mxGetFieldByNumber ( srcArray , i , j ) , offset ) ) ; return fieldVal & ( (
 1u << numBits ) - 1u ) ; } mxArray * mr_RealTimeMachine_GetDWork ( ) { static
 const char * ssDWFieldNames [ 3 ] = { "NULL_B" , "gda34ypjdnl" ,
 "aql5tvsbak3" , } ; mxArray * ssDW = mxCreateStructMatrix ( 1 , 1 , 3 ,
-ssDWFieldNames ) ; { static const char * rtdwDataFieldNames [ 8 ] = {
-"gda34ypjdnl.gv1rqrtqi0" , "gda34ypjdnl.lv4vsckgcy" ,
-"gda34ypjdnl.c1oaufpit0" , "gda34ypjdnl.nh1ezicw0l" ,
+ssDWFieldNames ) ; { static const char * rtdwDataFieldNames [ 11 ] = {
+"gda34ypjdnl.fjuagy55mx" , "gda34ypjdnl.gv1rqrtqi0" ,
+"gda34ypjdnl.pqcdhfoo0i" , "gda34ypjdnl.ibktalusb3" ,
+"gda34ypjdnl.g4vojqkw54" , "gda34ypjdnl.nh1ezicw0l" ,
 "gda34ypjdnl.fisynvgih3" , "gda34ypjdnl.i13xy2biy1" ,
-"gda34ypjdnl.h2qcunvc5q" , "gda34ypjdnl.ohkser5hbn" , } ; mxArray * rtdwData
-= mxCreateStructMatrix ( 1 , 1 , 8 , rtdwDataFieldNames ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 0 , ( const void * ) &
-( gda34ypjdnl . gv1rqrtqi0 ) , sizeof ( gda34ypjdnl . gv1rqrtqi0 ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 1 , ( const void * ) &
-( gda34ypjdnl . lv4vsckgcy ) , sizeof ( gda34ypjdnl . lv4vsckgcy ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 2 , ( const void * ) &
-( gda34ypjdnl . c1oaufpit0 ) , sizeof ( gda34ypjdnl . c1oaufpit0 ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 3 , ( const void * ) &
-( gda34ypjdnl . nh1ezicw0l ) , sizeof ( gda34ypjdnl . nh1ezicw0l ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 4 , ( const void * ) &
-( gda34ypjdnl . fisynvgih3 ) , sizeof ( gda34ypjdnl . fisynvgih3 ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 5 , ( const void * ) &
-( gda34ypjdnl . i13xy2biy1 ) , sizeof ( gda34ypjdnl . i13xy2biy1 ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 6 , ( const void * ) &
-( gda34ypjdnl . h2qcunvc5q ) , sizeof ( gda34ypjdnl . h2qcunvc5q ) ) ;
-mr_RealTimeMachine_cacheDataAsMxArray ( rtdwData , 0 , 7 , ( const void * ) &
-( gda34ypjdnl . ohkser5hbn ) , sizeof ( gda34ypjdnl . ohkser5hbn ) ) ;
-mxSetFieldByNumber ( ssDW , 0 , 1 , rtdwData ) ; }
-mr_RealTimeMachine_cacheDataAsMxArray ( ssDW , 0 , 2 , ( const void * ) & (
-aql5tvsbak3 ) , sizeof ( aql5tvsbak3 ) ) ; return ssDW ; } void
+"gda34ypjdnl.dtwn22wnpy" , "gda34ypjdnl.ozi3d3zro3" ,
+"gda34ypjdnl.iabzhsbkbf" , } ; mxArray * rtdwData = mxCreateStructMatrix ( 1
+, 1 , 11 , rtdwDataFieldNames ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 0 , ( const void * ) & ( gda34ypjdnl . fjuagy55mx ) , sizeof (
+gda34ypjdnl . fjuagy55mx ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 1 , ( const void * ) & ( gda34ypjdnl . gv1rqrtqi0 ) , sizeof (
+gda34ypjdnl . gv1rqrtqi0 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 2 , ( const void * ) & ( gda34ypjdnl . pqcdhfoo0i ) , sizeof (
+gda34ypjdnl . pqcdhfoo0i ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 3 , ( const void * ) & ( gda34ypjdnl . ibktalusb3 ) , sizeof (
+gda34ypjdnl . ibktalusb3 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 4 , ( const void * ) & ( gda34ypjdnl . g4vojqkw54 ) , sizeof (
+gda34ypjdnl . g4vojqkw54 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 5 , ( const void * ) & ( gda34ypjdnl . nh1ezicw0l ) , sizeof (
+gda34ypjdnl . nh1ezicw0l ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 6 , ( const void * ) & ( gda34ypjdnl . fisynvgih3 ) , sizeof (
+gda34ypjdnl . fisynvgih3 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 7 , ( const void * ) & ( gda34ypjdnl . i13xy2biy1 ) , sizeof (
+gda34ypjdnl . i13xy2biy1 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 8 , ( const void * ) & ( gda34ypjdnl . dtwn22wnpy ) , sizeof (
+gda34ypjdnl . dtwn22wnpy ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 9 , ( const void * ) & ( gda34ypjdnl . ozi3d3zro3 ) , sizeof (
+gda34ypjdnl . ozi3d3zro3 ) ) ; mr_RealTimeMachine_cacheDataAsMxArray (
+rtdwData , 0 , 10 , ( const void * ) & ( gda34ypjdnl . iabzhsbkbf ) , sizeof
+( gda34ypjdnl . iabzhsbkbf ) ) ; mxSetFieldByNumber ( ssDW , 0 , 1 , rtdwData
+) ; } mr_RealTimeMachine_cacheDataAsMxArray ( ssDW , 0 , 2 , ( const void * )
+& ( aql5tvsbak3 ) , sizeof ( aql5tvsbak3 ) ) ; return ssDW ; } void
 mr_RealTimeMachine_SetDWork ( const mxArray * ssDW ) { ( void ) ssDW ; {
 const mxArray * rtdwData = mxGetFieldByNumber ( ssDW , 0 , 1 ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-gv1rqrtqi0 ) , rtdwData , 0 , 0 , sizeof ( gda34ypjdnl . gv1rqrtqi0 ) ) ;
+fjuagy55mx ) , rtdwData , 0 , 0 , sizeof ( gda34ypjdnl . fjuagy55mx ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-lv4vsckgcy ) , rtdwData , 0 , 1 , sizeof ( gda34ypjdnl . lv4vsckgcy ) ) ;
+gv1rqrtqi0 ) , rtdwData , 0 , 1 , sizeof ( gda34ypjdnl . gv1rqrtqi0 ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-c1oaufpit0 ) , rtdwData , 0 , 2 , sizeof ( gda34ypjdnl . c1oaufpit0 ) ) ;
+pqcdhfoo0i ) , rtdwData , 0 , 2 , sizeof ( gda34ypjdnl . pqcdhfoo0i ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-nh1ezicw0l ) , rtdwData , 0 , 3 , sizeof ( gda34ypjdnl . nh1ezicw0l ) ) ;
+ibktalusb3 ) , rtdwData , 0 , 3 , sizeof ( gda34ypjdnl . ibktalusb3 ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-fisynvgih3 ) , rtdwData , 0 , 4 , sizeof ( gda34ypjdnl . fisynvgih3 ) ) ;
+g4vojqkw54 ) , rtdwData , 0 , 4 , sizeof ( gda34ypjdnl . g4vojqkw54 ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-i13xy2biy1 ) , rtdwData , 0 , 5 , sizeof ( gda34ypjdnl . i13xy2biy1 ) ) ;
+nh1ezicw0l ) , rtdwData , 0 , 5 , sizeof ( gda34ypjdnl . nh1ezicw0l ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-h2qcunvc5q ) , rtdwData , 0 , 6 , sizeof ( gda34ypjdnl . h2qcunvc5q ) ) ;
+fisynvgih3 ) , rtdwData , 0 , 6 , sizeof ( gda34ypjdnl . fisynvgih3 ) ) ;
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
-ohkser5hbn ) , rtdwData , 0 , 7 , sizeof ( gda34ypjdnl . ohkser5hbn ) ) ; }
+i13xy2biy1 ) , rtdwData , 0 , 7 , sizeof ( gda34ypjdnl . i13xy2biy1 ) ) ;
+mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
+dtwn22wnpy ) , rtdwData , 0 , 8 , sizeof ( gda34ypjdnl . dtwn22wnpy ) ) ;
+mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
+ozi3d3zro3 ) , rtdwData , 0 , 9 , sizeof ( gda34ypjdnl . ozi3d3zro3 ) ) ;
+mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( gda34ypjdnl .
+iabzhsbkbf ) , rtdwData , 0 , 10 , sizeof ( gda34ypjdnl . iabzhsbkbf ) ) ; }
 mr_RealTimeMachine_restoreDataFromMxArray ( ( void * ) & ( aql5tvsbak3 ) ,
 ssDW , 0 , 2 , sizeof ( aql5tvsbak3 ) ) ; } void
 mr_RealTimeMachine_RegisterSimStateChecksum ( SimStruct * S ) { const
-uint32_T chksum [ 4 ] = { 2276146965U , 2058388145U , 1999755894U ,
-2308164033U , } ; slmrModelRefRegisterSimStateChecksum ( S ,
-"RealTimeMachine" , & chksum [ 0 ] ) ; } mxArray *
-mr_RealTimeMachine_GetSimStateDisallowedBlocks ( ) { return NULL ; } static
-void * RealTimeMachine_InitRestoreDataPtr = NULL ; void
-mr_RealTimeMachine_CreateInitRestoreData ( ) {
+uint32_T chksum [ 4 ] = { 710195255U , 2722821494U , 585008549U , 431079289U
+, } ; slmrModelRefRegisterSimStateChecksum ( S , "RealTimeMachine" , & chksum
+[ 0 ] ) ; } mxArray * mr_RealTimeMachine_GetSimStateDisallowedBlocks ( ) {
+return NULL ; } static void * RealTimeMachine_InitRestoreDataPtr = NULL ;
+void mr_RealTimeMachine_CreateInitRestoreData ( ) {
 RealTimeMachine_InitRestoreDataPtr = utMalloc ( sizeof ( gda34ypjdnl ) ) ;
 memcpy ( RealTimeMachine_InitRestoreDataPtr , ( void * ) & ( gda34ypjdnl ) ,
 sizeof ( gda34ypjdnl ) ) ; } void mr_RealTimeMachine_CopyFromInitRestoreData

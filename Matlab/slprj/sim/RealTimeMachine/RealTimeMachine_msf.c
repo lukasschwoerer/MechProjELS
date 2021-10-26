@@ -47,21 +47,26 @@ sizeInBytes ; ( void ) customOPSaveFcn ; ( void ) customOPRestoreFcn ; }
 static void mdlInitializeConditions ( SimStruct * S ) { uint16_T *
 o_o_o_B_2_1 = ( uint16_T * ) ssGetOutputPortSignal ( S , 0 ) ; boolean_T *
 o_o_o_B_2_2 = ( boolean_T * ) ssGetOutputPortSignal ( S , 1 ) ; boolean_T *
-o_o_o_B_2_3 = ( boolean_T * ) ssGetOutputPortSignal ( S , 2 ) ; f05bofh2ui (
-o_o_o_B_2_1 , o_o_o_B_2_2 , o_o_o_B_2_3 ) ; } static void mdlReset (
-SimStruct * S ) { uint16_T * o_o_o_B_2_1 = ( uint16_T * )
+o_o_o_B_2_3 = ( boolean_T * ) ssGetOutputPortSignal ( S , 2 ) ; boolean_T *
+o_o_o_B_2_4 = ( boolean_T * ) ssGetOutputPortSignal ( S , 3 ) ; f05bofh2ui (
+o_o_o_B_2_1 , o_o_o_B_2_2 , o_o_o_B_2_3 , o_o_o_B_2_4 ) ; } static void
+mdlReset ( SimStruct * S ) { uint16_T * o_o_o_B_2_1 = ( uint16_T * )
 ssGetOutputPortSignal ( S , 0 ) ; boolean_T * o_o_o_B_2_2 = ( boolean_T * )
 ssGetOutputPortSignal ( S , 1 ) ; boolean_T * o_o_o_B_2_3 = ( boolean_T * )
-ssGetOutputPortSignal ( S , 2 ) ; ai1r34gglr ( o_o_o_B_2_1 , o_o_o_B_2_2 ,
-o_o_o_B_2_3 ) ; } static void mdlPeriodicOutputUpdate ( SimStruct * S , int_T
-tid ) { uint32_T const * i_gf1flkztbn = ( uint32_T * ) ssGetInputPortSignal (
-S , 0 ) ; real_T const * i_jojuxyhhuc = ( real_T * ) ssGetInputPortSignal ( S
-, 1 ) ; uint8_T const * i_mzgqkthjhx = ( uint8_T * ) ssGetInputPortSignal ( S
-, 3 ) ; uint16_T * o_o_o_B_2_1 = ( uint16_T * ) ssGetOutputPortSignal ( S , 0
-) ; boolean_T * o_o_o_B_2_2 = ( boolean_T * ) ssGetOutputPortSignal ( S , 1 )
-; boolean_T * o_o_o_B_2_3 = ( boolean_T * ) ssGetOutputPortSignal ( S , 2 ) ;
-if ( tid == 0 ) { RealTimeMachine ( i_gf1flkztbn , i_jojuxyhhuc ,
-i_mzgqkthjhx , o_o_o_B_2_1 , o_o_o_B_2_2 , o_o_o_B_2_3 ) ; } } static void
+ssGetOutputPortSignal ( S , 2 ) ; boolean_T * o_o_o_B_2_4 = ( boolean_T * )
+ssGetOutputPortSignal ( S , 3 ) ; ai1r34gglr ( o_o_o_B_2_1 , o_o_o_B_2_2 ,
+o_o_o_B_2_3 , o_o_o_B_2_4 ) ; } static void mdlPeriodicOutputUpdate (
+SimStruct * S , int_T tid ) { uint32_T const * i_gf1flkztbn = ( uint32_T * )
+ssGetInputPortSignal ( S , 0 ) ; real_T const * i_jojuxyhhuc = ( real_T * )
+ssGetInputPortSignal ( S , 1 ) ; uint8_T const * i_mzgqkthjhx = ( uint8_T * )
+ssGetInputPortSignal ( S , 3 ) ; uint16_T const * i_frzsi3fkcd = ( uint16_T *
+) ssGetInputPortSignal ( S , 4 ) ; uint16_T * o_o_o_B_2_1 = ( uint16_T * )
+ssGetOutputPortSignal ( S , 0 ) ; boolean_T * o_o_o_B_2_2 = ( boolean_T * )
+ssGetOutputPortSignal ( S , 1 ) ; boolean_T * o_o_o_B_2_3 = ( boolean_T * )
+ssGetOutputPortSignal ( S , 2 ) ; boolean_T * o_o_o_B_2_4 = ( boolean_T * )
+ssGetOutputPortSignal ( S , 3 ) ; if ( tid == 0 ) { RealTimeMachine (
+i_gf1flkztbn , i_jojuxyhhuc , i_mzgqkthjhx , i_frzsi3fkcd , o_o_o_B_2_1 ,
+o_o_o_B_2_2 , o_o_o_B_2_3 , o_o_o_B_2_4 ) ; } } static void
 mdlInitializeSizes ( SimStruct * S ) { if ( ( S -> mdlInfo -> genericFcn != (
 NULL ) ) && ( ! ( S -> mdlInfo -> genericFcn ) ( S ,
 GEN_FCN_CHK_MODELREF_SFUN_HAS_MODEL_BLOCK , - 1 , ( NULL ) ) ) ) { return ; }
@@ -70,8 +75,8 @@ rt_InitInfAndNaN ( sizeof ( real_T ) ) ; if ( S -> mdlInfo -> genericFcn != (
 NULL ) ) { _GenericFcn fcn = S -> mdlInfo -> genericFcn ; }
 ssSetRTWGeneratedSFcn ( S , 2 ) ; ssSetNumContStates ( S , 0 ) ;
 ssSetNumDiscStates ( S , 0 ) ; ssSetSymbolicDimsSupport ( S , true ) ;
-slmrInitializeIOPortDataVectors ( S , 4 , 3 ) ; if ( ! ssSetNumInputPorts ( S
-, 4 ) ) return ; if ( ! ssSetInputPortVectorDimension ( S , 0 , 1 ) ) return
+slmrInitializeIOPortDataVectors ( S , 5 , 4 ) ; if ( ! ssSetNumInputPorts ( S
+, 5 ) ) return ; if ( ! ssSetInputPortVectorDimension ( S , 0 , 1 ) ) return
 ; ssSetInputPortDimensionsMode ( S , 0 , FIXED_DIMS_MODE ) ;
 ssSetInputPortFrameData ( S , 0 , FRAME_NO ) ; if ( ssGetSimMode ( S ) !=
 SS_SIMMODE_SIZES_CALL_ONLY ) { ssSetInputPortDataType ( S , 0 , SS_UINT32 ) ;
@@ -84,7 +89,7 @@ unitIdReg ) ;
 } ssSetInputPortDirectFeedThrough ( S , 0 , 1 ) ;
 ssSetInputPortRequiredContiguous ( S , 0 , 1 ) ; ssSetInputPortOptimOpts ( S
 , 0 , SS_NOT_REUSABLE_AND_GLOBAL ) ; ssSetInputPortOverWritable ( S , 0 ,
-false ) ; ssSetInputPortSampleTime ( S , 0 , 0.0001 ) ;
+false ) ; ssSetInputPortSampleTime ( S , 0 , 0.001 ) ;
 ssSetInputPortOffsetTime ( S , 0 , 0.0 ) ; if ( !
 ssSetInputPortVectorDimension ( S , 1 , 1 ) ) return ;
 ssSetInputPortDimensionsMode ( S , 1 , FIXED_DIMS_MODE ) ;
@@ -99,7 +104,7 @@ unitIdReg ) ;
 } ssSetInputPortDirectFeedThrough ( S , 1 , 1 ) ;
 ssSetInputPortRequiredContiguous ( S , 1 , 1 ) ; ssSetInputPortOptimOpts ( S
 , 1 , SS_NOT_REUSABLE_AND_GLOBAL ) ; ssSetInputPortOverWritable ( S , 1 ,
-false ) ; ssSetInputPortSampleTime ( S , 1 , 0.0001 ) ;
+false ) ; ssSetInputPortSampleTime ( S , 1 , 0.001 ) ;
 ssSetInputPortOffsetTime ( S , 1 , 0.0 ) ; if ( !
 ssSetInputPortVectorDimension ( S , 2 , 1 ) ) return ;
 ssSetInputPortDimensionsMode ( S , 2 , FIXED_DIMS_MODE ) ;
@@ -114,7 +119,7 @@ unitIdReg ) ;
 } ssSetInputPortDirectFeedThrough ( S , 2 , 1 ) ;
 ssSetInputPortRequiredContiguous ( S , 2 , 1 ) ; ssSetInputPortOptimOpts ( S
 , 2 , SS_NOT_REUSABLE_AND_GLOBAL ) ; ssSetInputPortOverWritable ( S , 2 ,
-false ) ; ssSetInputPortSampleTime ( S , 2 , 0.0001 ) ;
+false ) ; ssSetInputPortSampleTime ( S , 2 , 0.001 ) ;
 ssSetInputPortOffsetTime ( S , 2 , 0.0 ) ; if ( !
 ssSetInputPortVectorDimension ( S , 3 , 2 ) ) return ;
 ssSetInputPortDimensionsMode ( S , 3 , FIXED_DIMS_MODE ) ;
@@ -129,8 +134,23 @@ unitIdReg ) ;
 } ssSetInputPortDirectFeedThrough ( S , 3 , 1 ) ;
 ssSetInputPortRequiredContiguous ( S , 3 , 1 ) ; ssSetInputPortOptimOpts ( S
 , 3 , SS_NOT_REUSABLE_AND_LOCAL ) ; ssSetInputPortOverWritable ( S , 3 ,
-false ) ; ssSetInputPortSampleTime ( S , 3 , 0.0001 ) ;
-ssSetInputPortOffsetTime ( S , 3 , 0.0 ) ; if ( ! ssSetNumOutputPorts ( S , 3
+false ) ; ssSetInputPortSampleTime ( S , 3 , 0.001 ) ;
+ssSetInputPortOffsetTime ( S , 3 , 0.0 ) ; if ( !
+ssSetInputPortVectorDimension ( S , 4 , 1 ) ) return ;
+ssSetInputPortDimensionsMode ( S , 4 , FIXED_DIMS_MODE ) ;
+ssSetInputPortFrameData ( S , 4 , FRAME_NO ) ; if ( ssGetSimMode ( S ) !=
+SS_SIMMODE_SIZES_CALL_ONLY ) { ssSetInputPortDataType ( S , 4 , SS_UINT16 ) ;
+} if ( ssGetSimMode ( S ) != SS_SIMMODE_SIZES_CALL_ONLY ) {
+#if defined (MATLAB_MEX_FILE)
+UnitId unitIdReg ; ssRegisterUnitFromExpr ( S , "" , & unitIdReg ) ; if (
+unitIdReg == INVALID_UNIT_ID ) return ; ssSetInputPortUnit ( S , 4 ,
+unitIdReg ) ;
+#endif
+} ssSetInputPortDirectFeedThrough ( S , 4 , 1 ) ;
+ssSetInputPortRequiredContiguous ( S , 4 , 1 ) ; ssSetInputPortOptimOpts ( S
+, 4 , SS_NOT_REUSABLE_AND_GLOBAL ) ; ssSetInputPortOverWritable ( S , 4 ,
+false ) ; ssSetInputPortSampleTime ( S , 4 , 0.001 ) ;
+ssSetInputPortOffsetTime ( S , 4 , 0.0 ) ; if ( ! ssSetNumOutputPorts ( S , 4
 ) ) return ; if ( ! ssSetOutputPortVectorDimension ( S , 0 , 1 ) ) return ;
 ssSetOutputPortDimensionsMode ( S , 0 , FIXED_DIMS_MODE ) ;
 ssSetOutputPortFrameData ( S , 0 , FRAME_NO ) ; if ( ssGetSimMode ( S ) !=
@@ -141,8 +161,8 @@ UnitId unitIdReg ; ssRegisterUnitFromExpr ( S , "" , & unitIdReg ) ; if (
 unitIdReg == INVALID_UNIT_ID ) return ; ssSetOutputPortUnit ( S , 0 ,
 unitIdReg ) ;
 #endif
-} ssSetOutputPortSampleTime ( S , 0 , 0.0001 ) ; ssSetOutputPortOffsetTime (
-S , 0 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 0 , 0 ) ;
+} ssSetOutputPortSampleTime ( S , 0 , 0.001 ) ; ssSetOutputPortOffsetTime ( S
+, 0 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 0 , 0 ) ;
 ssSetOutputPortOkToMerge ( S , 0 , SS_NOT_OK_TO_MERGE ) ;
 ssSetOutputPortICAttributes ( S , 0 , false , false , false ) ;
 ssSetOutputPortOptimOpts ( S , 0 , SS_NOT_REUSABLE_AND_GLOBAL ) ; if ( !
@@ -156,8 +176,8 @@ UnitId unitIdReg ; ssRegisterUnitFromExpr ( S , "" , & unitIdReg ) ; if (
 unitIdReg == INVALID_UNIT_ID ) return ; ssSetOutputPortUnit ( S , 1 ,
 unitIdReg ) ;
 #endif
-} ssSetOutputPortSampleTime ( S , 1 , 0.0001 ) ; ssSetOutputPortOffsetTime (
-S , 1 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 1 , 0 ) ;
+} ssSetOutputPortSampleTime ( S , 1 , 0.001 ) ; ssSetOutputPortOffsetTime ( S
+, 1 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 1 , 0 ) ;
 ssSetOutputPortOkToMerge ( S , 1 , SS_NOT_OK_TO_MERGE ) ;
 ssSetOutputPortICAttributes ( S , 1 , false , false , false ) ;
 ssSetOutputPortOptimOpts ( S , 1 , SS_NOT_REUSABLE_AND_GLOBAL ) ; if ( !
@@ -171,11 +191,26 @@ UnitId unitIdReg ; ssRegisterUnitFromExpr ( S , "" , & unitIdReg ) ; if (
 unitIdReg == INVALID_UNIT_ID ) return ; ssSetOutputPortUnit ( S , 2 ,
 unitIdReg ) ;
 #endif
-} ssSetOutputPortSampleTime ( S , 2 , 0.0001 ) ; ssSetOutputPortOffsetTime (
-S , 2 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 2 , 0 ) ;
+} ssSetOutputPortSampleTime ( S , 2 , 0.001 ) ; ssSetOutputPortOffsetTime ( S
+, 2 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 2 , 0 ) ;
 ssSetOutputPortOkToMerge ( S , 2 , SS_NOT_OK_TO_MERGE ) ;
 ssSetOutputPortICAttributes ( S , 2 , false , false , false ) ;
-ssSetOutputPortOptimOpts ( S , 2 , SS_NOT_REUSABLE_AND_GLOBAL ) ;
+ssSetOutputPortOptimOpts ( S , 2 , SS_NOT_REUSABLE_AND_GLOBAL ) ; if ( !
+ssSetOutputPortVectorDimension ( S , 3 , 1 ) ) return ;
+ssSetOutputPortDimensionsMode ( S , 3 , FIXED_DIMS_MODE ) ;
+ssSetOutputPortFrameData ( S , 3 , FRAME_NO ) ; if ( ssGetSimMode ( S ) !=
+SS_SIMMODE_SIZES_CALL_ONLY ) { ssSetOutputPortDataType ( S , 3 , SS_BOOLEAN )
+; } if ( ssGetSimMode ( S ) != SS_SIMMODE_SIZES_CALL_ONLY ) {
+#if defined (MATLAB_MEX_FILE)
+UnitId unitIdReg ; ssRegisterUnitFromExpr ( S , "" , & unitIdReg ) ; if (
+unitIdReg == INVALID_UNIT_ID ) return ; ssSetOutputPortUnit ( S , 3 ,
+unitIdReg ) ;
+#endif
+} ssSetOutputPortSampleTime ( S , 3 , 0.001 ) ; ssSetOutputPortOffsetTime ( S
+, 3 , 0.0 ) ; ssSetOutputPortDiscreteValuedOutput ( S , 3 , 0 ) ;
+ssSetOutputPortOkToMerge ( S , 3 , SS_NOT_OK_TO_MERGE ) ;
+ssSetOutputPortICAttributes ( S , 3 , false , false , false ) ;
+ssSetOutputPortOptimOpts ( S , 3 , SS_NOT_REUSABLE_AND_GLOBAL ) ;
 ssSetSimStateCompliance ( S , USE_CUSTOM_SIM_STATE ) ;
 mr_RealTimeMachine_RegisterSimStateChecksum ( S ) ; ssSetNumSampleTimes ( S ,
 PORT_BASED_SAMPLE_TIMES ) ; ssSetParameterTuningCompliance ( S , true ) ;
@@ -191,10 +226,12 @@ ssSetOutputPortIsNonContinuous ( S , 1 , 0 ) ;
 ssSetOutputPortIsFedByBlockWithModesNoZCs ( S , 1 , 0 ) ;
 ssSetOutputPortIsNonContinuous ( S , 2 , 0 ) ;
 ssSetOutputPortIsFedByBlockWithModesNoZCs ( S , 2 , 0 ) ;
+ssSetOutputPortIsNonContinuous ( S , 3 , 0 ) ;
+ssSetOutputPortIsFedByBlockWithModesNoZCs ( S , 3 , 0 ) ;
 ssSetInputPortIsNotDerivPort ( S , 0 , 1 ) ; ssSetInputPortIsNotDerivPort ( S
 , 1 , 1 ) ; ssSetInputPortIsNotDerivPort ( S , 2 , 1 ) ;
-ssSetInputPortIsNotDerivPort ( S , 3 , 1 ) ;
-ssSetModelReferenceSampleTimeInheritanceRule ( S ,
+ssSetInputPortIsNotDerivPort ( S , 3 , 1 ) ; ssSetInputPortIsNotDerivPort ( S
+, 4 , 1 ) ; ssSetModelReferenceSampleTimeInheritanceRule ( S ,
 DISALLOW_SAMPLE_TIME_INHERITANCE ) ; ssSetRuntimeThreadSafetyCompliance ( S ,
 RUNTIME_THREAD_SAFETY_COMPLIANCE_TRUE ) ; ssSetAcceptsFcnCallInputs ( S ) ;
 ssSetModelReferenceNormalModeSupport ( S ,
@@ -236,14 +273,17 @@ static void mdlStart ( SimStruct * S ) { } static void mdlOutputs ( SimStruct
 _MM_SET_FLUSH_ZERO_MODE ( _MM_FLUSH_ZERO_ON ) ; uint32_T const * i_gf1flkztbn
 = ( uint32_T * ) ssGetInputPortSignal ( S , 0 ) ; real_T const * i_jojuxyhhuc
 = ( real_T * ) ssGetInputPortSignal ( S , 1 ) ; uint8_T const * i_mzgqkthjhx
-= ( uint8_T * ) ssGetInputPortSignal ( S , 3 ) ; uint16_T * o_o_o_B_2_1 = (
-uint16_T * ) ssGetOutputPortSignal ( S , 0 ) ; boolean_T * o_o_o_B_2_2 = (
-boolean_T * ) ssGetOutputPortSignal ( S , 1 ) ; boolean_T * o_o_o_B_2_3 = (
-boolean_T * ) ssGetOutputPortSignal ( S , 2 ) ; if ( tid != CONSTANT_TID &&
-tid != PARAMETER_TUNING_TID ) { RealTimeMachine ( i_gf1flkztbn , i_jojuxyhhuc
-, i_mzgqkthjhx , o_o_o_B_2_1 , o_o_o_B_2_2 , o_o_o_B_2_3 ) ; }
-_MM_SET_FLUSH_ZERO_MODE ( denormalBackup ) ; } static void mdlTerminate (
-SimStruct * S ) { fub4xrbtkg ( ) ; return ; }
+= ( uint8_T * ) ssGetInputPortSignal ( S , 3 ) ; uint16_T const *
+i_frzsi3fkcd = ( uint16_T * ) ssGetInputPortSignal ( S , 4 ) ; uint16_T *
+o_o_o_B_2_1 = ( uint16_T * ) ssGetOutputPortSignal ( S , 0 ) ; boolean_T *
+o_o_o_B_2_2 = ( boolean_T * ) ssGetOutputPortSignal ( S , 1 ) ; boolean_T *
+o_o_o_B_2_3 = ( boolean_T * ) ssGetOutputPortSignal ( S , 2 ) ; boolean_T *
+o_o_o_B_2_4 = ( boolean_T * ) ssGetOutputPortSignal ( S , 3 ) ; if ( tid !=
+CONSTANT_TID && tid != PARAMETER_TUNING_TID ) { RealTimeMachine (
+i_gf1flkztbn , i_jojuxyhhuc , i_mzgqkthjhx , i_frzsi3fkcd , o_o_o_B_2_1 ,
+o_o_o_B_2_2 , o_o_o_B_2_3 , o_o_o_B_2_4 ) ; } _MM_SET_FLUSH_ZERO_MODE (
+denormalBackup ) ; } static void mdlTerminate ( SimStruct * S ) { fub4xrbtkg
+( ) ; return ; }
 #define MDL_CLEANUP_RUNTIME_RESOURCES
 static void mdlCleanupRuntimeResources ( SimStruct * S ) { }
 #if !defined(MDL_SIM_STATE)

@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'StepperRTM'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.104</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.113</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Fri Aug 27 23:26:34 2021</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue Oct 26 22:50:53 2021</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: Texas Instruments-&gt;C2000</span>
@@ -81,20 +81,20 @@
 </span><span><a class="LN" name="67">   67   </a>    <span class="KW">switch</span> (<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main) <b>{</b>
 </span><span><a class="LN" name="68">   68   </a>     <span class="KW">case</span> StepperRTM_IN_CWStepHigh:
 </span><span><a class="LN" name="69">   69   </a>      <span class="CT">/* During 'CWStepHigh': '<a href="matlab:coder.internal.code2model('StepperRTM:20:138')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:138</i></font></a>' */</span>
-</span><span><a class="LN" name="70">   70   </a>      <span class="KW">if</span> (<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &gt;= <a href="StepperRTM_data_c.html#var_StepperRTM_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_P');" target="_self"><font color="#1122aa">StepperRTM_P</font></a>.StpPulsDur) <b>{</b>
-</span><span><a class="LN" name="71">   71   </a>        <span class="CT">/* Transition: '<a href="matlab:coder.internal.code2model('StepperRTM:20:144')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:144</i></font></a>' */</span>
-</span><span><a class="LN" name="72">   72   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main = StepperRTM_IN_CWStepLow;
-</span><span><a class="LN" name="73">   73   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0UL;
-</span><span><a class="LN" name="74">   74   </a>
-</span><span><a class="LN" name="75">   75   </a>        <span class="CT">/* Entry 'CWStepLow': '<a href="matlab:coder.internal.code2model('StepperRTM:20:143')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:143</i></font></a>' */</span>
-</span><span><a class="LN" name="76">   76   </a>        <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit = false;
-</span><span><a class="LN" name="77">   77   </a>      <b>}</b>
-</span><span><a class="LN" name="78">   78   </a>      <span class="KW">break</span>;
-</span><span><a class="LN" name="79">   79   </a>
-</span><span><a class="LN" name="80">   80   </a>     <span class="KW">case</span> StepperRTM_IN_CWStepLow:
-</span><span><a class="LN" name="81">   81   </a>      <span class="CT">/* During 'CWStepLow': '<a href="matlab:coder.internal.code2model('StepperRTM:20:143')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:143</i></font></a>' */</span>
-</span><span><a class="LN" name="82">   82   </a>      <span class="KW">if</span> (<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &gt;= (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)((<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)
-</span><span><a class="LN" name="83">   83   </a>           <a href="StepperRTM_data_c.html#var_StepperRTM_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_P');" target="_self"><font color="#1122aa">StepperRTM_P</font></a>.StpPulsDur &lt;&lt; 1U)) <b>{</b>
+</span><span><a class="LN" name="70">   70   </a>      <span class="KW">if</span> ((<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &gt;= (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)
+</span><span><a class="LN" name="71">   71   </a>          <a href="StepperRTM_data_c.html#var_StepperRTM_P" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_P');" target="_self"><font color="#1122aa">StepperRTM_P</font></a>.StpPulsDur) <b>{</b>
+</span><span><a class="LN" name="72">   72   </a>        <span class="CT">/* Transition: '<a href="matlab:coder.internal.code2model('StepperRTM:20:144')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:144</i></font></a>' */</span>
+</span><span><a class="LN" name="73">   73   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main = StepperRTM_IN_CWStepLow;
+</span><span><a class="LN" name="74">   74   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0U;
+</span><span><a class="LN" name="75">   75   </a>
+</span><span><a class="LN" name="76">   76   </a>        <span class="CT">/* Entry 'CWStepLow': '<a href="matlab:coder.internal.code2model('StepperRTM:20:143')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:143</i></font></a>' */</span>
+</span><span><a class="LN" name="77">   77   </a>        <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit = false;
+</span><span><a class="LN" name="78">   78   </a>      <b>}</b>
+</span><span><a class="LN" name="79">   79   </a>      <span class="KW">break</span>;
+</span><span><a class="LN" name="80">   80   </a>
+</span><span><a class="LN" name="81">   81   </a>     <span class="KW">case</span> StepperRTM_IN_CWStepLow:
+</span><span><a class="LN" name="82">   82   </a>      <span class="CT">/* During 'CWStepLow': '<a href="matlab:coder.internal.code2model('StepperRTM:20:143')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:143</i></font></a>' */</span>
+</span><span><a class="LN" name="83">   83   </a>      <span class="KW">if</span> ((<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &gt;= 20) <b>{</b>
 </span><span><a class="LN" name="84">   84   </a>        <span class="CT">/* Transition: '<a href="matlab:coder.internal.code2model('StepperRTM:20:141')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:141</i></font></a>' */</span>
 </span><span><a class="LN" name="85">   85   </a>        <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps = <a href="#var_StepperRTM_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_U');" target="_self"><font color="#1122aa">StepperRTM_U</font></a>.DesSteps - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> 1U;
 </span><span><a class="LN" name="86">   86   </a>        <span class="KW">if</span> (<a href="#var_StepperRTM_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_U');" target="_self"><font color="#1122aa">StepperRTM_U</font></a>.DesSteps - 1U &gt; <a href="#var_StepperRTM_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_U');" target="_self"><font color="#1122aa">StepperRTM_U</font></a>.DesSteps) <b>{</b>
@@ -111,7 +111,7 @@
 </span><span><a class="LN" name="97">   97   </a>        <span class="CT">/* Transition: '<a href="matlab:coder.internal.code2model('StepperRTM:20:153')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:153</i></font></a>' */</span>
 </span><span><a class="LN" name="98">   98   </a>        <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps = <a href="#var_StepperRTM_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_U');" target="_self"><font color="#1122aa">StepperRTM_U</font></a>.DesSteps;
 </span><span><a class="LN" name="99">   99   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main = StepperRTM_IN_CWStepHigh;
-</span><span><a class="LN" name="100">  100   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0UL;
+</span><span><a class="LN" name="100">  100   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0U;
 </span><span><a class="LN" name="101">  101   </a>
 </span><span><a class="LN" name="102">  102   </a>        <span class="CT">/* Entry 'CWStepHigh': '<a href="matlab:coder.internal.code2model('StepperRTM:20:138')" name="code2model"><font color="#117755"><i>&lt;S1&gt;:138</i></font></a>' */</span>
 </span><span><a class="LN" name="103">  103   </a>        <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit = true;
@@ -164,65 +164,66 @@
 </span><span><a class="LN" name="150">  150   </a>
 </span><span><a class="LN" name="151">  151   </a>    <span class="CT">/* Gateway: Chart */</span>
 </span><span><a class="LN" name="152">  152   </a>    <span class="KW">if</span> (((tmp_0 &amp; 128U) != 0U ? tmp_0 | -128 : tmp_0 &amp; 127) != 0) <b>{</b>
-</span><span><a class="LN" name="153">  153   </a>      <span class="KW">if</span> (<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &lt; MAX_uint32_T) <b>{</b>
-</span><span><a class="LN" name="154">  154   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1++;
-</span><span><a class="LN" name="155">  155   </a>      <b>}</b>
-</span><span><a class="LN" name="156">  156   </a>
-</span><span><a class="LN" name="157">  157   </a>      <span class="CT">/* Event: '&lt;S1&gt;:14' */</span>
-</span><span><a class="LN" name="158">  158   </a>      sfEvent = StepperRTM_event_Takt;
-</span><span><a class="LN" name="159">  159   </a>      <a href="#fcn_Stepper_chartstep_c3_StepperRTM" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Stepper_chartstep_c3_StepperRTM');" target="_self"><font color="#1122aa">Stepper_chartstep_c3_StepperRTM</font></a>(&amp;sfEvent);
-</span><span><a class="LN" name="160">  160   </a>    <b>}</b>
-</span><span><a class="LN" name="161">  161   </a>
-</span><span><a class="LN" name="162">  162   </a>    <span class="KW">if</span> (((tmp &amp; 128U) != 0U ? tmp | -128 : tmp &amp; 127) == 1) <b>{</b>
-</span><span><a class="LN" name="163">  163   </a>      <span class="CT">/* Event: '&lt;S1&gt;:13' */</span>
-</span><span><a class="LN" name="164">  164   </a>      sfEvent = StepperRTM_event_POR;
-</span><span><a class="LN" name="165">  165   </a>      <a href="#fcn_Stepper_chartstep_c3_StepperRTM" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Stepper_chartstep_c3_StepperRTM');" target="_self"><font color="#1122aa">Stepper_chartstep_c3_StepperRTM</font></a>(&amp;sfEvent);
-</span><span><a class="LN" name="166">  166   </a>    <b>}</b>
-</span><span><a class="LN" name="167">  167   </a>  <b>}</b>
-</span><span><a class="LN" name="168">  168   </a>
-</span><span><a class="LN" name="169">  169   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('StepperRTM:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Stepper_Trigger</i></font></a>' */</span>
-</span><span><a class="LN" name="170">  170   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[0] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_Stepper_Trigger[0] &gt;
-</span><span><a class="LN" name="171">  171   </a>    0U);
-</span><span><a class="LN" name="172">  172   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[1] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_Stepper_Trigger[1] &gt;
-</span><span><a class="LN" name="173">  173   </a>    0U);
-</span><span><a class="LN" name="174">  174   </a>
-</span><span><a class="LN" name="175">  175   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('StepperRTM:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/StepBit</i></font></a>' */</span>
-</span><span><a class="LN" name="176">  176   </a>  *arg_StepBit = <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit;
-</span><span><a class="LN" name="177">  177   </a>
-</span><span><a class="LN" name="178">  178   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('StepperRTM:42')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/NewDesSteps</i></font></a>' */</span>
-</span><span><a class="LN" name="179">  179   </a>  *arg_NewDesSteps = <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps;
-</span><span><a class="LN" name="180">  180   </a><b>}</b>
-</span><span><a class="LN" name="181">  181   </a>
-</span><span><a class="LN" name="182">  182   </a><span class="CT">/* Model initialize function */</span>
-</span><span><a class="LN" name="183">  183   </a><span class="DT">void</span> <a name="fcn_StepperRTM_initialize">StepperRTM_initialize</a>(<span class="DT">void</span>)
-</span><span><a class="LN" name="184">  184   </a><b>{</b>
-</span><span><a class="LN" name="185">  185   </a>  <span class="CT">/* Registration code */</span>
-</span><span><a class="LN" name="186">  186   </a>
-</span><span><a class="LN" name="187">  187   </a>  <span class="CT">/* block I/O */</span>
-</span><span><a class="LN" name="188">  188   </a>  (<span class="DT">void</span>) memset(((<span class="DT">void</span> *) &amp;<a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>), 0,
-</span><span><a class="LN" name="189">  189   </a>                <span class="KW">sizeof</span>(<a href="StepperRTM_h.html#type_B_StepperRTM_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_B_StepperRTM_T');" target="_self"><font color="#1122aa">B_StepperRTM_T</font></a>));
-</span><span><a class="LN" name="190">  190   </a>
-</span><span><a class="LN" name="191">  191   </a>  <span class="CT">/* states (dwork) */</span>
-</span><span><a class="LN" name="192">  192   </a>  (<span class="DT">void</span>) memset((<span class="DT">void</span> *)&amp;<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>, 0,
-</span><span><a class="LN" name="193">  193   </a>                <span class="KW">sizeof</span>(<a href="StepperRTM_h.html#type_DW_StepperRTM_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW_StepperRTM_T');" target="_self"><font color="#1122aa">DW_StepperRTM_T</font></a>));
-</span><span><a class="LN" name="194">  194   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
-</span><span><a class="LN" name="195">  195   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
-</span><span><a class="LN" name="196">  196   </a>
-</span><span><a class="LN" name="197">  197   </a>  <span class="CT">/* SystemInitialize for Chart: '<a href="matlab:coder.internal.code2model('StepperRTM:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' */</span>
-</span><span><a class="LN" name="198">  198   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main = StepperRTM_IN_NO_ACTIVE_CHILD;
-</span><span><a class="LN" name="199">  199   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0UL;
-</span><span><a class="LN" name="200">  200   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_active_c3_StepperRTM = 0U;
-</span><span><a class="LN" name="201">  201   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_c3_StepperRTM = StepperRTM_IN_NO_ACTIVE_CHILD;
-</span><span><a class="LN" name="202">  202   </a>  <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit = false;
-</span><span><a class="LN" name="203">  203   </a>  <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps = 0U;
-</span><span><a class="LN" name="204">  204   </a><b>}</b>
-</span><span><a class="LN" name="205">  205   </a>
-</span><span><a class="LN" name="206">  206   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="207">  207   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="208">  208   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="209">  209   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="210">  210   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="211">  211   </a>
+</span><span><a class="LN" name="153">  153   </a>      <span class="KW">if</span> (<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 &lt; 255U) <b>{</b>
+</span><span><a class="LN" name="154">  154   </a>        <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = ((<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)
+</span><span><a class="LN" name="155">  155   </a>          <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 + 1) &amp; 255U;
+</span><span><a class="LN" name="156">  156   </a>      <b>}</b>
+</span><span><a class="LN" name="157">  157   </a>
+</span><span><a class="LN" name="158">  158   </a>      <span class="CT">/* Event: '&lt;S1&gt;:14' */</span>
+</span><span><a class="LN" name="159">  159   </a>      sfEvent = StepperRTM_event_Takt;
+</span><span><a class="LN" name="160">  160   </a>      <a href="#fcn_Stepper_chartstep_c3_StepperRTM" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Stepper_chartstep_c3_StepperRTM');" target="_self"><font color="#1122aa">Stepper_chartstep_c3_StepperRTM</font></a>(&amp;sfEvent);
+</span><span><a class="LN" name="161">  161   </a>    <b>}</b>
+</span><span><a class="LN" name="162">  162   </a>
+</span><span><a class="LN" name="163">  163   </a>    <span class="KW">if</span> (((tmp &amp; 128U) != 0U ? tmp | -128 : tmp &amp; 127) == 1) <b>{</b>
+</span><span><a class="LN" name="164">  164   </a>      <span class="CT">/* Event: '&lt;S1&gt;:13' */</span>
+</span><span><a class="LN" name="165">  165   </a>      sfEvent = StepperRTM_event_POR;
+</span><span><a class="LN" name="166">  166   </a>      <a href="#fcn_Stepper_chartstep_c3_StepperRTM" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Stepper_chartstep_c3_StepperRTM');" target="_self"><font color="#1122aa">Stepper_chartstep_c3_StepperRTM</font></a>(&amp;sfEvent);
+</span><span><a class="LN" name="167">  167   </a>    <b>}</b>
+</span><span><a class="LN" name="168">  168   </a>  <b>}</b>
+</span><span><a class="LN" name="169">  169   </a>
+</span><span><a class="LN" name="170">  170   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('StepperRTM:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Stepper_Trigger</i></font></a>' */</span>
+</span><span><a class="LN" name="171">  171   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[0] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_Stepper_Trigger[0] &gt;
+</span><span><a class="LN" name="172">  172   </a>    0U);
+</span><span><a class="LN" name="173">  173   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[1] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_Stepper_Trigger[1] &gt;
+</span><span><a class="LN" name="174">  174   </a>    0U);
+</span><span><a class="LN" name="175">  175   </a>
+</span><span><a class="LN" name="176">  176   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('StepperRTM:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/StepBit</i></font></a>' */</span>
+</span><span><a class="LN" name="177">  177   </a>  *arg_StepBit = <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit;
+</span><span><a class="LN" name="178">  178   </a>
+</span><span><a class="LN" name="179">  179   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('StepperRTM:42')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/NewDesSteps</i></font></a>' */</span>
+</span><span><a class="LN" name="180">  180   </a>  *arg_NewDesSteps = <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps;
+</span><span><a class="LN" name="181">  181   </a><b>}</b>
+</span><span><a class="LN" name="182">  182   </a>
+</span><span><a class="LN" name="183">  183   </a><span class="CT">/* Model initialize function */</span>
+</span><span><a class="LN" name="184">  184   </a><span class="DT">void</span> <a name="fcn_StepperRTM_initialize">StepperRTM_initialize</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="185">  185   </a><b>{</b>
+</span><span><a class="LN" name="186">  186   </a>  <span class="CT">/* Registration code */</span>
+</span><span><a class="LN" name="187">  187   </a>
+</span><span><a class="LN" name="188">  188   </a>  <span class="CT">/* block I/O */</span>
+</span><span><a class="LN" name="189">  189   </a>  (<span class="DT">void</span>) memset(((<span class="DT">void</span> *) &amp;<a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>), 0,
+</span><span><a class="LN" name="190">  190   </a>                <span class="KW">sizeof</span>(<a href="StepperRTM_h.html#type_B_StepperRTM_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_B_StepperRTM_T');" target="_self"><font color="#1122aa">B_StepperRTM_T</font></a>));
+</span><span><a class="LN" name="191">  191   </a>
+</span><span><a class="LN" name="192">  192   </a>  <span class="CT">/* states (dwork) */</span>
+</span><span><a class="LN" name="193">  193   </a>  (<span class="DT">void</span>) memset((<span class="DT">void</span> *)&amp;<a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>, 0,
+</span><span><a class="LN" name="194">  194   </a>                <span class="KW">sizeof</span>(<a href="StepperRTM_h.html#type_DW_StepperRTM_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW_StepperRTM_T');" target="_self"><font color="#1122aa">DW_StepperRTM_T</font></a>));
+</span><span><a class="LN" name="195">  195   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
+</span><span><a class="LN" name="196">  196   </a>  <a href="#var_StepperRTM_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_PrevZCX');" target="_self"><font color="#1122aa">StepperRTM_PrevZCX</font></a>.Chart_Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
+</span><span><a class="LN" name="197">  197   </a>
+</span><span><a class="LN" name="198">  198   </a>  <span class="CT">/* SystemInitialize for Chart: '<a href="matlab:coder.internal.code2model('StepperRTM:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' */</span>
+</span><span><a class="LN" name="199">  199   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_Main = StepperRTM_IN_NO_ACTIVE_CHILD;
+</span><span><a class="LN" name="200">  200   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.temporalCounter_i1 = 0U;
+</span><span><a class="LN" name="201">  201   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_active_c3_StepperRTM = 0U;
+</span><span><a class="LN" name="202">  202   </a>  <a href="#var_StepperRTM_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_DW');" target="_self"><font color="#1122aa">StepperRTM_DW</font></a>.is_c3_StepperRTM = StepperRTM_IN_NO_ACTIVE_CHILD;
+</span><span><a class="LN" name="203">  203   </a>  <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.StepBit = false;
+</span><span><a class="LN" name="204">  204   </a>  <a href="#var_StepperRTM_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_StepperRTM_B');" target="_self"><font color="#1122aa">StepperRTM_B</font></a>.NewDesSteps = 0U;
+</span><span><a class="LN" name="205">  205   </a><b>}</b>
+</span><span><a class="LN" name="206">  206   </a>
+</span><span><a class="LN" name="207">  207   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="208">  208   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="209">  209   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="210">  210   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="211">  211   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="212">  212   </a>
 </span></pre>
 </td></tr></table>
 </p>

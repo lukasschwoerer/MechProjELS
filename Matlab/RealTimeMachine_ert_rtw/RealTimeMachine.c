@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.118
+ * Model version                  : 2.125
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Aug 31 11:08:48 2021
+ * C/C++ source code generated on : Tue Oct 26 22:53:34 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -30,7 +30,9 @@
 #define RealTimeMachine_IN_Main        (1U)
 #define RealTimeMachine_IN_OverUndeflow (3U)
 #define RealTimeMachine_IN_Overflow    (2U)
+#define RealTimeMachine_IN_RX          (1U)
 #define RealTimeMachine_IN_Reset       (2U)
+#define RealTimeMachine_IN_TX          (2U)
 #define RealTimeMachine_IN_Underflow   (3U)
 
 /* Block signals (default storage) */
@@ -51,6 +53,7 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent);
 /* Function for Chart: '<Root>/Chart' */
 static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 {
+  int64_T tmp;
   real_T DesSteps_tmp;
   uint32_T qY;
   uint32_T qY_tmp;
@@ -58,6 +61,7 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 
   /* Chart: '<Root>/Chart' incorporates:
    *  Inport: '<Root>/CountFactor'
+   *  Inport: '<Root>/RefrRate'
    *  Inport: '<Root>/SpindelPos'
    */
   /* During: Chart */
@@ -76,24 +80,26 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
     RealTimeMachine_B.DirectionBit = false;
   } else if (RealTimeMachine_DW.is_c3_RealTimeMachine == 1U) {
     /* During 'Main': '<S1>:4' */
+    /* During 'Calc': '<S1>:164' */
     guard1 = false;
-    switch (RealTimeMachine_DW.is_Main) {
+    switch (RealTimeMachine_DW.is_Calc) {
      case RealTimeMachine_IN_CalcDesSteps:
       /* During 'CalcDesSteps': '<S1>:146' */
       /* Transition: '<S1>:148' */
-      RealTimeMachine_DW.is_Main = RealTimeMachine_IN_Idle;
+      RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_Idle;
 
       /* Entry 'Idle': '<S1>:23' */
       RealTimeMachine_B.EnableBit = true;
       RealTimeMachine_DW.SpindelDiv = 0UL;
       RealTimeMachine_B.DesSteps = 0U;
+      RealTimeMachine_B.RPM = 0U;
       break;
 
      case RealTimeMachine_IN_Idle:
       /* During 'Idle': '<S1>:23' */
       if (RealTimeMachine_U.SpindelPos != RealTimeMachine_DW.PrevSpindelPos) {
         /* Transition: '<S1>:92' */
-        RealTimeMachine_DW.is_Main = RealTimeMachine_IN_OverUndeflow;
+        RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_OverUndeflow;
 
         /* Entry Internal 'OverUndeflow': '<S1>:94' */
         /* Transition: '<S1>:97' */
@@ -195,9 +201,29 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 
         /* Transition: '<S1>:147' */
         RealTimeMachine_DW.is_OverUndeflow = RealTimeMach_IN_NO_ACTIVE_CHILD;
-        RealTimeMachine_DW.is_Main = RealTimeMachine_IN_CalcDesSteps;
+        RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_CalcDesSteps;
 
         /* Entry 'CalcDesSteps': '<S1>:146' */
+        tmp = RealTimeMachine_DW.SpindelDiv * 60LL;
+        if (tmp < 0LL) {
+          tmp = 0LL;
+        } else if (tmp > 4294967295LL) {
+          tmp = 4294967295LL;
+        }
+
+        tmp = (uint32_T)tmp * 1000LL;
+        if (tmp < 0LL) {
+          tmp = 0LL;
+        } else if (tmp > 4294967295LL) {
+          tmp = 4294967295LL;
+        }
+
+        qY = (uint32_T)tmp >> 12U;
+        if ((int32_T)qY > 65535L) {
+          qY = 65535UL;
+        }
+
+        RealTimeMachine_B.RPM = (uint16_T)qY;
         RealTimeMachine_DW.Carrier += RealTimeMachine_U.CountFactor * (real_T)
           RealTimeMachine_DW.SpindelDiv;
         DesSteps_tmp = floor(RealTimeMachine_DW.Carrier);
@@ -223,9 +249,29 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 
         /* Transition: '<S1>:147' */
         RealTimeMachine_DW.is_OverUndeflow = RealTimeMach_IN_NO_ACTIVE_CHILD;
-        RealTimeMachine_DW.is_Main = RealTimeMachine_IN_CalcDesSteps;
+        RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_CalcDesSteps;
 
         /* Entry 'CalcDesSteps': '<S1>:146' */
+        tmp = RealTimeMachine_DW.SpindelDiv * 60LL;
+        if (tmp < 0LL) {
+          tmp = 0LL;
+        } else if (tmp > 4294967295LL) {
+          tmp = 4294967295LL;
+        }
+
+        tmp = (uint32_T)tmp * 1000LL;
+        if (tmp < 0LL) {
+          tmp = 0LL;
+        } else if (tmp > 4294967295LL) {
+          tmp = 4294967295LL;
+        }
+
+        qY = (uint32_T)tmp >> 12U;
+        if ((int32_T)qY > 65535L) {
+          qY = 65535UL;
+        }
+
+        RealTimeMachine_B.RPM = (uint16_T)qY;
         RealTimeMachine_DW.Carrier += RealTimeMachine_U.CountFactor * (real_T)
           RealTimeMachine_DW.SpindelDiv;
         DesSteps_tmp = floor(RealTimeMachine_DW.Carrier);
@@ -248,9 +294,29 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
     if (guard1) {
       /* Transition: '<S1>:147' */
       RealTimeMachine_DW.is_OverUndeflow = RealTimeMach_IN_NO_ACTIVE_CHILD;
-      RealTimeMachine_DW.is_Main = RealTimeMachine_IN_CalcDesSteps;
+      RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_CalcDesSteps;
 
       /* Entry 'CalcDesSteps': '<S1>:146' */
+      tmp = RealTimeMachine_DW.SpindelDiv * 60LL;
+      if (tmp < 0LL) {
+        tmp = 0LL;
+      } else if (tmp > 4294967295LL) {
+        tmp = 4294967295LL;
+      }
+
+      tmp = (uint32_T)tmp * 1000LL;
+      if (tmp < 0LL) {
+        tmp = 0LL;
+      } else if (tmp > 4294967295LL) {
+        tmp = 4294967295LL;
+      }
+
+      qY = (uint32_T)tmp >> 12U;
+      if ((int32_T)qY > 65535L) {
+        qY = 65535UL;
+      }
+
+      RealTimeMachine_B.RPM = (uint16_T)qY;
       RealTimeMachine_DW.Carrier += RealTimeMachine_U.CountFactor * (real_T)
         RealTimeMachine_DW.SpindelDiv;
       DesSteps_tmp = floor(RealTimeMachine_DW.Carrier);
@@ -267,19 +333,52 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
       RealTimeMachine_DW.Carrier -= DesSteps_tmp;
     }
 
+    /* During 'Comm': '<S1>:165' */
+    if (RealTimeMachine_DW.is_Comm == 1U) {
+      /* During 'RX': '<S1>:161' */
+      if (RealTimeMachine_DW.temporalCounter_i1 >= RealTimeMachine_U.RefrRate) {
+        /* Transition: '<S1>:163' */
+        RealTimeMachine_DW.is_Comm = RealTimeMachine_IN_TX;
+        RealTimeMachine_DW.temporalCounter_i1 = 0U;
+
+        /* Entry 'TX': '<S1>:159' */
+        RealTimeMachine_B.ComBit = true;
+      }
+
+      /* During 'TX': '<S1>:159' */
+    } else if (RealTimeMachine_DW.temporalCounter_i1 >=
+               RealTimeMachine_U.RefrRate) {
+      /* Transition: '<S1>:162' */
+      RealTimeMachine_DW.is_Comm = RealTimeMachine_IN_RX;
+      RealTimeMachine_DW.temporalCounter_i1 = 0U;
+
+      /* Entry 'RX': '<S1>:161' */
+      RealTimeMachine_B.ComBit = false;
+    }
+
     /* During 'Reset': '<S1>:10' */
   } else if (*sfEvent == RealTimeMachine_event_POR) {
     /* Transition: '<S1>:11' */
     RealTimeMachine_DW.is_c3_RealTimeMachine = RealTimeMachine_IN_Main;
 
     /* Entry Internal 'Main': '<S1>:4' */
+    /* Entry Internal 'Calc': '<S1>:164' */
     /* Transition: '<S1>:24' */
-    RealTimeMachine_DW.is_Main = RealTimeMachine_IN_Idle;
+    RealTimeMachine_DW.is_Calc = RealTimeMachine_IN_Idle;
 
     /* Entry 'Idle': '<S1>:23' */
     RealTimeMachine_B.EnableBit = true;
     RealTimeMachine_DW.SpindelDiv = 0UL;
     RealTimeMachine_B.DesSteps = 0U;
+    RealTimeMachine_B.RPM = 0U;
+
+    /* Entry Internal 'Comm': '<S1>:165' */
+    /* Transition: '<S1>:160' */
+    RealTimeMachine_DW.is_Comm = RealTimeMachine_IN_TX;
+    RealTimeMachine_DW.temporalCounter_i1 = 0U;
+
+    /* Entry 'TX': '<S1>:159' */
+    RealTimeMachine_B.ComBit = true;
   }
 
   /* End of Chart: '<Root>/Chart' */
@@ -287,8 +386,9 @@ static void Re_chartstep_c3_RealTimeMachine(const int32_T *sfEvent)
 
 /* Model step function */
 void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
-  boolean_T arg_StopSwitch, uint16_T arg_System_Trigger[2], uint16_T
-  *arg_DesSteps, boolean_T *arg_Enable, boolean_T *arg_Dir)
+  boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2],
+  uint16_T *arg_DesSteps, boolean_T *arg_Enable, boolean_T *arg_Dir, boolean_T
+  *arg_ComBit, uint16_T *arg_RPM)
 {
   int32_T sfEvent;
   int16_T tmp;
@@ -304,6 +404,9 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
   /* Copy value for root inport '<Root>/StopSwitch' since it is accessed globally */
   RealTimeMachine_U.StopSwitch = arg_StopSwitch;
+
+  /* Copy value for root inport '<Root>/RefrRate' since it is accessed globally */
+  RealTimeMachine_U.RefrRate = arg_RefrRate;
 
   /* Chart: '<Root>/Chart' incorporates:
    *  TriggerPort: '<S1>/input events'
@@ -325,6 +428,10 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
     /* Gateway: Chart */
     if (((tmp_0 & 128U) != 0U ? tmp_0 | -128 : tmp_0 & 127) != 0) {
+      if (RealTimeMachine_DW.temporalCounter_i1 < MAX_uint16_T) {
+        RealTimeMachine_DW.temporalCounter_i1++;
+      }
+
       /* Event: '<S1>:14' */
       sfEvent = RealTimeMachine_event_Takt;
       Re_chartstep_c3_RealTimeMachine(&sfEvent);
@@ -351,6 +458,12 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
   /* Outport: '<Root>/Dir' */
   *arg_Dir = RealTimeMachine_B.DirectionBit;
+
+  /* Outport: '<Root>/ComBit' */
+  *arg_ComBit = RealTimeMachine_B.ComBit;
+
+  /* Outport: '<Root>/RPM' */
+  *arg_RPM = RealTimeMachine_B.RPM;
 }
 
 /* Model initialize function */
@@ -369,8 +482,10 @@ void RealTimeMachine_initialize(void)
   RealTimeMachine_PrevZCX.Chart_Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
 
   /* SystemInitialize for Chart: '<Root>/Chart' */
-  RealTimeMachine_DW.is_Main = RealTimeMach_IN_NO_ACTIVE_CHILD;
+  RealTimeMachine_DW.is_Calc = RealTimeMach_IN_NO_ACTIVE_CHILD;
   RealTimeMachine_DW.is_OverUndeflow = RealTimeMach_IN_NO_ACTIVE_CHILD;
+  RealTimeMachine_DW.is_Comm = RealTimeMach_IN_NO_ACTIVE_CHILD;
+  RealTimeMachine_DW.temporalCounter_i1 = 0U;
   RealTimeMachine_DW.is_active_c3_RealTimeMachine = 0U;
   RealTimeMachine_DW.is_c3_RealTimeMachine = RealTimeMach_IN_NO_ACTIVE_CHILD;
   RealTimeMachine_DW.SpindelDiv = 0UL;
@@ -379,6 +494,8 @@ void RealTimeMachine_initialize(void)
   RealTimeMachine_B.DesSteps = 0U;
   RealTimeMachine_B.EnableBit = false;
   RealTimeMachine_B.DirectionBit = false;
+  RealTimeMachine_B.ComBit = false;
+  RealTimeMachine_B.RPM = 0U;
 }
 
 /*

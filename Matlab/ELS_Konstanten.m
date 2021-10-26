@@ -6,9 +6,9 @@ clc;
 clear;
 
 % Definition allgemeiner Systemparameter
-TSampleRTM = 1e-3;                          % Cycletime Real Time Machine
+TSampleRTM = 10e-3;                          % Cycletime Real Time Machine
 TSampleStepper = 3e-6;                      % Cycletime Stepper
-StpPulsDur = 2;                             % Step Puls Duration in Clockcycles
+StpPulsDur = 1;                             % Step Puls Duration in Clockcycles
 
 %Parameter for Simulation
 RPM = 60;                                   % RPM of the Main Spindle [rpm]

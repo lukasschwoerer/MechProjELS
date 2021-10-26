@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.118
+ * Model version                  : 2.125
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Aug 31 11:08:48 2021
+ * C/C++ source code generated on : Tue Oct 26 22:53:34 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -33,6 +33,9 @@ void rt_OneStep(void)
   /* '<Root>/StopSwitch' */
   static boolean_T arg_StopSwitch = false;
 
+  /* '<Root>/RefrRate' */
+  static uint16_T arg_RefrRate = 0U;
+
   /* '<Root>/System_Trigger' */
   static uint16_T arg_System_Trigger[2] = { 0U, 0U };
 
@@ -45,6 +48,12 @@ void rt_OneStep(void)
   /* '<Root>/Dir' */
   static boolean_T arg_Dir;
 
+  /* '<Root>/ComBit' */
+  static boolean_T arg_ComBit;
+
+  /* '<Root>/RPM' */
+  static uint16_T arg_RPM;
+
   /* Check for overrun. Protect OverrunFlag against preemption */
   if (OverrunFlag++) {
     IsrOverrun = 1;
@@ -54,7 +63,8 @@ void rt_OneStep(void)
 
   enableTimer0Interrupt();
   RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_StopSwitch,
-                       arg_System_Trigger, &arg_DesSteps, &arg_Enable, &arg_Dir);
+                       arg_RefrRate, arg_System_Trigger, &arg_DesSteps,
+                       &arg_Enable, &arg_Dir, &arg_ComBit, &arg_RPM);
 
   /* Get model outputs here */
   disableTimer0Interrupt();
@@ -65,7 +75,7 @@ volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(void)
 {
-  float modelBaseRate = 0.001;
+  float modelBaseRate = 0.01;
   float systemClock = 100;
 
   /* Initialize variables */

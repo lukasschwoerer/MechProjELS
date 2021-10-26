@@ -10,6 +10,7 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Configuration.obj" \
 "./RealTimeMachine.obj" \
 "./StepperRTM.obj" \
 "./main.obj" \
@@ -177,8 +178,8 @@ ELS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "RealTimeMachine.obj" "StepperRTM.obj" "main.obj" "common\source\f28004x_adc.obj" "common\source\f28004x_codestartbranch.obj" "common\source\f28004x_cputimers.obj" "common\source\f28004x_dcsm_z1otp.obj" "common\source\f28004x_dcsm_z2otp.obj" "common\source\f28004x_defaultisr.obj" "common\source\f28004x_dma.obj" "common\source\f28004x_gpio.obj" "common\source\f28004x_piectrl.obj" "common\source\f28004x_pievect.obj" "common\source\f28004x_spi.obj" "common\source\f28004x_sysctrl.obj" "common\source\f28004x_usdelay.obj" "headers\source\f28004x_globalvariabledefs.obj" 
-	-$(RM) "RealTimeMachine.d" "StepperRTM.d" "main.d" "common\source\f28004x_adc.d" "common\source\f28004x_cputimers.d" "common\source\f28004x_defaultisr.d" "common\source\f28004x_dma.d" "common\source\f28004x_gpio.d" "common\source\f28004x_piectrl.d" "common\source\f28004x_pievect.d" "common\source\f28004x_spi.d" "common\source\f28004x_sysctrl.d" "headers\source\f28004x_globalvariabledefs.d" 
+	-$(RM) "Configuration.obj" "RealTimeMachine.obj" "StepperRTM.obj" "main.obj" "common\source\f28004x_adc.obj" "common\source\f28004x_codestartbranch.obj" "common\source\f28004x_cputimers.obj" "common\source\f28004x_dcsm_z1otp.obj" "common\source\f28004x_dcsm_z2otp.obj" "common\source\f28004x_defaultisr.obj" "common\source\f28004x_dma.obj" "common\source\f28004x_gpio.obj" "common\source\f28004x_piectrl.obj" "common\source\f28004x_pievect.obj" "common\source\f28004x_spi.obj" "common\source\f28004x_sysctrl.obj" "common\source\f28004x_usdelay.obj" "headers\source\f28004x_globalvariabledefs.obj" 
+	-$(RM) "Configuration.d" "RealTimeMachine.d" "StepperRTM.d" "main.d" "common\source\f28004x_adc.d" "common\source\f28004x_cputimers.d" "common\source\f28004x_defaultisr.d" "common\source\f28004x_dma.d" "common\source\f28004x_gpio.d" "common\source\f28004x_piectrl.d" "common\source\f28004x_pievect.d" "common\source\f28004x_spi.d" "common\source\f28004x_sysctrl.d" "headers\source\f28004x_globalvariabledefs.d" 
 	-$(RM) "common\source\f28004x_codestartbranch.d" "common\source\f28004x_dcsm_z1otp.d" "common\source\f28004x_dcsm_z2otp.d" "common\source\f28004x_usdelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

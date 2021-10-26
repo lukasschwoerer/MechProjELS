@@ -42,8 +42,8 @@ mmiStaticInfoLogging = { 3 , rtContextSystems , loggingMetaInfo , 0 , NULL ,
 mmiStatic = { { rtBlockSignals , 0 , ( NULL ) , 0 , ( NULL ) , 0 } , { ( NULL
 ) , 0 , ( NULL ) , 0 } , { rtBlockStates , 0 } , { rtDataTypeMap ,
 rtDimensionMap , rtFixPtMap , rtElementMap , rtSampleTimeMap ,
-rtDimensionArray } , "float" , { 1582124269U , 3060018909U , 302660562U ,
-1583146279U } , & mmiStaticInfoLogging , 0 , 0 , rt_LoggedStateIdxList } ;
+rtDimensionArray } , "float" , { 2707316509U , 2632390373U , 1151692884U ,
+144996258U } , & mmiStaticInfoLogging , 0 , 0 , rt_LoggedStateIdxList } ;
 const rtwCAPI_ModelMappingStaticInfo * RealTimeMachine_GetCAPIStaticMap (
 void ) { return & mmiStatic ; }
 #ifndef HOST_CAPI_BUILD

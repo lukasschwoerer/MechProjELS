@@ -9,6 +9,124 @@
   "inspector":{
    "params":[
     "HasOutputData",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    false,
+    "Auto",
+    "Main\n",
+    false,
+    false,
+    "SignalName",
+    "Main",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    11
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:165",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine4",
+  "name":"Comm",
+  "label":"Comm",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    2,
+    false,
+    "ChildActivity",
+    "Auto",
+    "Comm",
+    false,
+    false,
+    "SignalName",
+    "Main.Comm",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    5,
+    13
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:161",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine4",
+  "name":"RX",
+  "label":"RX",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "HasOutputData",
     "OutputMonitoringMode",
     "InlineOption",
     "LabelString",
@@ -25,13 +143,297 @@
    ],
    "values":[
     false,
-    "ChildActivity",
+    "SelfActivity",
     "Auto",
-    "Main\n",
+    "RX\nen: ComBit = 0;",
     false,
     false,
     "SignalName",
-    "Main",
+    "Main.Comm.RX",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:159",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine4",
+  "name":"TX",
+  "label":"TX",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    false,
+    "SelfActivity",
+    "Auto",
+    "TX\nen: ComBit = 1;",
+    false,
+    false,
+    "SignalName",
+    "Main.Comm.TX",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:162",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"[after(RefrRate,Takt)]",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "[after(RefrRate,Takt)]",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:163",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"[after(RefrRate,Takt)]",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "[after(RefrRate,Takt)]",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:160",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:164",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine4",
+  "name":"Calc",
+  "label":"Calc",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "ChildActivity",
+    "Auto",
+    "Calc",
+    false,
+    false,
+    "SignalName",
+    "Main.Calc",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    5,
+    13
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:23",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine4",
+  "name":"Idle",
+  "label":"Idle",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    false,
+    "SelfActivity",
+    "Auto",
+    "Idle\nen: EnableBit = 1;\nen: SpindelDiv = 0;\nen: DesSteps = 0;\nen: RPM = 0;",
+    false,
+    false,
+    "SignalName",
+    "Main.Calc.Idle",
     false,
     5000,
     false,
@@ -86,11 +488,11 @@
     false,
     "SelfActivity",
     "Auto",
-    "CalcDesSteps\nen: Carrier = Carrier + (Multiplier * SpindelDiv);\nen: DesSteps = floor(Carrier); \nen: Carrier = Carrier - floor(Carrier);",
+    "CalcDesSteps\nen: RPM = (SpindelDiv*60*1000)/4096;\nen: Carrier = Carrier + (Multiplier * SpindelDiv);\nen: DesSteps = floor(Carrier); \nen: Carrier = Carrier - floor(Carrier);",
     false,
     false,
     "SignalName",
-    "Main.CalcDesSteps",
+    "Main.Calc.CalcDesSteps",
     false,
     5000,
     false,
@@ -120,7 +522,7 @@
  {
   "sid":"RealTimeMachine:20:94",
   "className":"Stateflow.State",
-  "icon":"RealTimeMachine5",
+  "icon":"RealTimeMachine6",
   "name":"OverUndeflow",
   "label":"OverUndeflow",
   "parent":"RealTimeMachine:20",
@@ -149,7 +551,7 @@
     false,
     false,
     "SignalName",
-    "Main.OverUndeflow",
+    "Main.Calc.OverUndeflow",
     false,
     5000,
     false,
@@ -177,55 +579,31 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:23",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine4",
-  "name":"Idle",
-  "label":"Idle",
+  "sid":"RealTimeMachine:20:92",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"[SpindelPos != PrevSpindelPos]",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
+    "ExecutionOrder",
+    "isVariant",
     "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
     "Description",
     "Document"
    ],
    "values":[
+    1,
     false,
-    "SelfActivity",
-    "Auto",
-    "Idle\nen: EnableBit = 1;\nen: SpindelDiv = 0;\nen: DesSteps = 0;",
-    false,
-    false,
-    "SignalName",
-    "Main.Idle",
-    false,
-    5000,
-    false,
-    2,
+    "[SpindelPos != PrevSpindelPos]",
     "",
     ""
    ],
    "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
+    "Parameter Attributes"
    ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
+   "tabs_idx":0
   },
   "viewer":{
    "jshandler":"webview/handlers/ElementHandler"
@@ -238,7 +616,7 @@
  {
   "sid":"RealTimeMachine:20:122",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 0;}",
   "parent":"RealTimeMachine:20",
@@ -271,9 +649,44 @@
   ]
  },
  {
+  "sid":"RealTimeMachine:20:147",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine5",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
   "sid":"RealTimeMachine:20:118",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"{PrevSpindelPos = SpindelPos; DirectionBit = 1;}",
   "parent":"RealTimeMachine:20",
@@ -308,42 +721,7 @@
  {
   "sid":"RealTimeMachine:20:148",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
-  "name":"",
-  "label":"",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20:147",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine:20",
@@ -378,7 +756,7 @@
  {
   "sid":"RealTimeMachine:20:24",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine:20",
@@ -394,41 +772,6 @@
     1,
     false,
     "",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20:92",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
-  "name":"",
-  "label":"[SpindelPos != PrevSpindelPos]",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "[SpindelPos != PrevSpindelPos]",
     "",
     ""
    ],
@@ -507,7 +850,7 @@
  {
   "sid":"RealTimeMachine:20:11",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"POR",
   "parent":"RealTimeMachine:20",
@@ -542,7 +885,7 @@
  {
   "sid":"RealTimeMachine:20:12",
   "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
+  "icon":"RealTimeMachine5",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine:20",
