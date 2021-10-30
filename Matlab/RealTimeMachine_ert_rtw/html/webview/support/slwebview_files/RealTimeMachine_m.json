@@ -4,7 +4,7 @@
   "className":"Simulink.BlockDiagram",
   "icon":"RealTimeMachine0",
   "name":"RealTimeMachine",
-  "label":"RealTimeMachine*",
+  "label":"RealTimeMachine",
   "parent":"",
   "inspector":{
    "params":[
@@ -16,11 +16,11 @@
     "Description"
    ],
    "values":[
-    "2.128",
-    "Wed Oct 27 00:05:44 2021",
+    "2.171",
+    "Sun Oct 31 01:21:33 2021",
     "disabled",
     "off",
-    "on",
+    "off",
     ""
    ],
    "tabs":[
@@ -95,65 +95,6 @@
    "tabs_idx":[
     0,
     18
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20:94",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine6",
-  "name":"OverUndeflow",
-  "label":"OverUndeflow",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "ChildActivity",
-    "Auto",
-    "OverUndeflow",
-    false,
-    false,
-    "SignalName",
-    "Main.Calc.OverUndeflow",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
    ]
   },
   "viewer":{

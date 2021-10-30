@@ -4,7 +4,7 @@
   "className":"Simulink.BlockDiagram",
   "icon":"StepperRTM0",
   "name":"StepperRTM",
-  "label":"StepperRTM*",
+  "label":"StepperRTM",
   "parent":"",
   "inspector":{
    "params":[
@@ -16,11 +16,11 @@
     "Description"
    ],
    "values":[
-    "2.117",
-    "Wed Oct 27 00:01:19 2021",
+    "2.134",
+    "Sun Oct 31 01:08:55 2021",
     "disabled",
     "off",
-    "on",
+    "off",
     ""
    ],
    "tabs":[

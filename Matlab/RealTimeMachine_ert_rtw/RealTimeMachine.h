@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.128
+ * Model version                  : 2.171
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Wed Oct 27 00:07:14 2021
+ * C/C++ source code generated on : Sun Oct 31 01:22:15 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -38,24 +38,19 @@ extern void configureIXbar(void);
 /* Block signals (default storage) */
 typedef struct {
   uint16_T DesSteps;                   /* '<Root>/Chart' */
+  uint16_T EnableBit;                  /* '<Root>/Chart' */
+  uint16_T DirectionBit;               /* '<Root>/Chart' */
   uint16_T RPM;                        /* '<Root>/Chart' */
   uint16_T DutyCycle;                  /* '<Root>/Chart' */
-  boolean_T EnableBit;                 /* '<Root>/Chart' */
-  boolean_T DirectionBit;              /* '<Root>/Chart' */
-  boolean_T ComBit;                    /* '<Root>/Chart' */
 } B_RealTimeMachine_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   real_T Carrier;                      /* '<Root>/Chart' */
-  uint32_T SpindelDiv;                 /* '<Root>/Chart' */
   uint32_T PrevSpindelPos;             /* '<Root>/Chart' */
-  uint16_T temporalCounter_i1;         /* '<Root>/Chart' */
   uint16_T is_active_c3_RealTimeMachine;/* '<Root>/Chart' */
   uint16_T is_c3_RealTimeMachine;      /* '<Root>/Chart' */
-  uint16_T is_Calc;                    /* '<Root>/Chart' */
-  uint16_T is_OverUndeflow;            /* '<Root>/Chart' */
-  uint16_T is_Comm;                    /* '<Root>/Chart' */
+  uint16_T is_Main;                    /* '<Root>/Chart' */
 } DW_RealTimeMachine_T;
 
 /* Zero-crossing (trigger) state */
@@ -89,8 +84,8 @@ extern void RealTimeMachine_initialize(void);
 /* Customized model step function */
 extern void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2],
-  uint16_T *arg_DesSteps, boolean_T *arg_Enable, boolean_T *arg_Dir, boolean_T
-  *arg_ComBit, uint16_T *arg_RPM, uint16_T *arg_DutyCycle);
+  uint16_T *arg_DesSteps, uint16_T *arg_Enable, uint16_T *arg_Dir, uint16_T
+  *arg_RPM, uint16_T *arg_DutyCycle);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 

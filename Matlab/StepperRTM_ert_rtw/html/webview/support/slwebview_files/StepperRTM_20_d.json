@@ -59,11 +59,11 @@
   ]
  },
  {
-  "sid":"StepperRTM:20:143",
+  "sid":"StepperRTM:20:162",
   "className":"Stateflow.State",
   "icon":"StepperRTM4",
-  "name":"CWStepLow",
-  "label":"CWStepLow",
+  "name":"High",
+  "label":"High",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -86,11 +86,11 @@
     false,
     "SelfActivity",
     "Auto",
-    "CWStepLow\nen: StepBit = 0;",
+    "High\nen: StepBit = 1;",
     false,
     false,
     "SignalName",
-    "Main.CWStepLow",
+    "Main.High",
     false,
     5000,
     false,
@@ -145,7 +145,7 @@
     false,
     "SelfActivity",
     "Auto",
-    "Idle",
+    "Idle\nen: StepBit = 0;",
     false,
     false,
     "SignalName",
@@ -177,70 +177,11 @@
   ]
  },
  {
-  "sid":"StepperRTM:20:138",
-  "className":"Stateflow.State",
-  "icon":"StepperRTM4",
-  "name":"CWStepHigh",
-  "label":"CWStepHigh",
-  "parent":"StepperRTM:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "SelfActivity",
-    "Auto",
-    "CWStepHigh\nen: StepBit = 1;",
-    false,
-    false,
-    "SignalName",
-    "Main.CWStepHigh",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"StepperRTM:20:144",
+  "sid":"StepperRTM:20:166",
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[after(DutyCycle,Takt)]",
+  "label":"[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -253,7 +194,7 @@
    "values":[
     1,
     false,
-    "[after(DutyCycle,Takt)]",
+    "[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
     "",
     ""
    ],
@@ -275,7 +216,7 @@
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[DesSteps > 0]{NewDesSteps = DesSteps;}",
+  "label":"[DesSteps > 0 && after(DutyCycle, Takt)]{NewDesSteps = DesSteps;}",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -288,7 +229,7 @@
    "values":[
     1,
     false,
-    "[DesSteps > 0]{NewDesSteps = DesSteps;}",
+    "[DesSteps > 0 && after(DutyCycle, Takt)]{NewDesSteps = DesSteps;}",
     "",
     ""
    ],
@@ -324,41 +265,6 @@
     1,
     false,
     "",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"StepperRTM:20:141",
-  "className":"Stateflow.Transition",
-  "icon":"StepperRTM5",
-  "name":"",
-  "label":"[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
-  "parent":"StepperRTM:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
     "",
     ""
    ],
@@ -435,41 +341,6 @@
   ]
  },
  {
-  "sid":"StepperRTM:20:11",
-  "className":"Stateflow.Transition",
-  "icon":"StepperRTM5",
-  "name":"",
-  "label":"POR",
-  "parent":"StepperRTM:20",
-  "inspector":{
-   "params":[
-    "ExecutionOrder",
-    "isVariant",
-    "LabelString",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    1,
-    false,
-    "POR",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes"
-   ],
-   "tabs_idx":0
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"StepperRTM:20:12",
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
@@ -488,6 +359,41 @@
     1,
     false,
     "",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"StepperRTM:20:11",
+  "className":"Stateflow.Transition",
+  "icon":"StepperRTM5",
+  "name":"",
+  "label":"POR",
+  "parent":"StepperRTM:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "POR",
     "",
     ""
    ],

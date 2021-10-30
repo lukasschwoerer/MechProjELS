@@ -7,16 +7,14 @@ function RTW_SidParentMap() {
     this.sidParentMap["StepperRTM:19"] = "StepperRTM";
     this.sidParentMap["StepperRTM:42"] = "StepperRTM";
     this.sidParentMap["StepperRTM:20:4"] = "StepperRTM:20";
-    this.sidParentMap["StepperRTM:20:138"] = "StepperRTM:20";
-    this.sidParentMap["StepperRTM:20:143"] = "StepperRTM:20";
+    this.sidParentMap["StepperRTM:20:162"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:23"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:10"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:12"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:11"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:24"] = "StepperRTM:20";
     this.sidParentMap["StepperRTM:20:153"] = "StepperRTM:20";
-    this.sidParentMap["StepperRTM:20:141"] = "StepperRTM:20";
-    this.sidParentMap["StepperRTM:20:144"] = "StepperRTM:20";
+    this.sidParentMap["StepperRTM:20:166"] = "StepperRTM:20";
     this.getParentSid = function(sid) { return this.sidParentMap[sid];}
 }
     RTW_SidParentMap.instance = new RTW_SidParentMap();

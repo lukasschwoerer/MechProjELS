@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.117
+ * Model version                  : 2.134
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Wed Oct 27 00:09:09 2021
+ * C/C++ source code generated on : Sun Oct 31 01:09:30 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -36,8 +36,8 @@ extern void configureIXbar(void);
 
 /* Block signals (default storage) */
 typedef struct {
+  uint16_T StepBit;                    /* '<Root>/Chart' */
   uint16_T NewDesSteps;                /* '<Root>/Chart' */
-  boolean_T StepBit;                   /* '<Root>/Chart' */
 } B_StepperRTM_T;
 
 /* Block states (default storage) for system '<Root>' */
@@ -76,7 +76,7 @@ extern void StepperRTM_initialize(void);
 
 /* Customized model step function */
 extern void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_DutyCycle,
-  uint16_T arg_Stepper_Trigger[2], boolean_T *arg_StepBit, uint16_T
+  uint16_T arg_Stepper_Trigger[2], uint16_T *arg_StepBit, uint16_T
   *arg_NewDesSteps);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;

@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   10 \
+    NumChartData   6 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -35,31 +35,10 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_Calc"\
+      Name         "is_Main"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "Main.Calc"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_OverUndeflow"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "Main.Calc.OverUndeflow"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_Comm"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "Main.Comm"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "SpindelDiv"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "SpindelDiv"\
+      Path         "Main"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -74,13 +53,6 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "Carrier"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "temporalCounter_i1"\
-      Description  "TemporalCounter"\
-      SFName       ""\
-      Path         ""\
       SrcLocation  ""\
     }\
   }

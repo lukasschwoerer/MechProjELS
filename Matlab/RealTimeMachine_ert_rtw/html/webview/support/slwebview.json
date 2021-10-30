@@ -8,11 +8,10 @@
    "sid":"RealTimeMachine",
    "name":"RealTimeMachine",
    "fullname":"RealTimeMachine",
-   "label":"RealTimeMachine*",
+   "label":"RealTimeMachine",
    "parent":0,
    "descendants":[
-    2,
-    3
+    2
    ],
    "hierarchyUrl":"support/slwebview_files/RealTimeMachine_h_1.json",
    "backingUrl":"support/slwebview_files/RealTimeMachine_m.json"

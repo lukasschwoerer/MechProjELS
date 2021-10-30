@@ -6,12 +6,12 @@ clc;
 clear;
 
 % Definition allgemeiner Systemparameter
-TSampleRTM = 10e-3;                          % Cycletime Real Time Machine
+TSampleRTM = 1e-3;                        % Cycletime Real Time Machine
 TSampleStepper = 3e-6;                      % Cycletime Stepper
 StpPulsDur = 1;                             % Step Puls Duration in Clockcycles
 
 %Parameter for Simulation
-RPM = 60;                                   % RPM of the Main Spindle [rpm]
+RPM = 1700;                                   % RPM of the Main Spindle [rpm]
 EncPPT = 4096;                              % Resulution of the Encoder [Pulses Per Turn]
 EncMaxSteps = 16777216;                     %Int Overflow of Enc Reg [Pulses]
 EncOrTime = EncMaxSteps /(4096 * (RPM/60)); %Time till Enc Overflows [sec]

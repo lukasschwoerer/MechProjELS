@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.128
+ * Model version                  : 2.171
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Wed Oct 27 00:07:14 2021
+ * C/C++ source code generated on : Sun Oct 31 01:22:15 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -43,13 +43,10 @@ void rt_OneStep(void)
   static uint16_T arg_DesSteps;
 
   /* '<Root>/Enable' */
-  static boolean_T arg_Enable;
+  static uint16_T arg_Enable;
 
   /* '<Root>/Dir' */
-  static boolean_T arg_Dir;
-
-  /* '<Root>/ComBit' */
-  static boolean_T arg_ComBit;
+  static uint16_T arg_Dir;
 
   /* '<Root>/RPM' */
   static uint16_T arg_RPM;
@@ -67,8 +64,7 @@ void rt_OneStep(void)
   enableTimer0Interrupt();
   RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_StopSwitch,
                        arg_RefrRate, arg_System_Trigger, &arg_DesSteps,
-                       &arg_Enable, &arg_Dir, &arg_ComBit, &arg_RPM,
-                       &arg_DutyCycle);
+                       &arg_Enable, &arg_Dir, &arg_RPM, &arg_DutyCycle);
 
   /* Get model outputs here */
   disableTimer0Interrupt();
@@ -79,7 +75,7 @@ volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(void)
 {
-  float modelBaseRate = 0.01;
+  float modelBaseRate = 0.001;
   float systemClock = 100;
 
   /* Initialize variables */

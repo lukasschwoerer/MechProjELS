@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.117
+ * Model version                  : 2.134
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Wed Oct 27 00:09:09 2021
+ * C/C++ source code generated on : Sun Oct 31 01:09:30 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -23,9 +23,8 @@
 /* Named constants for Chart: '<Root>/Chart' */
 #define StepperRTM_event_POR           (1L)
 #define StepperRTM_event_Takt          (0L)
-#define StepperRTM_IN_CWStepHigh       (1U)
-#define StepperRTM_IN_CWStepLow        (2U)
-#define StepperRTM_IN_Idle             (3U)
+#define StepperRTM_IN_High             (1U)
+#define StepperRTM_IN_Idle             (2U)
 #define StepperRTM_IN_Main             (1U)
 #define StepperRTM_IN_NO_ACTIVE_CHILD  (0U)
 #define StepperRTM_IN_Reset            (2U)
@@ -62,57 +61,57 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
     StepperRTM_DW.is_c3_StepperRTM = StepperRTM_IN_Reset;
 
     /* Entry 'Reset': '<S1>:10' */
-    StepperRTM_B.StepBit = false;
+    StepperRTM_B.StepBit = 0U;
   } else if (StepperRTM_DW.is_c3_StepperRTM == 1U) {
     /* During 'Main': '<S1>:4' */
-    switch (StepperRTM_DW.is_Main) {
-     case StepperRTM_IN_CWStepHigh:
-      /* During 'CWStepHigh': '<S1>:138' */
-      if (StepperRTM_DW.temporalCounter_i1 >= StepperRTM_U.DutyCycle) {
-        /* Transition: '<S1>:144' */
-        StepperRTM_DW.is_Main = StepperRTM_IN_CWStepLow;
-        StepperRTM_DW.temporalCounter_i1 = 0U;
+    if (StepperRTM_DW.is_Main == 1U) {
+      StepperRTM_B.StepBit = 1U;
 
-        /* Entry 'CWStepLow': '<S1>:143' */
-        StepperRTM_B.StepBit = false;
-      }
-      break;
-
-     case StepperRTM_IN_CWStepLow:
-      /* During 'CWStepLow': '<S1>:143' */
+      /* During 'High': '<S1>:162' */
       if (StepperRTM_DW.temporalCounter_i1 >= StepperRTM_U.DutyCycle) {
-        /* Transition: '<S1>:141' */
+        /* Transition: '<S1>:166' */
         StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps - /*MW:OvSatOk*/ 1U;
         if (StepperRTM_U.DesSteps - 1U > StepperRTM_U.DesSteps) {
           StepperRTM_B.NewDesSteps = 0U;
         }
 
         StepperRTM_DW.is_Main = StepperRTM_IN_Idle;
-      }
-      break;
-
-     default:
-      /* During 'Idle': '<S1>:23' */
-      if (StepperRTM_U.DesSteps > 0U) {
-        /* Transition: '<S1>:153' */
-        StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps;
-        StepperRTM_DW.is_Main = StepperRTM_IN_CWStepHigh;
         StepperRTM_DW.temporalCounter_i1 = 0U;
 
-        /* Entry 'CWStepHigh': '<S1>:138' */
-        StepperRTM_B.StepBit = true;
+        /* Entry 'Idle': '<S1>:23' */
+        StepperRTM_B.StepBit = 0U;
       }
-      break;
+    } else {
+      StepperRTM_B.StepBit = 0U;
+
+      /* During 'Idle': '<S1>:23' */
+      if ((StepperRTM_U.DesSteps > 0U) && (StepperRTM_DW.temporalCounter_i1 >=
+           StepperRTM_U.DutyCycle)) {
+        /* Transition: '<S1>:153' */
+        StepperRTM_B.NewDesSteps = StepperRTM_U.DesSteps;
+        StepperRTM_DW.is_Main = StepperRTM_IN_High;
+        StepperRTM_DW.temporalCounter_i1 = 0U;
+
+        /* Entry 'High': '<S1>:162' */
+        StepperRTM_B.StepBit = 1U;
+      }
     }
+  } else {
+    StepperRTM_B.StepBit = 0U;
 
     /* During 'Reset': '<S1>:10' */
-  } else if (*sfEvent == StepperRTM_event_POR) {
-    /* Transition: '<S1>:11' */
-    StepperRTM_DW.is_c3_StepperRTM = StepperRTM_IN_Main;
+    if (*sfEvent == StepperRTM_event_POR) {
+      /* Transition: '<S1>:11' */
+      StepperRTM_DW.is_c3_StepperRTM = StepperRTM_IN_Main;
 
-    /* Entry Internal 'Main': '<S1>:4' */
-    /* Transition: '<S1>:24' */
-    StepperRTM_DW.is_Main = StepperRTM_IN_Idle;
+      /* Entry Internal 'Main': '<S1>:4' */
+      /* Transition: '<S1>:24' */
+      StepperRTM_DW.is_Main = StepperRTM_IN_Idle;
+      StepperRTM_DW.temporalCounter_i1 = 0U;
+
+      /* Entry 'Idle': '<S1>:23' */
+      StepperRTM_B.StepBit = 0U;
+    }
   }
 
   /* End of Chart: '<Root>/Chart' */
@@ -120,7 +119,7 @@ static void Stepper_chartstep_c3_StepperRTM(const int32_T *sfEvent)
 
 /* Model step function */
 void StepperRTM_step(uint16_T arg_DesSteps, uint16_T arg_DutyCycle, uint16_T
-                     arg_Stepper_Trigger[2], boolean_T *arg_StepBit, uint16_T
+                     arg_Stepper_Trigger[2], uint16_T *arg_StepBit, uint16_T
                      *arg_NewDesSteps)
 {
   int32_T sfEvent;
@@ -203,7 +202,7 @@ void StepperRTM_initialize(void)
   StepperRTM_DW.temporalCounter_i1 = 0U;
   StepperRTM_DW.is_active_c3_StepperRTM = 0U;
   StepperRTM_DW.is_c3_StepperRTM = StepperRTM_IN_NO_ACTIVE_CHILD;
-  StepperRTM_B.StepBit = false;
+  StepperRTM_B.StepBit = 0U;
   StepperRTM_B.NewDesSteps = 0U;
 }
 
