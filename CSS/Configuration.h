@@ -6,10 +6,10 @@
  */
 #include "F28x_Project.h"
 
-#define Stepper_Clock 1000
-#define System_Clock 2
+#define Stepper_Clock 5
+#define System_Clock 100
 #define _ENCODER_MAX_COUNT = 0x00ffffff
-#define RefreshRate 1
+#define RefreshRate 10
 
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.171
+ * Model version                  : 2.232
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Sun Oct 31 01:22:15 2021
+ * C/C++ source code generated on : Mon Nov  1 21:52:02 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -30,9 +30,6 @@ void rt_OneStep(void)
   /* '<Root>/CountFactor' */
   static real_T arg_CountFactor = 0.0;
 
-  /* '<Root>/StopSwitch' */
-  static boolean_T arg_StopSwitch = false;
-
   /* '<Root>/RefrRate' */
   static uint16_T arg_RefrRate = 0U;
 
@@ -41,9 +38,6 @@ void rt_OneStep(void)
 
   /* '<Root>/DesSteps' */
   static uint16_T arg_DesSteps;
-
-  /* '<Root>/Enable' */
-  static uint16_T arg_Enable;
 
   /* '<Root>/Dir' */
   static uint16_T arg_Dir;
@@ -62,9 +56,9 @@ void rt_OneStep(void)
   }
 
   enableTimer0Interrupt();
-  RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_StopSwitch,
-                       arg_RefrRate, arg_System_Trigger, &arg_DesSteps,
-                       &arg_Enable, &arg_Dir, &arg_RPM, &arg_DutyCycle);
+  RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_RefrRate,
+                       arg_System_Trigger, &arg_DesSteps, &arg_Dir, &arg_RPM,
+                       &arg_DutyCycle);
 
   /* Get model outputs here */
   disableTimer0Interrupt();

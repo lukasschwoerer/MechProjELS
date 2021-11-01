@@ -35,24 +35,24 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_Main"\
+      Name         "is_MachineStatus"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "Main"\
+      Path         "Main.MachineStatus"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "PrevSpindelPos"\
-      Description  "ChartLocal"\
+      Name         "is_Communication"\
+      Description  "StateActiveChild"\
       SFName       ""\
-      Path         "PrevSpindelPos"\
+      Path         "Main.Communication"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "Carrier"\
-      Description  "ChartLocal"\
+      Name         "temporalCounter_i1"\
+      Description  "TemporalCounter"\
       SFName       ""\
-      Path         "Carrier"\
+      Path         ""\
       SrcLocation  ""\
     }\
   }

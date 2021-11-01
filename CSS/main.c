@@ -7,6 +7,7 @@
 #include "..\Matlab\RealTimeMachine_ert_rtw\RealTimeMachine.h"
 #include "..\Matlab\RealTimeMachine_ert_rtw\rtwtypes.h"
 #include "..\Matlab\RealTimeMachine_ert_rtw\zero_crossing_types.h"
+#include "..\Matlab\RealTimeMachine_ert_rtw\RealTimeMachine_data.c"
 
 #include "..\Matlab\StepperRTM_ert_rtw\StepperRTM.h"
 #include "..\Matlab\StepperRTM_ert_rtw\rtwtypes.h"
@@ -17,8 +18,7 @@
 // Global Variables Inputs
 //
 uint32_T arg_SpindelPos = 0U;
-static real_T arg_CountFactor = 1.0; // 1/1 Translation for Stepper with 1.8°/Step and 16x uSteps
-static boolean_T arg_StopSwitch = false;
+static real_T arg_CountFactor = 0.390625;
 static uint16_T var_StepBacklog;
 static uint16_T var_RefrRate = RefreshRate;
 static uint16_T var_DutyCycle;
@@ -27,12 +27,10 @@ static uint16_T var_DutyCycle;
 // Global Variables Outputs
 //
 static uint16_T arg_StepBit;
-static uint16_T arg_Enable;
 static uint16_T arg_Dir;
 static uint16_T arg_DesSteps;
 static uint16_T arg_RPM;
 unsigned char *msg;
-
 //
 // Global Variables Statemachine Clock
 //
@@ -45,6 +43,17 @@ static boolean_T Stepper_Takt = 0;
 
 void main(void)
 {
+
+#ifdef _FLASH
+    // Copy time critical code and Flash setup code to RAM
+    // The RamfuncsLoadStart, RamfuncsLoadEnd, and RamfuncsRunStart
+    // symbols are created by the linker. Refer to the linker files.
+    memcpy(&RamfuncsRunStart, &RamfuncsLoadStart, (size_t)&RamfuncsLoadSize);
+
+    // Initialize the flash instruction fetch pipeline
+    // This configures the MCU to pre-fetch instructions from flash.
+    InitFlash();
+#endif
     //
     // Initialize device clock and peripherals
     //
@@ -82,45 +91,6 @@ void main(void)
 //
 __interrupt void cpuTimer0ISR(void)
 {
-    GpioDataRegs.GPASET.bit.GPIO6 = 1;
-    GpioDataRegs.GPADAT.bit.GPIO6 = 1;
-    //
-    // Acknowledge this interrupt to receive more interrupts from group 1
-    //
-    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
-    System_Takt = !System_Takt; // Toggle System Clock
-    System_Trigger[0] = (uint16_T)System_Takt;
-
-    if(System_Takt == 0)
-    {
-        System_Trigger[1] = 1; //Power on Reset
-    }
-
-    arg_SpindelPos = arg_SpindelPos + 116; //EQep1Regs.QPOSCNT;
-
-    RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_StopSwitch, var_RefrRate,
-                           (uint16_t*)&System_Trigger, &arg_DesSteps, &arg_Enable,
-                           &arg_Dir, &arg_RPM, &var_DutyCycle);
-
-    var_StepBacklog = var_StepBacklog + arg_DesSteps;
-
-    //GpioDataRegs.GPASET.bit.GPIO6 = !arg_Dir;
-    //GpioDataRegs.GPADAT.bit.GPIO6 = !arg_Dir;
-
-    GpioDataRegs.GPBSET.bit.GPIO39 = !arg_Enable;
-    GpioDataRegs.GPBDAT.bit.GPIO39 = !arg_Enable;
-
-    GpioDataRegs.GPASET.bit.GPIO6 = 0;
-    GpioDataRegs.GPADAT.bit.GPIO6 = 0;
-}
-
-
-
-//
-// cpuTimer0ISR - CPU Timer2 ISR
-//
-__interrupt void cpuTimer2ISR(void)
-{
     PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 
     Stepper_Takt = !Stepper_Takt; // Toggle System Clock
@@ -140,4 +110,37 @@ __interrupt void cpuTimer2ISR(void)
     //
     GpioDataRegs.GPASET.bit.GPIO23 = arg_StepBit;
     GpioDataRegs.GPADAT.bit.GPIO23 = arg_StepBit;
+}
+
+
+
+//
+// cpuTimer0ISR - CPU Timer2 ISR
+//
+__interrupt void cpuTimer2ISR(void)
+{
+    //
+    // Acknowledge this interrupt to receive more interrupts from group 1
+    //
+    PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+    System_Takt = !System_Takt; // Toggle System Clock
+    System_Trigger[0] = (uint16_T)System_Takt;
+
+    if(System_Takt == 0)
+    {
+        System_Trigger[1] = 1; //Power on Reset
+    }
+
+    arg_SpindelPos = EQep1Regs.QPOSCNT;
+
+    RealTimeMachine_step(arg_SpindelPos, arg_CountFactor,  var_RefrRate, (uint16_t*)&System_Trigger,
+                         &arg_DesSteps, &arg_Dir, &arg_RPM, &var_DutyCycle);
+
+    var_StepBacklog = var_StepBacklog + arg_DesSteps;
+
+    GpioDataRegs.GPBSET.bit.GPIO39 = !arg_Dir;
+    GpioDataRegs.GPBDAT.bit.GPIO39 = !arg_Dir;
+
+    //GpioDataRegs.GPASET.bit.GPIO6 = 0;
+    //GpioDataRegs.GPADAT.bit.GPIO6 = 0;
 }

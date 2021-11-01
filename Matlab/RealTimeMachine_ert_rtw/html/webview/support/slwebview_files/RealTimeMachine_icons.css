@@ -3,7 +3,8 @@
 .RealTimeMachine2,
 .RealTimeMachine3,
 .RealTimeMachine4,
-.RealTimeMachine5 { background-image: url('RealTimeMachine_icons.png'); width: 16px; height: 16px; }
+.RealTimeMachine5,
+.RealTimeMachine6 { background-image: url('RealTimeMachine_icons.png'); width: 16px; height: 16px; }
 
 .RealTimeMachine0 { background-position: -0px; }
 .RealTimeMachine1 { background-position: -16px; }
@@ -11,3 +12,4 @@
 .RealTimeMachine3 { background-position: -48px; }
 .RealTimeMachine4 { background-position: -64px; }
 .RealTimeMachine5 { background-position: -80px; }
+.RealTimeMachine6 { background-position: -96px; }

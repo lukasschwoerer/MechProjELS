@@ -228,7 +228,7 @@
     "InputConnect"
    ],
    "values":[
-    "5",
+    "4",
     "Port number",
     "off",
     "off",
@@ -407,11 +407,11 @@
   }
  },
  {
-  "sid":"RealTimeMachine:30",
+  "sid":"RealTimeMachine:31",
   "className":"Simulink.Outport",
   "icon":"RealTimeMachine1",
-  "name":"Enable",
-  "label":"Enable",
+  "name":"Dir",
+  "label":"Dir",
   "parent":"RealTimeMachine",
   "inspector":{
    "params":[
@@ -491,159 +491,6 @@
   }
  },
  {
-  "sid":"RealTimeMachine:31",
-  "className":"Simulink.Outport",
-  "icon":"RealTimeMachine1",
-  "name":"Dir",
-  "label":"Dir",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "Port",
-    "SignalName",
-    "IconDisplay",
-    "EnsureOutportIsVirtual",
-    "OutMin",
-    "OutMax",
-    "OutDataTypeStr",
-    "LockScale",
-    "Unit",
-    "PortDimensions",
-    "VarSizeSig",
-    "SampleTime",
-    "SignalType",
-    "BusOutputAsStruct",
-    "BusVirtuality",
-    "InitialOutput",
-    "MustResolveToSignalObject",
-    "OutputFunctionCall",
-    "OutputWhenDisabled",
-    "OutputWhenUnConnected",
-    "OutputWhenUnconnectedValue",
-    "SignalObject",
-    "SourceOfInitialOutputValue",
-    "StorageClass",
-    "VectorParamsAs1DForOutWhenUnconnected"
-   ],
-   "values":[
-    "3",
-    "",
-    "Port number",
-    "off",
-    "[]",
-    "[]",
-    "uint16",
-    "off",
-    "inherit",
-    "-1",
-    "Inherit",
-    "-1",
-    "auto",
-    "off",
-    "inherit",
-    "[]",
-    "off",
-    "off",
-    "held",
-    "off",
-    "0",
-    [
-    ],
-    "Dialog",
-    "Auto",
-    "on"
-   ],
-   "tabs":[
-    "Main",
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    13
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Outport",
-   "masktype":""
-  }
- },
- {
-  "sid":"RealTimeMachine:33",
-  "className":"Simulink.Inport",
-  "icon":"RealTimeMachine1",
-  "name":"StopSwitch",
-  "label":"StopSwitch",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "Port",
-    "IconDisplay",
-    "LatchByDelayingOutsideSignal",
-    "LatchInputForFeedbackSignals",
-    "Interpolate",
-    "OutputFunctionCall",
-    "OutMin",
-    "OutMax",
-    "OutDataTypeStr",
-    "LockScale",
-    "Unit",
-    "PortDimensions",
-    "VarSizeSig",
-    "SampleTime",
-    "SignalType",
-    "BusOutputAsStruct",
-    "BusVirtuality",
-    "InputConnect"
-   ],
-   "values":[
-    "3",
-    "Port number",
-    "off",
-    "off",
-    "on",
-    "off",
-    "[]",
-    "[]",
-    "boolean",
-    "off",
-    "inherit",
-    "-1",
-    "Inherit",
-    "-1",
-    "auto",
-    "off",
-    "inherit",
-    ""
-   ],
-   "tabs":[
-    "Main",
-    "Signal Attributes",
-    "-Other"
-   ],
-   "tabs_idx":[
-    0,
-    5,
-    15
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":{
-   "blocktype":"Inport",
-   "masktype":""
-  }
- },
- {
   "sid":"RealTimeMachine:39",
   "className":"Simulink.Inport",
   "icon":"RealTimeMachine1",
@@ -672,7 +519,7 @@
     "InputConnect"
    ],
    "values":[
-    "4",
+    "3",
     "Port number",
     "off",
     "off",
@@ -748,7 +595,7 @@
     "VectorParamsAs1DForOutWhenUnconnected"
    ],
    "values":[
-    "4",
+    "3",
     "",
     "Port number",
     "off",
@@ -832,7 +679,7 @@
     "VectorParamsAs1DForOutWhenUnconnected"
    ],
    "values":[
-    "5",
+    "4",
     "",
     "Port number",
     "off",
@@ -881,213 +728,176 @@
   }
  },
  {
+  "sid":"RealTimeMachine:58",
+  "className":"Simulink.SubSystem",
+  "icon":"RealTimeMachine3",
+  "name":"MATLAB Function",
+  "label":"MATLAB Function",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "ShowPortLabels",
+    "Permissions",
+    "MinAlgLoopOccurrences",
+    "RTWSystemCode",
+    "AllowZeroVariantControls",
+    "AutoFrameSizeCalculation",
+    "BlockChoice",
+    "CompiledActiveChoiceBlock",
+    "CompiledActiveChoiceControl",
+    "ErrorFcn",
+    "ExecutionDomainType",
+    "FunctionInterfaceSpec",
+    "FunctionWithSeparateData",
+    "IsSubsystemVirtual",
+    "LabelModeActiveChoice",
+    "Latency",
+    "MemberBlocks",
+    "PartitionName",
+    "PermitHierarchicalResolution",
+    "PropagateVariantConditions",
+    "RTWFcnName",
+    "RTWFcnNameOpts",
+    "RTWFileName",
+    "RTWFileNameOpts",
+    "RTWMemSecDataConstants",
+    "RTWMemSecDataInternal",
+    "RTWMemSecDataParameters",
+    "RTWMemSecFuncExecute",
+    "RTWMemSecFuncInitTerm",
+    "ReferencedSubsystem",
+    "ScheduleAs",
+    "SetExecutionDomain",
+    "SystemSampleTime",
+    "TemplateBlock",
+    "TreatAsAtomicUnit",
+    "TreatAsGroupedWhenPropagatingVariantConditions",
+    "Variant",
+    "VariantActivationTime",
+    "VariantChoices",
+    "VariantControl",
+    "VariantControlMode"
+   ],
+   "values":[
+    "FromPortIcon",
+    "ReadWrite",
+    "off",
+    "Auto",
+    "off",
+    "off",
+    "",
+    "",
+    "",
+    "Stateflow.Translate.translate",
+    "Deduce",
+    "void_void",
+    "off",
+    "off",
+    "",
+    "0",
+    "",
+    "",
+    "ExplicitOnly",
+    "off",
+    "",
+    "Auto",
+    "",
+    "Auto",
+    "Inherit from model",
+    "Inherit from model",
+    "Inherit from model",
+    "Inherit from model",
+    "Inherit from model",
+    "",
+    "Sample time",
+    "off",
+    "-1",
+    "",
+    "on",
+    "on",
+    "off",
+    "update diagram",
+    [
+    ],
+    "",
+    "expression"
+   ],
+   "tabs":[
+    "Main",
+    "Code Generation",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    4
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":{
+   "code":"function [DesSteps, Dir, RPM, DutyCycle] = fcn(ComBit, SpindelPos, Multiplier, Enable)\n\n% Initialization of Variables and Outputs\nRPM = uint16(0);\nDutyCycle = uint16(130);\nDir = uint16(0);\nDesSteps = uint16(0);\n\n%% Declaration of constants\nTotalStepTime = uint16(80); %Total time a pulse train is allowed to take in us\nrpmRefreshRate = uint16(1000); %RPM calculation Frequency\nSingleStepDC = uint16(4); %Single Step Dutycycle in 3us clock cycles (x*3us high, x*3us low)\nMaxPos = 0x00FFFFFF; %Point on which the encoder register will overflow \n\n\n%% Declaration of persistant variables\npersistent Carrier\npersistent rpmSteps\npersistent PrevSpindelpos\n\nif isempty(Carrier)\n    Carrier = 0;\nend \n\nif isempty(rpmSteps)\n    rpmSteps = uint32(0);\nend\n\nif isempty(PrevSpindelpos)\n    PrevSpindelpos = uint32(0);\nend\n\nif (SpindelPos ~= PrevSpindelpos) && Enable\n    % Spindel in motion\n    %% Deal with encoder over/underflow and determine direction\n    \n    if (SpindelPos > PrevSpindelpos) && ((SpindelPos - PrevSpindelpos) > (MaxPos/2))\n        SpindelDiv = (MaxPos - SpindelPos) + PrevSpindelpos;\n        PrevSpindelpos = SpindelPos;\n        Dir = uint16(0);\n        \n    elseif(SpindelPos < PrevSpindelpos) && ((PrevSpindelpos - SpindelPos) > (MaxPos/2))\n        SpindelDiv = (MaxPos - PrevSpindelpos) + SpindelPos;\n        PrevSpindelpos = SpindelPos;\n        Dir = uint16(1);\n        \n    elseif(SpindelPos < PrevSpindelpos)\n        SpindelDiv = (PrevSpindelpos - SpindelPos);\n        PrevSpindelpos = SpindelPos;\n        Dir = uint16(0);\n        \n    elseif(SpindelPos > PrevSpindelpos)\n        SpindelDiv = SpindelPos - PrevSpindelpos;\n        PrevSpindelpos = SpindelPos;\n        Dir = uint16(1);\n    else\n        SpindelDiv = uint32(0);\n    end\n\n    %% Calculate Desired Steps\n    rpmSteps = rpmSteps + uint32(SpindelDiv);\n    Carrier = Carrier + (Multiplier * double(SpindelDiv));\n    DesSteps = uint16(floor(Carrier));\n    Carrier = Carrier - floor(Carrier);\n\n    %% Calculate Dutycycle\n    if DesSteps <= 1\n        DutyCycle = uint16(SingleStepDC);\n    elseif (TotalStepTime/DesSteps) < 7\n        DutyCycle = uint16(2);\n    else\n        DutyCycle = uint16(((TotalStepTime/DesSteps)/10));\n    end\n            \n\n\n    %% Calculate current RPM\n    if ComBit\n        RPM = uint16((rpmSteps*60*uint32(rpmRefreshRate))/4096);\n        rpmSteps = uint32(0);\n    end\n\nelse\n    %% Spindel not moving\n    PrevSpindelpos = SpindelPos;\n    DutyCycle = uint16(SingleStepDC);\n    RPM = uint16(0);\n    Dir = uint16(0);\n    DesSteps = uint16(0);\nend\nend\n",
+   "code_sid":"RealTimeMachine:58:1"
+  },
+  "finder":{
+   "blocktype":"SubSystem",
+   "masktype":""
+  }
+ },
+ {
+  "sid":"RealTimeMachine:59",
+  "className":"Simulink.Constant",
+  "icon":"RealTimeMachine1",
+  "name":"Constant",
+  "label":"Constant",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "Value",
+    "VectorParams1D",
+    "SampleTime",
+    "OutMin",
+    "OutMax",
+    "OutDataTypeStr",
+    "LockScale",
+    "FramePeriod"
+   ],
+   "values":[
+    "0",
+    "on",
+    "inf",
+    "[]",
+    "[]",
+    "uint16",
+    "off",
+    "inf"
+   ],
+   "tabs":[
+    "Main",
+    "Signal Attributes",
+    "-Other"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":{
+   "blocktype":"Constant",
+   "masktype":""
+  }
+ },
+ {
   "sid":"RealTimeMachine:22#out:1",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
-  "name":"",
-  "label":"",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20#out:2",
-  "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
-  "name":"",
-  "label":"",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20#out:3",
-  "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
-  "name":"",
-  "label":"",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:20#out:1",
-  "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
-  "name":"",
-  "label":"",
-  "parent":"RealTimeMachine",
-  "inspector":{
-   "params":[
-    "SignalNameFromLabel",
-    "MustResolveToSignal",
-    "ShowPropagatedSignal",
-    "DataLogging",
-    "TestPoint",
-    "SignalObjectPackage",
-    "StorageClass",
-    "Description",
-    "documentLink"
-   ],
-   "values":[
-    "",
-    "off",
-    "off",
-    "off",
-    "off",
-    "Simulink",
-    "Auto",
-    "",
-    ""
-   ],
-   "tabs":[
-    "Parameter Attributes",
-    "Logging and Accessibility",
-    "Code Generation",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    3,
-    5,
-    7
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
-  "sid":"RealTimeMachine:28#out:1",
-  "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine",
@@ -1138,7 +948,7 @@
  {
   "sid":"RealTimeMachine:24#out:1",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
   "name":"SpindelPos",
   "label":"SpindelPos",
   "parent":"RealTimeMachine",
@@ -1187,9 +997,213 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:33#out:1",
+  "sid":"RealTimeMachine:28#out:1",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:58#out:1",
+  "className":"Simulink.Line",
+  "icon":"RealTimeMachine4",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:58#out:3",
+  "className":"Simulink.Line",
+  "icon":"RealTimeMachine4",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:58#out:4",
+  "className":"Simulink.Line",
+  "icon":"RealTimeMachine4",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:58#out:2",
+  "className":"Simulink.Line",
+  "icon":"RealTimeMachine4",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine",
@@ -1240,7 +1254,7 @@
  {
   "sid":"RealTimeMachine:39#out:1",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine",
@@ -1289,9 +1303,9 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20#out:4",
+  "sid":"RealTimeMachine:59#out:1",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine",
@@ -1340,9 +1354,60 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20#out:5",
+  "sid":"RealTimeMachine:20#out:2",
   "className":"Simulink.Line",
-  "icon":"RealTimeMachine3",
+  "icon":"RealTimeMachine4",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine",
+  "inspector":{
+   "params":[
+    "SignalNameFromLabel",
+    "MustResolveToSignal",
+    "ShowPropagatedSignal",
+    "DataLogging",
+    "TestPoint",
+    "SignalObjectPackage",
+    "StorageClass",
+    "Description",
+    "documentLink"
+   ],
+   "values":[
+    "",
+    "off",
+    "off",
+    "off",
+    "off",
+    "Simulink",
+    "Auto",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes",
+    "Logging and Accessibility",
+    "Code Generation",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    3,
+    5,
+    7
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20#out:1",
+  "className":"Simulink.Line",
+  "icon":"RealTimeMachine4",
   "name":"",
   "label":"",
   "parent":"RealTimeMachine",

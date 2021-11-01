@@ -126,7 +126,7 @@ Prototype
 </td>
 <td width="75%" align="left" valign="top">
 <b>
-void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, boolean_T arg_StopSwitch, uint16_T arg_RefrRate, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, uint16_T&nbsp;*arg_Enable, uint16_T&nbsp;*arg_Dir, uint16_T&nbsp;*arg_RPM, uint16_T&nbsp;*arg_DutyCycle)
+void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor, uint16_T arg_RefrRate, uint8_T arg_System_Trigger[2], uint16_T&nbsp;*arg_DesSteps, uint16_T&nbsp;*arg_Dir, uint16_T&nbsp;*arg_RPM, uint16_T&nbsp;*arg_DutyCycle)
 </b>
 
 </td>
@@ -218,21 +218,6 @@ real_T
 3
 </td>
 <td align="left" valign="top">
-arg_StopSwitch
-</td>
-<td align="left" valign="top">
-boolean_T
-</td>
-<td align="left" valign="top">
-<a href="matlab:coder.internal.code2model('RealTimeMachine:33')" name="code2model" class="code2model">&lt;Root&gt;/StopSwitch</a>
-</td>
-
-</tr>
-<tr class="odd">
-<td align="right" valign="top">
-4
-</td>
-<td align="left" valign="top">
 arg_RefrRate
 </td>
 <td align="left" valign="top">
@@ -243,9 +228,9 @@ uint16_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="right" valign="top">
-5
+4
 </td>
 <td align="left" valign="top">
 arg_System_Trigger
@@ -258,9 +243,9 @@ uint8_T
 </td>
 
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="right" valign="top">
-6
+5
 </td>
 <td align="left" valign="top">
 arg_DesSteps
@@ -273,24 +258,9 @@ uint16_T&nbsp;*
 </td>
 
 </tr>
-<tr class="even">
-<td align="right" valign="top">
-7
-</td>
-<td align="left" valign="top">
-arg_Enable
-</td>
-<td align="left" valign="top">
-uint16_T&nbsp;*
-</td>
-<td align="left" valign="top">
-<a href="matlab:coder.internal.code2model('RealTimeMachine:30')" name="code2model" class="code2model">&lt;Root&gt;/Enable</a>
-</td>
-
-</tr>
 <tr class="odd">
 <td align="right" valign="top">
-8
+6
 </td>
 <td align="left" valign="top">
 arg_Dir
@@ -305,7 +275,7 @@ uint16_T&nbsp;*
 </tr>
 <tr class="even">
 <td align="right" valign="top">
-9
+7
 </td>
 <td align="left" valign="top">
 arg_RPM
@@ -320,7 +290,7 @@ uint16_T&nbsp;*
 </tr>
 <tr class="odd">
 <td align="right" valign="top">
-10
+8
 </td>
 <td align="left" valign="top">
 arg_DutyCycle
@@ -431,24 +401,6 @@ real_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('RealTimeMachine:33')" name="code2model" class="code2model">&lt;Root&gt;/StopSwitch</a>
-</td>
-<td width="26%" align="left" valign="top">
-<i>
-Defined externally
-</i>
-
-</td>
-<td width="21%" align="left" valign="top">
-boolean_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="odd">
-<td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:39')" name="code2model" class="code2model">&lt;Root&gt;/RefrRate</a>
 </td>
 <td width="26%" align="left" valign="top">
@@ -465,7 +417,7 @@ uint16_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model" class="code2model">&lt;Root&gt;/System_Trigger</a>
 </td>
@@ -539,24 +491,6 @@ uint16_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('RealTimeMachine:30')" name="code2model" class="code2model">&lt;Root&gt;/Enable</a>
-</td>
-<td width="26%" align="left" valign="top">
-<i>
-Defined externally
-</i>
-
-</td>
-<td width="21%" align="left" valign="top">
-uint16_T
-</td>
-<td width="10%" align="right" valign="top">
-1
-</td>
-
-</tr>
-<tr class="even">
-<td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:31')" name="code2model" class="code2model">&lt;Root&gt;/Dir</a>
 </td>
 <td width="26%" align="left" valign="top">
@@ -573,7 +507,7 @@ uint16_T
 </td>
 
 </tr>
-<tr class="odd">
+<tr class="even">
 <td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model" class="code2model">&lt;Root&gt;/RPM</a>
 </td>
@@ -591,7 +525,7 @@ uint16_T
 </td>
 
 </tr>
-<tr class="even">
+<tr class="odd">
 <td width="42%" align="left" valign="top">
 <a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model" class="code2model">&lt;Root&gt;/DutyCycle</a>
 </td>
@@ -617,9 +551,51 @@ Interface Parameters
 </a>
 
 </h3>
-<p>
-No interface/tunable parameters in model.
-</p>
+<table width="100%" class="AltRow FirstColumn" cellspacing="0">
+<tr class="heading">
+<th width="42%" align="left" valign="top">
+<b>
+Parameter Source
+</b>
+
+</th>
+<th width="26%" align="left" valign="top">
+<b>
+Code Identifier
+</b>
+
+</th>
+<th width="21%" align="left" valign="top">
+<b>
+Data Type
+</b>
+
+</th>
+<th width="10%" align="right" valign="top">
+<b>
+Dimension
+</b>
+
+</th>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('RealTimeMachine:59')" name="code2model" class="code2model">&lt;Root&gt;/Constant</a>
+</td>
+<td width="26%" align="left" valign="top">
+RealTimeMachine_P.Constant_Value
+</td>
+<td width="21%" align="left" valign="top">
+uint16_T
+</td>
+<td width="10%" align="right" valign="top">
+1
+</td>
+
+</tr>
+
+</table>
 <h3>
 <a name="sec_Data_Stores">
 Data Stores

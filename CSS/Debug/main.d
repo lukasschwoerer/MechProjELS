@@ -75,6 +75,8 @@ main.obj: ../../Matlab/RealTimeMachine_ert_rtw/rtwtypes.h
 main.obj: ../../Matlab/RealTimeMachine_ert_rtw/zero_crossing_types.h
 main.obj: ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_types.h
 main.obj: ../../Matlab/RealTimeMachine_ert_rtw/MW_target_hardware_resources.h
+main.obj: ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_data.c
+main.obj: ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_private.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/StepperRTM.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/rtwtypes.h
 main.obj: ../../Matlab/StepperRTM_ert_rtw/zero_crossing_types.h
@@ -230,6 +232,10 @@ C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include/xlocale/_string
 ../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_types.h:
 
 ../../Matlab/RealTimeMachine_ert_rtw/MW_target_hardware_resources.h:
+
+../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_data.c:
+
+../../Matlab/RealTimeMachine_ert_rtw/RealTimeMachine_private.h:
 
 ../../Matlab/StepperRTM_ert_rtw/StepperRTM.h:
 
