@@ -18,7 +18,7 @@
 // Global Variables Inputs
 //
 uint32_T arg_SpindelPos = 0U;
-static real_T arg_CountFactor = 0.390625;
+static real_T arg_CountFactor = 0.48828125;
 static uint16_T var_StepBacklog;
 static uint16_T var_RefrRate = RefreshRate;
 static uint16_T var_DutyCycle;
@@ -30,6 +30,7 @@ static uint16_T arg_StepBit;
 static uint16_T arg_Dir;
 static uint16_T arg_DesSteps;
 static uint16_T arg_RPM;
+static uint16_T arg_ComBit;
 unsigned char *msg;
 //
 // Global Variables Statemachine Clock
@@ -82,7 +83,6 @@ void main(void)
 
     while(1)
     {
-
     }
 }
 
@@ -134,13 +134,13 @@ __interrupt void cpuTimer2ISR(void)
     arg_SpindelPos = EQep1Regs.QPOSCNT;
 
     RealTimeMachine_step(arg_SpindelPos, arg_CountFactor,  var_RefrRate, (uint16_t*)&System_Trigger,
-                         &arg_DesSteps, &arg_Dir, &arg_RPM, &var_DutyCycle);
+                         &arg_DesSteps, &arg_Dir, &arg_RPM, &var_DutyCycle, &arg_ComBit);
 
     var_StepBacklog = var_StepBacklog + arg_DesSteps;
 
     GpioDataRegs.GPBSET.bit.GPIO39 = !arg_Dir;
     GpioDataRegs.GPBDAT.bit.GPIO39 = !arg_Dir;
 
-    //GpioDataRegs.GPASET.bit.GPIO6 = 0;
-    //GpioDataRegs.GPADAT.bit.GPIO6 = 0;
+    GpioDataRegs.GPASET.bit.GPIO6 = arg_ComBit;
+    GpioDataRegs.GPADAT.bit.GPIO6 = arg_ComBit;
 }

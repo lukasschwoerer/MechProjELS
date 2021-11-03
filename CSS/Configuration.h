@@ -9,7 +9,7 @@
 #define Stepper_Clock 5
 #define System_Clock 100
 #define _ENCODER_MAX_COUNT = 0x00ffffff
-#define RefreshRate 10
+#define RefreshRate 100
 
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_

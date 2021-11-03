@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.232
+ * Model version                  : 2.263
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Mon Nov  1 21:52:02 2021
+ * C/C++ source code generated on : Tue Nov  2 15:20:25 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -46,7 +46,11 @@ typedef struct {
   real_T Carrier;                      /* '<Root>/MATLAB Function' */
   uint32_T rpmSteps;                   /* '<Root>/MATLAB Function' */
   uint32_T PrevSpindelpos;             /* '<Root>/MATLAB Function' */
-  uint16_T temporalCounter_i1;         /* '<Root>/Chart' */
+  uint32_T temporalCounter_i1;         /* '<Root>/Chart' */
+  uint16_T ComCarrier;                 /* '<Root>/MATLAB Function' */
+  uint16_T ComCounter;                 /* '<Root>/MATLAB Function' */
+  uint16_T RPMCarrier;                 /* '<Root>/MATLAB Function' */
+  uint16_T DIRCarrier;                 /* '<Root>/MATLAB Function' */
   uint16_T is_active_c3_RealTimeMachine;/* '<Root>/Chart' */
   uint16_T is_c3_RealTimeMachine;      /* '<Root>/Chart' */
   uint16_T is_MachineStatus;           /* '<Root>/Chart' */
@@ -91,7 +95,8 @@ extern void RealTimeMachine_initialize(void);
 /* Customized model step function */
 extern void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2], uint16_T *arg_DesSteps,
-  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_DutyCycle);
+  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_DutyCycle, uint16_T
+  *arg_ComBit);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 

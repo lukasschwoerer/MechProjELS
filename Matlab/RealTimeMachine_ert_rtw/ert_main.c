@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.232
+ * Model version                  : 2.263
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Mon Nov  1 21:52:02 2021
+ * C/C++ source code generated on : Tue Nov  2 15:20:25 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -48,6 +48,9 @@ void rt_OneStep(void)
   /* '<Root>/DutyCycle' */
   static uint16_T arg_DutyCycle;
 
+  /* '<Root>/ComBit' */
+  static uint16_T arg_ComBit;
+
   /* Check for overrun. Protect OverrunFlag against preemption */
   if (OverrunFlag++) {
     IsrOverrun = 1;
@@ -58,7 +61,7 @@ void rt_OneStep(void)
   enableTimer0Interrupt();
   RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_RefrRate,
                        arg_System_Trigger, &arg_DesSteps, &arg_Dir, &arg_RPM,
-                       &arg_DutyCycle);
+                       &arg_DutyCycle, &arg_ComBit);
 
   /* Get model outputs here */
   disableTimer0Interrupt();
@@ -69,7 +72,7 @@ volatile boolean_T stopRequested;
 volatile boolean_T runModel;
 int main(void)
 {
-  float modelBaseRate = 0.001;
+  float modelBaseRate = 0.0001;
   float systemClock = 100;
 
   /* Initialize variables */

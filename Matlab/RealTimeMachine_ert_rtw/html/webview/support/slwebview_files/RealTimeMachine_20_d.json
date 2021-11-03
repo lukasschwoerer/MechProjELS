@@ -1,64 +1,5 @@
 [
  {
-  "sid":"RealTimeMachine:20:1",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine5",
-  "name":"Reset",
-  "label":"Reset",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "SelfActivity",
-    "Auto",
-    "Reset\nEnable = 0;\nComBit = 0;\n\n",
-    false,
-    false,
-    "SignalName",
-    "Reset",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"RealTimeMachine:20:2",
   "className":"Stateflow.State",
   "icon":"RealTimeMachine5",
@@ -295,11 +236,11 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:107",
+  "sid":"RealTimeMachine:20:109",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine6",
   "name":"",
-  "label":"[after(RefreshRate,Takt)]",
+  "label":"",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
@@ -312,7 +253,7 @@
    "values":[
     1,
     false,
-    "[after(RefreshRate,Takt)]",
+    "",
     "",
     ""
    ],
@@ -334,7 +275,7 @@
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine6",
   "name":"",
-  "label":"[after(1,Takt)]",
+  "label":"[after(RefreshRate/2,Takt)]",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
@@ -347,7 +288,7 @@
    "values":[
     1,
     false,
-    "[after(1,Takt)]",
+    "[after(RefreshRate/2,Takt)]",
     "",
     ""
    ],
@@ -365,11 +306,11 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:109",
+  "sid":"RealTimeMachine:20:107",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine6",
   "name":"",
-  "label":"",
+  "label":"[after(RefreshRate/2,Takt)]",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
@@ -382,7 +323,7 @@
    "values":[
     1,
     false,
-    "",
+    "[after(RefreshRate/2,Takt)]",
     "",
     ""
    ],
@@ -461,65 +402,6 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:100",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine5",
-  "name":"Disabled",
-  "label":"Disabled",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "SelfActivity",
-    "Auto",
-    "Disabled\nen: Enable = 0;",
-    false,
-    false,
-    "SignalName",
-    "Main.MachineStatus.Disabled",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"RealTimeMachine:20:98",
   "className":"Stateflow.State",
   "icon":"RealTimeMachine5",
@@ -579,31 +461,55 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:108",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
-  "name":"",
-  "label":"",
+  "sid":"RealTimeMachine:20:100",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine5",
+  "name":"Disabled",
+  "label":"Disabled",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
-    "ExecutionOrder",
-    "isVariant",
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
     "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
     "Description",
     "Document"
    ],
    "values":[
-    1,
     false,
-    "",
+    "SelfActivity",
+    "Auto",
+    "Disabled\nen: Enable = 0;",
+    false,
+    false,
+    "SignalName",
+    "Main.MachineStatus.Disabled",
+    false,
+    5000,
+    false,
+    2,
     "",
     ""
    ],
    "tabs":[
-    "Parameter Attributes"
+    "General",
+    "Logging",
+    "Documentation"
    ],
-   "tabs_idx":0
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
   },
   "viewer":{
    "jshandler":"webview/handlers/ElementHandler"
@@ -684,7 +590,7 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:12",
+  "sid":"RealTimeMachine:20:108",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine6",
   "name":"",
@@ -719,6 +625,65 @@
   ]
  },
  {
+  "sid":"RealTimeMachine:20:1",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine5",
+  "name":"Reset",
+  "label":"Reset",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    false,
+    "SelfActivity",
+    "Auto",
+    "Reset\nEnable = 0;\nComBit = 0;\n\n",
+    false,
+    false,
+    "SignalName",
+    "Reset",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
   "sid":"RealTimeMachine:20:9",
   "className":"Stateflow.Transition",
   "icon":"RealTimeMachine6",
@@ -737,6 +702,41 @@
     1,
     false,
     "POR",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:12",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine6",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "",
     "",
     ""
    ],

@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   3 \
+    NumChartData   7 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -18,21 +18,49 @@
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "RealTimeMachine:58:595-602"\
+      SrcLocation  "RealTimeMachine:58:594-601"\
     }\
     ChartData {\
       Name         "rpmSteps"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "RealTimeMachine:58:614-622"\
+      SrcLocation  "RealTimeMachine:58:613-621"\
     }\
     ChartData {\
       Name         "PrevSpindelpos"\
       Description  "EmlPersistent"\
       SFName       ""\
       Path         ""\
-      SrcLocation  "RealTimeMachine:58:634-648"\
+      SrcLocation  "RealTimeMachine:58:633-647"\
+    }\
+    ChartData {\
+      Name         "ComCarrier"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "RealTimeMachine:58:659-669"\
+    }\
+    ChartData {\
+      Name         "ComCounter"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "RealTimeMachine:58:681-691"\
+    }\
+    ChartData {\
+      Name         "RPMCarrier"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "RealTimeMachine:58:703-713"\
+    }\
+    ChartData {\
+      Name         "DIRCarrier"\
+      Description  "EmlPersistent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  "RealTimeMachine:58:725-735"\
     }\
   }
   %return ChartDataElements

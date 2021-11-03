@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v20.2.5                     
 ******************************************************************************
->> Linked Mon Nov  1 21:57:28 2021
+>> Linked Tue Nov  2 16:08:57 2021
 
 OUTPUT FILE NAME:   <ELS.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00009058
+ENTRY POINT SYMBOL: "_c_int00"  address: 000090b1
 
 
 MEMORY CONFIGURATION
@@ -15,8 +15,8 @@ PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
   RAMM0                 000000f4   0000030c  0000008d  0000027f  RWIX
   RAMLS0                00008000   00000800  00000800  00000000  RWIX
-  RAMLS1                00008800   00000800  000007fd  00000003  RWIX
-  RAMLS2                00009000   00000800  00000126  000006da  RWIX
+  RAMLS1                00008800   00000800  00000800  00000000  RWIX
+  RAMLS2                00009000   00000800  00000180  00000680  RWIX
   RAMLS3                00009800   00000800  00000000  00000800  RWIX
   RAMLS4                0000a000   00000800  00000000  00000800  RWIX
   FLASH_BANK0_SEC0      00080000   00001000  00000000  00001000  RWIX
@@ -126,7 +126,7 @@ PAGE 1:
   OUTPUT_XBAR           00007a80   00000040  00000040  00000000  RWIX
   GPIOCTRL              00007c00   00000200  00000200  00000000  RWIX
   GPIODAT               00007f00   00000040  00000040  00000000  RWIX
-  RAMLS5                0000a800   00000800  00000214  000005ec  RWIX
+  RAMLS5                0000a800   00000800  00000218  000005e8  RWIX
   RAMLS6                0000b000   00000800  00000000  00000800  RWIX
   RAMLS7                0000b800   00000800  00000000  00000800  RWIX
   RAMGS0                0000c000   00002000  00000000  00002000  RWIX
@@ -241,16 +241,16 @@ DacbRegsFile
                   0000a800    000001c0     f28004x_pievect.obj (.econst:_PieVectTableInit)
                   0000a9c0    00000004     main.obj (.econst)
 
-.ebss      1    0000a9c4    00000050     UNINITIALIZED
+.ebss      1    0000a9c4    00000054     UNINITIALIZED
                   0000a9c4    00000018     f28004x_cputimers.obj (.ebss)
-                  0000a9dc    00000012     RealTimeMachine.obj (.ebss)
-                  0000a9ee    0000000e     main.obj (.ebss)
-                  0000a9fc    00000002     main.obj (.ebss:_Stepper_Trigger$2)
-                  0000a9fe    00000002     main.obj (.ebss:_System_Trigger$2)
+                  0000a9dc    00000016     RealTimeMachine.obj (.ebss)
+                  0000a9f2    0000000e     main.obj (.ebss)
                   0000aa00    0000000a     StepperRTM.obj (.ebss)
                   0000aa0a    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
-                  0000aa10    00000002                       : _lock.c.obj (.ebss:__lock)
-                  0000aa12    00000002                       : _lock.c.obj (.ebss:__unlock)
+                  0000aa10    00000002     main.obj (.ebss:_Stepper_Trigger$2)
+                  0000aa12    00000002     main.obj (.ebss:_System_Trigger$2)
+                  0000aa14    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__lock)
+                  0000aa16    00000002                       : _lock.c.obj (.ebss:__unlock)
 
 PieVectTableFile 
 *          1    00000d00    000001c0     UNINITIALIZED
@@ -635,38 +635,38 @@ Flash0EccRegsFile
                   000087fd    00000002                       : pre_init.c.obj (.text)
                   000087ff    00000001                       : _lock.c.obj (.text)
 
-.text.2    0    00008800    000007fd     
-                  00008800    00000279     RealTimeMachine.obj (.text)
-                  00008a79    00000132     Configuration.obj (.text)
-                  00008bab    00000001     rts2800_fpu32.lib : startup.c.obj (.text)
-                  00008bac    000000ee     main.obj (.text)
-                  00008c9a    000000ea     StepperRTM.obj (.text)
-                  00008d84    000000d8     f28004x_gpio.obj (.text)
-                  00008e5c    000000b1     main.obj (.text:retain)
-                  00008f0d    0000005c     f28004x_cputimers.obj (.text)
-                  00008f69    00000059     rts2800_fpu32.lib : s_floorf.c.obj (.text)
-                  00008fc2    00000029                       : exit.c.obj (.text)
-                  00008feb    00000012                       : args_main.c.obj (.text)
+.text.2    0    00008800    00000800     
+                  00008800    000002c4     RealTimeMachine.obj (.text)
+                  00008ac4    00000132     Configuration.obj (.text)
+                  00008bf6    000000f2     main.obj (.text)
+                  00008ce8    000000ea     StepperRTM.obj (.text)
+                  00008dd2    000000d8     f28004x_gpio.obj (.text)
+                  00008eaa    000000bf     main.obj (.text:retain)
+                  00008f69    0000005c     f28004x_cputimers.obj (.text)
+                  00008fc5    00000029     rts2800_fpu32.lib : exit.c.obj (.text)
+                  00008fee    00000012                       : args_main.c.obj (.text)
 
-.text.3    0    00009000    00000126     
-                  00009000    00000058     rts2800_fpu32.lib : s_ceilf.c.obj (.text)
-                  00009058    00000056                       : boot28.asm.obj (.text)
-                  000090ae    00000028     f28004x_piectrl.obj (.text)
-                  000090d6    00000024     rts2800_fpu32.lib : cpy_tbl.c.obj (.text)
-                  000090fa    0000001c                       : memcpy.c.obj (.text)
-                  00009116    00000010     f28004x_pievect.obj (.text)
+.text.3    0    00009000    00000180     
+                  00009000    00000059     rts2800_fpu32.lib : s_floorf.c.obj (.text)
+                  00009059    00000058                       : s_ceilf.c.obj (.text)
+                  000090b1    00000056                       : boot28.asm.obj (.text)
+                  00009107    00000028     f28004x_piectrl.obj (.text)
+                  0000912f    00000024     rts2800_fpu32.lib : cpy_tbl.c.obj (.text)
+                  00009153    0000001c                       : memcpy.c.obj (.text)
+                  0000916f    00000010     f28004x_pievect.obj (.text)
+                  0000917f    00000001     rts2800_fpu32.lib : startup.c.obj (.text)
 
 MODULE SUMMARY
 
        Module                                   code   initialized data   uninitialized data
        ------                                   ----   ----------------   ------------------
     .\
-       RealTimeMachine.obj                      633    0                  18                
-       main.obj                                 415    4                  18                
+       RealTimeMachine.obj                      708    0                  22                
+       main.obj                                 433    4                  18                
        Configuration.obj                        306    0                  0                 
        StepperRTM.obj                           234    0                  10                
     +--+----------------------------------------+------+------------------+--------------------+
-       Total:                                   1588   4                  46                
+       Total:                                   1681   4                  50                
                                                                                             
     .\common\source\
        f28004x_defaultisr.obj                   1203   0                  0                 
@@ -686,7 +686,7 @@ MODULE SUMMARY
        Total:                                   0      0                  9078              
                                                                                             
     C:\Users\lu\AppData\Local\Temp\
-       {B1CF95D9-39B7-44C8-8E3E-406872FEC7EA}   0      37                 0                 
+       {C5E04B9D-D0F7-45FC-A761-73B93F904F84}   0      37                 0                 
     +--+----------------------------------------+------+------------------+--------------------+
        Total:                                   0      37                 0                 
                                                                                             
@@ -707,7 +707,7 @@ MODULE SUMMARY
                                                                                             
        Stack:                                   0      0                  512               
     +--+----------------------------------------+------+------------------+--------------------+
-       Grand Total:                             4477   503                9670              
+       Grand Total:                             4570   503                9674              
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -848,9 +848,9 @@ address     data page           name
 0000a9dd     2a7 (0000a9c0)     _RealTimeMachine_B
 0000a9df     2a7 (0000a9c0)     _RealTimeMachine_PrevZCX
 0000a9e2     2a7 (0000a9c0)     _RealTimeMachine_DW
-0000a9ee     2a7 (0000a9c0)     _RealTimeMachine_P
-0000a9f8     2a7 (0000a9c0)     _arg_SpindelPos
-0000a9fa     2a7 (0000a9c0)     _msg
+0000a9f2     2a7 (0000a9c0)     _RealTimeMachine_P
+0000a9fc     2a7 (0000a9c0)     _arg_SpindelPos
+0000a9fe     2a7 (0000a9c0)     _msg
 
 0000aa00     2a8 (0000aa00)     _StepperRTM_B
 0000aa02     2a8 (0000aa00)     _StepperRTM_PrevZCX
@@ -859,8 +859,8 @@ address     data page           name
 0000aa0a     2a8 (0000aa00)     ___TI_enable_exit_profile_output
 0000aa0c     2a8 (0000aa00)     ___TI_cleanup_ptr
 0000aa0e     2a8 (0000aa00)     ___TI_dtors_ptr
-0000aa10     2a8 (0000aa00)     __lock
-0000aa12     2a8 (0000aa00)     __unlock
+0000aa14     2a8 (0000aa00)     __lock
+0000aa16     2a8 (0000aa00)     __unlock
 
 00048000    1200 (00048000)     _CanaRegs
 
@@ -919,7 +919,7 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 page  address   name                            
 ----  -------   ----                            
 abs   ffffffff  .text                           
-0     00008fc2  C$$EXIT                         
+0     00008fc5  C$$EXIT                         
 0     000087df  LL$$CMP                         
 0     000087f1  ULL$$CMP                        
 0     000084a9  _ADCA1_ISR                      
@@ -973,7 +973,7 @@ abs   ffffffff  .text
 1     00005d00  _Cmpss5Regs                     
 1     00005d20  _Cmpss6Regs                     
 1     00005d40  _Cmpss7Regs                     
-0     00008f48  _ConfigCpuTimer                 
+0     00008fa4  _ConfigCpuTimer                 
 1     0005d300  _CpuSysRegs                     
 1     0000a9c4  _CpuTimer0                      
 1     00000c00  _CpuTimer0Regs                  
@@ -1049,7 +1049,7 @@ abs   ffffffff  .text
 0     0000821c  _EQEP2_ISR                      
 1     00005100  _EQep1Regs                      
 1     00005140  _EQep2Regs                      
-0     000090cd  _EnableInterrupts               
+0     00009126  _EnableInterrupts               
 1     0005e980  _EnhancedDebugCounter1Regs      
 1     0005e990  _EnhancedDebugCounter2Regs      
 1     0005e9a0  _EnhancedDebugCounter3Regs      
@@ -1076,8 +1076,8 @@ abs   ffffffff  .text
 0     00000138  _FlashOff                       
 1     00006680  _FsiRxaRegs                     
 1     00006600  _FsiTxaRegs                     
-0     00008e08  _GPIO_SetupPinMux               
-0     00008d84  _GPIO_SetupPinOptions           
+0     00008e56  _GPIO_SetupPinMux               
+0     00008dd2  _GPIO_SetupPinOptions           
 1     00007c00  _GpioCtrlRegs                   
 1     00007f00  _GpioDataRegs                   
 0     00008790  _HALT                           
@@ -1086,11 +1086,11 @@ abs   ffffffff  .text
 1     00007300  _I2caRegs                       
 0     00008787  _IDLE                           
 0     000081b8  _ILLEGAL_ISR                    
-0     00008f0d  _InitCpuTimers                  
+0     00008f69  _InitCpuTimers                  
 0     000000f4  _InitFlash                      
 0     000086e2  _InitPeripheralClocks           
-0     000090ae  _InitPieCtrl                    
-0     00009116  _InitPieVectTable               
+0     00009107  _InitPieCtrl                    
+0     0000916f  _InitPieVectTable               
 0     0000877a  _InitSysCtrl                    
 0     000085e1  _InitSysPll                     
 1     00007900  _InputXbarRegs                  
@@ -1123,10 +1123,10 @@ abs   ffffffff  .text
 0     0000815e  _RTOS_ISR                       
 1     0000a9dd  _RealTimeMachine_B              
 1     0000a9e2  _RealTimeMachine_DW             
-1     0000a9ee  _RealTimeMachine_P              
+1     0000a9f2  _RealTimeMachine_P              
 1     0000a9df  _RealTimeMachine_PrevZCX        
 1     0000a9dc  _RealTimeMachine_U              
-0     00008868  _RealTimeMachine_step           
+0     0000886f  _RealTimeMachine_step           
 0     00008154  _SCIA_RX_ISR                    
 0     0000814a  _SCIA_TX_ISR                    
 0     00008140  _SCIB_RX_ISR                    
@@ -1151,7 +1151,7 @@ abs   ffffffff  .text
 1     0000aa06  _StepperRTM_DW                  
 1     0000aa02  _StepperRTM_PrevZCX             
 1     0000aa04  _StepperRTM_U                   
-0     00008cd2  _StepperRTM_step                
+0     00008d20  _StepperRTM_step                
 1     00007940  _SyncSocRegs                    
 0     0000853c  _SysIntOsc1Sel                  
 0     0000852c  _SysIntOsc2Sel                  
@@ -1196,35 +1196,35 @@ abs   ffffffff  ___c_args__
 abs   ffffffff  ___etext__                      
 abs   ffffffff  ___pinit__                      
 abs   ffffffff  ___text__                       
-0     00008feb  __args_main                     
-1     0000aa10  __lock                          
+0     00008fee  __args_main                     
+1     0000aa14  __lock                          
 0     000087ff  __nop                           
 1     00000400  __stack                         
-0     00008bab  __system_post_cinit             
+0     0000917f  __system_post_cinit             
 0     000087fd  __system_pre_init               
-1     0000aa12  __unlock                        
-0     00008fc2  _abort                          
-1     0000a9f8  _arg_SpindelPos                 
-0     00009058  _c_int00                        
-0     00009000  _ceil                           
-0     00009000  _ceilf                          
-0     000090d6  _copy_in                        
-0     00008ebc  _cpuTimer0ISR                   
-0     00008e5c  _cpuTimer2ISR                   
-0     00008fc4  _exit                           
-0     00008f69  _floor                          
-0     00008f69  _floorf                         
-0     00008b98  _initSCIAEchoback               
-0     00008b7c  _initSCIAFIFO                   
-0     00008bac  _main                           
-0     000090fa  _memcpy                         
-1     0000a9fa  _msg                            
-0     00008849  _rt_roundd_snf                  
-0     00008b54  _setupEQEP                      
-0     00008ade  _setupGPIO                      
-0     00008aa2  _setupTimer                     
-0     00008a79  _transmitSCIAChar               
-0     00008a7d  _transmitSCIAMessage            
+1     0000aa16  __unlock                        
+0     00008fc5  _abort                          
+1     0000a9fc  _arg_SpindelPos                 
+0     000090b1  _c_int00                        
+0     00009059  _ceil                           
+0     00009059  _ceilf                          
+0     0000912f  _copy_in                        
+0     00008f18  _cpuTimer0ISR                   
+0     00008eaa  _cpuTimer2ISR                   
+0     00008fc7  _exit                           
+0     00009000  _floor                          
+0     00009000  _floorf                         
+0     00008be3  _initSCIAEchoback               
+0     00008bc7  _initSCIAFIFO                   
+0     00008bf6  _main                           
+0     00009153  _memcpy                         
+1     0000a9fe  _msg                            
+0     00008850  _rt_roundd_snf                  
+0     00008b9f  _setupEQEP                      
+0     00008b29  _setupGPIO                      
+0     00008aed  _setupTimer                     
+0     00008ac4  _transmitSCIAChar               
+0     00008ac8  _transmitSCIAMessage            
 abs   ffffffff  binit                           
 0     0000014c  cinit                           
 0     00000000  code_start                      
@@ -1381,38 +1381,38 @@ page  address   name
 0     000087f1  ULL$$CMP                        
 0     000087fd  __system_pre_init               
 0     000087ff  __nop                           
-0     00008849  _rt_roundd_snf                  
-0     00008868  _RealTimeMachine_step           
-0     00008a79  _transmitSCIAChar               
-0     00008a7d  _transmitSCIAMessage            
-0     00008aa2  _setupTimer                     
-0     00008ade  _setupGPIO                      
-0     00008b54  _setupEQEP                      
-0     00008b7c  _initSCIAFIFO                   
-0     00008b98  _initSCIAEchoback               
-0     00008bab  __system_post_cinit             
-0     00008bac  _main                           
-0     00008cd2  _StepperRTM_step                
-0     00008d84  _GPIO_SetupPinOptions           
-0     00008e08  _GPIO_SetupPinMux               
-0     00008e5c  _cpuTimer2ISR                   
-0     00008ebc  _cpuTimer0ISR                   
-0     00008f0d  _InitCpuTimers                  
-0     00008f48  _ConfigCpuTimer                 
-0     00008f69  _floor                          
-0     00008f69  _floorf                         
-0     00008fc2  C$$EXIT                         
-0     00008fc2  _abort                          
-0     00008fc4  _exit                           
-0     00008feb  __args_main                     
-0     00009000  _ceil                           
-0     00009000  _ceilf                          
-0     00009058  _c_int00                        
-0     000090ae  _InitPieCtrl                    
-0     000090cd  _EnableInterrupts               
-0     000090d6  _copy_in                        
-0     000090fa  _memcpy                         
-0     00009116  _InitPieVectTable               
+0     00008850  _rt_roundd_snf                  
+0     0000886f  _RealTimeMachine_step           
+0     00008ac4  _transmitSCIAChar               
+0     00008ac8  _transmitSCIAMessage            
+0     00008aed  _setupTimer                     
+0     00008b29  _setupGPIO                      
+0     00008b9f  _setupEQEP                      
+0     00008bc7  _initSCIAFIFO                   
+0     00008be3  _initSCIAEchoback               
+0     00008bf6  _main                           
+0     00008d20  _StepperRTM_step                
+0     00008dd2  _GPIO_SetupPinOptions           
+0     00008e56  _GPIO_SetupPinMux               
+0     00008eaa  _cpuTimer2ISR                   
+0     00008f18  _cpuTimer0ISR                   
+0     00008f69  _InitCpuTimers                  
+0     00008fa4  _ConfigCpuTimer                 
+0     00008fc5  C$$EXIT                         
+0     00008fc5  _abort                          
+0     00008fc7  _exit                           
+0     00008fee  __args_main                     
+0     00009000  _floor                          
+0     00009000  _floorf                         
+0     00009059  _ceil                           
+0     00009059  _ceilf                          
+0     000090b1  _c_int00                        
+0     00009107  _InitPieCtrl                    
+0     00009126  _EnableInterrupts               
+0     0000912f  _copy_in                        
+0     00009153  _memcpy                         
+0     0000916f  _InitPieVectTable               
+0     0000917f  __system_post_cinit             
 1     00000400  __stack                         
 1     00000600  __STACK_END                     
 1     00000b00  _AdcaResultRegs                 
@@ -1492,9 +1492,9 @@ page  address   name
 1     0000a9dd  _RealTimeMachine_B              
 1     0000a9df  _RealTimeMachine_PrevZCX        
 1     0000a9e2  _RealTimeMachine_DW             
-1     0000a9ee  _RealTimeMachine_P              
-1     0000a9f8  _arg_SpindelPos                 
-1     0000a9fa  _msg                            
+1     0000a9f2  _RealTimeMachine_P              
+1     0000a9fc  _arg_SpindelPos                 
+1     0000a9fe  _msg                            
 1     0000aa00  _StepperRTM_B                   
 1     0000aa02  _StepperRTM_PrevZCX             
 1     0000aa04  _StepperRTM_U                   
@@ -1502,8 +1502,8 @@ page  address   name
 1     0000aa0a  ___TI_enable_exit_profile_output
 1     0000aa0c  ___TI_cleanup_ptr               
 1     0000aa0e  ___TI_dtors_ptr                 
-1     0000aa10  __lock                          
-1     0000aa12  __unlock                        
+1     0000aa14  __lock                          
+1     0000aa16  __unlock                        
 1     00048000  _CanaRegs                       
 1     0004a000  _CanbRegs                       
 1     0005d000  _DevCfgRegs                     
