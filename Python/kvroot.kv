@@ -13,8 +13,17 @@ WindowManager:
 #: set StandartSpacing 3
 
 # ------------------ Design Macros ------------------ #
+<Blank@Button>:
+    background_color: 0,0,0,0
+    canvas.before:
+        Color:
+            rgba: [0, 0, 0, 0] if self.state == 'normal' else [0, 0, 0, 0]
 
-<ActionButton>:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+
+<Action@Button>:
     background_color: 0,0,0,0
     canvas.before:
         Color:
@@ -136,13 +145,13 @@ WindowManager:
                     size_hint: 1, .2
                     spacing: StandartSpacing
 
-                    ActionButton:
+                    Action:
                         size_hint: 0.5, 1
                         text: 'Normal'
                         on_press: root.btn_normal()
                         
 
-                    ActionButton:
+                    Action:
                         size_hint: 0.5, 1
                         text: 'Gewinde'
                         on_press: root.btn_gewinde()
@@ -163,14 +172,14 @@ WindowManager:
                     size_hint: 1, .2
                     spacing: StandartSpacing
 
-                    ActionButton:
+                    Action:
                         size_hint: 0.5, 1
                         text: '<'
                         bold: True
                         font_size: '40dp'
                         on_press: root.btn_prev()
 
-                    ActionButton:
+                    Action:
                         size_hint: 0.5, 1
                         text: '>'
                         bold: True
@@ -233,34 +242,77 @@ WindowManager:
                     root.manager.transition.direction = "left"
 
         BoxLayout:
-            orientation: 'horizontal'
-            spacing: 5
-            size: root.width, root.height
+            spacing: StandartSpacing
+            orientation:'vertical'
+            
+            Label:
+                text: ''
+                size_hint: 1, .2
 
-            ActionButton:
-                size_hint: 0.2, 0.1
-                text: '0,4'
-                #on_press: root.btn_normal()
+            GridLayout:
+                cols: 5
+                spacing: 5
+                pos: 0, 0
+                size: root.width, root.height
 
-            ActionButton:
-                size_hint: 0.2, 0.1
-                text: '0,5'
-                #on_press: root.btn_normal()
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '0,4 mm'
+                    #on_press: root.btn_normal()
 
-            ActionButton:
-                size_hint: 0.2, 0.1
-                text: '0,7'
-                #on_press: root.btn_normal()
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '0,5 mm'
+                    #on_press: root.btn_normal()
 
-            ActionButton:
-                size_hint: 0.2, 0.1
-                text: '0,8'
-                #on_press: root.btn_normal()
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '0,7 mm'
+                    #on_press: root.btn_normal()
 
-            ActionButton:
-                size_hint: 0.2, 0.1
-                text: '1,0'
-                #on_press: root.btn_normal()
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '0,8 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '1,0 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '1,25 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '1,5 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '1,75 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '2 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '2,5 mm'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '3 mm'
+                    #on_press: root.btn_normal()
+
+            Label:
+                text: ''
+                size_hint: 1, .2
         
 
     
@@ -315,9 +367,84 @@ WindowManager:
                     app.root.current = "einstellungen"
                     root.manager.transition.direction = "left"
 
-        Label:
-            text: "Section Zoll Gewinde"
-            size_hint: 1, .9
+        BoxLayout:
+            spacing: StandartSpacing
+            orientation:'vertical'
+            
+            Label:
+                text: ''
+                size_hint: 1, .2
+                
+            GridLayout:
+                cols: 5
+                spacing: 5
+                pos: 0, 0
+                size: root.width, root.height
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '10 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '11 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '13 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '19 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '20 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '22 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '40 TPI'
+                    #on_press: root.btn_normal()
+
+                Action:
+                    size_hint: 0.2, 0.1
+                    text: '44 TPI'
+                    #on_press: root.btn_normal()
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+            Label:
+                text: ''
+                size_hint: 1, .2
 
 <SpezialGewinde>
     name: "spezial"
@@ -369,9 +496,83 @@ WindowManager:
                     app.root.current = "einstellungen"
                     root.manager.transition.direction = "left"
 
-        Label:
-            text: "Section Spezial Gewinde"
-            size_hint: 1, .9
+        BoxLayout:
+            spacing: StandartSpacing
+            orientation:'vertical'
+            
+            Label:
+                text: ''
+                size_hint: 1, .2
+                
+            GridLayout:
+                cols: 5
+                spacing: 5
+                pos: 0, 0
+                size: root.width, root.height
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+                Blank:
+                    size_hint: 0.2, 0.1
+
+            Label:
+                text: ''
+                size_hint: 1, .2
 
 <SchnittdatenRechner>
     name: "rechner"
