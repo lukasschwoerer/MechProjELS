@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.263
+ * Model version                  : 2.266
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Nov  2 15:20:25 2021
+ * C/C++ source code generated on : Thu Nov  4 20:57:45 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -95,8 +95,7 @@ extern void RealTimeMachine_initialize(void);
 /* Customized model step function */
 extern void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2], uint16_T *arg_DesSteps,
-  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_DutyCycle, uint16_T
-  *arg_ComBit);
+  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_ComBit);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 

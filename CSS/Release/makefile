@@ -10,6 +10,9 @@ GEN_OPTS__FLAG :=
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./Configuration.obj" \
+"./RealTimeMachine.obj" \
+"./StepperRTM.obj" \
 "./main.obj" \
 "./common/source/f28004x_adc.obj" \
 "./common/source/f28004x_codestartbranch.obj" \
@@ -161,7 +164,7 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 ELS.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: C2000 Linker'
-	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu0 -O2 --diag_warning=225 --diag_wrap=off --display_error_number --abi=coffabi -z -m"ELS.map" --stack_size=0x200 --warn_sections -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="ELS_linkInfo.xml" --rom_model -o "ELS.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/bin/cl2000" -v28 -ml -mt --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --vcu_support=vcu0 -O4 --opt_for_speed=5 --fp_mode=relaxed --diag_warning=225 --diag_wrap=off --display_error_number --abi=coffabi -z -m"ELS.map" --stack_size=0x200 --warn_sections -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/lib" -i"C:/ti/ccs1040/ccs/tools/compiler/ti-cgt-c2000_20.2.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --xml_link_info="ELS_linkInfo.xml" --rom_model -o "ELS.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
@@ -175,8 +178,8 @@ ELS.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "common\source\f28004x_adc.obj" "common\source\f28004x_codestartbranch.obj" "common\source\f28004x_cputimers.obj" "common\source\f28004x_dcsm_z1otp.obj" "common\source\f28004x_dcsm_z2otp.obj" "common\source\f28004x_defaultisr.obj" "common\source\f28004x_dma.obj" "common\source\f28004x_gpio.obj" "common\source\f28004x_piectrl.obj" "common\source\f28004x_pievect.obj" "common\source\f28004x_spi.obj" "common\source\f28004x_sysctrl.obj" "common\source\f28004x_usdelay.obj" "headers\source\f28004x_globalvariabledefs.obj" 
-	-$(RM) "main.d" "common\source\f28004x_adc.d" "common\source\f28004x_cputimers.d" "common\source\f28004x_defaultisr.d" "common\source\f28004x_dma.d" "common\source\f28004x_gpio.d" "common\source\f28004x_piectrl.d" "common\source\f28004x_pievect.d" "common\source\f28004x_spi.d" "common\source\f28004x_sysctrl.d" "headers\source\f28004x_globalvariabledefs.d" 
+	-$(RM) "Configuration.obj" "RealTimeMachine.obj" "StepperRTM.obj" "main.obj" "common\source\f28004x_adc.obj" "common\source\f28004x_codestartbranch.obj" "common\source\f28004x_cputimers.obj" "common\source\f28004x_dcsm_z1otp.obj" "common\source\f28004x_dcsm_z2otp.obj" "common\source\f28004x_defaultisr.obj" "common\source\f28004x_dma.obj" "common\source\f28004x_gpio.obj" "common\source\f28004x_piectrl.obj" "common\source\f28004x_pievect.obj" "common\source\f28004x_spi.obj" "common\source\f28004x_sysctrl.obj" "common\source\f28004x_usdelay.obj" "headers\source\f28004x_globalvariabledefs.obj" 
+	-$(RM) "Configuration.d" "RealTimeMachine.d" "StepperRTM.d" "main.d" "common\source\f28004x_adc.d" "common\source\f28004x_cputimers.d" "common\source\f28004x_defaultisr.d" "common\source\f28004x_dma.d" "common\source\f28004x_gpio.d" "common\source\f28004x_piectrl.d" "common\source\f28004x_pievect.d" "common\source\f28004x_spi.d" "common\source\f28004x_sysctrl.d" "headers\source\f28004x_globalvariabledefs.d" 
 	-$(RM) "common\source\f28004x_codestartbranch.d" "common\source\f28004x_dcsm_z1otp.d" "common\source\f28004x_dcsm_z2otp.d" "common\source\f28004x_usdelay.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

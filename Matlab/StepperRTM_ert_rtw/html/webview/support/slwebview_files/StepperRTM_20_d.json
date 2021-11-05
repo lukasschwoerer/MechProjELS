@@ -181,7 +181,7 @@
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
+  "label":"{NewDesSteps = (DesSteps - 1);}",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -194,7 +194,7 @@
    "values":[
     1,
     false,
-    "[after(DutyCycle,Takt)]{NewDesSteps = (DesSteps - 1);}",
+    "{NewDesSteps = (DesSteps - 1);}",
     "",
     ""
    ],
@@ -216,7 +216,7 @@
   "className":"Stateflow.Transition",
   "icon":"StepperRTM5",
   "name":"",
-  "label":"[DesSteps > 0 && after(DutyCycle, Takt)]{NewDesSteps = DesSteps;}",
+  "label":"[DesSteps > 0]{NewDesSteps = DesSteps;}",
   "parent":"StepperRTM:20",
   "inspector":{
    "params":[
@@ -229,7 +229,7 @@
    "values":[
     1,
     false,
-    "[DesSteps > 0 && after(DutyCycle, Takt)]{NewDesSteps = DesSteps;}",
+    "[DesSteps > 0]{NewDesSteps = DesSteps;}",
     "",
     ""
    ],

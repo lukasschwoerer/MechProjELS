@@ -195,23 +195,8 @@ void initSCIAEchoback(void)
 //
 void transmitSCIAChar(uint16_t a)
 {
-    //while (SciaRegs.SCIFFTX.bit.TXFFST != 0)
-    //{
-
-    //}
-    SciaRegs.SCITXBUF.all = a;
-}
-
-//
-// transmitSCIAMessage - Transmit message via SCIA
-//
-void transmitSCIAMessage(unsigned char * msg)
-{
-    int i;
-    i = 0;
-    while(msg[i] != '\0')
+    while (SciaRegs.SCIFFTX.bit.TXFFST != 0)
     {
-        transmitSCIAChar(msg[i]);
-        i++;
     }
+    SciaRegs.SCITXBUF.all = a;
 }

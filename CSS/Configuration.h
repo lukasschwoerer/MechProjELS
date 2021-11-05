@@ -20,7 +20,6 @@ void setupEQEP(void);
 
 void initSCIAEchoback(void);
 void transmitSCIAChar(uint16_t a);
-void transmitSCIAMessage(unsigned char * msg);
 void initSCIAFIFO(void);
 
 __interrupt void cpuTimer0ISR(void);

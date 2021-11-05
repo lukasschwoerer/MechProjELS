@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.263
+ * Model version                  : 2.266
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Nov  2 15:20:25 2021
+ * C/C++ source code generated on : Thu Nov  4 20:57:45 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -45,9 +45,6 @@ void rt_OneStep(void)
   /* '<Root>/RPM' */
   static uint16_T arg_RPM;
 
-  /* '<Root>/DutyCycle' */
-  static uint16_T arg_DutyCycle;
-
   /* '<Root>/ComBit' */
   static uint16_T arg_ComBit;
 
@@ -61,7 +58,7 @@ void rt_OneStep(void)
   enableTimer0Interrupt();
   RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_RefrRate,
                        arg_System_Trigger, &arg_DesSteps, &arg_Dir, &arg_RPM,
-                       &arg_DutyCycle, &arg_ComBit);
+                       &arg_ComBit);
 
   /* Get model outputs here */
   disableTimer0Interrupt();

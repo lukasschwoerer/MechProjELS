@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'RealTimeMachine'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.263</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.266</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue Nov  2 15:20:25 2021</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Thu Nov  4 20:57:45 2021</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: Texas Instruments-&gt;C2000</span>
@@ -174,427 +174,379 @@
 </span><span><a class="LN" name="160">  160   </a><span class="CT">/* Model step function */</span>
 </span><span><a class="LN" name="161">  161   </a><span class="DT">void</span> <a name="fcn_RealTimeMachine_step">RealTimeMachine_step</a>(<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> arg_SpindelPos, <a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a> arg_CountFactor,
 </span><span><a class="LN" name="162">  162   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> arg_RefrRate, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> arg_System_Trigger[2], <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_DesSteps,
-</span><span><a class="LN" name="163">  163   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_Dir, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_RPM, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_DutyCycle, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>
-</span><span><a class="LN" name="164">  164   </a>  *arg_ComBit)
-</span><span><a class="LN" name="165">  165   </a><b>{</b>
-</span><span><a class="LN" name="166">  166   </a>  <a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a> DesSteps_tmp;
-</span><span><a class="LN" name="167">  167   </a>  <a href="rtwtypes_h.html#type_uint64_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint64_T');" target="_self"><font color="#1122aa">uint64_T</font></a> tmp;
-</span><span><a class="LN" name="168">  168   </a>  <a href="rtwtypes_h.html#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a> sfEvent;
-</span><span><a class="LN" name="169">  169   </a>  <a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> SpindelDiv;
-</span><span><a class="LN" name="170">  170   </a>  <a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> qY_0;
-</span><span><a class="LN" name="171">  171   </a>  <a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a> tmp_0;
-</span><span><a class="LN" name="172">  172   </a>  <a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a> tmp_1;
-</span><span><a class="LN" name="173">  173   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> qY;
-</span><span><a class="LN" name="174">  174   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> tmp_2;
-</span><span><a class="LN" name="175">  175   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> x_tmp;
-</span><span><a class="LN" name="176">  176   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> z;
-</span><span><a class="LN" name="177">  177   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> z_tmp;
-</span><span><a class="LN" name="178">  178   </a>  <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> zcEvent;
-</span><span><a class="LN" name="179">  179   </a>  <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> zcEvent_idx_0;
-</span><span><a class="LN" name="180">  180   </a>
-</span><span><a class="LN" name="181">  181   </a>  <span class="CT">/* Copy value for root inport '<a href="matlab:coder.internal.code2model('RealTimeMachine:39')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/RefrRate</i></font></a>' since it is accessed globally */</span>
-</span><span><a class="LN" name="182">  182   </a>  <a href="#var_RealTimeMachine_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_U');" target="_self"><font color="#1122aa">RealTimeMachine_U</font></a>.RefrRate = arg_RefrRate;
-</span><span><a class="LN" name="183">  183   </a>
-</span><span><a class="LN" name="184">  184   </a>  <span class="CT">/* Chart: '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="185">  185   </a><span class="CT">   *  TriggerPort: '&lt;S1&gt;/input events'</span>
-</span><span><a class="LN" name="186">  186   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="187">  187   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
-</span><span><a class="LN" name="188">  188   </a>  zcEvent_idx_0 = (((arg_System_Trigger[0] &gt; 0U) !=
-</span><span><a class="LN" name="189">  189   </a>                    (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] == POS_ZCSIG)) &amp;&amp;
-</span><span><a class="LN" name="190">  190   </a>                   (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] !=
-</span><span><a class="LN" name="191">  191   </a>                    UNINITIALIZED_ZCSIG));
-</span><span><a class="LN" name="192">  192   </a>  zcEvent = (((arg_System_Trigger[1] &gt; 0U) !=
-</span><span><a class="LN" name="193">  193   </a>              (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] == POS_ZCSIG)) &amp;&amp;
-</span><span><a class="LN" name="194">  194   </a>             (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] != UNINITIALIZED_ZCSIG));
-</span><span><a class="LN" name="195">  195   </a>  <span class="KW">if</span> (zcEvent_idx_0 || zcEvent) <b>{</b>
-</span><span><a class="LN" name="196">  196   </a>    <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
-</span><span><a class="LN" name="197">  197   </a>    tmp_1 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(zcEvent_idx_0 ? (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)arg_System_Trigger[0] &gt; 0 ?
-</span><span><a class="LN" name="198">  198   </a>                      RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT);
-</span><span><a class="LN" name="199">  199   </a>    tmp_0 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(zcEvent ? (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)arg_System_Trigger[1] &gt; 0 ?
-</span><span><a class="LN" name="200">  200   </a>                      RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT);
-</span><span><a class="LN" name="201">  201   </a>
-</span><span><a class="LN" name="202">  202   </a>    <span class="CT">/* Gateway: Chart */</span>
-</span><span><a class="LN" name="203">  203   </a>    <span class="KW">if</span> (((tmp_1 &amp; 128U) != 0U ? tmp_1 | -128 : tmp_1 &amp; 127) != 0) <b>{</b>
-</span><span><a class="LN" name="204">  204   </a>      <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1 &lt; MAX_uint32_T) <b>{</b>
-</span><span><a class="LN" name="205">  205   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1++;
-</span><span><a class="LN" name="206">  206   </a>      <b>}</b>
+</span><span><a class="LN" name="163">  163   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_Dir, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_RPM, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_ComBit)
+</span><span><a class="LN" name="164">  164   </a><b>{</b>
+</span><span><a class="LN" name="165">  165   </a>  <a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a> arg_DesSteps_tmp;
+</span><span><a class="LN" name="166">  166   </a>  <a href="rtwtypes_h.html#type_uint64_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint64_T');" target="_self"><font color="#1122aa">uint64_T</font></a> tmp;
+</span><span><a class="LN" name="167">  167   </a>  <a href="rtwtypes_h.html#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a> sfEvent;
+</span><span><a class="LN" name="168">  168   </a>  <a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> SpindelDiv;
+</span><span><a class="LN" name="169">  169   </a>  <a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> qY_0;
+</span><span><a class="LN" name="170">  170   </a>  <a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a> tmp_0;
+</span><span><a class="LN" name="171">  171   </a>  <a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a> tmp_1;
+</span><span><a class="LN" name="172">  172   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> qY;
+</span><span><a class="LN" name="173">  173   </a>  <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> zcEvent;
+</span><span><a class="LN" name="174">  174   </a>  <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> zcEvent_idx_0;
+</span><span><a class="LN" name="175">  175   </a>
+</span><span><a class="LN" name="176">  176   </a>  <span class="CT">/* Copy value for root inport '<a href="matlab:coder.internal.code2model('RealTimeMachine:39')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/RefrRate</i></font></a>' since it is accessed globally */</span>
+</span><span><a class="LN" name="177">  177   </a>  <a href="#var_RealTimeMachine_U" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_U');" target="_self"><font color="#1122aa">RealTimeMachine_U</font></a>.RefrRate = arg_RefrRate;
+</span><span><a class="LN" name="178">  178   </a>
+</span><span><a class="LN" name="179">  179   </a>  <span class="CT">/* Chart: '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="180">  180   </a><span class="CT">   *  TriggerPort: '&lt;S1&gt;/input events'</span>
+</span><span><a class="LN" name="181">  181   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="182">  182   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
+</span><span><a class="LN" name="183">  183   </a>  zcEvent_idx_0 = (((arg_System_Trigger[0] &gt; 0U) !=
+</span><span><a class="LN" name="184">  184   </a>                    (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] == POS_ZCSIG)) &amp;&amp;
+</span><span><a class="LN" name="185">  185   </a>                   (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] !=
+</span><span><a class="LN" name="186">  186   </a>                    UNINITIALIZED_ZCSIG));
+</span><span><a class="LN" name="187">  187   </a>  zcEvent = (((arg_System_Trigger[1] &gt; 0U) !=
+</span><span><a class="LN" name="188">  188   </a>              (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] == POS_ZCSIG)) &amp;&amp;
+</span><span><a class="LN" name="189">  189   </a>             (<a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] != UNINITIALIZED_ZCSIG));
+</span><span><a class="LN" name="190">  190   </a>  <span class="KW">if</span> (zcEvent_idx_0 || zcEvent) <b>{</b>
+</span><span><a class="LN" name="191">  191   </a>    <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
+</span><span><a class="LN" name="192">  192   </a>    tmp_1 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(zcEvent_idx_0 ? (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)arg_System_Trigger[0] &gt; 0 ?
+</span><span><a class="LN" name="193">  193   </a>                      RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT);
+</span><span><a class="LN" name="194">  194   </a>    tmp_0 = (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)(zcEvent ? (<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)arg_System_Trigger[1] &gt; 0 ?
+</span><span><a class="LN" name="195">  195   </a>                      RISING_ZCEVENT : FALLING_ZCEVENT : NO_ZCEVENT);
+</span><span><a class="LN" name="196">  196   </a>
+</span><span><a class="LN" name="197">  197   </a>    <span class="CT">/* Gateway: Chart */</span>
+</span><span><a class="LN" name="198">  198   </a>    <span class="KW">if</span> (((tmp_1 &amp; 128U) != 0U ? tmp_1 | -128 : tmp_1 &amp; 127) != 0) <b>{</b>
+</span><span><a class="LN" name="199">  199   </a>      <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1 &lt; MAX_uint32_T) <b>{</b>
+</span><span><a class="LN" name="200">  200   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1++;
+</span><span><a class="LN" name="201">  201   </a>      <b>}</b>
+</span><span><a class="LN" name="202">  202   </a>
+</span><span><a class="LN" name="203">  203   </a>      <span class="CT">/* Event: '&lt;S1&gt;:49' */</span>
+</span><span><a class="LN" name="204">  204   </a>      sfEvent = RealTimeMachine_event_Takt;
+</span><span><a class="LN" name="205">  205   </a>      <a href="#fcn_Re_chartstep_c3_RealTimeMachine" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Re_chartstep_c3_RealTimeMachine');" target="_self"><font color="#1122aa">Re_chartstep_c3_RealTimeMachine</font></a>(&amp;sfEvent);
+</span><span><a class="LN" name="206">  206   </a>    <b>}</b>
 </span><span><a class="LN" name="207">  207   </a>
-</span><span><a class="LN" name="208">  208   </a>      <span class="CT">/* Event: '&lt;S1&gt;:49' */</span>
-</span><span><a class="LN" name="209">  209   </a>      sfEvent = RealTimeMachine_event_Takt;
-</span><span><a class="LN" name="210">  210   </a>      <a href="#fcn_Re_chartstep_c3_RealTimeMachine" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Re_chartstep_c3_RealTimeMachine');" target="_self"><font color="#1122aa">Re_chartstep_c3_RealTimeMachine</font></a>(&amp;sfEvent);
-</span><span><a class="LN" name="211">  211   </a>    <b>}</b>
-</span><span><a class="LN" name="212">  212   </a>
-</span><span><a class="LN" name="213">  213   </a>    <span class="KW">if</span> (((tmp_0 &amp; 128U) != 0U ? tmp_0 | -128 : tmp_0 &amp; 127) == 1) <b>{</b>
-</span><span><a class="LN" name="214">  214   </a>      <span class="CT">/* Event: '&lt;S1&gt;:50' */</span>
-</span><span><a class="LN" name="215">  215   </a>      sfEvent = RealTimeMachine_event_POR;
-</span><span><a class="LN" name="216">  216   </a>      <a href="#fcn_Re_chartstep_c3_RealTimeMachine" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Re_chartstep_c3_RealTimeMachine');" target="_self"><font color="#1122aa">Re_chartstep_c3_RealTimeMachine</font></a>(&amp;sfEvent);
-</span><span><a class="LN" name="217">  217   </a>    <b>}</b>
-</span><span><a class="LN" name="218">  218   </a>  <b>}</b>
-</span><span><a class="LN" name="219">  219   </a>
-</span><span><a class="LN" name="220">  220   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
-</span><span><a class="LN" name="221">  221   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_System_Trigger[0]
-</span><span><a class="LN" name="222">  222   </a>    &gt; 0U);
-</span><span><a class="LN" name="223">  223   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_System_Trigger[1]
-</span><span><a class="LN" name="224">  224   </a>    &gt; 0U);
-</span><span><a class="LN" name="225">  225   </a>
-</span><span><a class="LN" name="226">  226   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="227">  227   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
-</span><span><a class="LN" name="228">  228   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="229">  229   </a>  <span class="CT">/*  Initialization of Variables and Outputs */</span>
-</span><span><a class="LN" name="230">  230   </a>  <span class="CT">/* MATLAB Function 'MATLAB Function': '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1</i></font></a>' */</span>
-</span><span><a class="LN" name="231">  231   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:5')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:5</i></font></a>' DesSteps = uint16(0); */</span>
-</span><span><a class="LN" name="232">  232   </a>  *arg_DesSteps = 0U;
-</span><span><a class="LN" name="233">  233   </a>
-</span><span><a class="LN" name="234">  234   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DutyCycle</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="235">  235   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
-</span><span><a class="LN" name="236">  236   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="237">  237   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:6')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:6</i></font></a>' DutyCycle = uint16(130); */</span>
-</span><span><a class="LN" name="238">  238   </a>  *arg_DutyCycle = 130U;
-</span><span><a class="LN" name="239">  239   </a>
-</span><span><a class="LN" name="240">  240   </a>  <span class="CT">/* MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="241">  241   </a><span class="CT">   *  Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:28')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/CountFactor</i></font></a>'</span>
-</span><span><a class="LN" name="242">  242   </a><span class="CT">   *  Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:24')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/SpindelPos</i></font></a>'</span>
-</span><span><a class="LN" name="243">  243   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="244">  244   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:7')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:7</i></font></a>' RPM = uint16(0); */</span>
-</span><span><a class="LN" name="245">  245   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:8')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:8</i></font></a>' Dir = uint16(0); */</span>
-</span><span><a class="LN" name="246">  246   </a>  <span class="CT">/*  Declaration of constants */</span>
-</span><span><a class="LN" name="247">  247   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:11')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:11</i></font></a>' TotalStepTime = uint16(80); */</span>
-</span><span><a class="LN" name="248">  248   </a>  <span class="CT">/* Total time a pulse train is allowed to take in us */</span>
-</span><span><a class="LN" name="249">  249   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:12')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:12</i></font></a>' rpmRefreshRate = uint16(10); */</span>
-</span><span><a class="LN" name="250">  250   </a>  <span class="CT">/* RPM calculation Frequency */</span>
-</span><span><a class="LN" name="251">  251   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:13')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:13</i></font></a>' SingleStepDC = uint16(4); */</span>
-</span><span><a class="LN" name="252">  252   </a>  <span class="CT">/* Single Step Dutycycle in 3us clock cycles (x*3us high, x*3us low) */</span>
-</span><span><a class="LN" name="253">  253   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:14')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:14</i></font></a>' MaxPos = 0x00FFFFFF; */</span>
-</span><span><a class="LN" name="254">  254   </a>  <span class="CT">/* Point on which the encoder register will overflow  */</span>
-</span><span><a class="LN" name="255">  255   </a>  <span class="CT">/*  Declaration of persistant variables */</span>
-</span><span><a class="LN" name="256">  256   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:26')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:26</i></font></a>' if isempty(Carrier) */</span>
-</span><span><a class="LN" name="257">  257   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:30')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:30</i></font></a>' if isempty(rpmSteps) */</span>
-</span><span><a class="LN" name="258">  258   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:34')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:34</i></font></a>' if isempty(PrevSpindelpos) */</span>
-</span><span><a class="LN" name="259">  259   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:38')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:38</i></font></a>' if isempty(ComCarrier) */</span>
-</span><span><a class="LN" name="260">  260   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:42')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:42</i></font></a>' if isempty(ComCounter) */</span>
-</span><span><a class="LN" name="261">  261   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:46')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:46</i></font></a>' if isempty(RPMCarrier) */</span>
-</span><span><a class="LN" name="262">  262   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:50')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:50</i></font></a>' if isempty(DIRCarrier) */</span>
-</span><span><a class="LN" name="263">  263   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:54')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:54</i></font></a>' if (SpindelPos ~= PrevSpindelpos) && Enable */</span>
-</span><span><a class="LN" name="264">  264   </a>  <span class="KW">if</span> ((arg_SpindelPos != <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp;
-</span><span><a class="LN" name="265">  265   </a>      (<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.Enable != 0U)) <b>{</b>
-</span><span><a class="LN" name="266">  266   </a>    <span class="CT">/*  Spindel in motion */</span>
-</span><span><a class="LN" name="267">  267   </a>    <span class="CT">/*     %% Deal with encoder over/underflow and determine direction */</span>
-</span><span><a class="LN" name="268">  268   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:58')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:58</i></font></a>' ComCounter = uint16(0); */</span>
-</span><span><a class="LN" name="269">  269   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
-</span><span><a class="LN" name="270">  270   </a>
-</span><span><a class="LN" name="271">  271   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:60')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:60</i></font></a>' if (SpindelPos &gt; PrevSpindelpos) && ((SpindelPos - PrevSpindelpos) &gt; (MaxPos/2)) */</span>
-</span><span><a class="LN" name="272">  272   </a>    qY_0 = arg_SpindelPos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
-</span><span><a class="LN" name="273">  273   </a>    <span class="KW">if</span> (qY_0 &gt; arg_SpindelPos) <b>{</b>
-</span><span><a class="LN" name="274">  274   </a>      qY_0 = 0UL;
-</span><span><a class="LN" name="275">  275   </a>    <b>}</b>
-</span><span><a class="LN" name="276">  276   </a>
-</span><span><a class="LN" name="277">  277   </a>    <span class="KW">if</span> ((arg_SpindelPos &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp; (qY_0 &gt;
-</span><span><a class="LN" name="278">  278   </a>         8388608UL)) <b>{</b>
-</span><span><a class="LN" name="279">  279   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:61')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:61</i></font></a>' SpindelDiv = (MaxPos - SpindelPos) + PrevSpindelpos; */</span>
-</span><span><a class="LN" name="280">  280   </a>      qY_0 = 16777215UL - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> arg_SpindelPos;
-</span><span><a class="LN" name="281">  281   </a>      <span class="KW">if</span> (16777215UL - arg_SpindelPos &gt; 16777215UL) <b>{</b>
-</span><span><a class="LN" name="282">  282   </a>        qY_0 = 0UL;
+</span><span><a class="LN" name="208">  208   </a>    <span class="KW">if</span> (((tmp_0 &amp; 128U) != 0U ? tmp_0 | -128 : tmp_0 &amp; 127) == 1) <b>{</b>
+</span><span><a class="LN" name="209">  209   </a>      <span class="CT">/* Event: '&lt;S1&gt;:50' */</span>
+</span><span><a class="LN" name="210">  210   </a>      sfEvent = RealTimeMachine_event_POR;
+</span><span><a class="LN" name="211">  211   </a>      <a href="#fcn_Re_chartstep_c3_RealTimeMachine" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_Re_chartstep_c3_RealTimeMachine');" target="_self"><font color="#1122aa">Re_chartstep_c3_RealTimeMachine</font></a>(&amp;sfEvent);
+</span><span><a class="LN" name="212">  212   </a>    <b>}</b>
+</span><span><a class="LN" name="213">  213   </a>  <b>}</b>
+</span><span><a class="LN" name="214">  214   </a>
+</span><span><a class="LN" name="215">  215   </a>  <span class="CT">/* Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:22')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/System_Trigger</i></font></a>' */</span>
+</span><span><a class="LN" name="216">  216   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_System_Trigger[0]
+</span><span><a class="LN" name="217">  217   </a>    &gt; 0U);
+</span><span><a class="LN" name="218">  218   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] = (<a href="zero_crossing_types_h.html#type_ZCSigState" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_ZCSigState');" target="_self"><font color="#1122aa">ZCSigState</font></a>)(arg_System_Trigger[1]
+</span><span><a class="LN" name="219">  219   </a>    &gt; 0U);
+</span><span><a class="LN" name="220">  220   </a>
+</span><span><a class="LN" name="221">  221   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="222">  222   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
+</span><span><a class="LN" name="223">  223   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="224">  224   </a>  <span class="CT">/*  Initialization of Variables and Outputs */</span>
+</span><span><a class="LN" name="225">  225   </a>  <span class="CT">/* MATLAB Function 'MATLAB Function': '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1</i></font></a>' */</span>
+</span><span><a class="LN" name="226">  226   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:5')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:5</i></font></a>' DesSteps = uint16(0); */</span>
+</span><span><a class="LN" name="227">  227   </a>  *arg_DesSteps = 0U;
+</span><span><a class="LN" name="228">  228   </a>
+</span><span><a class="LN" name="229">  229   </a>  <span class="CT">/* MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="230">  230   </a><span class="CT">   *  Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:28')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/CountFactor</i></font></a>'</span>
+</span><span><a class="LN" name="231">  231   </a><span class="CT">   *  Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:24')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/SpindelPos</i></font></a>'</span>
+</span><span><a class="LN" name="232">  232   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="233">  233   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:6')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:6</i></font></a>' RPM = uint16(0); */</span>
+</span><span><a class="LN" name="234">  234   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:7')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:7</i></font></a>' Dir = uint16(0); */</span>
+</span><span><a class="LN" name="235">  235   </a>  <span class="CT">/*  Declaration of constants */</span>
+</span><span><a class="LN" name="236">  236   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:10')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:10</i></font></a>' TotalStepTime = uint16(80); */</span>
+</span><span><a class="LN" name="237">  237   </a>  <span class="CT">/* Total time a pulse train is allowed to take in us */</span>
+</span><span><a class="LN" name="238">  238   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:11')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:11</i></font></a>' rpmRefreshRate = uint16(10); */</span>
+</span><span><a class="LN" name="239">  239   </a>  <span class="CT">/* RPM calculation Frequency */</span>
+</span><span><a class="LN" name="240">  240   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:12')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:12</i></font></a>' SingleStepDC = uint16(4); */</span>
+</span><span><a class="LN" name="241">  241   </a>  <span class="CT">/* Single Step Dutycycle in 3us clock cycles (x*3us high, x*3us low) */</span>
+</span><span><a class="LN" name="242">  242   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:13')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:13</i></font></a>' MaxPos = 0x00FFFFFF; */</span>
+</span><span><a class="LN" name="243">  243   </a>  <span class="CT">/* Point on which the encoder register will overflow  */</span>
+</span><span><a class="LN" name="244">  244   </a>  <span class="CT">/*  Declaration of persistant variables */</span>
+</span><span><a class="LN" name="245">  245   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:25')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:25</i></font></a>' if isempty(Carrier) */</span>
+</span><span><a class="LN" name="246">  246   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:29')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:29</i></font></a>' if isempty(rpmSteps) */</span>
+</span><span><a class="LN" name="247">  247   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:33')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:33</i></font></a>' if isempty(PrevSpindelpos) */</span>
+</span><span><a class="LN" name="248">  248   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:37')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:37</i></font></a>' if isempty(ComCarrier) */</span>
+</span><span><a class="LN" name="249">  249   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:41')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:41</i></font></a>' if isempty(ComCounter) */</span>
+</span><span><a class="LN" name="250">  250   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:45')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:45</i></font></a>' if isempty(RPMCarrier) */</span>
+</span><span><a class="LN" name="251">  251   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:49')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:49</i></font></a>' if isempty(DIRCarrier) */</span>
+</span><span><a class="LN" name="252">  252   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:53')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:53</i></font></a>' if (SpindelPos ~= PrevSpindelpos) && Enable */</span>
+</span><span><a class="LN" name="253">  253   </a>  <span class="KW">if</span> ((arg_SpindelPos != <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp;
+</span><span><a class="LN" name="254">  254   </a>      (<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.Enable != 0U)) <b>{</b>
+</span><span><a class="LN" name="255">  255   </a>    <span class="CT">/*  Spindel in motion */</span>
+</span><span><a class="LN" name="256">  256   </a>    <span class="CT">/*     %% Deal with encoder over/underflow and determine direction */</span>
+</span><span><a class="LN" name="257">  257   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:57')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:57</i></font></a>' ComCounter = uint16(0); */</span>
+</span><span><a class="LN" name="258">  258   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
+</span><span><a class="LN" name="259">  259   </a>
+</span><span><a class="LN" name="260">  260   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:59')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:59</i></font></a>' if (SpindelPos &gt; PrevSpindelpos) && ((SpindelPos - PrevSpindelpos) &gt; (MaxPos/2)) */</span>
+</span><span><a class="LN" name="261">  261   </a>    qY_0 = arg_SpindelPos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
+</span><span><a class="LN" name="262">  262   </a>    <span class="KW">if</span> (qY_0 &gt; arg_SpindelPos) <b>{</b>
+</span><span><a class="LN" name="263">  263   </a>      qY_0 = 0UL;
+</span><span><a class="LN" name="264">  264   </a>    <b>}</b>
+</span><span><a class="LN" name="265">  265   </a>
+</span><span><a class="LN" name="266">  266   </a>    <span class="KW">if</span> ((arg_SpindelPos &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp; (qY_0 &gt;
+</span><span><a class="LN" name="267">  267   </a>         8388608UL)) <b>{</b>
+</span><span><a class="LN" name="268">  268   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:60')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:60</i></font></a>' SpindelDiv = (MaxPos - SpindelPos) + PrevSpindelpos; */</span>
+</span><span><a class="LN" name="269">  269   </a>      qY_0 = 16777215UL - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> arg_SpindelPos;
+</span><span><a class="LN" name="270">  270   </a>      <span class="KW">if</span> (16777215UL - arg_SpindelPos &gt; 16777215UL) <b>{</b>
+</span><span><a class="LN" name="271">  271   </a>        qY_0 = 0UL;
+</span><span><a class="LN" name="272">  272   </a>      <b>}</b>
+</span><span><a class="LN" name="273">  273   </a>
+</span><span><a class="LN" name="274">  274   </a>      SpindelDiv = qY_0 + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
+</span><span><a class="LN" name="275">  275   </a>      <span class="KW">if</span> (SpindelDiv &lt; qY_0) <b>{</b>
+</span><span><a class="LN" name="276">  276   </a>        SpindelDiv = MAX_uint32_T;
+</span><span><a class="LN" name="277">  277   </a>      <b>}</b>
+</span><span><a class="LN" name="278">  278   </a>
+</span><span><a class="LN" name="279">  279   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:61')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:61</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
+</span><span><a class="LN" name="280">  280   </a>      qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
+</span><span><a class="LN" name="281">  281   </a>      <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
+</span><span><a class="LN" name="282">  282   </a>        qY_0 = MAX_uint32_T;
 </span><span><a class="LN" name="283">  283   </a>      <b>}</b>
 </span><span><a class="LN" name="284">  284   </a>
-</span><span><a class="LN" name="285">  285   </a>      SpindelDiv = qY_0 + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
-</span><span><a class="LN" name="286">  286   </a>      <span class="KW">if</span> (SpindelDiv &lt; qY_0) <b>{</b>
-</span><span><a class="LN" name="287">  287   </a>        SpindelDiv = MAX_uint32_T;
-</span><span><a class="LN" name="288">  288   </a>      <b>}</b>
+</span><span><a class="LN" name="285">  285   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
+</span><span><a class="LN" name="286">  286   </a>
+</span><span><a class="LN" name="287">  287   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:62')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:62</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
+</span><span><a class="LN" name="288">  288   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
 </span><span><a class="LN" name="289">  289   </a>
-</span><span><a class="LN" name="290">  290   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:62')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:62</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
-</span><span><a class="LN" name="291">  291   </a>      qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
-</span><span><a class="LN" name="292">  292   </a>      <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
-</span><span><a class="LN" name="293">  293   </a>        qY_0 = MAX_uint32_T;
-</span><span><a class="LN" name="294">  294   </a>      <b>}</b>
-</span><span><a class="LN" name="295">  295   </a>
-</span><span><a class="LN" name="296">  296   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
-</span><span><a class="LN" name="297">  297   </a>
-</span><span><a class="LN" name="298">  298   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:63')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:63</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
-</span><span><a class="LN" name="299">  299   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
-</span><span><a class="LN" name="300">  300   </a>
-</span><span><a class="LN" name="301">  301   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:64')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:64</i></font></a>' DIRCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="302">  302   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
-</span><span><a class="LN" name="303">  303   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="304">  304   </a>      SpindelDiv = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span>
-</span><span><a class="LN" name="305">  305   </a>        arg_SpindelPos;
-</span><span><a class="LN" name="306">  306   </a>      qY_0 = SpindelDiv;
-</span><span><a class="LN" name="307">  307   </a>      <span class="KW">if</span> (SpindelDiv &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
-</span><span><a class="LN" name="308">  308   </a>        qY_0 = 0UL;
-</span><span><a class="LN" name="309">  309   </a>      <b>}</b>
-</span><span><a class="LN" name="310">  310   </a>
-</span><span><a class="LN" name="311">  311   </a>      <span class="KW">if</span> ((arg_SpindelPos &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp; (qY_0 &gt;
-</span><span><a class="LN" name="312">  312   </a>           8388608UL)) <b>{</b>
-</span><span><a class="LN" name="313">  313   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:66')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:66</i></font></a>' elseif(SpindelPos &lt; PrevSpindelpos) && ((PrevSpindelpos - SpindelPos) &gt; (MaxPos/2)) */</span>
-</span><span><a class="LN" name="314">  314   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:67')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:67</i></font></a>' SpindelDiv = (MaxPos - PrevSpindelpos) + SpindelPos; */</span>
-</span><span><a class="LN" name="315">  315   </a>        qY_0 = 16777215UL - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
-</span><span><a class="LN" name="316">  316   </a>        <span class="KW">if</span> (16777215UL - <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos &gt; 16777215UL) <b>{</b>
-</span><span><a class="LN" name="317">  317   </a>          qY_0 = 0UL;
+</span><span><a class="LN" name="290">  290   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:63')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:63</i></font></a>' DIRCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="291">  291   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
+</span><span><a class="LN" name="292">  292   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="293">  293   </a>      SpindelDiv = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span>
+</span><span><a class="LN" name="294">  294   </a>        arg_SpindelPos;
+</span><span><a class="LN" name="295">  295   </a>      qY_0 = SpindelDiv;
+</span><span><a class="LN" name="296">  296   </a>      <span class="KW">if</span> (SpindelDiv &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
+</span><span><a class="LN" name="297">  297   </a>        qY_0 = 0UL;
+</span><span><a class="LN" name="298">  298   </a>      <b>}</b>
+</span><span><a class="LN" name="299">  299   </a>
+</span><span><a class="LN" name="300">  300   </a>      <span class="KW">if</span> ((arg_SpindelPos &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) &amp;&amp; (qY_0 &gt;
+</span><span><a class="LN" name="301">  301   </a>           8388608UL)) <b>{</b>
+</span><span><a class="LN" name="302">  302   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:65')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:65</i></font></a>' elseif(SpindelPos &lt; PrevSpindelpos) && ((PrevSpindelpos - SpindelPos) &gt; (MaxPos/2)) */</span>
+</span><span><a class="LN" name="303">  303   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:66')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:66</i></font></a>' SpindelDiv = (MaxPos - PrevSpindelpos) + SpindelPos; */</span>
+</span><span><a class="LN" name="304">  304   </a>        qY_0 = 16777215UL - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
+</span><span><a class="LN" name="305">  305   </a>        <span class="KW">if</span> (16777215UL - <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos &gt; 16777215UL) <b>{</b>
+</span><span><a class="LN" name="306">  306   </a>          qY_0 = 0UL;
+</span><span><a class="LN" name="307">  307   </a>        <b>}</b>
+</span><span><a class="LN" name="308">  308   </a>
+</span><span><a class="LN" name="309">  309   </a>        SpindelDiv = qY_0 + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> arg_SpindelPos;
+</span><span><a class="LN" name="310">  310   </a>        <span class="KW">if</span> (SpindelDiv &lt; qY_0) <b>{</b>
+</span><span><a class="LN" name="311">  311   </a>          SpindelDiv = MAX_uint32_T;
+</span><span><a class="LN" name="312">  312   </a>        <b>}</b>
+</span><span><a class="LN" name="313">  313   </a>
+</span><span><a class="LN" name="314">  314   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:67')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:67</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
+</span><span><a class="LN" name="315">  315   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
+</span><span><a class="LN" name="316">  316   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
+</span><span><a class="LN" name="317">  317   </a>          qY_0 = MAX_uint32_T;
 </span><span><a class="LN" name="318">  318   </a>        <b>}</b>
 </span><span><a class="LN" name="319">  319   </a>
-</span><span><a class="LN" name="320">  320   </a>        SpindelDiv = qY_0 + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> arg_SpindelPos;
-</span><span><a class="LN" name="321">  321   </a>        <span class="KW">if</span> (SpindelDiv &lt; qY_0) <b>{</b>
-</span><span><a class="LN" name="322">  322   </a>          SpindelDiv = MAX_uint32_T;
-</span><span><a class="LN" name="323">  323   </a>        <b>}</b>
+</span><span><a class="LN" name="320">  320   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
+</span><span><a class="LN" name="321">  321   </a>
+</span><span><a class="LN" name="322">  322   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:68')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:68</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
+</span><span><a class="LN" name="323">  323   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
 </span><span><a class="LN" name="324">  324   </a>
-</span><span><a class="LN" name="325">  325   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:68')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:68</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
-</span><span><a class="LN" name="326">  326   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
-</span><span><a class="LN" name="327">  327   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
-</span><span><a class="LN" name="328">  328   </a>          qY_0 = MAX_uint32_T;
-</span><span><a class="LN" name="329">  329   </a>        <b>}</b>
-</span><span><a class="LN" name="330">  330   </a>
-</span><span><a class="LN" name="331">  331   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
-</span><span><a class="LN" name="332">  332   </a>
-</span><span><a class="LN" name="333">  333   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:69')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:69</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
-</span><span><a class="LN" name="334">  334   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
-</span><span><a class="LN" name="335">  335   </a>
-</span><span><a class="LN" name="336">  336   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:70')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:70</i></font></a>' DIRCarrier = uint16(1); */</span>
-</span><span><a class="LN" name="337">  337   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 1U;
-</span><span><a class="LN" name="338">  338   </a>      <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (arg_SpindelPos &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
-</span><span><a class="LN" name="339">  339   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:72')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:72</i></font></a>' elseif(SpindelPos &lt; PrevSpindelpos) */</span>
-</span><span><a class="LN" name="340">  340   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:73')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:73</i></font></a>' SpindelDiv = (PrevSpindelpos - SpindelPos); */</span>
-</span><span><a class="LN" name="341">  341   </a>        <span class="KW">if</span> (SpindelDiv &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
-</span><span><a class="LN" name="342">  342   </a>          SpindelDiv = 0UL;
-</span><span><a class="LN" name="343">  343   </a>        <b>}</b>
+</span><span><a class="LN" name="325">  325   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:69')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:69</i></font></a>' DIRCarrier = uint16(1); */</span>
+</span><span><a class="LN" name="326">  326   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 1U;
+</span><span><a class="LN" name="327">  327   </a>      <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (arg_SpindelPos &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
+</span><span><a class="LN" name="328">  328   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:71')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:71</i></font></a>' elseif(SpindelPos &lt; PrevSpindelpos) */</span>
+</span><span><a class="LN" name="329">  329   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:72')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:72</i></font></a>' SpindelDiv = (PrevSpindelpos - SpindelPos); */</span>
+</span><span><a class="LN" name="330">  330   </a>        <span class="KW">if</span> (SpindelDiv &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
+</span><span><a class="LN" name="331">  331   </a>          SpindelDiv = 0UL;
+</span><span><a class="LN" name="332">  332   </a>        <b>}</b>
+</span><span><a class="LN" name="333">  333   </a>
+</span><span><a class="LN" name="334">  334   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:73')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:73</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
+</span><span><a class="LN" name="335">  335   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
+</span><span><a class="LN" name="336">  336   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
+</span><span><a class="LN" name="337">  337   </a>          qY_0 = MAX_uint32_T;
+</span><span><a class="LN" name="338">  338   </a>        <b>}</b>
+</span><span><a class="LN" name="339">  339   </a>
+</span><span><a class="LN" name="340">  340   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
+</span><span><a class="LN" name="341">  341   </a>
+</span><span><a class="LN" name="342">  342   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:74')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:74</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
+</span><span><a class="LN" name="343">  343   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
 </span><span><a class="LN" name="344">  344   </a>
-</span><span><a class="LN" name="345">  345   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:74')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:74</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
-</span><span><a class="LN" name="346">  346   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
-</span><span><a class="LN" name="347">  347   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
-</span><span><a class="LN" name="348">  348   </a>          qY_0 = MAX_uint32_T;
-</span><span><a class="LN" name="349">  349   </a>        <b>}</b>
-</span><span><a class="LN" name="350">  350   </a>
-</span><span><a class="LN" name="351">  351   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
-</span><span><a class="LN" name="352">  352   </a>
-</span><span><a class="LN" name="353">  353   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:75')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:75</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
-</span><span><a class="LN" name="354">  354   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
+</span><span><a class="LN" name="345">  345   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:75')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:75</i></font></a>' DIRCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="346">  346   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
+</span><span><a class="LN" name="347">  347   </a>      <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (arg_SpindelPos &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
+</span><span><a class="LN" name="348">  348   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:77')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:77</i></font></a>' elseif(SpindelPos &gt; PrevSpindelpos) */</span>
+</span><span><a class="LN" name="349">  349   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:78')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:78</i></font></a>' SpindelDiv = SpindelPos - PrevSpindelpos; */</span>
+</span><span><a class="LN" name="350">  350   </a>        SpindelDiv = arg_SpindelPos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span>
+</span><span><a class="LN" name="351">  351   </a>          <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
+</span><span><a class="LN" name="352">  352   </a>        <span class="KW">if</span> (SpindelDiv &gt; arg_SpindelPos) <b>{</b>
+</span><span><a class="LN" name="353">  353   </a>          SpindelDiv = 0UL;
+</span><span><a class="LN" name="354">  354   </a>        <b>}</b>
 </span><span><a class="LN" name="355">  355   </a>
-</span><span><a class="LN" name="356">  356   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:76')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:76</i></font></a>' DIRCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="357">  357   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
-</span><span><a class="LN" name="358">  358   </a>      <b>}</b> <span class="KW">else</span> <span class="KW">if</span> (arg_SpindelPos &gt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos) <b>{</b>
-</span><span><a class="LN" name="359">  359   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:78')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:78</i></font></a>' elseif(SpindelPos &gt; PrevSpindelpos) */</span>
-</span><span><a class="LN" name="360">  360   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:79')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:79</i></font></a>' SpindelDiv = SpindelPos - PrevSpindelpos; */</span>
-</span><span><a class="LN" name="361">  361   </a>        SpindelDiv = arg_SpindelPos - <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span>
-</span><span><a class="LN" name="362">  362   </a>          <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos;
-</span><span><a class="LN" name="363">  363   </a>        <span class="KW">if</span> (SpindelDiv &gt; arg_SpindelPos) <b>{</b>
-</span><span><a class="LN" name="364">  364   </a>          SpindelDiv = 0UL;
-</span><span><a class="LN" name="365">  365   </a>        <b>}</b>
+</span><span><a class="LN" name="356">  356   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:79')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:79</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
+</span><span><a class="LN" name="357">  357   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
+</span><span><a class="LN" name="358">  358   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
+</span><span><a class="LN" name="359">  359   </a>          qY_0 = MAX_uint32_T;
+</span><span><a class="LN" name="360">  360   </a>        <b>}</b>
+</span><span><a class="LN" name="361">  361   </a>
+</span><span><a class="LN" name="362">  362   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
+</span><span><a class="LN" name="363">  363   </a>
+</span><span><a class="LN" name="364">  364   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:80')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:80</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
+</span><span><a class="LN" name="365">  365   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
 </span><span><a class="LN" name="366">  366   </a>
-</span><span><a class="LN" name="367">  367   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:80')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:80</i></font></a>' rpmSteps = rpmSteps + uint32(SpindelDiv); */</span>
-</span><span><a class="LN" name="368">  368   </a>        qY_0 = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> SpindelDiv;
-</span><span><a class="LN" name="369">  369   </a>        <span class="KW">if</span> (qY_0 &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps) <b>{</b>
-</span><span><a class="LN" name="370">  370   </a>          qY_0 = MAX_uint32_T;
-</span><span><a class="LN" name="371">  371   </a>        <b>}</b>
-</span><span><a class="LN" name="372">  372   </a>
-</span><span><a class="LN" name="373">  373   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = qY_0;
-</span><span><a class="LN" name="374">  374   </a>
-</span><span><a class="LN" name="375">  375   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:81')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:81</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
-</span><span><a class="LN" name="376">  376   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
-</span><span><a class="LN" name="377">  377   </a>
-</span><span><a class="LN" name="378">  378   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:82')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:82</i></font></a>' DIRCarrier = uint16(1); */</span>
-</span><span><a class="LN" name="379">  379   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 1U;
-</span><span><a class="LN" name="380">  380   </a>      <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="381">  381   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:83')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:83</i></font></a>' else */</span>
-</span><span><a class="LN" name="382">  382   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:84')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:84</i></font></a>' SpindelDiv = uint32(0); */</span>
-</span><span><a class="LN" name="383">  383   </a>        SpindelDiv = 0UL;
-</span><span><a class="LN" name="384">  384   </a>      <b>}</b>
-</span><span><a class="LN" name="385">  385   </a>    <b>}</b>
-</span><span><a class="LN" name="386">  386   </a>
-</span><span><a class="LN" name="387">  387   </a>    <span class="CT">/*     %% Calculate Desired Steps */</span>
-</span><span><a class="LN" name="388">  388   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:88')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:88</i></font></a>' Carrier = Carrier + (Multiplier * double(SpindelDiv)); */</span>
-</span><span><a class="LN" name="389">  389   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier += arg_CountFactor * (<a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a>)SpindelDiv;
-</span><span><a class="LN" name="390">  390   </a>
-</span><span><a class="LN" name="391">  391   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:89')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:89</i></font></a>' DesSteps = uint16(floor(Carrier)); */</span>
-</span><span><a class="LN" name="392">  392   </a>    DesSteps_tmp = floor(<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier);
-</span><span><a class="LN" name="393">  393   </a>    <span class="KW">if</span> (DesSteps_tmp &lt; 65536.0) <b>{</b>
-</span><span><a class="LN" name="394">  394   </a>      <span class="KW">if</span> (DesSteps_tmp &gt;= 0.0) <b>{</b>
-</span><span><a class="LN" name="395">  395   </a>        qY = (<a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)DesSteps_tmp;
-</span><span><a class="LN" name="396">  396   </a>      <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="397">  397   </a>        qY = 0U;
-</span><span><a class="LN" name="398">  398   </a>      <b>}</b>
-</span><span><a class="LN" name="399">  399   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="400">  400   </a>      qY = MAX_uint16_T;
-</span><span><a class="LN" name="401">  401   </a>    <b>}</b>
-</span><span><a class="LN" name="402">  402   </a>
-</span><span><a class="LN" name="403">  403   </a>    <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="404">  404   </a><span class="CT">     *  Inport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:28')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/CountFactor</i></font></a>'</span>
-</span><span><a class="LN" name="405">  405   </a><span class="CT">     */</span>
-</span><span><a class="LN" name="406">  406   </a>    *arg_DesSteps = qY;
-</span><span><a class="LN" name="407">  407   </a>
-</span><span><a class="LN" name="408">  408   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:90')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:90</i></font></a>' Carrier = Carrier - floor(Carrier); */</span>
-</span><span><a class="LN" name="409">  409   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier -= DesSteps_tmp;
-</span><span><a class="LN" name="410">  410   </a>
-</span><span><a class="LN" name="411">  411   </a>    <span class="CT">/*     %% Calculate Dutycycle */</span>
-</span><span><a class="LN" name="412">  412   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:93')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:93</i></font></a>' if DesSteps &lt;= 1 */</span>
-</span><span><a class="LN" name="413">  413   </a>    <span class="KW">if</span> (qY &lt;= 1U) <b>{</b>
-</span><span><a class="LN" name="414">  414   </a>      <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DutyCycle</i></font></a>' */</span>
-</span><span><a class="LN" name="415">  415   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:94')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:94</i></font></a>' DutyCycle = uint16(SingleStepDC); */</span>
-</span><span><a class="LN" name="416">  416   </a>      *arg_DutyCycle = 4U;
-</span><span><a class="LN" name="417">  417   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="418">  418   </a>      z_tmp = 80U / qY;
-</span><span><a class="LN" name="419">  419   </a>      z = z_tmp;
-</span><span><a class="LN" name="420">  420   </a>      x_tmp = 80U - z_tmp * qY;
-</span><span><a class="LN" name="421">  421   </a>      tmp_2 = qY &amp; 1U;
-</span><span><a class="LN" name="422">  422   </a>      <span class="KW">if</span> ((x_tmp &gt; 0U) &amp;&amp; (x_tmp &gt;= (qY &gt;&gt; 1U) + tmp_2)) <b>{</b>
-</span><span><a class="LN" name="423">  423   </a>        z = z_tmp + 1U;
-</span><span><a class="LN" name="424">  424   </a>      <b>}</b>
-</span><span><a class="LN" name="425">  425   </a>
-</span><span><a class="LN" name="426">  426   </a>      <span class="KW">if</span> ((<a href="rtwtypes_h.html#type_int16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int16_T');" target="_self"><font color="#1122aa">int16_T</font></a>)z &lt; 7) <b>{</b>
-</span><span><a class="LN" name="427">  427   </a>        <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DutyCycle</i></font></a>' */</span>
-</span><span><a class="LN" name="428">  428   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:95')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:95</i></font></a>' elseif (TotalStepTime/DesSteps) &lt; 7 */</span>
-</span><span><a class="LN" name="429">  429   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:96')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:96</i></font></a>' DutyCycle = uint16(2); */</span>
-</span><span><a class="LN" name="430">  430   </a>        *arg_DutyCycle = 2U;
-</span><span><a class="LN" name="431">  431   </a>      <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="432">  432   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:97')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:97</i></font></a>' else */</span>
-</span><span><a class="LN" name="433">  433   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:98')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:98</i></font></a>' DutyCycle = uint16(((TotalStepTime/DesSteps)/10)); */</span>
-</span><span><a class="LN" name="434">  434   </a>        z = z_tmp;
-</span><span><a class="LN" name="435">  435   </a>        <span class="KW">if</span> ((x_tmp &gt; 0U) &amp;&amp; (x_tmp &gt;= (qY &gt;&gt; 1U) + tmp_2)) <b>{</b>
-</span><span><a class="LN" name="436">  436   </a>          z = z_tmp + 1U;
-</span><span><a class="LN" name="437">  437   </a>        <b>}</b>
-</span><span><a class="LN" name="438">  438   </a>
-</span><span><a class="LN" name="439">  439   </a>        <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DutyCycle</i></font></a>' */</span>
-</span><span><a class="LN" name="440">  440   </a>        *arg_DutyCycle = (<a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)<a href="#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>((<a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a>)z / 10.0);
-</span><span><a class="LN" name="441">  441   </a>      <b>}</b>
-</span><span><a class="LN" name="442">  442   </a>    <b>}</b>
-</span><span><a class="LN" name="443">  443   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
-</span><span><a class="LN" name="444">  444   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:101')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:101</i></font></a>' else */</span>
-</span><span><a class="LN" name="445">  445   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:102')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:102</i></font></a>' SpindelDiv = uint32(0); */</span>
-</span><span><a class="LN" name="446">  446   </a>    <span class="CT">/*     %% Spindel not moving */</span>
-</span><span><a class="LN" name="447">  447   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:104')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:104</i></font></a>' if (ComBit && ComCarrier) */</span>
-</span><span><a class="LN" name="448">  448   </a>    <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit != 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier != 0U))
-</span><span><a class="LN" name="449">  449   </a>    <b>{</b>
-</span><span><a class="LN" name="450">  450   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:105')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:105</i></font></a>' ComCounter = ComCounter + uint16(1); */</span>
-</span><span><a class="LN" name="451">  451   </a>      qY = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> 1U;
-</span><span><a class="LN" name="452">  452   </a>      <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter + 1U &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter) <b>{</b>
-</span><span><a class="LN" name="453">  453   </a>        qY = MAX_uint16_T;
-</span><span><a class="LN" name="454">  454   </a>      <b>}</b>
+</span><span><a class="LN" name="367">  367   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:81')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:81</i></font></a>' DIRCarrier = uint16(1); */</span>
+</span><span><a class="LN" name="368">  368   </a>        <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 1U;
+</span><span><a class="LN" name="369">  369   </a>      <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="370">  370   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:82')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:82</i></font></a>' else */</span>
+</span><span><a class="LN" name="371">  371   </a>        <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:83')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:83</i></font></a>' SpindelDiv = uint32(0); */</span>
+</span><span><a class="LN" name="372">  372   </a>        SpindelDiv = 0UL;
+</span><span><a class="LN" name="373">  373   </a>      <b>}</b>
+</span><span><a class="LN" name="374">  374   </a>    <b>}</b>
+</span><span><a class="LN" name="375">  375   </a>
+</span><span><a class="LN" name="376">  376   </a>    <span class="CT">/*     %% Calculate Desired Steps */</span>
+</span><span><a class="LN" name="377">  377   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:87')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:87</i></font></a>' Carrier = Carrier + (Multiplier * double(SpindelDiv)); */</span>
+</span><span><a class="LN" name="378">  378   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier += arg_CountFactor * (<a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a>)SpindelDiv;
+</span><span><a class="LN" name="379">  379   </a>
+</span><span><a class="LN" name="380">  380   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:88')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:88</i></font></a>' DesSteps = uint16(floor(Carrier)); */</span>
+</span><span><a class="LN" name="381">  381   </a>    arg_DesSteps_tmp = floor(<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier);
+</span><span><a class="LN" name="382">  382   </a>    <span class="KW">if</span> (arg_DesSteps_tmp &lt; 65536.0) <b>{</b>
+</span><span><a class="LN" name="383">  383   </a>      <span class="KW">if</span> (arg_DesSteps_tmp &gt;= 0.0) <b>{</b>
+</span><span><a class="LN" name="384">  384   </a>        <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' */</span>
+</span><span><a class="LN" name="385">  385   </a>        *arg_DesSteps = (<a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)arg_DesSteps_tmp;
+</span><span><a class="LN" name="386">  386   </a>      <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="387">  387   </a>        <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' */</span>
+</span><span><a class="LN" name="388">  388   </a>        *arg_DesSteps = 0U;
+</span><span><a class="LN" name="389">  389   </a>      <b>}</b>
+</span><span><a class="LN" name="390">  390   </a>    <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="391">  391   </a>      <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' */</span>
+</span><span><a class="LN" name="392">  392   </a>      *arg_DesSteps = MAX_uint16_T;
+</span><span><a class="LN" name="393">  393   </a>    <b>}</b>
+</span><span><a class="LN" name="394">  394   </a>
+</span><span><a class="LN" name="395">  395   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:89')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:89</i></font></a>' Carrier = Carrier - floor(Carrier); */</span>
+</span><span><a class="LN" name="396">  396   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier -= arg_DesSteps_tmp;
+</span><span><a class="LN" name="397">  397   </a>  <b>}</b> <span class="KW">else</span> <b>{</b>
+</span><span><a class="LN" name="398">  398   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:91')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:91</i></font></a>' else */</span>
+</span><span><a class="LN" name="399">  399   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:92')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:92</i></font></a>' SpindelDiv = uint32(0); */</span>
+</span><span><a class="LN" name="400">  400   </a>    <span class="CT">/*     %% Spindel not moving */</span>
+</span><span><a class="LN" name="401">  401   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:94')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:94</i></font></a>' if (ComBit && ComCarrier) */</span>
+</span><span><a class="LN" name="402">  402   </a>    <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit != 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier != 0U))
+</span><span><a class="LN" name="403">  403   </a>    <b>{</b>
+</span><span><a class="LN" name="404">  404   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:95')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:95</i></font></a>' ComCounter = ComCounter + uint16(1); */</span>
+</span><span><a class="LN" name="405">  405   </a>      qY = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter + <span class="CT">/*<span title="This intentional overflow is detected by the following saturation logic.">MW:OvSatOk</span>*/</span> 1U;
+</span><span><a class="LN" name="406">  406   </a>      <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter + 1U &lt; <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter) <b>{</b>
+</span><span><a class="LN" name="407">  407   </a>        qY = MAX_uint16_T;
+</span><span><a class="LN" name="408">  408   </a>      <b>}</b>
+</span><span><a class="LN" name="409">  409   </a>
+</span><span><a class="LN" name="410">  410   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = qY;
+</span><span><a class="LN" name="411">  411   </a>
+</span><span><a class="LN" name="412">  412   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:96')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:96</i></font></a>' ComCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="413">  413   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
+</span><span><a class="LN" name="414">  414   </a>    <b>}</b>
+</span><span><a class="LN" name="415">  415   </a>
+</span><span><a class="LN" name="416">  416   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:99')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:99</i></font></a>' if ComCounter &gt;= 4 */</span>
+</span><span><a class="LN" name="417">  417   </a>    <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter &gt;= 4U) <b>{</b>
+</span><span><a class="LN" name="418">  418   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:100')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:100</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
+</span><span><a class="LN" name="419">  419   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
+</span><span><a class="LN" name="420">  420   </a>
+</span><span><a class="LN" name="421">  421   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:101')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:101</i></font></a>' ComCounter = uint16(0); */</span>
+</span><span><a class="LN" name="422">  422   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
+</span><span><a class="LN" name="423">  423   </a>
+</span><span><a class="LN" name="424">  424   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:102')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:102</i></font></a>' RPMCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="425">  425   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = 0U;
+</span><span><a class="LN" name="426">  426   </a>
+</span><span><a class="LN" name="427">  427   </a>      <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:19')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DesSteps</i></font></a>' */</span>
+</span><span><a class="LN" name="428">  428   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:103')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:103</i></font></a>' DesSteps = uint16(0); */</span>
+</span><span><a class="LN" name="429">  429   </a>      *arg_DesSteps = 0U;
+</span><span><a class="LN" name="430">  430   </a>    <b>}</b>
+</span><span><a class="LN" name="431">  431   </a>  <b>}</b>
+</span><span><a class="LN" name="432">  432   </a>
+</span><span><a class="LN" name="433">  433   </a>  <span class="CT">/*  Calculate current RPM and report every 10ms */</span>
+</span><span><a class="LN" name="434">  434   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:108')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:108</i></font></a>' if (ComBit && ComCarrier) */</span>
+</span><span><a class="LN" name="435">  435   </a>  <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit != 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier != 0U))
+</span><span><a class="LN" name="436">  436   </a>  <b>{</b>
+</span><span><a class="LN" name="437">  437   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:109')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:109</i></font></a>' ComCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="438">  438   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
+</span><span><a class="LN" name="439">  439   </a>  <b>}</b> <span class="KW">else</span> <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit == 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier ==
+</span><span><a class="LN" name="440">  440   </a>              0U)) <b>{</b>
+</span><span><a class="LN" name="441">  441   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:110')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:110</i></font></a>' elseif ((ComBit == 0) && (ComCarrier == 0)) */</span>
+</span><span><a class="LN" name="442">  442   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:111')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:111</i></font></a>' ComCarrier = uint16(1); */</span>
+</span><span><a class="LN" name="443">  443   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 1U;
+</span><span><a class="LN" name="444">  444   </a>
+</span><span><a class="LN" name="445">  445   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:112')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:112</i></font></a>' RPMCarrier = uint16((rpmSteps*60*uint32(rpmRefreshRate))/4096); */</span>
+</span><span><a class="LN" name="446">  446   </a>    tmp = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps * 60ULL;
+</span><span><a class="LN" name="447">  447   </a>    <span class="KW">if</span> (tmp &gt; 4294967295ULL) <b>{</b>
+</span><span><a class="LN" name="448">  448   </a>      tmp = 4294967295ULL;
+</span><span><a class="LN" name="449">  449   </a>    <b>}</b>
+</span><span><a class="LN" name="450">  450   </a>
+</span><span><a class="LN" name="451">  451   </a>    tmp = (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)tmp * 10ULL;
+</span><span><a class="LN" name="452">  452   </a>    <span class="KW">if</span> (tmp &gt; 4294967295ULL) <b>{</b>
+</span><span><a class="LN" name="453">  453   </a>      tmp = 4294967295ULL;
+</span><span><a class="LN" name="454">  454   </a>    <b>}</b>
 </span><span><a class="LN" name="455">  455   </a>
-</span><span><a class="LN" name="456">  456   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = qY;
-</span><span><a class="LN" name="457">  457   </a>
-</span><span><a class="LN" name="458">  458   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:106')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:106</i></font></a>' ComCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="459">  459   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
-</span><span><a class="LN" name="460">  460   </a>    <b>}</b>
-</span><span><a class="LN" name="461">  461   </a>
-</span><span><a class="LN" name="462">  462   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:109')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:109</i></font></a>' if ComCounter &gt;= 4 */</span>
-</span><span><a class="LN" name="463">  463   </a>    <span class="KW">if</span> (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter &gt;= 4U) <b>{</b>
-</span><span><a class="LN" name="464">  464   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:110')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:110</i></font></a>' PrevSpindelpos = SpindelPos; */</span>
-</span><span><a class="LN" name="465">  465   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = arg_SpindelPos;
+</span><span><a class="LN" name="456">  456   </a>    qY_0 = (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)<a href="#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>((<a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a>)(<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)tmp / 4096.0);
+</span><span><a class="LN" name="457">  457   </a>    <span class="KW">if</span> ((<a href="rtwtypes_h.html#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a>)qY_0 &gt; 65535L) <b>{</b>
+</span><span><a class="LN" name="458">  458   </a>      qY_0 = 65535UL;
+</span><span><a class="LN" name="459">  459   </a>    <b>}</b>
+</span><span><a class="LN" name="460">  460   </a>
+</span><span><a class="LN" name="461">  461   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = (<a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)qY_0;
+</span><span><a class="LN" name="462">  462   </a>
+</span><span><a class="LN" name="463">  463   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:113')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:113</i></font></a>' rpmSteps = uint32(0); */</span>
+</span><span><a class="LN" name="464">  464   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = 0UL;
+</span><span><a class="LN" name="465">  465   </a>  <b>}</b>
 </span><span><a class="LN" name="466">  466   </a>
-</span><span><a class="LN" name="467">  467   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:111')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:111</i></font></a>' ComCounter = uint16(0); */</span>
-</span><span><a class="LN" name="468">  468   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
-</span><span><a class="LN" name="469">  469   </a>
-</span><span><a class="LN" name="470">  470   </a>      <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:43')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/DutyCycle</i></font></a>' */</span>
-</span><span><a class="LN" name="471">  471   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:112')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:112</i></font></a>' DutyCycle = uint16(SingleStepDC); */</span>
-</span><span><a class="LN" name="472">  472   </a>      *arg_DutyCycle = 4U;
+</span><span><a class="LN" name="467">  467   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:31')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Dir</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="468">  468   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
+</span><span><a class="LN" name="469">  469   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="470">  470   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:116')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:116</i></font></a>' RPM = RPMCarrier; */</span>
+</span><span><a class="LN" name="471">  471   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:117')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:117</i></font></a>' Dir = DIRCarrier; */</span>
+</span><span><a class="LN" name="472">  472   </a>  *arg_Dir = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier;
 </span><span><a class="LN" name="473">  473   </a>
-</span><span><a class="LN" name="474">  474   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:113')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:113</i></font></a>' RPMCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="475">  475   </a>      <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = 0U;
-</span><span><a class="LN" name="476">  476   </a>
-</span><span><a class="LN" name="477">  477   </a>      <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:114')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:114</i></font></a>' DesSteps = uint16(0); */</span>
-</span><span><a class="LN" name="478">  478   </a>    <b>}</b>
-</span><span><a class="LN" name="479">  479   </a>  <b>}</b>
-</span><span><a class="LN" name="480">  480   </a>
-</span><span><a class="LN" name="481">  481   </a>  <span class="CT">/*  Calculate current RPM and report every 10ms */</span>
-</span><span><a class="LN" name="482">  482   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:119')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:119</i></font></a>' if (ComBit && ComCarrier) */</span>
-</span><span><a class="LN" name="483">  483   </a>  <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit != 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier != 0U))
-</span><span><a class="LN" name="484">  484   </a>  <b>{</b>
-</span><span><a class="LN" name="485">  485   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:120')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:120</i></font></a>' ComCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="486">  486   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
-</span><span><a class="LN" name="487">  487   </a>  <b>}</b> <span class="KW">else</span> <span class="KW">if</span> ((<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit == 0U) &amp;&amp; (<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier ==
-</span><span><a class="LN" name="488">  488   </a>              0U)) <b>{</b>
-</span><span><a class="LN" name="489">  489   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:121')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:121</i></font></a>' elseif ((ComBit == 0) && (ComCarrier == 0)) */</span>
-</span><span><a class="LN" name="490">  490   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:122')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:122</i></font></a>' ComCarrier = uint16(1); */</span>
-</span><span><a class="LN" name="491">  491   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 1U;
-</span><span><a class="LN" name="492">  492   </a>
-</span><span><a class="LN" name="493">  493   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:123')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:123</i></font></a>' RPMCarrier = uint16((rpmSteps*60*uint32(rpmRefreshRate))/4096); */</span>
-</span><span><a class="LN" name="494">  494   </a>    tmp = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps * 60ULL;
-</span><span><a class="LN" name="495">  495   </a>    <span class="KW">if</span> (tmp &gt; 4294967295ULL) <b>{</b>
-</span><span><a class="LN" name="496">  496   </a>      tmp = 4294967295ULL;
-</span><span><a class="LN" name="497">  497   </a>    <b>}</b>
-</span><span><a class="LN" name="498">  498   </a>
-</span><span><a class="LN" name="499">  499   </a>    tmp = (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)tmp * 10ULL;
-</span><span><a class="LN" name="500">  500   </a>    <span class="KW">if</span> (tmp &gt; 4294967295ULL) <b>{</b>
-</span><span><a class="LN" name="501">  501   </a>      tmp = 4294967295ULL;
-</span><span><a class="LN" name="502">  502   </a>    <b>}</b>
-</span><span><a class="LN" name="503">  503   </a>
-</span><span><a class="LN" name="504">  504   </a>    qY_0 = (<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)<a href="#fcn_rt_roundd_snf" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_rt_roundd_snf');" target="_self"><font color="#1122aa">rt_roundd_snf</font></a>((<a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a>)(<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a>)tmp / 4096.0);
-</span><span><a class="LN" name="505">  505   </a>    <span class="KW">if</span> ((<a href="rtwtypes_h.html#type_int32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_int32_T');" target="_self"><font color="#1122aa">int32_T</font></a>)qY_0 &gt; 65535L) <b>{</b>
-</span><span><a class="LN" name="506">  506   </a>      qY_0 = 65535UL;
-</span><span><a class="LN" name="507">  507   </a>    <b>}</b>
-</span><span><a class="LN" name="508">  508   </a>
-</span><span><a class="LN" name="509">  509   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = (<a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>)qY_0;
+</span><span><a class="LN" name="474">  474   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/RPM</i></font></a>' incorporates:</span>
+</span><span><a class="LN" name="475">  475   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
+</span><span><a class="LN" name="476">  476   </a><span class="CT">   */</span>
+</span><span><a class="LN" name="477">  477   </a>  *arg_RPM = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier;
+</span><span><a class="LN" name="478">  478   </a>
+</span><span><a class="LN" name="479">  479   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:60')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/ComBit</i></font></a>' */</span>
+</span><span><a class="LN" name="480">  480   </a>  *arg_ComBit = <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit;
+</span><span><a class="LN" name="481">  481   </a><b>}</b>
+</span><span><a class="LN" name="482">  482   </a>
+</span><span><a class="LN" name="483">  483   </a><span class="CT">/* Model initialize function */</span>
+</span><span><a class="LN" name="484">  484   </a><span class="DT">void</span> <a name="fcn_RealTimeMachine_initialize">RealTimeMachine_initialize</a>(<span class="DT">void</span>)
+</span><span><a class="LN" name="485">  485   </a><b>{</b>
+</span><span><a class="LN" name="486">  486   </a>  <span class="CT">/* Registration code */</span>
+</span><span><a class="LN" name="487">  487   </a>
+</span><span><a class="LN" name="488">  488   </a>  <span class="CT">/* block I/O */</span>
+</span><span><a class="LN" name="489">  489   </a>  (<span class="DT">void</span>) memset(((<span class="DT">void</span> *) &amp;<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>), 0,
+</span><span><a class="LN" name="490">  490   </a>                <span class="KW">sizeof</span>(<a href="RealTimeMachine_h.html#type_B_RealTimeMachine_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_B_RealTimeMachine_T');" target="_self"><font color="#1122aa">B_RealTimeMachine_T</font></a>));
+</span><span><a class="LN" name="491">  491   </a>
+</span><span><a class="LN" name="492">  492   </a>  <span class="CT">/* states (dwork) */</span>
+</span><span><a class="LN" name="493">  493   </a>  (<span class="DT">void</span>) memset((<span class="DT">void</span> *)&amp;<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>, 0,
+</span><span><a class="LN" name="494">  494   </a>                <span class="KW">sizeof</span>(<a href="RealTimeMachine_h.html#type_DW_RealTimeMachine_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW_RealTimeMachine_T');" target="_self"><font color="#1122aa">DW_RealTimeMachine_T</font></a>));
+</span><span><a class="LN" name="495">  495   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
+</span><span><a class="LN" name="496">  496   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
+</span><span><a class="LN" name="497">  497   </a>
+</span><span><a class="LN" name="498">  498   </a>  <span class="CT">/* SystemInitialize for Chart: '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' */</span>
+</span><span><a class="LN" name="499">  499   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_Communication = RealTimeMach_IN_NO_ACTIVE_CHILD;
+</span><span><a class="LN" name="500">  500   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1 = 0UL;
+</span><span><a class="LN" name="501">  501   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_MachineStatus = RealTimeMach_IN_NO_ACTIVE_CHILD;
+</span><span><a class="LN" name="502">  502   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_active_c3_RealTimeMachine = 0U;
+</span><span><a class="LN" name="503">  503   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_c3_RealTimeMachine = RealTimeMach_IN_NO_ACTIVE_CHILD;
+</span><span><a class="LN" name="504">  504   </a>  <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit = 0U;
+</span><span><a class="LN" name="505">  505   </a>  <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.Enable = 0U;
+</span><span><a class="LN" name="506">  506   </a>
+</span><span><a class="LN" name="507">  507   </a>  <span class="CT">/* SystemInitialize for MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>' */</span>
+</span><span><a class="LN" name="508">  508   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:26')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:26</i></font></a>' Carrier = 0; */</span>
+</span><span><a class="LN" name="509">  509   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier = 0.0;
 </span><span><a class="LN" name="510">  510   </a>
-</span><span><a class="LN" name="511">  511   </a>    <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:124')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:124</i></font></a>' rpmSteps = uint32(0); */</span>
-</span><span><a class="LN" name="512">  512   </a>    <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = 0UL;
-</span><span><a class="LN" name="513">  513   </a>  <b>}</b>
-</span><span><a class="LN" name="514">  514   </a>
-</span><span><a class="LN" name="515">  515   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:31')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Dir</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="516">  516   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
-</span><span><a class="LN" name="517">  517   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="518">  518   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:127')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:127</i></font></a>' RPM = RPMCarrier; */</span>
-</span><span><a class="LN" name="519">  519   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:128')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:128</i></font></a>' Dir = DIRCarrier; */</span>
-</span><span><a class="LN" name="520">  520   </a>  *arg_Dir = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier;
-</span><span><a class="LN" name="521">  521   </a>
-</span><span><a class="LN" name="522">  522   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:41')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/RPM</i></font></a>' incorporates:</span>
-</span><span><a class="LN" name="523">  523   </a><span class="CT">   *  MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>'</span>
-</span><span><a class="LN" name="524">  524   </a><span class="CT">   */</span>
-</span><span><a class="LN" name="525">  525   </a>  *arg_RPM = <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier;
-</span><span><a class="LN" name="526">  526   </a>
-</span><span><a class="LN" name="527">  527   </a>  <span class="CT">/* Outport: '<a href="matlab:coder.internal.code2model('RealTimeMachine:60')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/ComBit</i></font></a>' */</span>
-</span><span><a class="LN" name="528">  528   </a>  *arg_ComBit = <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit;
-</span><span><a class="LN" name="529">  529   </a><b>}</b>
-</span><span><a class="LN" name="530">  530   </a>
-</span><span><a class="LN" name="531">  531   </a><span class="CT">/* Model initialize function */</span>
-</span><span><a class="LN" name="532">  532   </a><span class="DT">void</span> <a name="fcn_RealTimeMachine_initialize">RealTimeMachine_initialize</a>(<span class="DT">void</span>)
-</span><span><a class="LN" name="533">  533   </a><b>{</b>
-</span><span><a class="LN" name="534">  534   </a>  <span class="CT">/* Registration code */</span>
+</span><span><a class="LN" name="511">  511   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:30')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:30</i></font></a>' rpmSteps = uint32(0); */</span>
+</span><span><a class="LN" name="512">  512   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = 0UL;
+</span><span><a class="LN" name="513">  513   </a>
+</span><span><a class="LN" name="514">  514   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:34')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:34</i></font></a>' PrevSpindelpos = uint32(0); */</span>
+</span><span><a class="LN" name="515">  515   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = 0UL;
+</span><span><a class="LN" name="516">  516   </a>
+</span><span><a class="LN" name="517">  517   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:38')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:38</i></font></a>' ComCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="518">  518   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
+</span><span><a class="LN" name="519">  519   </a>
+</span><span><a class="LN" name="520">  520   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:42')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:42</i></font></a>' ComCounter = uint16(0); */</span>
+</span><span><a class="LN" name="521">  521   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
+</span><span><a class="LN" name="522">  522   </a>
+</span><span><a class="LN" name="523">  523   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:46')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:46</i></font></a>' RPMCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="524">  524   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = 0U;
+</span><span><a class="LN" name="525">  525   </a>
+</span><span><a class="LN" name="526">  526   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:50')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:50</i></font></a>' DIRCarrier = uint16(0); */</span>
+</span><span><a class="LN" name="527">  527   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
+</span><span><a class="LN" name="528">  528   </a><b>}</b>
+</span><span><a class="LN" name="529">  529   </a>
+</span><span><a class="LN" name="530">  530   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="531">  531   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="532">  532   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="533">  533   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="534">  534   </a><span class="CT"> */</span>
 </span><span><a class="LN" name="535">  535   </a>
-</span><span><a class="LN" name="536">  536   </a>  <span class="CT">/* block I/O */</span>
-</span><span><a class="LN" name="537">  537   </a>  (<span class="DT">void</span>) memset(((<span class="DT">void</span> *) &amp;<a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>), 0,
-</span><span><a class="LN" name="538">  538   </a>                <span class="KW">sizeof</span>(<a href="RealTimeMachine_h.html#type_B_RealTimeMachine_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_B_RealTimeMachine_T');" target="_self"><font color="#1122aa">B_RealTimeMachine_T</font></a>));
-</span><span><a class="LN" name="539">  539   </a>
-</span><span><a class="LN" name="540">  540   </a>  <span class="CT">/* states (dwork) */</span>
-</span><span><a class="LN" name="541">  541   </a>  (<span class="DT">void</span>) memset((<span class="DT">void</span> *)&amp;<a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>, 0,
-</span><span><a class="LN" name="542">  542   </a>                <span class="KW">sizeof</span>(<a href="RealTimeMachine_h.html#type_DW_RealTimeMachine_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_DW_RealTimeMachine_T');" target="_self"><font color="#1122aa">DW_RealTimeMachine_T</font></a>));
-</span><span><a class="LN" name="543">  543   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
-</span><span><a class="LN" name="544">  544   </a>  <a href="#var_RealTimeMachine_PrevZCX" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_PrevZCX');" target="_self"><font color="#1122aa">RealTimeMachine_PrevZCX</font></a>.Chart_Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
-</span><span><a class="LN" name="545">  545   </a>
-</span><span><a class="LN" name="546">  546   </a>  <span class="CT">/* SystemInitialize for Chart: '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/Chart</i></font></a>' */</span>
-</span><span><a class="LN" name="547">  547   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_Communication = RealTimeMach_IN_NO_ACTIVE_CHILD;
-</span><span><a class="LN" name="548">  548   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.temporalCounter_i1 = 0UL;
-</span><span><a class="LN" name="549">  549   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_MachineStatus = RealTimeMach_IN_NO_ACTIVE_CHILD;
-</span><span><a class="LN" name="550">  550   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_active_c3_RealTimeMachine = 0U;
-</span><span><a class="LN" name="551">  551   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.is_c3_RealTimeMachine = RealTimeMach_IN_NO_ACTIVE_CHILD;
-</span><span><a class="LN" name="552">  552   </a>  <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.ComBit = 0U;
-</span><span><a class="LN" name="553">  553   </a>  <a href="#var_RealTimeMachine_B" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_B');" target="_self"><font color="#1122aa">RealTimeMachine_B</font></a>.Enable = 0U;
-</span><span><a class="LN" name="554">  554   </a>
-</span><span><a class="LN" name="555">  555   </a>  <span class="CT">/* SystemInitialize for MATLAB Function: '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;Root&gt;/MATLAB Function</i></font></a>' */</span>
-</span><span><a class="LN" name="556">  556   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:27')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:27</i></font></a>' Carrier = 0; */</span>
-</span><span><a class="LN" name="557">  557   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.Carrier = 0.0;
-</span><span><a class="LN" name="558">  558   </a>
-</span><span><a class="LN" name="559">  559   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:31')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:31</i></font></a>' rpmSteps = uint32(0); */</span>
-</span><span><a class="LN" name="560">  560   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.rpmSteps = 0UL;
-</span><span><a class="LN" name="561">  561   </a>
-</span><span><a class="LN" name="562">  562   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:35')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:35</i></font></a>' PrevSpindelpos = uint32(0); */</span>
-</span><span><a class="LN" name="563">  563   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.PrevSpindelpos = 0UL;
-</span><span><a class="LN" name="564">  564   </a>
-</span><span><a class="LN" name="565">  565   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:39')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:39</i></font></a>' ComCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="566">  566   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCarrier = 0U;
-</span><span><a class="LN" name="567">  567   </a>
-</span><span><a class="LN" name="568">  568   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:43')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:43</i></font></a>' ComCounter = uint16(0); */</span>
-</span><span><a class="LN" name="569">  569   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.ComCounter = 0U;
-</span><span><a class="LN" name="570">  570   </a>
-</span><span><a class="LN" name="571">  571   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:47')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:47</i></font></a>' RPMCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="572">  572   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.RPMCarrier = 0U;
-</span><span><a class="LN" name="573">  573   </a>
-</span><span><a class="LN" name="574">  574   </a>  <span class="CT">/* '<a href="matlab:coder.internal.code2model('RealTimeMachine:58:1:51')" name="code2model"><font color="#117755"><i>&lt;S2&gt;:1:51</i></font></a>' DIRCarrier = uint16(0); */</span>
-</span><span><a class="LN" name="575">  575   </a>  <a href="#var_RealTimeMachine_DW" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_RealTimeMachine_DW');" target="_self"><font color="#1122aa">RealTimeMachine_DW</font></a>.DIRCarrier = 0U;
-</span><span><a class="LN" name="576">  576   </a><b>}</b>
-</span><span><a class="LN" name="577">  577   </a>
-</span><span><a class="LN" name="578">  578   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="579">  579   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="580">  580   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="581">  581   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="582">  582   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="583">  583   </a>
 </span></pre>
 </td></tr></table>
 </p>

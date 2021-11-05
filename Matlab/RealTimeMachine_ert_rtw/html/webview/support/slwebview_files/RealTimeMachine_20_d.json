@@ -118,65 +118,6 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:105",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine5",
-  "name":"TX",
-  "label":"TX",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "SelfActivity",
-    "Auto",
-    "TX\nen: ComBit = 1;",
-    false,
-    false,
-    "SignalName",
-    "Main.Communication.TX",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"RealTimeMachine:20:99",
   "className":"Stateflow.State",
   "icon":"RealTimeMachine5",
@@ -236,31 +177,55 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:109",
-  "className":"Stateflow.Transition",
-  "icon":"RealTimeMachine6",
-  "name":"",
-  "label":"",
+  "sid":"RealTimeMachine:20:105",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine5",
+  "name":"TX",
+  "label":"TX",
   "parent":"RealTimeMachine:20",
   "inspector":{
    "params":[
-    "ExecutionOrder",
-    "isVariant",
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
     "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
     "Description",
     "Document"
    ],
    "values":[
-    1,
     false,
-    "",
+    "SelfActivity",
+    "Auto",
+    "TX\nen: ComBit = 1;",
+    false,
+    false,
+    "SignalName",
+    "Main.Communication.TX",
+    false,
+    5000,
+    false,
+    2,
     "",
     ""
    ],
    "tabs":[
-    "Parameter Attributes"
+    "General",
+    "Logging",
+    "Documentation"
    ],
-   "tabs_idx":0
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
   },
   "viewer":{
    "jshandler":"webview/handlers/ElementHandler"
@@ -289,6 +254,41 @@
     1,
     false,
     "[after(RefreshRate/2,Takt)]",
+    "",
+    ""
+   ],
+   "tabs":[
+    "Parameter Attributes"
+   ],
+   "tabs_idx":0
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:109",
+  "className":"Stateflow.Transition",
+  "icon":"RealTimeMachine6",
+  "name":"",
+  "label":"",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "ExecutionOrder",
+    "isVariant",
+    "LabelString",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    1,
+    false,
+    "",
     "",
     ""
    ],
@@ -402,65 +402,6 @@
   ]
  },
  {
-  "sid":"RealTimeMachine:20:98",
-  "className":"Stateflow.State",
-  "icon":"RealTimeMachine5",
-  "name":"Enabled",
-  "label":"Enabled",
-  "parent":"RealTimeMachine:20",
-  "inspector":{
-   "params":[
-    "HasOutputData",
-    "OutputMonitoringMode",
-    "InlineOption",
-    "LabelString",
-    "DataLogging",
-    "TestPoint",
-    "NameMode",
-    "LoggingName",
-    "LimitDataPoints",
-    "MaxPoints",
-    "DecimateData",
-    "Decimation",
-    "Description",
-    "Document"
-   ],
-   "values":[
-    false,
-    "SelfActivity",
-    "Auto",
-    "Enabled\nen: Enable = 1;",
-    false,
-    false,
-    "SignalName",
-    "Main.MachineStatus.Enabled",
-    false,
-    5000,
-    false,
-    2,
-    "",
-    ""
-   ],
-   "tabs":[
-    "General",
-    "Logging",
-    "Documentation"
-   ],
-   "tabs_idx":[
-    0,
-    4,
-    12
-   ]
-  },
-  "viewer":{
-   "jshandler":"webview/handlers/ElementHandler"
-  },
-  "obj_viewer":[
-  ],
-  "finder":[
-  ]
- },
- {
   "sid":"RealTimeMachine:20:100",
   "className":"Stateflow.State",
   "icon":"RealTimeMachine5",
@@ -493,6 +434,65 @@
     false,
     "SignalName",
     "Main.MachineStatus.Disabled",
+    false,
+    5000,
+    false,
+    2,
+    "",
+    ""
+   ],
+   "tabs":[
+    "General",
+    "Logging",
+    "Documentation"
+   ],
+   "tabs_idx":[
+    0,
+    4,
+    12
+   ]
+  },
+  "viewer":{
+   "jshandler":"webview/handlers/ElementHandler"
+  },
+  "obj_viewer":[
+  ],
+  "finder":[
+  ]
+ },
+ {
+  "sid":"RealTimeMachine:20:98",
+  "className":"Stateflow.State",
+  "icon":"RealTimeMachine5",
+  "name":"Enabled",
+  "label":"Enabled",
+  "parent":"RealTimeMachine:20",
+  "inspector":{
+   "params":[
+    "HasOutputData",
+    "OutputMonitoringMode",
+    "InlineOption",
+    "LabelString",
+    "DataLogging",
+    "TestPoint",
+    "NameMode",
+    "LoggingName",
+    "LimitDataPoints",
+    "MaxPoints",
+    "DecimateData",
+    "Decimation",
+    "Description",
+    "Document"
+   ],
+   "values":[
+    false,
+    "SelfActivity",
+    "Auto",
+    "Enabled\nen: Enable = 1;",
+    false,
+    false,
+    "SignalName",
+    "Main.MachineStatus.Enabled",
     false,
     5000,
     false,

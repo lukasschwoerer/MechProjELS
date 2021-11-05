@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.263
+ * Model version                  : 2.266
  * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Tue Nov  2 15:20:25 2021
+ * C/C++ source code generated on : Thu Nov  4 20:57:45 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -160,10 +160,9 @@ real_T rt_roundd_snf(real_T u)
 /* Model step function */
 void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2], uint16_T *arg_DesSteps,
-  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_DutyCycle, uint16_T
-  *arg_ComBit)
+  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_ComBit)
 {
-  real_T DesSteps_tmp;
+  real_T arg_DesSteps_tmp;
   uint64_T tmp;
   int32_T sfEvent;
   uint32_T SpindelDiv;
@@ -171,10 +170,6 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   int16_T tmp_0;
   int16_T tmp_1;
   uint16_T qY;
-  uint16_T tmp_2;
-  uint16_T x_tmp;
-  uint16_T z;
-  uint16_T z_tmp;
   boolean_T zcEvent;
   boolean_T zcEvent_idx_0;
 
@@ -231,44 +226,38 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
   /* '<S2>:1:5' DesSteps = uint16(0); */
   *arg_DesSteps = 0U;
 
-  /* Outport: '<Root>/DutyCycle' incorporates:
-   *  MATLAB Function: '<Root>/MATLAB Function'
-   */
-  /* '<S2>:1:6' DutyCycle = uint16(130); */
-  *arg_DutyCycle = 130U;
-
   /* MATLAB Function: '<Root>/MATLAB Function' incorporates:
    *  Inport: '<Root>/CountFactor'
    *  Inport: '<Root>/SpindelPos'
    */
-  /* '<S2>:1:7' RPM = uint16(0); */
-  /* '<S2>:1:8' Dir = uint16(0); */
+  /* '<S2>:1:6' RPM = uint16(0); */
+  /* '<S2>:1:7' Dir = uint16(0); */
   /*  Declaration of constants */
-  /* '<S2>:1:11' TotalStepTime = uint16(80); */
+  /* '<S2>:1:10' TotalStepTime = uint16(80); */
   /* Total time a pulse train is allowed to take in us */
-  /* '<S2>:1:12' rpmRefreshRate = uint16(10); */
+  /* '<S2>:1:11' rpmRefreshRate = uint16(10); */
   /* RPM calculation Frequency */
-  /* '<S2>:1:13' SingleStepDC = uint16(4); */
+  /* '<S2>:1:12' SingleStepDC = uint16(4); */
   /* Single Step Dutycycle in 3us clock cycles (x*3us high, x*3us low) */
-  /* '<S2>:1:14' MaxPos = 0x00FFFFFF; */
+  /* '<S2>:1:13' MaxPos = 0x00FFFFFF; */
   /* Point on which the encoder register will overflow  */
   /*  Declaration of persistant variables */
-  /* '<S2>:1:26' if isempty(Carrier) */
-  /* '<S2>:1:30' if isempty(rpmSteps) */
-  /* '<S2>:1:34' if isempty(PrevSpindelpos) */
-  /* '<S2>:1:38' if isempty(ComCarrier) */
-  /* '<S2>:1:42' if isempty(ComCounter) */
-  /* '<S2>:1:46' if isempty(RPMCarrier) */
-  /* '<S2>:1:50' if isempty(DIRCarrier) */
-  /* '<S2>:1:54' if (SpindelPos ~= PrevSpindelpos) && Enable */
+  /* '<S2>:1:25' if isempty(Carrier) */
+  /* '<S2>:1:29' if isempty(rpmSteps) */
+  /* '<S2>:1:33' if isempty(PrevSpindelpos) */
+  /* '<S2>:1:37' if isempty(ComCarrier) */
+  /* '<S2>:1:41' if isempty(ComCounter) */
+  /* '<S2>:1:45' if isempty(RPMCarrier) */
+  /* '<S2>:1:49' if isempty(DIRCarrier) */
+  /* '<S2>:1:53' if (SpindelPos ~= PrevSpindelpos) && Enable */
   if ((arg_SpindelPos != RealTimeMachine_DW.PrevSpindelpos) &&
       (RealTimeMachine_B.Enable != 0U)) {
     /*  Spindel in motion */
     /*     %% Deal with encoder over/underflow and determine direction */
-    /* '<S2>:1:58' ComCounter = uint16(0); */
+    /* '<S2>:1:57' ComCounter = uint16(0); */
     RealTimeMachine_DW.ComCounter = 0U;
 
-    /* '<S2>:1:60' if (SpindelPos > PrevSpindelpos) && ((SpindelPos - PrevSpindelpos) > (MaxPos/2)) */
+    /* '<S2>:1:59' if (SpindelPos > PrevSpindelpos) && ((SpindelPos - PrevSpindelpos) > (MaxPos/2)) */
     qY_0 = arg_SpindelPos - /*MW:OvSatOk*/ RealTimeMachine_DW.PrevSpindelpos;
     if (qY_0 > arg_SpindelPos) {
       qY_0 = 0UL;
@@ -276,7 +265,7 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
     if ((arg_SpindelPos > RealTimeMachine_DW.PrevSpindelpos) && (qY_0 >
          8388608UL)) {
-      /* '<S2>:1:61' SpindelDiv = (MaxPos - SpindelPos) + PrevSpindelpos; */
+      /* '<S2>:1:60' SpindelDiv = (MaxPos - SpindelPos) + PrevSpindelpos; */
       qY_0 = 16777215UL - /*MW:OvSatOk*/ arg_SpindelPos;
       if (16777215UL - arg_SpindelPos > 16777215UL) {
         qY_0 = 0UL;
@@ -287,7 +276,7 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
         SpindelDiv = MAX_uint32_T;
       }
 
-      /* '<S2>:1:62' rpmSteps = rpmSteps + uint32(SpindelDiv); */
+      /* '<S2>:1:61' rpmSteps = rpmSteps + uint32(SpindelDiv); */
       qY_0 = RealTimeMachine_DW.rpmSteps + /*MW:OvSatOk*/ SpindelDiv;
       if (qY_0 < RealTimeMachine_DW.rpmSteps) {
         qY_0 = MAX_uint32_T;
@@ -295,10 +284,10 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
       RealTimeMachine_DW.rpmSteps = qY_0;
 
-      /* '<S2>:1:63' PrevSpindelpos = SpindelPos; */
+      /* '<S2>:1:62' PrevSpindelpos = SpindelPos; */
       RealTimeMachine_DW.PrevSpindelpos = arg_SpindelPos;
 
-      /* '<S2>:1:64' DIRCarrier = uint16(0); */
+      /* '<S2>:1:63' DIRCarrier = uint16(0); */
       RealTimeMachine_DW.DIRCarrier = 0U;
     } else {
       SpindelDiv = RealTimeMachine_DW.PrevSpindelpos - /*MW:OvSatOk*/
@@ -310,8 +299,8 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
       if ((arg_SpindelPos < RealTimeMachine_DW.PrevSpindelpos) && (qY_0 >
            8388608UL)) {
-        /* '<S2>:1:66' elseif(SpindelPos < PrevSpindelpos) && ((PrevSpindelpos - SpindelPos) > (MaxPos/2)) */
-        /* '<S2>:1:67' SpindelDiv = (MaxPos - PrevSpindelpos) + SpindelPos; */
+        /* '<S2>:1:65' elseif(SpindelPos < PrevSpindelpos) && ((PrevSpindelpos - SpindelPos) > (MaxPos/2)) */
+        /* '<S2>:1:66' SpindelDiv = (MaxPos - PrevSpindelpos) + SpindelPos; */
         qY_0 = 16777215UL - /*MW:OvSatOk*/ RealTimeMachine_DW.PrevSpindelpos;
         if (16777215UL - RealTimeMachine_DW.PrevSpindelpos > 16777215UL) {
           qY_0 = 0UL;
@@ -322,7 +311,7 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
           SpindelDiv = MAX_uint32_T;
         }
 
-        /* '<S2>:1:68' rpmSteps = rpmSteps + uint32(SpindelDiv); */
+        /* '<S2>:1:67' rpmSteps = rpmSteps + uint32(SpindelDiv); */
         qY_0 = RealTimeMachine_DW.rpmSteps + /*MW:OvSatOk*/ SpindelDiv;
         if (qY_0 < RealTimeMachine_DW.rpmSteps) {
           qY_0 = MAX_uint32_T;
@@ -330,19 +319,19 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
         RealTimeMachine_DW.rpmSteps = qY_0;
 
-        /* '<S2>:1:69' PrevSpindelpos = SpindelPos; */
+        /* '<S2>:1:68' PrevSpindelpos = SpindelPos; */
         RealTimeMachine_DW.PrevSpindelpos = arg_SpindelPos;
 
-        /* '<S2>:1:70' DIRCarrier = uint16(1); */
+        /* '<S2>:1:69' DIRCarrier = uint16(1); */
         RealTimeMachine_DW.DIRCarrier = 1U;
       } else if (arg_SpindelPos < RealTimeMachine_DW.PrevSpindelpos) {
-        /* '<S2>:1:72' elseif(SpindelPos < PrevSpindelpos) */
-        /* '<S2>:1:73' SpindelDiv = (PrevSpindelpos - SpindelPos); */
+        /* '<S2>:1:71' elseif(SpindelPos < PrevSpindelpos) */
+        /* '<S2>:1:72' SpindelDiv = (PrevSpindelpos - SpindelPos); */
         if (SpindelDiv > RealTimeMachine_DW.PrevSpindelpos) {
           SpindelDiv = 0UL;
         }
 
-        /* '<S2>:1:74' rpmSteps = rpmSteps + uint32(SpindelDiv); */
+        /* '<S2>:1:73' rpmSteps = rpmSteps + uint32(SpindelDiv); */
         qY_0 = RealTimeMachine_DW.rpmSteps + /*MW:OvSatOk*/ SpindelDiv;
         if (qY_0 < RealTimeMachine_DW.rpmSteps) {
           qY_0 = MAX_uint32_T;
@@ -350,21 +339,21 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
         RealTimeMachine_DW.rpmSteps = qY_0;
 
-        /* '<S2>:1:75' PrevSpindelpos = SpindelPos; */
+        /* '<S2>:1:74' PrevSpindelpos = SpindelPos; */
         RealTimeMachine_DW.PrevSpindelpos = arg_SpindelPos;
 
-        /* '<S2>:1:76' DIRCarrier = uint16(0); */
+        /* '<S2>:1:75' DIRCarrier = uint16(0); */
         RealTimeMachine_DW.DIRCarrier = 0U;
       } else if (arg_SpindelPos > RealTimeMachine_DW.PrevSpindelpos) {
-        /* '<S2>:1:78' elseif(SpindelPos > PrevSpindelpos) */
-        /* '<S2>:1:79' SpindelDiv = SpindelPos - PrevSpindelpos; */
+        /* '<S2>:1:77' elseif(SpindelPos > PrevSpindelpos) */
+        /* '<S2>:1:78' SpindelDiv = SpindelPos - PrevSpindelpos; */
         SpindelDiv = arg_SpindelPos - /*MW:OvSatOk*/
           RealTimeMachine_DW.PrevSpindelpos;
         if (SpindelDiv > arg_SpindelPos) {
           SpindelDiv = 0UL;
         }
 
-        /* '<S2>:1:80' rpmSteps = rpmSteps + uint32(SpindelDiv); */
+        /* '<S2>:1:79' rpmSteps = rpmSteps + uint32(SpindelDiv); */
         qY_0 = RealTimeMachine_DW.rpmSteps + /*MW:OvSatOk*/ SpindelDiv;
         if (qY_0 < RealTimeMachine_DW.rpmSteps) {
           qY_0 = MAX_uint32_T;
@@ -372,82 +361,47 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
         RealTimeMachine_DW.rpmSteps = qY_0;
 
-        /* '<S2>:1:81' PrevSpindelpos = SpindelPos; */
+        /* '<S2>:1:80' PrevSpindelpos = SpindelPos; */
         RealTimeMachine_DW.PrevSpindelpos = arg_SpindelPos;
 
-        /* '<S2>:1:82' DIRCarrier = uint16(1); */
+        /* '<S2>:1:81' DIRCarrier = uint16(1); */
         RealTimeMachine_DW.DIRCarrier = 1U;
       } else {
-        /* '<S2>:1:83' else */
-        /* '<S2>:1:84' SpindelDiv = uint32(0); */
+        /* '<S2>:1:82' else */
+        /* '<S2>:1:83' SpindelDiv = uint32(0); */
         SpindelDiv = 0UL;
       }
     }
 
     /*     %% Calculate Desired Steps */
-    /* '<S2>:1:88' Carrier = Carrier + (Multiplier * double(SpindelDiv)); */
+    /* '<S2>:1:87' Carrier = Carrier + (Multiplier * double(SpindelDiv)); */
     RealTimeMachine_DW.Carrier += arg_CountFactor * (real_T)SpindelDiv;
 
-    /* '<S2>:1:89' DesSteps = uint16(floor(Carrier)); */
-    DesSteps_tmp = floor(RealTimeMachine_DW.Carrier);
-    if (DesSteps_tmp < 65536.0) {
-      if (DesSteps_tmp >= 0.0) {
-        qY = (uint16_T)DesSteps_tmp;
+    /* '<S2>:1:88' DesSteps = uint16(floor(Carrier)); */
+    arg_DesSteps_tmp = floor(RealTimeMachine_DW.Carrier);
+    if (arg_DesSteps_tmp < 65536.0) {
+      if (arg_DesSteps_tmp >= 0.0) {
+        /* Outport: '<Root>/DesSteps' */
+        *arg_DesSteps = (uint16_T)arg_DesSteps_tmp;
       } else {
-        qY = 0U;
+        /* Outport: '<Root>/DesSteps' */
+        *arg_DesSteps = 0U;
       }
     } else {
-      qY = MAX_uint16_T;
+      /* Outport: '<Root>/DesSteps' */
+      *arg_DesSteps = MAX_uint16_T;
     }
 
-    /* Outport: '<Root>/DesSteps' incorporates:
-     *  Inport: '<Root>/CountFactor'
-     */
-    *arg_DesSteps = qY;
-
-    /* '<S2>:1:90' Carrier = Carrier - floor(Carrier); */
-    RealTimeMachine_DW.Carrier -= DesSteps_tmp;
-
-    /*     %% Calculate Dutycycle */
-    /* '<S2>:1:93' if DesSteps <= 1 */
-    if (qY <= 1U) {
-      /* Outport: '<Root>/DutyCycle' */
-      /* '<S2>:1:94' DutyCycle = uint16(SingleStepDC); */
-      *arg_DutyCycle = 4U;
-    } else {
-      z_tmp = 80U / qY;
-      z = z_tmp;
-      x_tmp = 80U - z_tmp * qY;
-      tmp_2 = qY & 1U;
-      if ((x_tmp > 0U) && (x_tmp >= (qY >> 1U) + tmp_2)) {
-        z = z_tmp + 1U;
-      }
-
-      if ((int16_T)z < 7) {
-        /* Outport: '<Root>/DutyCycle' */
-        /* '<S2>:1:95' elseif (TotalStepTime/DesSteps) < 7 */
-        /* '<S2>:1:96' DutyCycle = uint16(2); */
-        *arg_DutyCycle = 2U;
-      } else {
-        /* '<S2>:1:97' else */
-        /* '<S2>:1:98' DutyCycle = uint16(((TotalStepTime/DesSteps)/10)); */
-        z = z_tmp;
-        if ((x_tmp > 0U) && (x_tmp >= (qY >> 1U) + tmp_2)) {
-          z = z_tmp + 1U;
-        }
-
-        /* Outport: '<Root>/DutyCycle' */
-        *arg_DutyCycle = (uint16_T)rt_roundd_snf((real_T)z / 10.0);
-      }
-    }
+    /* '<S2>:1:89' Carrier = Carrier - floor(Carrier); */
+    RealTimeMachine_DW.Carrier -= arg_DesSteps_tmp;
   } else {
-    /* '<S2>:1:101' else */
-    /* '<S2>:1:102' SpindelDiv = uint32(0); */
+    /* '<S2>:1:91' else */
+    /* '<S2>:1:92' SpindelDiv = uint32(0); */
     /*     %% Spindel not moving */
-    /* '<S2>:1:104' if (ComBit && ComCarrier) */
+    /* '<S2>:1:94' if (ComBit && ComCarrier) */
     if ((RealTimeMachine_B.ComBit != 0U) && (RealTimeMachine_DW.ComCarrier != 0U))
     {
-      /* '<S2>:1:105' ComCounter = ComCounter + uint16(1); */
+      /* '<S2>:1:95' ComCounter = ComCounter + uint16(1); */
       qY = RealTimeMachine_DW.ComCounter + /*MW:OvSatOk*/ 1U;
       if (RealTimeMachine_DW.ComCounter + 1U < RealTimeMachine_DW.ComCounter) {
         qY = MAX_uint16_T;
@@ -455,42 +409,40 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
       RealTimeMachine_DW.ComCounter = qY;
 
-      /* '<S2>:1:106' ComCarrier = uint16(0); */
+      /* '<S2>:1:96' ComCarrier = uint16(0); */
       RealTimeMachine_DW.ComCarrier = 0U;
     }
 
-    /* '<S2>:1:109' if ComCounter >= 4 */
+    /* '<S2>:1:99' if ComCounter >= 4 */
     if (RealTimeMachine_DW.ComCounter >= 4U) {
-      /* '<S2>:1:110' PrevSpindelpos = SpindelPos; */
+      /* '<S2>:1:100' PrevSpindelpos = SpindelPos; */
       RealTimeMachine_DW.PrevSpindelpos = arg_SpindelPos;
 
-      /* '<S2>:1:111' ComCounter = uint16(0); */
+      /* '<S2>:1:101' ComCounter = uint16(0); */
       RealTimeMachine_DW.ComCounter = 0U;
 
-      /* Outport: '<Root>/DutyCycle' */
-      /* '<S2>:1:112' DutyCycle = uint16(SingleStepDC); */
-      *arg_DutyCycle = 4U;
-
-      /* '<S2>:1:113' RPMCarrier = uint16(0); */
+      /* '<S2>:1:102' RPMCarrier = uint16(0); */
       RealTimeMachine_DW.RPMCarrier = 0U;
 
-      /* '<S2>:1:114' DesSteps = uint16(0); */
+      /* Outport: '<Root>/DesSteps' */
+      /* '<S2>:1:103' DesSteps = uint16(0); */
+      *arg_DesSteps = 0U;
     }
   }
 
   /*  Calculate current RPM and report every 10ms */
-  /* '<S2>:1:119' if (ComBit && ComCarrier) */
+  /* '<S2>:1:108' if (ComBit && ComCarrier) */
   if ((RealTimeMachine_B.ComBit != 0U) && (RealTimeMachine_DW.ComCarrier != 0U))
   {
-    /* '<S2>:1:120' ComCarrier = uint16(0); */
+    /* '<S2>:1:109' ComCarrier = uint16(0); */
     RealTimeMachine_DW.ComCarrier = 0U;
   } else if ((RealTimeMachine_B.ComBit == 0U) && (RealTimeMachine_DW.ComCarrier ==
               0U)) {
-    /* '<S2>:1:121' elseif ((ComBit == 0) && (ComCarrier == 0)) */
-    /* '<S2>:1:122' ComCarrier = uint16(1); */
+    /* '<S2>:1:110' elseif ((ComBit == 0) && (ComCarrier == 0)) */
+    /* '<S2>:1:111' ComCarrier = uint16(1); */
     RealTimeMachine_DW.ComCarrier = 1U;
 
-    /* '<S2>:1:123' RPMCarrier = uint16((rpmSteps*60*uint32(rpmRefreshRate))/4096); */
+    /* '<S2>:1:112' RPMCarrier = uint16((rpmSteps*60*uint32(rpmRefreshRate))/4096); */
     tmp = RealTimeMachine_DW.rpmSteps * 60ULL;
     if (tmp > 4294967295ULL) {
       tmp = 4294967295ULL;
@@ -508,15 +460,15 @@ void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
 
     RealTimeMachine_DW.RPMCarrier = (uint16_T)qY_0;
 
-    /* '<S2>:1:124' rpmSteps = uint32(0); */
+    /* '<S2>:1:113' rpmSteps = uint32(0); */
     RealTimeMachine_DW.rpmSteps = 0UL;
   }
 
   /* Outport: '<Root>/Dir' incorporates:
    *  MATLAB Function: '<Root>/MATLAB Function'
    */
-  /* '<S2>:1:127' RPM = RPMCarrier; */
-  /* '<S2>:1:128' Dir = DIRCarrier; */
+  /* '<S2>:1:116' RPM = RPMCarrier; */
+  /* '<S2>:1:117' Dir = DIRCarrier; */
   *arg_Dir = RealTimeMachine_DW.DIRCarrier;
 
   /* Outport: '<Root>/RPM' incorporates:
@@ -553,25 +505,25 @@ void RealTimeMachine_initialize(void)
   RealTimeMachine_B.Enable = 0U;
 
   /* SystemInitialize for MATLAB Function: '<Root>/MATLAB Function' */
-  /* '<S2>:1:27' Carrier = 0; */
+  /* '<S2>:1:26' Carrier = 0; */
   RealTimeMachine_DW.Carrier = 0.0;
 
-  /* '<S2>:1:31' rpmSteps = uint32(0); */
+  /* '<S2>:1:30' rpmSteps = uint32(0); */
   RealTimeMachine_DW.rpmSteps = 0UL;
 
-  /* '<S2>:1:35' PrevSpindelpos = uint32(0); */
+  /* '<S2>:1:34' PrevSpindelpos = uint32(0); */
   RealTimeMachine_DW.PrevSpindelpos = 0UL;
 
-  /* '<S2>:1:39' ComCarrier = uint16(0); */
+  /* '<S2>:1:38' ComCarrier = uint16(0); */
   RealTimeMachine_DW.ComCarrier = 0U;
 
-  /* '<S2>:1:43' ComCounter = uint16(0); */
+  /* '<S2>:1:42' ComCounter = uint16(0); */
   RealTimeMachine_DW.ComCounter = 0U;
 
-  /* '<S2>:1:47' RPMCarrier = uint16(0); */
+  /* '<S2>:1:46' RPMCarrier = uint16(0); */
   RealTimeMachine_DW.RPMCarrier = 0U;
 
-  /* '<S2>:1:51' DIRCarrier = uint16(0); */
+  /* '<S2>:1:50' DIRCarrier = uint16(0); */
   RealTimeMachine_DW.DIRCarrier = 0U;
 }
 

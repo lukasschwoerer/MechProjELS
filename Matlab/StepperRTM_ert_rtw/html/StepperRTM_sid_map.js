@@ -1,7 +1,6 @@
 function RTW_SidParentMap() {
     this.sidParentMap = new Array();
     this.sidParentMap["StepperRTM:24"] = "StepperRTM";
-    this.sidParentMap["StepperRTM:43"] = "StepperRTM";
     this.sidParentMap["StepperRTM:22"] = "StepperRTM";
     this.sidParentMap["StepperRTM:20"] = "StepperRTM";
     this.sidParentMap["StepperRTM:19"] = "StepperRTM";

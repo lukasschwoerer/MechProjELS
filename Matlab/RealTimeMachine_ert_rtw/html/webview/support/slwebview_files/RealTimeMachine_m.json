@@ -4,7 +4,7 @@
   "className":"Simulink.BlockDiagram",
   "icon":"RealTimeMachine0",
   "name":"RealTimeMachine",
-  "label":"RealTimeMachine",
+  "label":"RealTimeMachine*",
   "parent":"",
   "inspector":{
    "params":[
@@ -16,11 +16,11 @@
     "Description"
    ],
    "values":[
-    "2.263",
-    "Tue Nov 02 15:14:43 2021",
+    "2.266",
+    "Thu Nov 04 20:51:49 2021",
     "disabled",
     "off",
-    "off",
+    "on",
     ""
    ],
    "tabs":[

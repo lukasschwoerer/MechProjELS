@@ -13,15 +13,9 @@ WindowManager:
 #: set StandartSpacing 3
 
 # ------------------ Design Macros ------------------ #
-<HeadingLable@Label>:
-
 
 <ActionButton>:
     background_color: 0,0,0,0
-    #background_normal:""
-
-    #b_color: [0.34, 0.34, 0.34, 1] if self.state == 'normal' else [0, 0, 1, .5]
-
     canvas.before:
         Color:
             rgba: [0.34, 0.34, 0.34, 1] if self.state == 'normal' else [.2, .64, .8, 1]
@@ -108,6 +102,7 @@ WindowManager:
                     
 
                 Label:
+                    id: rpm_lable
                     text: '1000'
                     font_size: '40dp'
                     canvas.before:
@@ -237,9 +232,38 @@ WindowManager:
                     app.root.current = "einstellungen"
                     root.manager.transition.direction = "left"
 
-        Label:
-            text: "Section Metrische Gewinde"
-            size_hint: 1, .9
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 5
+            size: root.width, root.height
+
+            ActionButton:
+                size_hint: 0.2, 0.1
+                text: '0,4'
+                #on_press: root.btn_normal()
+
+            ActionButton:
+                size_hint: 0.2, 0.1
+                text: '0,5'
+                #on_press: root.btn_normal()
+
+            ActionButton:
+                size_hint: 0.2, 0.1
+                text: '0,7'
+                #on_press: root.btn_normal()
+
+            ActionButton:
+                size_hint: 0.2, 0.1
+                text: '0,8'
+                #on_press: root.btn_normal()
+
+            ActionButton:
+                size_hint: 0.2, 0.1
+                text: '1,0'
+                #on_press: root.btn_normal()
+        
+
+    
 
 <ZollGewinde>
     name: "zoll"

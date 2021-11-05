@@ -21,9 +21,9 @@
 </span><span><a class="LN" name="7">    7   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="8">    8   </a><span class="CT"> * Code generated for Simulink model 'RealTimeMachine'.</span>
 </span><span><a class="LN" name="9">    9   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.263</span>
+</span><span><a class="LN" name="10">   10   </a><span class="CT"> * Model version                  : 2.266</span>
 </span><span><a class="LN" name="11">   11   </a><span class="CT"> * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020</span>
-</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Tue Nov  2 15:20:25 2021</span>
+</span><span><a class="LN" name="12">   12   </a><span class="CT"> * C/C++ source code generated on : Thu Nov  4 20:57:45 2021</span>
 </span><span><a class="LN" name="13">   13   </a><span class="CT"> *</span>
 </span><span><a class="LN" name="14">   14   </a><span class="CT"> * Target selection: ert.tlc</span>
 </span><span><a class="LN" name="15">   15   </a><span class="CT"> * Embedded hardware selection: Texas Instruments-&gt;C2000</span>
@@ -109,37 +109,36 @@
 </span><span><a class="LN" name="95">   95   </a><span class="CT">/* Customized model step function */</span>
 </span><span><a class="LN" name="96">   96   </a><span class="DT">extern</span> <span class="DT">void</span> <a href="RealTimeMachine_c.html#fcn_RealTimeMachine_step" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'fcn_RealTimeMachine_step');" target="_self"><font color="#1122aa">RealTimeMachine_step</font></a>(<a href="rtwtypes_h.html#type_uint32_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint32_T');" target="_self"><font color="#1122aa">uint32_T</font></a> arg_SpindelPos, <a href="rtwtypes_h.html#type_real_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_real_T');" target="_self"><font color="#1122aa">real_T</font></a> arg_CountFactor,
 </span><span><a class="LN" name="97">   97   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> arg_RefrRate, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> arg_System_Trigger[2], <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_DesSteps,
-</span><span><a class="LN" name="98">   98   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_Dir, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_RPM, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_DutyCycle, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a>
-</span><span><a class="LN" name="99">   99   </a>  *arg_ComBit);
-</span><span><a class="LN" name="100">  100   </a><span class="DT">extern</span> <span class="DT">volatile</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> <a href="ert_main_c.html#var_stopRequested" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_stopRequested');" target="_self"><font color="#1122aa">stopRequested</font></a>;
-</span><span><a class="LN" name="101">  101   </a><span class="DT">extern</span> <span class="DT">volatile</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> <a href="ert_main_c.html#var_runModel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_runModel');" target="_self"><font color="#1122aa">runModel</font></a>;
-</span><span><a class="LN" name="102">  102   </a>
-</span><span><a class="LN" name="103">  103   </a><span class="CT">/*-</span>
-</span><span><a class="LN" name="104">  104   </a><span class="CT"> * The generated code includes comments that allow you to trace directly</span>
-</span><span><a class="LN" name="105">  105   </a><span class="CT"> * back to the appropriate location in the model.  The basic format</span>
-</span><span><a class="LN" name="106">  106   </a><span class="CT"> * is &lt;system&gt;/block_name, where system is the system number (uniquely</span>
-</span><span><a class="LN" name="107">  107   </a><span class="CT"> * assigned by Simulink) and block_name is the name of the block.</span>
-</span><span><a class="LN" name="108">  108   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="109">  109   </a><span class="CT"> * Use the MATLAB hilite_system command to trace the generated code back</span>
-</span><span><a class="LN" name="110">  110   </a><span class="CT"> * to the model.  For example,</span>
-</span><span><a class="LN" name="111">  111   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="112">  112   </a><span class="CT"> * hilite_system('&lt;S3&gt;')    - opens system 3</span>
-</span><span><a class="LN" name="113">  113   </a><span class="CT"> * hilite_system('&lt;S3&gt;/Kp') - opens and selects block Kp which resides in S3</span>
-</span><span><a class="LN" name="114">  114   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="115">  115   </a><span class="CT"> * Here is the system hierarchy for this model</span>
-</span><span><a class="LN" name="116">  116   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="117">  117   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine')" name="code2model"><font color="#117755"><i>&lt;Root&gt;</i></font></a>' : 'RealTimeMachine'</span>
-</span><span><a class="LN" name="118">  118   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;S1&gt;</i></font></a>'   : 'RealTimeMachine/Chart'</span>
-</span><span><a class="LN" name="119">  119   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;S2&gt;</i></font></a>'   : 'RealTimeMachine/MATLAB Function'</span>
-</span><span><a class="LN" name="120">  120   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="121">  121   </a><font color="#992211">#</font><span class="PP">endif</span>                                 <span class="CT">/* RTW_HEADER_RealTimeMachine_h_ */</span>
-</span><span><a class="LN" name="122">  122   </a>
-</span><span><a class="LN" name="123">  123   </a><span class="CT">/*</span>
-</span><span><a class="LN" name="124">  124   </a><span class="CT"> * File trailer for generated code.</span>
-</span><span><a class="LN" name="125">  125   </a><span class="CT"> *</span>
-</span><span><a class="LN" name="126">  126   </a><span class="CT"> * [EOF]</span>
-</span><span><a class="LN" name="127">  127   </a><span class="CT"> */</span>
-</span><span><a class="LN" name="128">  128   </a>
+</span><span><a class="LN" name="98">   98   </a>  <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_Dir, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_RPM, <a href="rtwtypes_h.html#type_uint16_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_uint16_T');" target="_self"><font color="#1122aa">uint16_T</font></a> *arg_ComBit);
+</span><span><a class="LN" name="99">   99   </a><span class="DT">extern</span> <span class="DT">volatile</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> <a href="ert_main_c.html#var_stopRequested" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_stopRequested');" target="_self"><font color="#1122aa">stopRequested</font></a>;
+</span><span><a class="LN" name="100">  100   </a><span class="DT">extern</span> <span class="DT">volatile</span> <a href="rtwtypes_h.html#type_boolean_T" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'type_boolean_T');" target="_self"><font color="#1122aa">boolean_T</font></a> <a href="ert_main_c.html#var_runModel" onclick="if (top) if (top.docHiliteMe) top.docHiliteMe(window, 'var_runModel');" target="_self"><font color="#1122aa">runModel</font></a>;
+</span><span><a class="LN" name="101">  101   </a>
+</span><span><a class="LN" name="102">  102   </a><span class="CT">/*-</span>
+</span><span><a class="LN" name="103">  103   </a><span class="CT"> * The generated code includes comments that allow you to trace directly</span>
+</span><span><a class="LN" name="104">  104   </a><span class="CT"> * back to the appropriate location in the model.  The basic format</span>
+</span><span><a class="LN" name="105">  105   </a><span class="CT"> * is &lt;system&gt;/block_name, where system is the system number (uniquely</span>
+</span><span><a class="LN" name="106">  106   </a><span class="CT"> * assigned by Simulink) and block_name is the name of the block.</span>
+</span><span><a class="LN" name="107">  107   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="108">  108   </a><span class="CT"> * Use the MATLAB hilite_system command to trace the generated code back</span>
+</span><span><a class="LN" name="109">  109   </a><span class="CT"> * to the model.  For example,</span>
+</span><span><a class="LN" name="110">  110   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="111">  111   </a><span class="CT"> * hilite_system('&lt;S3&gt;')    - opens system 3</span>
+</span><span><a class="LN" name="112">  112   </a><span class="CT"> * hilite_system('&lt;S3&gt;/Kp') - opens and selects block Kp which resides in S3</span>
+</span><span><a class="LN" name="113">  113   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="114">  114   </a><span class="CT"> * Here is the system hierarchy for this model</span>
+</span><span><a class="LN" name="115">  115   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="116">  116   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine')" name="code2model"><font color="#117755"><i>&lt;Root&gt;</i></font></a>' : 'RealTimeMachine'</span>
+</span><span><a class="LN" name="117">  117   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine:20')" name="code2model"><font color="#117755"><i>&lt;S1&gt;</i></font></a>'   : 'RealTimeMachine/Chart'</span>
+</span><span><a class="LN" name="118">  118   </a><span class="CT"> * '<a href="matlab:coder.internal.code2model('RealTimeMachine:58')" name="code2model"><font color="#117755"><i>&lt;S2&gt;</i></font></a>'   : 'RealTimeMachine/MATLAB Function'</span>
+</span><span><a class="LN" name="119">  119   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="120">  120   </a><font color="#992211">#</font><span class="PP">endif</span>                                 <span class="CT">/* RTW_HEADER_RealTimeMachine_h_ */</span>
+</span><span><a class="LN" name="121">  121   </a>
+</span><span><a class="LN" name="122">  122   </a><span class="CT">/*</span>
+</span><span><a class="LN" name="123">  123   </a><span class="CT"> * File trailer for generated code.</span>
+</span><span><a class="LN" name="124">  124   </a><span class="CT"> *</span>
+</span><span><a class="LN" name="125">  125   </a><span class="CT"> * [EOF]</span>
+</span><span><a class="LN" name="126">  126   </a><span class="CT"> */</span>
+</span><span><a class="LN" name="127">  127   </a>
 </span></pre>
 </td></tr></table>
 </p>
