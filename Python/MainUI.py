@@ -10,75 +10,174 @@ from kivy.clock import Clock
 import serial
 
 
-## Declaration of global Variables
-Mode = 'Normal'
-Feed = 0.018
+class CommunicationClass(object):
+
+	def __init__(self):
+		self.Mode = 1
+		self.Feed = 0
+		self.serialIndicator = 0
+		self.RPM = 0
+
+	def getStatus(self):
+		return self.Mode, self.Feed, self.serialIndicator
+
+	def initCom(self):
+
+		if self.serialIndicator == 0:
+			try:
+				
+				self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
+				self.serialIndicator = 1
+				self.Mode = 'Normal'
+				sleep(1)
+			except:
+				self.serialIndicator = 0
+			pass
+
+	def TX(self, Mode, Feed):
+
+		self.Mode = Mode
+
+		if self.serialIndicator:
+			self.FeedInt = int(Feed)
+			self.FeedDez = int((Feed - int(Feed))*100)
+
+	def RX(self):
+		if self.serialIndicator:
+			if self.ser.in_waiting >= 1:
+				self.RPM = self.ser.read_all()[-1]
+				print(self.RPM)
+				return str(self.RPM)
+		else:
+			return 'Not connected'
 
 
 class Startseite(Screen):
-    
-    def btn_normal(self):
-        print('Normal')
+	
+	def btn_normal(self):
+		print('Normal')
 
-    def btn_gewinde(self):
-        print('Gewinde')
+	def btn_gewinde(self):
+		print('Gewinde')
 
-    def btn_prev(self):
-        print('Previous')
+	def btn_prev(self):
+		print('Previous')
 
-    def btn_next(self):
-        print('Next')
-        
+	def btn_next(self):
+		print('Next')		
 
 class MetrischeGewinde(Screen):
-    pass
+	def btn_zero_four(self):
+		MainApp.MainCom.TX(2,0.4)
+		pass
+
+	def btn_zero_five(self):
+		MainApp.MainCom.TX(2,0.5)
+		pass
+
+	def btn_zero_seven(self):
+		MainApp.MainCom.TX(2,0.7)
+		pass
+
+	def btn_zero_eight(self):
+		MainApp.MainCom.TX(2,0.8)
+		pass
+
+	def btn_one(self):
+		MainApp.MainCom.TX(2,1.0)
+		pass
+
+	def btn_one_two_five(self):
+		MainApp.MainCom.TX(2,1.25)
+		pass
+
+	def btn_one_five(self):
+		MainApp.MainCom.TX(2,1.5)
+		pass
+
+	def btn_one_seven_five(self):
+		MainApp.MainCom.TX(2,1.75)
+		pass
+
+	def btn_two(self):
+		MainApp.MainCom.TX(2,2.0)
+		pass
+
+	def btn_two_five(self):
+		MainApp.MainCom.TX(2,2.5)
+		pass
+
+	def btn_three(self):
+		MainApp.MainCom.TX(2,3.0)
+		pass
+	pass
 
 class ZollGewinde(Screen):
-    pass
+	def btn_ten(self):
+		MainApp.MainCom.TX(3,10.0)
+		pass
+
+	def btn_eleven(self):
+		MainApp.MainCom.TX(3,11.0)
+		pass
+
+	def btn_therteen(self):
+		MainApp.MainCom.TX(3,13.0)
+		pass
+
+	def btn_nineteen(self):
+		MainApp.MainCom.TX(3,19.0)
+		pass
+
+	def btn_twenty(self):
+		MainApp.MainCom.TX(3,20.0)
+		pass
+
+	def btn_twentytwo(self):
+		MainApp.MainCom.TX(3,22.0)
+		pass
+
+	def btn_fourty(self):
+		MainApp.MainCom.TX(3,40.0)
+		pass
+
+	def btn_fourtyfour(self):
+		MainApp.MainCom.TX(3,44.0)
+		pass
+	pass
 
 class SpezialGewinde(Screen):
-    pass
+	pass
 
 class SchnittdatenRechner(Screen):
-    pass
+	pass
 
 class Einstellungen(Screen):
-    pass
+	pass
 
 class WindowManager(ScreenManager):
-    pass
+	pass
 
 
 kv = Builder.load_file("kvroot.kv")
 
 class MainApp(App):
-    def on_start(self):
-        Clock.schedule_interval(self.RxTx, 0.1)
 
-    def RxTx(self, *args):
-        if self.serialIndicator == 0:
-            try:
-                self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
-                self.serialIndicator = 1
-                sleep(1)
-            except:
-                self.serialIndicator = 0
-            pass
+	MainCom = CommunicationClass()
 
-        if self.serialIndicator:
-            if self.ser.in_waiting >= 1:
-                RPM = self.ser.read_all()[-1]
-                self.ser.write(b'0x03')
-                print(RPM)
-                self.root.screens[0].ids.rpm_lable.text = str(RPM)
-        else:
-            self.root.screens[0].ids.rpm_lable.text = 'Not connected'
+	def on_start(self):
+		Clock.schedule_interval(self.Cyclic, 0.1)
 
-    def build(self):
-        self.serialIndicator = 0
-        return kv
+	def Cyclic(self, *args):
+		MainApp.MainCom.initCom()
+		self.root.screens[0].ids.rpm_lable.text = MainApp.MainCom.RX()
+		
+
+
+	def build(self):
+		return kv
 
 if __name__ == "__main__": 
-    MainApp().run()
+	MainApp().run()
 
  

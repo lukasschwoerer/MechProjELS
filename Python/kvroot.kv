@@ -112,7 +112,7 @@ WindowManager:
 
                 Label:
                     id: rpm_lable
-                    text: '1000'
+                    text: '0'
                     font_size: '40dp'
                     canvas.before:
                         Color:
@@ -146,19 +146,22 @@ WindowManager:
                     spacing: StandartSpacing
 
                     Action:
+                        id: btn_normal
                         size_hint: 0.5, 1
                         text: 'Normal'
                         on_press: root.btn_normal()
                         
 
                     Action:
+                        id: btn_gewinde
                         size_hint: 0.5, 1
-                        text: 'Gewinde'
+                        text: 'Metrisch'
                         on_press: root.btn_gewinde()
                         
 
                 Label:
-                    text: '0.90 mm/rev'
+                    id: lable_feed
+                    text: 'Disabled'
                     font_size: '40dp'
                     canvas.before:
                         Color:
@@ -258,57 +261,58 @@ WindowManager:
                 Action:
                     size_hint: 0.2, 0.1
                     text: '0,4 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_zero_four()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '0,5 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_zero_five()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '0,7 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_zero_seven()
+
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '0,8 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_zero_eight()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '1,0 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_one()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '1,25 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_one_two_five()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '1,5 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_one_five()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '1,75 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_one_seven_five()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '2 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_two()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '2,5 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_two_five()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '3 mm'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_three()
 
             Label:
                 text: ''
@@ -384,42 +388,42 @@ WindowManager:
                 Action:
                     size_hint: 0.2, 0.1
                     text: '10 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_ten()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '11 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_eleven()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '13 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_therteen()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '19 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_nineteen()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '20 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_twenty()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '22 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_twentytwo()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '40 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_fourty()
 
                 Action:
                     size_hint: 0.2, 0.1
                     text: '44 TPI'
-                    #on_press: root.btn_normal()
+                    on_press: root.btn_fourtyfour()
 
                 Blank:
                     size_hint: 0.2, 0.1
