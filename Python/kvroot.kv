@@ -25,9 +25,10 @@ WindowManager:
 
 <Action@Button>:
     background_color: 0,0,0,0
+    enabled: 0
     canvas.before:
         Color:
-            rgba: [0.34, 0.34, 0.34, 1] if self.state == 'normal' else [.2, .64, .8, 1]
+            rgba: [0.34, 0.34, 0.34, 1] if (self.enabled == 0 and self.state == 'normal') else [.2, .64, .8, 1]
 
         RoundedRectangle:
             size: self.size
@@ -150,6 +151,7 @@ WindowManager:
                         size_hint: 0.5, 1
                         text: 'Normal'
                         on_press: root.btn_normal()
+                        enabled: 0
                         
 
                     Action:

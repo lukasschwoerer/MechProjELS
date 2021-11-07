@@ -171,8 +171,19 @@ class MainApp(App):
 	def Cyclic(self, *args):
 		MainApp.MainCom.initCom()
 		self.root.screens[0].ids.rpm_lable.text = MainApp.MainCom.RX()
-		
 
+		if MainApp.MainCom.getStatus()[0] == 1:
+			self.root.screens[0].ids.btn_normal.enabled = 1
+
+		elif MainApp.MainCom.getStatus()[0] == 2:
+			self.root.screens[0].ids.btn_normal.enabled = 0
+			self.root.screens[0].ids.btn_gewinde.enabled = 1
+			self.root.screens[0].ids.btn_gewinde.text = 'Metrisch'
+		
+		elif MainApp.MainCom.getStatus()[0] == 3:
+			self.root.screens[0].ids.btn_normal.enabled = 0
+			self.root.screens[0].ids.btn_gewinde.enabled = 1
+			self.root.screens[0].ids.btn_gewinde.text = 'Zoll'
 
 	def build(self):
 		return kv
