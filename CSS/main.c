@@ -18,7 +18,7 @@
 // Global Variables Inputs
 //
 uint32_T arg_SpindelPos = 0U;
-static real32_T arg_CountFactor = (float) (6*2000)/4096;
+real32_T arg_CountFactor = 0;
 static uint16_T var_StepBacklog;
 static uint16_T var_RefrRate = RefreshRate;
 
@@ -30,7 +30,6 @@ static uint16_T arg_Dir;
 static uint16_T arg_DesSteps;
 static uint16_T arg_RPM;
 static uint16_T arg_ComBit;
-unsigned char *msg;
 
 //
 // Global Variables Statemachine Clock
@@ -45,7 +44,10 @@ static boolean_T Stepper_Takt = 0;
 //
 static uint16_T ComCarrier = 0;
 static uint16_T RPMCarrier = 0;
-
+uint16_T msg[] = {0, 0, 0, 0, 0};
+boolean_T TransferComplete = 0;
+static uint16_T i = 0;
+float feed = 0.0;
 
 void main(void)
 {
@@ -97,12 +99,8 @@ void main(void)
 //
 __interrupt void cpuTimer0ISR(void)
 {
-
-
     Stepper_Takt = !Stepper_Takt; // Toggle System Clock
     Stepper_Trigger[0] = (uint16_T)Stepper_Takt;
-
-
 
     if(Stepper_Takt == 0)
     {
@@ -120,7 +118,9 @@ __interrupt void cpuTimer0ISR(void)
     GpioDataRegs.GPASET.bit.GPIO6 = arg_StepBit;
     GpioDataRegs.GPADAT.bit.GPIO6 = arg_StepBit;
 
-
+    //
+    // Acknowledge this interrupt to receive more
+    //
     PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }
 
@@ -141,6 +141,43 @@ __interrupt void cpuTimer2ISR(void)
 
     arg_SpindelPos = EQep1Regs.QPOSCNT;
 
+    if(SciaRegs.SCIFFRX.bit.RXFFST != 0)
+    {
+        msg[i] = SciaRegs.SCIRXBUF.bit.SAR;
+
+        if(i == 4)
+        {
+            i = 0;
+            TransferComplete = 1;
+        }
+        else
+        {
+            i++;
+        }
+    }
+
+    //
+    // Calculate Step-factor based on information received via UART
+    //
+    if(TransferComplete && (msg[0] == 255) && (msg[4] == 255))
+    {
+        TransferComplete = 0;
+        // Normal Feed and metric thread cutting
+        if(msg[1] == 1 || msg[1] == 2)
+        {
+            feed = msg[2] + (msg[3]/100.0);
+            arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * feed)/(EncoderRes * LeadscrewSlope));
+        }
+
+        // Imperial thread cutting
+        else if(msg[1] == 3)
+        {
+            feed = msg[2] + (msg[3]/100.0);
+            arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * OneInch)/(EncoderRes * LeadscrewSlope * feed ));
+        }
+    }
+
+
     RealTimeMachine_step(arg_SpindelPos, arg_CountFactor,  var_RefrRate, (uint16_t*)&System_Trigger,
                          &arg_DesSteps, &arg_Dir, &arg_RPM, &arg_ComBit);
 
@@ -159,12 +196,11 @@ __interrupt void cpuTimer2ISR(void)
     {
         ComCarrier = 1;
     }
-
     GpioDataRegs.GPBSET.bit.GPIO39 = !arg_Dir;
     GpioDataRegs.GPBDAT.bit.GPIO39 = !arg_Dir;
 
     //
-    // Acknowledge this interrupt to receive more interrupts from group 1
+    // Acknowledge this interrupt to receive more
     //
     PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
 }

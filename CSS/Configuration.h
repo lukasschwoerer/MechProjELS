@@ -6,13 +6,9 @@
  */
 #include "F28x_Project.h"
 
-#define Stepper_Clock 5
-#define System_Clock 100
-#define _ENCODER_MAX_COUNT = 0x00ffffff
-#define RefreshRate 100
-
-#ifndef CONFIGURATION_H_
-#define CONFIGURATION_H_
+//
+// Predefine Functions
+//
 
 void setupGPIO(void);
 void setupTimer(void);
@@ -24,5 +20,30 @@ void initSCIAFIFO(void);
 
 __interrupt void cpuTimer0ISR(void);
 __interrupt void cpuTimer2ISR(void);
+
+#ifndef CONFIGURATION_H_
+#define CONFIGURATION_H_
+
+//
+// Statemachine cycle times
+//
+#define Stepper_Clock 5
+#define System_Clock 100
+
+//
+// Refreshrate RPM (DO NOT EDIT)
+//
+#define RefreshRate 100
+
+//
+// Hardware constants
+//
+#define _ENCODER_MAX_COUNT      0x00ffffff
+#define MotorTransmission       5
+#define EncoderTransmission     1
+#define Steps                   2000
+#define EncoderRes              4096
+#define LeadscrewSlope          1.5
+#define OneInch                 25.4
 
 #endif /* CONFIGURATION_H_ */

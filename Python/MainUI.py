@@ -12,7 +12,7 @@ import serial
 class CommunicationClass(object):
 
 	def __init__(self):
-		self.Mode = 1
+		self.Mode = int(1)
 		self.Feed = 0.09
 		self.serialIndicator = 0
 		self.RPM = 0
@@ -59,18 +59,25 @@ class CommunicationClass(object):
 		if Mode == 1:
 			self.FeedFeed = Feed
 
-		self.Mode = Mode
+		self.Mode = int(Mode)
 		self.Feed = round(Feed, 2)
+		self.FeedInt = int(Feed)
+		self.FeedDez = int((Feed - int(Feed))*100)
 
 		if self.serialIndicator:
-			self.FeedInt = int(Feed)
-			self.FeedDez = int((Feed - int(Feed))*100)
+			self.ser.write(b'\xff')
+			self.ser.write(self.Mode.to_bytes(1, byteorder='big'))
+			self.ser.write(self.FeedInt.to_bytes(1, byteorder='big'))
+			self.ser.write(self.FeedDez.to_bytes(1, byteorder='big'))
+			self.ser.write(b'\xff')
 
 	def RX(self):
 		if self.serialIndicator:
 			if self.ser.in_waiting >= 1:
 				self.RPM = self.ser.read_all()[-1]
 				print(self.RPM)
+				return str(self.RPM)
+			else:
 				return str(self.RPM)
 		else:
 			return 'Not connected'
