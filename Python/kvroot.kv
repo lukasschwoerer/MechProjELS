@@ -122,9 +122,24 @@ WindowManager:
                             pos: self.pos
                             size: self.size
                     
-                Label:
-                    text: ''
+                GridLayout:
+                    cols: 2
                     size_hint: 1, .2
+                    spacing: StandartSpacing
+
+                    Action:
+                        id: btn_defone
+                        size_hint: 0.5, 1
+                        text: '0.09'
+                        font_size: '24dp'
+                        on_press: root.btn_defone()
+
+                    Action:
+                        id: btn_deftwo
+                        size_hint: 0.5, 1
+                        text: '0.18'
+                        font_size: '24dp'
+                        on_press: root.btn_deftwo()
 
                 Label:
                     text: ''

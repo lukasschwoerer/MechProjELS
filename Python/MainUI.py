@@ -13,12 +13,12 @@ class CommunicationClass(object):
 
 	def __init__(self):
 		self.Mode = 1
-		self.Feed = 0.08
+		self.Feed = 0.09
 		self.serialIndicator = 0
 		self.RPM = 0
 		self.Metric_BTN = 0
 		self.Imperial_BTN = 0
-		self.FeedFeed = 0
+		self.FeedFeed = 0.09
 
 	def SetBTN(self, Screen, BTN, State):
 		
@@ -75,12 +75,19 @@ class CommunicationClass(object):
 		else:
 			return 'Not connected'
 
-
 class Startseite(Screen):
-	
+	def btn_defone(self):
+		MainApp.MainCom.SetBTN(0,0,0)
+		MainApp.MainCom.TX(1, 0.09)
+
+	def btn_deftwo(self):
+		MainApp.MainCom.SetBTN(0,0,0)
+		MainApp.MainCom.TX(1, 0.18)
+
 	def btn_normal(self):
 		feed = MainApp.MainCom.getStatus()[5]
 		MainApp.MainCom.TX(1, feed)
+		MainApp.MainCom.SetBTN(0,0,0)
 
 	def btn_gewinde(self):
 		if MainApp.MainCom.getStatus()[0] == 1:
@@ -271,7 +278,6 @@ class Einstellungen(Screen):
 
 class WindowManager(ScreenManager):
 	pass
-
 
 kv = Builder.load_file("kvroot.kv")
 
