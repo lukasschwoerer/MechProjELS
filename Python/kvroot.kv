@@ -178,18 +178,22 @@ WindowManager:
                     spacing: StandartSpacing
 
                     Action:
+                        id: btn_prev
                         size_hint: 0.5, 1
                         text: '<'
                         bold: True
                         font_size: '40dp'
                         on_press: root.btn_prev()
+                        on_release: root.cancelDec()
 
                     Action:
+                        id: btn_next
                         size_hint: 0.5, 1
                         text: '>'
                         bold: True
                         font_size: '40dp'
                         on_press: root.btn_next()
+                        on_release: root.cancelInc()
 
                 Label:
                     text: ''
@@ -261,57 +265,68 @@ WindowManager:
                 size: root.width, root.height
 
                 Action:
+                    id: 0
                     size_hint: 0.2, 0.1
                     text: '0,4 mm'
                     on_press: root.btn_zero_four()
 
                 Action:
+                    id: 1
                     size_hint: 0.2, 0.1
                     text: '0,5 mm'
                     on_press: root.btn_zero_five()
 
                 Action:
+                    id: 2
                     size_hint: 0.2, 0.1
                     text: '0,7 mm'
                     on_press: root.btn_zero_seven()
 
 
                 Action:
+                    id: 3
                     size_hint: 0.2, 0.1
                     text: '0,8 mm'
                     on_press: root.btn_zero_eight()
 
                 Action:
+                    id: 4
                     size_hint: 0.2, 0.1
                     text: '1,0 mm'
                     on_press: root.btn_one()
 
                 Action:
+                    id: 5
                     size_hint: 0.2, 0.1
                     text: '1,25 mm'
                     on_press: root.btn_one_two_five()
 
                 Action:
+                    id: 6
                     size_hint: 0.2, 0.1
                     text: '1,5 mm'
                     on_press: root.btn_one_five()
 
                 Action:
+                    id: 7
                     size_hint: 0.2, 0.1
                     text: '1,75 mm'
                     on_press: root.btn_one_seven_five()
 
                 Action:
+                    id: 8
                     size_hint: 0.2, 0.1
                     text: '2 mm'
                     on_press: root.btn_two()
 
                 Action:
+                    id: 9
                     size_hint: 0.2, 0.1
                     text: '2,5 mm'
                     on_press: root.btn_two_five()
 
                 Action:
+                    id: 10
                     size_hint: 0.2, 0.1
                     text: '3 mm'
                     on_press: root.btn_three()
@@ -388,41 +403,49 @@ WindowManager:
                 size: root.width, root.height
 
                 Action:
+                    id: 0
                     size_hint: 0.2, 0.1
                     text: '10 TPI'
                     on_press: root.btn_ten()
 
                 Action:
+                    id: 1
                     size_hint: 0.2, 0.1
                     text: '11 TPI'
                     on_press: root.btn_eleven()
 
                 Action:
+                    id: 2
                     size_hint: 0.2, 0.1
                     text: '13 TPI'
                     on_press: root.btn_therteen()
 
                 Action:
+                    id: 3
                     size_hint: 0.2, 0.1
                     text: '19 TPI'
                     on_press: root.btn_nineteen()
 
                 Action:
+                    id: 4
                     size_hint: 0.2, 0.1
                     text: '20 TPI'
                     on_press: root.btn_twenty()
 
                 Action:
+                    id: 5
                     size_hint: 0.2, 0.1
                     text: '22 TPI'
                     on_press: root.btn_twentytwo()
 
                 Action:
+                    id: 6
                     size_hint: 0.2, 0.1
                     text: '40 TPI'
                     on_press: root.btn_fourty()
 
                 Action:
+                    id: 7
                     size_hint: 0.2, 0.1
                     text: '44 TPI'
                     on_press: root.btn_fourtyfour()
