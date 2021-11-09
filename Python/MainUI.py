@@ -11,6 +11,8 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 import serial
 
+Window.fullscreen = True
+
 class CommunicationClass(object):
 
 	def __init__(self):
