@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 ## Libraries Import
 from logging import Manager
 from time import sleep, time
