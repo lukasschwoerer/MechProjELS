@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import serial
 
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 5)
+ser = serial.Serial('/dev/ttyACM1', 9600, timeout = 5)
 
 # Read initial String from Launchpad
 input_str = ser.readline()
