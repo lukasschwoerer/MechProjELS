@@ -47,10 +47,11 @@ class CommunicationClass(object):
 		if self.serialIndicator == 0:
 			try:
 				
-				self.ser = serial.Serial('/dev/ttyACM1', 9600, timeout = 0.2)
+				self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 0.2)
+				sleep(1)
 				self.serialIndicator = 1
 				self.Mode = 'Normal'
-				sleep(1)
+				
 			except:
 				self.serialIndicator = 0
 			pass
