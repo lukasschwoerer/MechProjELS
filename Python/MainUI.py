@@ -47,7 +47,7 @@ class CommunicationClass(object):
 		if self.serialIndicator == 0:
 			try:
 				
-				self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
+				self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 0.2)
 				self.serialIndicator = 1
 				self.Mode = 'Normal'
 				sleep(1)

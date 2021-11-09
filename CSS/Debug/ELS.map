@@ -1,7 +1,7 @@
 ******************************************************************************
              TMS320C2000 Linker PC v20.2.5                     
 ******************************************************************************
->> Linked Tue Nov  9 00:24:32 2021
+>> Linked Tue Nov  9 07:56:20 2021
 
 OUTPUT FILE NAME:   <ELS.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 0000910d
@@ -15,7 +15,7 @@ PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
   RAMM0                 000000f4   0000030c  000000af  0000025d  RWIX
   RAMLS0                00008000   00000800  00000800  00000000  RWIX
-  RAMLS1                00008800   00000800  000007fc  00000004  RWIX
+  RAMLS1                00008800   00000800  00000800  00000000  RWIX
   RAMLS2                00009000   00000800  000001d1  0000062f  RWIX
   RAMLS3                00009800   00000800  00000000  00000800  RWIX
   RAMLS4                0000a000   00000800  00000000  00000800  RWIX
@@ -638,17 +638,17 @@ Flash0EccRegsFile
                   000087fd    00000002                       : pre_init.c.obj (.text)
                   000087ff    00000001                       : _lock.c.obj (.text)
 
-.text.2    0    00008800    000007fc     
+.text.2    0    00008800    00000800     
                   00008800    00000270     RealTimeMachine.obj (.text)
-                  00008a70    0000012e     main.obj (.text:retain)
-                  00008b9e    00000110     Configuration.obj (.text)
-                  00008cae    000000f1     main.obj (.text)
-                  00008d9f    000000d8     f28004x_gpio.obj (.text)
-                  00008e77    000000b7     StepperRTM.obj (.text)
-                  00008f2e    00000088     rts2800_fpu32.lib : fs_div28.asm.obj (.text)
-                  00008fb6    00000029                       : exit.c.obj (.text)
-                  00008fdf    0000001c                       : memcpy.c.obj (.text)
-                  00008ffb    00000001                       : startup.c.obj (.text)
+                  00008a70    00000132     main.obj (.text:retain)
+                  00008ba2    00000110     Configuration.obj (.text)
+                  00008cb2    000000f1     main.obj (.text)
+                  00008da3    000000d8     f28004x_gpio.obj (.text)
+                  00008e7b    000000b7     StepperRTM.obj (.text)
+                  00008f32    00000088     rts2800_fpu32.lib : fs_div28.asm.obj (.text)
+                  00008fba    00000029                       : exit.c.obj (.text)
+                  00008fe3    0000001c                       : memcpy.c.obj (.text)
+                  00008fff    00000001                       : startup.c.obj (.text)
 
 .text.3    0    00009000    000001d1     
                   00009000    0000005c     f28004x_cputimers.obj (.text)
@@ -666,11 +666,11 @@ MODULE SUMMARY
        ------                                   ----   ----------------   ------------------
     .\
        RealTimeMachine.obj                      624    0                  22                
-       main.obj                                 543    1                  29                
+       main.obj                                 547    1                  29                
        Configuration.obj                        272    0                  0                 
        StepperRTM.obj                           183    0                  8                 
     +--+----------------------------------------+------+------------------+--------------------+
-       Total:                                   1622   1                  59                
+       Total:                                   1626   1                  59                
                                                                                             
     .\common\source\
        f28004x_defaultisr.obj                   1203   0                  0                 
@@ -690,7 +690,7 @@ MODULE SUMMARY
        Total:                                   0      0                  9078              
                                                                                             
     C:\Users\lu\AppData\Local\Temp\
-       {17BBF313-572B-46AB-BF28-5648B0CE1A46}   0      71                 0                 
+       {0FDE3C01-3C79-4ADB-9591-E268FB09830A}   0      71                 0                 
     +--+----------------------------------------+------+------------------+--------------------+
        Total:                                   0      71                 0                 
                                                                                             
@@ -712,7 +712,7 @@ MODULE SUMMARY
                                                                                             
        Stack:                                   0      0                  512               
     +--+----------------------------------------+------+------------------+--------------------+
-       Grand Total:                             4647   534                9683              
+       Grand Total:                             4651   534                9683              
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -927,8 +927,8 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 page  address   name                            
 ----  -------   ----                            
 abs   ffffffff  .text                           
-0     00008fb6  C$$EXIT                         
-0     00008f2e  FS$$DIV                         
+0     00008fba  C$$EXIT                         
+0     00008f32  FS$$DIV                         
 0     000087df  LL$$CMP                         
 0     000087f1  ULL$$CMP                        
 0     000084a9  _ADCA1_ISR                      
@@ -1085,8 +1085,8 @@ abs   ffffffff  .text
 0     00000138  _FlashOff                       
 1     00006680  _FsiRxaRegs                     
 1     00006600  _FsiTxaRegs                     
-0     00008e23  _GPIO_SetupPinMux               
-0     00008d9f  _GPIO_SetupPinOptions           
+0     00008e27  _GPIO_SetupPinMux               
+0     00008da3  _GPIO_SetupPinOptions           
 1     00007c00  _GpioCtrlRegs                   
 1     00007f00  _GpioDataRegs                   
 0     00008790  _HALT                           
@@ -1160,7 +1160,7 @@ abs   ffffffff  .text
 1     0000a9f5  _StepperRTM_DW                  
 1     0000a9f3  _StepperRTM_PrevZCX             
 1     0000a9f0  _StepperRTM_U                   
-0     00008ea0  _StepperRTM_step                
+0     00008ea4  _StepperRTM_step                
 1     00007940  _SyncSocRegs                    
 0     0000853c  _SysIntOsc1Sel                  
 0     0000852c  _SysIntOsc2Sel                  
@@ -1210,31 +1210,31 @@ abs   ffffffff  ___text__
 1     0000aa1c  __lock                          
 0     000087ff  __nop                           
 1     00000400  __stack                         
-0     00008ffb  __system_post_cinit             
+0     00008fff  __system_post_cinit             
 0     000087fd  __system_pre_init               
 1     0000aa1e  __unlock                        
-0     00008fb6  _abort                          
+0     00008fba  _abort                          
 1     0000aa10  _arg_CountFactor                
 1     0000aa0e  _arg_SpindelPos                 
 0     0000910d  _c_int00                        
 0     000090b5  _ceil                           
 0     000090b5  _ceilf                          
 0     0000918b  _copy_in                        
-0     00008b3f  _cpuTimer0ISR                   
+0     00008b43  _cpuTimer0ISR                   
 0     00008a70  _cpuTimer2ISR                   
-0     00008fb8  _exit                           
+0     00008fbc  _exit                           
 1     0000aa12  _feed                           
 0     0000905c  _floor                          
 0     0000905c  _floorf                         
-0     00008c9b  _initSCIAEchoback               
-0     00008c7f  _initSCIAFIFO                   
-0     00008cae  _main                           
-0     00008fdf  _memcpy                         
+0     00008c9f  _initSCIAEchoback               
+0     00008c83  _initSCIAFIFO                   
+0     00008cb2  _main                           
+0     00008fe3  _memcpy                         
 1     0000aa14  _msg                            
-0     00008c57  _setupEQEP                      
-0     00008be1  _setupGPIO                      
-0     00008ba5  _setupTimer                     
-0     00008b9e  _transmitSCIAChar               
+0     00008c5b  _setupEQEP                      
+0     00008be5  _setupGPIO                      
+0     00008ba9  _setupTimer                     
+0     00008ba2  _transmitSCIAChar               
 abs   ffffffff  binit                           
 0     0000014c  cinit                           
 0     00000000  code_start                      
@@ -1393,23 +1393,23 @@ page  address   name
 0     000087ff  __nop                           
 0     00008850  _RealTimeMachine_step           
 0     00008a70  _cpuTimer2ISR                   
-0     00008b3f  _cpuTimer0ISR                   
-0     00008b9e  _transmitSCIAChar               
-0     00008ba5  _setupTimer                     
-0     00008be1  _setupGPIO                      
-0     00008c57  _setupEQEP                      
-0     00008c7f  _initSCIAFIFO                   
-0     00008c9b  _initSCIAEchoback               
-0     00008cae  _main                           
-0     00008d9f  _GPIO_SetupPinOptions           
-0     00008e23  _GPIO_SetupPinMux               
-0     00008ea0  _StepperRTM_step                
-0     00008f2e  FS$$DIV                         
-0     00008fb6  C$$EXIT                         
-0     00008fb6  _abort                          
-0     00008fb8  _exit                           
-0     00008fdf  _memcpy                         
-0     00008ffb  __system_post_cinit             
+0     00008b43  _cpuTimer0ISR                   
+0     00008ba2  _transmitSCIAChar               
+0     00008ba9  _setupTimer                     
+0     00008be5  _setupGPIO                      
+0     00008c5b  _setupEQEP                      
+0     00008c83  _initSCIAFIFO                   
+0     00008c9f  _initSCIAEchoback               
+0     00008cb2  _main                           
+0     00008da3  _GPIO_SetupPinOptions           
+0     00008e27  _GPIO_SetupPinMux               
+0     00008ea4  _StepperRTM_step                
+0     00008f32  FS$$DIV                         
+0     00008fba  C$$EXIT                         
+0     00008fba  _abort                          
+0     00008fbc  _exit                           
+0     00008fe3  _memcpy                         
+0     00008fff  __system_post_cinit             
 0     00009000  _InitCpuTimers                  
 0     0000903b  _ConfigCpuTimer                 
 0     0000905c  _floor                          

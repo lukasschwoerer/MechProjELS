@@ -165,14 +165,14 @@ __interrupt void cpuTimer2ISR(void)
         // Normal Feed and metric thread cutting
         if(msg[1] == 1 || msg[1] == 2)
         {
-            feed = msg[2] + (msg[3]/100.0);
+            feed = msg[2] + (msg[3] * 0.01);
             arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * feed)/(EncoderRes * LeadscrewSlope));
         }
 
         // Imperial thread cutting
         else if(msg[1] == 3)
         {
-            feed = msg[2] + (msg[3]/100.0);
+            feed = msg[2] + (msg[3] * 0.01);
             arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * OneInch)/(EncoderRes * LeadscrewSlope * feed ));
         }
     }
