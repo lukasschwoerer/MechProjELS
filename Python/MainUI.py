@@ -49,13 +49,6 @@ class CommunicationClass(object):
 
 		if self.serialIndicator == 0:
 			try:
-				GPIO.setmode(GPIO.BCM)
-				GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
-				sleep(1)
-				GPIO.output(12, GPIO.LOW)
-				sleep(1)
-				GPIO.output(12, GPIO.HIGH)
-
 				self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
 				sleep(1)
 				self.serialIndicator = 1
@@ -330,7 +323,13 @@ class MainApp(App):
 	def build(self):
 		return kv
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
+	GPIO.setmode(GPIO.BCM)
+	GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
+	sleep(1)
+	GPIO.output(12, GPIO.LOW)
+	sleep(1)
+	GPIO.output(12, GPIO.HIGH) 
 	MainApp().run()
 
  
