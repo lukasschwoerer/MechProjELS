@@ -50,12 +50,11 @@ class CommunicationClass(object):
 		if self.serialIndicator == 0:
 			try:
 				GPIO.setmode(GPIO.BCM)
-				GPIO.setup(12, GPIO.OUT)
-				GPIO.output(8, True)
+				GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
 				sleep(1)
-				GPIO.output(8, False)
+				GPIO.output(12, GPIO.LOW)
 				sleep(1)
-				GPIO.output(8, True)
+				GPIO.output(12, GPIO.HIGH)
 
 				self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
 				sleep(1)
