@@ -10,8 +10,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.clock import Clock
 import serial
-
-Window.fullscreen = True
+import RPi.GPIO as GPIO
 
 class CommunicationClass(object):
 
@@ -50,8 +49,15 @@ class CommunicationClass(object):
 
 		if self.serialIndicator == 0:
 			try:
-				
-				self.ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 0.2)
+				GPIO.setmode(GPIO.BCM)
+				GPIO.setup(12, GPIO.OUT)
+				GPIO.output(8, True)
+				sleep(1)
+				GPIO.output(8, False)
+				sleep(1)
+				GPIO.output(8, True)
+
+				self.ser = serial.Serial('COM4', 9600, timeout = 0.2)
 				sleep(1)
 				self.serialIndicator = 1
 				self.Mode = 'Normal'
@@ -75,6 +81,7 @@ class CommunicationClass(object):
 			self.ser.write(self.FeedInt.to_bytes(1, byteorder='big'))
 			self.ser.write(self.FeedDez.to_bytes(1, byteorder='big'))
 			self.ser.write(b'\xff')
+			print('Transmission completed')
 
 	def RX(self):
 		if self.serialIndicator:

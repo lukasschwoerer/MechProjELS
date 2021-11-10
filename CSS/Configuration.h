@@ -45,5 +45,4 @@ __interrupt void cpuTimer2ISR(void);
 #define EncoderRes              4096
 #define LeadscrewSlope          1.5
 #define OneInch                 25.4
-#define _FLASH
 #endif /* CONFIGURATION_H_ */
