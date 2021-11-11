@@ -10,7 +10,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 from kivy.clock import Clock
 import serial
-import RPi.GPIO as GPIO
+#import RPi.GPIO as GPIO
 
 class CommunicationClass(object):
 
@@ -324,12 +324,14 @@ class MainApp(App):
 		return kv
 
 if __name__ == "__main__":
-	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
-	sleep(1)
-	GPIO.output(12, GPIO.LOW)
-	sleep(1)
-	GPIO.output(12, GPIO.HIGH) 
+	Raspi = False
+	if Raspi == True:
+		GPIO.setmode(GPIO.BCM)
+		GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH)
+		sleep(1)
+		GPIO.output(12, GPIO.LOW)
+		sleep(1)
+		GPIO.output(12, GPIO.HIGH) 
 	MainApp().run()
 
  

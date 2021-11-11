@@ -28,7 +28,7 @@ ORDERED_OBJS += \
 "./common/source/f28004x_sysctrl.obj" \
 "./common/source/f28004x_usdelay.obj" \
 "./headers/source/f28004x_globalvariabledefs.obj" \
-"../28004x_generic_flash_lnk.cmd" \
+"../280049C_FLASH_lnk.cmd" \
 "../headers/cmd/f28004x_headers_nonbios.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
