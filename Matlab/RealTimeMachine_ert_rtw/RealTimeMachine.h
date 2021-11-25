@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.266
- * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Thu Nov  4 20:57:45 2021
+ * Model version                  : 3.11
+ * Simulink Coder version         : 9.6 (R2021b) 14-May-2021
+ * C/C++ source code generated on : Wed Nov 24 16:34:53 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -37,35 +37,26 @@ extern void configureIXbar(void);
 
 /* Block signals (default storage) */
 typedef struct {
-  uint16_T ComBit;                     /* '<Root>/Chart' */
+  uint16_T DesSteps;                   /* '<Root>/MATLAB Function' */
+  uint16_T Dir;                        /* '<Root>/MATLAB Function' */
   uint16_T Enable;                     /* '<Root>/Chart' */
 } B_RealTimeMachine_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
   real_T Carrier;                      /* '<Root>/MATLAB Function' */
-  uint32_T rpmSteps;                   /* '<Root>/MATLAB Function' */
   uint32_T PrevSpindelpos;             /* '<Root>/MATLAB Function' */
-  uint32_T temporalCounter_i1;         /* '<Root>/Chart' */
-  uint16_T ComCarrier;                 /* '<Root>/MATLAB Function' */
-  uint16_T ComCounter;                 /* '<Root>/MATLAB Function' */
-  uint16_T RPMCarrier;                 /* '<Root>/MATLAB Function' */
   uint16_T DIRCarrier;                 /* '<Root>/MATLAB Function' */
   uint16_T is_active_c3_RealTimeMachine;/* '<Root>/Chart' */
   uint16_T is_c3_RealTimeMachine;      /* '<Root>/Chart' */
   uint16_T is_MachineStatus;           /* '<Root>/Chart' */
-  uint16_T is_Communication;           /* '<Root>/Chart' */
 } DW_RealTimeMachine_T;
 
 /* Zero-crossing (trigger) state */
 typedef struct {
+  ZCSigState MATLABFunction_Trig_ZCE[2];/* '<Root>/MATLAB Function' */
   ZCSigState Chart_Trig_ZCE[2];        /* '<Root>/Chart' */
 } PrevZCX_RealTimeMachine_T;
-
-/* External inputs (root inport signals with default storage) */
-typedef struct {
-  uint16_T RefrRate;                   /* '<Root>/RefrRate' */
-} ExtU_RealTimeMachine_T;
 
 /* Parameters (default storage) */
 struct P_RealTimeMachine_T_ {
@@ -86,16 +77,12 @@ extern DW_RealTimeMachine_T RealTimeMachine_DW;
 /* Zero-crossing (trigger) state */
 extern PrevZCX_RealTimeMachine_T RealTimeMachine_PrevZCX;
 
-/* External inputs (root inport signals with default storage) */
-extern ExtU_RealTimeMachine_T RealTimeMachine_U;
-
 /* Model entry point functions */
 extern void RealTimeMachine_initialize(void);
 
 /* Customized model step function */
 extern void RealTimeMachine_step(uint32_T arg_SpindelPos, real_T arg_CountFactor,
-  uint16_T arg_RefrRate, uint16_T arg_System_Trigger[2], uint16_T *arg_DesSteps,
-  uint16_T *arg_Dir, uint16_T *arg_RPM, uint16_T *arg_ComBit);
+  uint16_T arg_System_Trigger[2], uint16_T *arg_DesSteps, uint16_T *arg_Dir);
 extern volatile boolean_T stopRequested;
 extern volatile boolean_T runModel;
 

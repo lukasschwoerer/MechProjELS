@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'RealTimeMachine'.
  *
- * Model version                  : 2.266
- * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Thu Nov  4 20:57:45 2021
+ * Model version                  : 3.11
+ * Simulink Coder version         : 9.6 (R2021b) 14-May-2021
+ * C/C++ source code generated on : Wed Nov 24 16:34:53 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -24,14 +24,13 @@ volatile int IsrOverrun = 0;
 static boolean_T OverrunFlag = 0;
 void rt_OneStep(void)
 {
+  /* Global variables used by function prototype control */
+
   /* '<Root>/SpindelPos' */
   static uint32_T arg_SpindelPos = 0U;
 
   /* '<Root>/CountFactor' */
   static real_T arg_CountFactor = 0.0;
-
-  /* '<Root>/RefrRate' */
-  static uint16_T arg_RefrRate = 0U;
 
   /* '<Root>/System_Trigger' */
   static uint16_T arg_System_Trigger[2] = { 0U, 0U };
@@ -42,12 +41,6 @@ void rt_OneStep(void)
   /* '<Root>/Dir' */
   static uint16_T arg_Dir;
 
-  /* '<Root>/RPM' */
-  static uint16_T arg_RPM;
-
-  /* '<Root>/ComBit' */
-  static uint16_T arg_ComBit;
-
   /* Check for overrun. Protect OverrunFlag against preemption */
   if (OverrunFlag++) {
     IsrOverrun = 1;
@@ -56,9 +49,8 @@ void rt_OneStep(void)
   }
 
   enableTimer0Interrupt();
-  RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_RefrRate,
-                       arg_System_Trigger, &arg_DesSteps, &arg_Dir, &arg_RPM,
-                       &arg_ComBit);
+  RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, arg_System_Trigger,
+                       &arg_DesSteps, &arg_Dir);
 
   /* Get model outputs here */
   disableTimer0Interrupt();
@@ -95,7 +87,6 @@ int main(void)
   while (runModel) {
   }
 
-  /* Disable rt_OneStep() here */
   globalInterruptDisable();
   return 0;
 }

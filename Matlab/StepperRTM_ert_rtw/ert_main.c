@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'StepperRTM'.
  *
- * Model version                  : 2.135
- * Simulink Coder version         : 9.5 (R2021a) 14-Nov-2020
- * C/C++ source code generated on : Thu Nov  4 20:56:48 2021
+ * Model version                  : 3.14
+ * Simulink Coder version         : 9.6 (R2021b) 14-May-2021
+ * C/C++ source code generated on : Thu Nov 25 22:07:20 2021
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: Texas Instruments->C2000
@@ -24,6 +24,8 @@ volatile int IsrOverrun = 0;
 static boolean_T OverrunFlag = 0;
 void rt_OneStep(void)
 {
+  /* Global variables used by function prototype control */
+
   /* '<Root>/DesSteps' */
   static uint16_T arg_DesSteps = 0U;
 
@@ -33,9 +35,6 @@ void rt_OneStep(void)
   /* '<Root>/StepBit' */
   static uint16_T arg_StepBit;
 
-  /* '<Root>/NewDesSteps' */
-  static uint16_T arg_NewDesSteps;
-
   /* Check for overrun. Protect OverrunFlag against preemption */
   if (OverrunFlag++) {
     IsrOverrun = 1;
@@ -44,8 +43,7 @@ void rt_OneStep(void)
   }
 
   enableTimer0Interrupt();
-  StepperRTM_step(arg_DesSteps, arg_Stepper_Trigger, &arg_StepBit,
-                  &arg_NewDesSteps);
+  StepperRTM_step(arg_DesSteps, arg_Stepper_Trigger, &arg_StepBit);
 
   /* Get model outputs here */
   disableTimer0Interrupt();
@@ -82,7 +80,6 @@ int main(void)
   while (runModel) {
   }
 
-  /* Disable rt_OneStep() here */
   globalInterruptDisable();
   return 0;
 }

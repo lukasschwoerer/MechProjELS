@@ -1,7 +1,5 @@
 #include "c2000BoardSupport.h"
-#include "f28004x_device.h"
-#include "f28004x_examples.h"
-#include "f28004x_globalprototypes.h"
+#include "MW_f28004x_includes.h"
 #include "rtwtypes.h"
 #include "StepperRTM.h"
 #include "StepperRTM_private.h"

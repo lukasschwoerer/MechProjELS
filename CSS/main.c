@@ -20,8 +20,7 @@
 //
 static uint32_T arg_SpindelPos = 0U;
 volatile  real32_T arg_CountFactor = 0;
-static uint16_T var_StepBacklog;
-static uint16_T var_RefrRate = RefreshRate;
+volatile uint16_T var_StepBacklog;
 
 //
 // Global Variables Outputs
@@ -29,8 +28,6 @@ static uint16_T var_RefrRate = RefreshRate;
 static uint16_T arg_StepBit;
 static uint16_T arg_Dir;
 static uint16_T arg_DesSteps;
-static uint16_T arg_RPM;
-static uint16_T arg_ComBit;
 
 //
 // Global Variables Statemachine Clock
@@ -43,8 +40,10 @@ static boolean_T Stepper_Takt = 0;
 //
 // Global Variables Helpers
 //
-static uint16_T ComCarrier = 0;
-static uint16_T RPMCarrier = 0;
+volatile uint32_T current = 0;
+volatile uint32_T count = 0;
+volatile uint32_T previous = 0;
+volatile uint16_T RPM;
 
 volatile int msg[] = {0, 0, 0, 0, 0};
 volatile int i = 0;
@@ -54,6 +53,7 @@ volatile int TransferComplete = 0;
 
 void main(void)
 {
+
     #ifdef _FLASH
         // Copy time critical code and Flash setup code to RAM
         // The RamfuncsLoadStart, RamfuncsLoadEnd, and RamfuncsRunStart
@@ -65,6 +65,12 @@ void main(void)
         InitFlash();
     #endif
 
+
+    //
+    // Initialize Autocode
+    //
+    StepperRTM_initialize();
+    RealTimeMachine_initialize();
     //
     // Initialize device clock and peripherals
     //
@@ -88,30 +94,55 @@ void main(void)
     initSCIAEchoback();
 
 
-    //
-    // Initialize Autocode
-    //
-    //StepperRTM_initialize();
-    //RealTimeMachine_initialize();
+
 
 
     while(1)
     {
-        if(SciaRegs.SCIFFRX.bit.RXFFST != 0)
+        //
+        // Send RPM via UART on ComBit High
+        //
+        if(EQep1Regs.QFLG.bit.UTO==1)
         {
-            msg[i] = SciaRegs.SCIRXBUF.bit.SAR;
 
-            if(i == 4)
+           Uint32 current = EQep1Regs.QPOSLAT;
+           Uint32 count = (current > previous) ? current - previous : previous - current;
+
+           // deal with over/underflow
+           if( count > _ENCODER_MAX_COUNT/2 )
             {
-                i = 0;
-                TransferComplete = 1;
-                Mode = msg[1];
-                feed = msg[2] + (msg[3] * 0.01);
+                count = _ENCODER_MAX_COUNT - count; // just subtract from max value
             }
-            else
-            {
-                i++;
-            }
+
+            RPM = count * 60 * RPMSampleTime / EncoderRes;
+
+            unsigned char lowbyte = RPM & 0xff;
+            unsigned char highbyte = RPM >> 8;
+
+            previous = current;
+            transmitSCIAChar(lowbyte);          // Send RPM out via UART
+            transmitSCIAChar(highbyte);          // Send RPM out via UART
+            EQep1Regs.QCLR.bit.UTO=1;       // Clear interrupt flag
+        }
+
+        //
+        // Check for new Massages from the Raspberry Pi
+        //
+         if(SciaRegs.SCIFFRX.bit.RXFFST != 0)
+        {
+           msg[i] = SciaRegs.SCIRXBUF.bit.SAR;
+
+           if(i == 4)
+           {
+              i = 0;
+              TransferComplete = 1;
+              Mode = msg[1];
+              feed = msg[2] + (msg[3] * 0.01);
+           }
+           else
+           {
+               i++;
+           }
         }
 
         //
@@ -120,18 +151,18 @@ void main(void)
 
         if(TransferComplete && (msg[0] == 0xff) && (msg[4] == 0xff))
         {
-            TransferComplete = 0;
+           TransferComplete = 0;
             // Normal Feed and metric thread cutting
-            if(Mode == 1 || Mode == 2)
-            {
-                arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * feed)/(EncoderRes * LeadscrewSlope));
-            }
+           if(Mode == 1 || Mode == 2)
+           {
+               arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * feed)/(EncoderRes * LeadscrewSlope));
+           }
 
             // Imperial thread cutting
-            else if(Mode == 3)
-            {
-                arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * OneInch)/(EncoderRes * LeadscrewSlope * feed ));
-            }
+           else if(Mode == 3)
+           {
+               arg_CountFactor = ((Steps * MotorTransmission * EncoderTransmission * OneInch)/(EncoderRes * LeadscrewSlope * feed ));
+           }
         }
     }
 }
@@ -141,6 +172,7 @@ void main(void)
 //
 __interrupt void cpuTimer0ISR(void)
 {
+
     Stepper_Takt = !Stepper_Takt; // Toggle System Clock
     Stepper_Trigger[0] = (uint16_T)Stepper_Takt;
 
@@ -149,13 +181,13 @@ __interrupt void cpuTimer0ISR(void)
         Stepper_Trigger[1] = 1; //Power on Reset
     }
 
-    StepperRTM_step(var_StepBacklog, (uint16_t*)&Stepper_Trigger, &arg_StepBit, &var_StepBacklog);
+    StepperRTM_step(var_StepBacklog, (uint16_t*)&Stepper_Trigger, &arg_StepBit);
 
     //
     // Stepper Clock for Debugging
     //
-    GpioDataRegs.GPASET.bit.GPIO23 = arg_StepBit;
-    GpioDataRegs.GPADAT.bit.GPIO23 = arg_StepBit;
+    //GpioDataRegs.GPASET.bit.GPIO23 = arg_StepBit;
+    //GpioDataRegs.GPADAT.bit.GPIO23 = arg_StepBit;
 
     GpioDataRegs.GPASET.bit.GPIO6 = arg_StepBit;
     GpioDataRegs.GPADAT.bit.GPIO6 = arg_StepBit;
@@ -183,24 +215,11 @@ __interrupt void cpuTimer2ISR(void)
 
     arg_SpindelPos = EQep1Regs.QPOSCNT;
 
-    RealTimeMachine_step(arg_SpindelPos, arg_CountFactor,  var_RefrRate, (uint16_t*)&System_Trigger,
-                         &arg_DesSteps, &arg_Dir, &arg_RPM, &arg_ComBit);
+    RealTimeMachine_step(arg_SpindelPos, arg_CountFactor, (uint16_t*)&System_Trigger,
+                         &arg_DesSteps, &arg_Dir);
 
     var_StepBacklog = var_StepBacklog + arg_DesSteps;
 
-    //
-    // Send RPM via UART on ComBit High
-    //
-    if(arg_ComBit && ComCarrier && (arg_RPM != RPMCarrier))
-    {
-        transmitSCIAChar(arg_RPM);
-        RPMCarrier = arg_RPM;
-        ComCarrier = 0;
-    }
-    else if(!arg_ComBit && !ComCarrier)
-    {
-        ComCarrier = 1;
-    }
     GpioDataRegs.GPBSET.bit.GPIO39 = !arg_Dir;
     GpioDataRegs.GPBDAT.bit.GPIO39 = !arg_Dir;
 

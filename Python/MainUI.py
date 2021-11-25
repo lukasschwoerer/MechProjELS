@@ -76,9 +76,13 @@ class CommunicationClass(object):
 			print('Transmission completed')
 
 	def RX(self):
+		lowbyte = 0
+		highbyte = 0
 		if self.serialIndicator:
 			if self.ser.in_waiting >= 1:
-				self.RPM = self.ser.read_all()[-1]
+				lowbyte = self.ser.read_all()[-1]
+				highbyte = self.ser.read_all()[-2]
+				self.RPM = lowbyte + (highbyte * 255)
 				print(self.RPM)
 				return str(self.RPM)
 			else:

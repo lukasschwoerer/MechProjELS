@@ -2,7 +2,7 @@
 ## Makefile generated for component 'StepperRTM'. 
 ## 
 ## Makefile     : StepperRTM.mk
-## Generated on : Sat Oct 30 22:48:33 2021
+## Generated on : Wed Nov 24 20:31:00 2021
 ## Final product: $(RELATIVE_PATH_TO_ANCHOR)/StepperRTM.out
 ## Product type : executable
 ## 
@@ -18,10 +18,10 @@
 
 PRODUCT_NAME              = StepperRTM
 MAKEFILE                  = StepperRTM.mk
-MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2021a
-MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2021a/bin
+MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2021b
+MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2021b/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
-START_DIR                 = C:/Users/lu/ti/MechProj/Matlab
+START_DIR                 = C:/Users/Lukas/Documents/MechProjELS/Matlab
 SOLVER                    = 
 SOLVER_OBJ                = 
 CLASSIC_INTERFACE         = 0
@@ -37,7 +37,7 @@ CPP_STANDARD_OPTS         =
 
 # Toolchain Name:          Texas Instruments Code Composer Studio (C2000)
 # Supported Version(s):    
-# ToolchainInfo Version:   2021a
+# ToolchainInfo Version:   2021b
 # Specification Revision:  1.0
 # 
 #-------------------------------------------
@@ -197,7 +197,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/StepperRTM_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021a/toolbox/target/SUPPOR~1/tic2000/inc -I$(MATLAB_ROOT)/toolbox/shared/can/src/scanutil -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021a/toolbox/target/SUPPOR~1/tic2000/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021a/toolbox/shared/SUPPOR~1/tic2000/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021a/toolbox/shared/SUPPOR~1/tic2000/inc -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/common/include -IC:/ti/c2000/C2000W~2/LIBRAR~1/CALIBR~1/hrpwm/f28004x/include -IC:/ti/c2000/C2000W~2/DRIVER~1/f28004x/DRIVER~1 -IC:/ti/c2000/C2000W~2/DRIVER~1/f28004x/DRIVER~1/inc -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/headers/include -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/common -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021a/toolbox/target/shared/EXTERN~1/include -I$(MATLAB_ROOT)/toolbox/rtw/targets/common/can/blocks/tlc_c
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/StepperRTM_ert_rtw -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021b/toolbox/target/SUPPOR~1/tic2000/inc -I$(MATLAB_ROOT)/toolbox/shared/can/src/scanutil -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021b/toolbox/target/SUPPOR~1/tic2000/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021b/toolbox/shared/SUPPOR~1/tic2000/src -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021b/toolbox/shared/SUPPOR~1/tic2000/inc -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/common/include -IC:/ti/c2000/C2000W~2/LIBRAR~1/CALIBR~1/hrpwm/f28004x/include -IC:/ti/c2000/C2000W~2/DRIVER~1/f28004x/DRIVER~1 -IC:/ti/c2000/C2000W~2/DRIVER~1/f28004x/DRIVER~1/inc -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/headers/include -IC:/ti/c2000/C2000W~2/DEVICE~1/f28004x/common -IC:/PROGRA~3/MATLAB/SUPPOR~1/R2021b/toolbox/target/shared/EXTERN~1/include -I$(MATLAB_ROOT)/toolbox/rtw/targets/common/can/blocks/tlc_c
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -218,7 +218,7 @@ DEFINES = $(DEFINES_) $(DEFINES_BUILD_ARGS) $(DEFINES_CUSTOM) $(DEFINES_OPTS) $(
 ## SOURCE FILES
 ###########################################################################
 
-SRCS = $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_csl.c $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_board.c $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_xbar.c $(START_DIR)/StepperRTM_ert_rtw/StepperRTM.c C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c28004xBoard_Realtime_Support.c C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_cputimers.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_defaultisr.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/headers/source/f28004x_globalvariabledefs.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_piectrl.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_pievect.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_sysctrl.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_usdelay.asm C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_codestartbranch.asm C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_gpio.c C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_adc.c C:/ti/c2000/C2000Ware_3_02_00_00/driverlib/f28004x/driverlib/sysctl.c C:/ti/c2000/C2000Ware_3_02_00_00/driverlib/f28004x/driverlib/dma.c C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/profiler_Support.c C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c28004xSchedulerTimer0.c
+SRCS = $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_csl.c $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_board.c $(START_DIR)/StepperRTM_ert_rtw/MW_c28xx_xbar.c $(START_DIR)/StepperRTM_ert_rtw/StepperRTM.c C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c28004xBoard_Realtime_Support.c C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_cputimers.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_defaultisr.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/headers/source/f28004x_globalvariabledefs.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_piectrl.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_pievect.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_sysctrl.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_usdelay.asm C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_codestartbranch.asm C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_gpio.c C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_adc.c C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/sysctl.c C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/dma.c C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/clb.c C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/profiler_Support.c C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c28004xSchedulerTimer0.c
 
 MAIN_SRC = $(START_DIR)/StepperRTM_ert_rtw/ert_main.c
 
@@ -228,7 +228,7 @@ ALL_SRCS = $(SRCS) $(MAIN_SRC)
 ## OBJECTS
 ###########################################################################
 
-OBJS = MW_c28xx_csl.obj MW_c28xx_board.obj MW_c28xx_xbar.obj StepperRTM.obj c28004xBoard_Realtime_Support.obj MW_c28xGlobalInterrupts.obj f28004x_cputimers.obj f28004x_defaultisr.obj f28004x_globalvariabledefs.obj f28004x_piectrl.obj f28004x_pievect.obj f28004x_sysctrl.obj f28004x_usdelay.obj f28004x_codestartbranch.obj f28004x_gpio.obj f28004x_adc.obj sysctl.obj dma.obj MW_c28xGPIO.obj profiler_Support.obj c28004xSchedulerTimer0.obj
+OBJS = MW_c28xx_csl.obj MW_c28xx_board.obj MW_c28xx_xbar.obj StepperRTM.obj c28004xBoard_Realtime_Support.obj MW_c28xGlobalInterrupts.obj f28004x_cputimers.obj f28004x_defaultisr.obj f28004x_globalvariabledefs.obj f28004x_piectrl.obj f28004x_pievect.obj f28004x_sysctrl.obj f28004x_usdelay.obj f28004x_codestartbranch.obj f28004x_gpio.obj f28004x_adc.obj sysctl.obj dma.obj clb.obj MW_c28xGPIO.obj profiler_Support.obj c28004xSchedulerTimer0.obj
 
 MAIN_OBJ = ert_main.obj
 
@@ -244,7 +244,7 @@ PREBUILT_OBJS =
 ## LIBRARIES
 ###########################################################################
 
-LIBS = C:/ti/c2000/C2000Ware_3_02_00_00/libraries/math/IQmath/c28/lib/IQmath_fpu32.lib C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c28004xPeripherals.cmd C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c280049M.cmd
+LIBS = C:/ti/c2000/C2000Ware_4_00_00_00/libraries/math/IQmath/c28/lib/IQmath_fpu32.lib C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c28004xPeripherals.cmd C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c280049M.cmd
 
 ###########################################################################
 ## SYSTEM LIBRARIES
@@ -526,71 +526,75 @@ ert_main.obj : $(START_DIR)/StepperRTM_ert_rtw/ert_main.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-c28004xBoard_Realtime_Support.obj : C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c28004xBoard_Realtime_Support.c
+c28004xBoard_Realtime_Support.obj : C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c28004xBoard_Realtime_Support.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-MW_c28xGlobalInterrupts.obj : C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c
+MW_c28xGlobalInterrupts.obj : C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGlobalInterrupts.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_cputimers.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_cputimers.c
+f28004x_cputimers.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_cputimers.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_defaultisr.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_defaultisr.c
+f28004x_defaultisr.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_defaultisr.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_globalvariabledefs.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/headers/source/f28004x_globalvariabledefs.c
+f28004x_globalvariabledefs.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/headers/source/f28004x_globalvariabledefs.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_piectrl.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_piectrl.c
+f28004x_piectrl.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_piectrl.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_pievect.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_pievect.c
+f28004x_pievect.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_pievect.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_sysctrl.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_sysctrl.c
+f28004x_sysctrl.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_sysctrl.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_usdelay.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_usdelay.asm
+f28004x_usdelay.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_usdelay.asm
 	$(AS) $(ASFLAGS) --output_file="$@" "$<"
 
 
-f28004x_codestartbranch.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_codestartbranch.asm
+f28004x_codestartbranch.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_codestartbranch.asm
 	$(AS) $(ASFLAGS) --output_file="$@" "$<"
 
 
-f28004x_gpio.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_gpio.c
+f28004x_gpio.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_gpio.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-f28004x_adc.obj : C:/ti/c2000/C2000Ware_3_02_00_00/device_support/f28004x/common/source/f28004x_adc.c
+f28004x_adc.obj : C:/ti/c2000/C2000Ware_4_00_00_00/device_support/f28004x/common/source/f28004x_adc.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-sysctl.obj : C:/ti/c2000/C2000Ware_3_02_00_00/driverlib/f28004x/driverlib/sysctl.c
+sysctl.obj : C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/sysctl.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-dma.obj : C:/ti/c2000/C2000Ware_3_02_00_00/driverlib/f28004x/driverlib/dma.c
+dma.obj : C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/dma.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-MW_c28xGPIO.obj : C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c
+clb.obj : C:/ti/c2000/C2000Ware_4_00_00_00/driverlib/f28004x/driverlib/clb.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-profiler_Support.obj : C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/profiler_Support.c
+MW_c28xGPIO.obj : C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/shared/supportpackages/tic2000/src/MW_c28xGPIO.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 
-c28004xSchedulerTimer0.obj : C:/ProgramData/MATLAB/SupportPackages/R2021a/toolbox/target/supportpackages/tic2000/src/c28004xSchedulerTimer0.c
+profiler_Support.obj : C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/profiler_Support.c
+	$(CC) $(CFLAGS) --output_file="$@" "$<"
+
+
+c28004xSchedulerTimer0.obj : C:/ProgramData/MATLAB/SupportPackages/R2021b/toolbox/target/supportpackages/tic2000/src/c28004xSchedulerTimer0.c
 	$(CC) $(CFLAGS) --output_file="$@" "$<"
 
 

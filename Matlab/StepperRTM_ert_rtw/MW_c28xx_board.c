@@ -1,7 +1,5 @@
 #include "c2000BoardSupport.h"
-#include "f28004x_device.h"
-#include "f28004x_examples.h"
-#include "f28004x_globalprototypes.h"
+#include "MW_f28004x_includes.h"
 #include "rtwtypes.h"
 #include "StepperRTM.h"
 #include "StepperRTM_private.h"
@@ -12,6 +10,10 @@ void init_board ()
   EALLOW;
   CpuSysRegs.PCLKCR0.bit.DMA = 1;
   CpuSysRegs.PCLKCR6.bit.SD1 = 1;
+  CpuSysRegs.PCLKCR17.bit.CLB1 = 1;
+  CpuSysRegs.PCLKCR17.bit.CLB2 = 1;
+  CpuSysRegs.PCLKCR17.bit.CLB3 = 1;
+  CpuSysRegs.PCLKCR17.bit.CLB4 = 1;
   EDIS;
 
 #ifdef CPU1

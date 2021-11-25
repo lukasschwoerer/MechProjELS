@@ -10,8 +10,8 @@ CMD_SRCS += \
 
 C_SRCS += \
 ../Configuration.c \
-C:/Users/lu/ti/MechProj/Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.c \
-C:/Users/lu/ti/MechProj/Matlab/StepperRTM_ert_rtw/StepperRTM.c \
+C:/Users/Lukas/Documents/MechProjELS/Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.c \
+C:/Users/Lukas/Documents/MechProjELS/Matlab/StepperRTM_ert_rtw/StepperRTM.c \
 ../main.c 
 
 C_DEPS += \
@@ -40,8 +40,8 @@ C_DEPS__QUOTED += \
 
 C_SRCS__QUOTED += \
 "../Configuration.c" \
-"C:/Users/lu/ti/MechProj/Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.c" \
-"C:/Users/lu/ti/MechProj/Matlab/StepperRTM_ert_rtw/StepperRTM.c" \
+"C:/Users/Lukas/Documents/MechProjELS/Matlab/RealTimeMachine_ert_rtw/RealTimeMachine.c" \
+"C:/Users/Lukas/Documents/MechProjELS/Matlab/StepperRTM_ert_rtw/StepperRTM.c" \
 "../main.c" 
 
 

@@ -147,10 +147,9 @@ void setupEQEP(void)
     EQep1Regs.QEPCTL.bit.PCRM = 1;          // position count reset on maximum position
     EQep1Regs.QPOSMAX = 0x00ffffff;
 
-    EQep1Regs.QUPRD = 100;                  // Unit Timer latch at RPM_CALC_RATE_HZ Hz
+    EQep1Regs.QUPRD = 100000000/RPMSampleTime;// Unit Timer latch at RPM_CALC_RATE_HZ Hz
     EQep1Regs.QEPCTL.bit.UTE=1;             // Unit Timeout Enable
     EQep1Regs.QEPCTL.bit.QCLM=1;            // Latch on unit time out
-
     EQep1Regs.QEPCTL.bit.QPEN=1;            // QEP enable
 }
 
@@ -194,10 +193,10 @@ void initSCIAEchoback(void)
 //
 // transmitSCIAChar - Transmit a character from the SCI
 //
-void transmitSCIAChar(uint16_t a)
+void transmitSCIAChar(unsigned char msg)
 {
     while (SciaRegs.SCIFFTX.bit.TXFFST != 0)
     {
     }
-    SciaRegs.SCITXBUF.all = a;
+    SciaRegs.SCITXBUF.all = msg;
 }
