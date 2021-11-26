@@ -13,7 +13,7 @@
 #include "..\Matlab\StepperRTM_ert_rtw\rtwtypes.h"
 #include "..\Matlab\StepperRTM_ert_rtw\zero_crossing_types.h"
 
-#define _FLASH
+//#define _FLASH
 
 //
 // Global Variables Inputs
@@ -116,12 +116,14 @@ void main(void)
 
             RPM = count * 60 * RPMSampleTime / EncoderRes;
 
-            unsigned char lowbyte = RPM & 0xff;
-            unsigned char highbyte = RPM >> 8;
+            int highbyte = RPM >> 8;
+            int lowbyte = RPM & 0x00ff;
 
             previous = current;
+            //transmitSCIAChar(0xff);
             transmitSCIAChar(lowbyte);          // Send RPM out via UART
             transmitSCIAChar(highbyte);          // Send RPM out via UART
+            //transmitSCIAChar(0xff);
             EQep1Regs.QCLR.bit.UTO=1;       // Clear interrupt flag
         }
 

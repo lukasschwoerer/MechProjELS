@@ -193,7 +193,7 @@ void initSCIAEchoback(void)
 //
 // transmitSCIAChar - Transmit a character from the SCI
 //
-void transmitSCIAChar(unsigned char msg)
+void transmitSCIAChar(int msg)
 {
     while (SciaRegs.SCIFFTX.bit.TXFFST != 0)
     {

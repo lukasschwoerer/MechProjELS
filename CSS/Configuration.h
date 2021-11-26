@@ -15,7 +15,7 @@ void setupTimer(void);
 void setupEQEP(void);
 
 void initSCIAEchoback(void);
-void transmitSCIAChar(unsigned char msg);
+void transmitSCIAChar(int msg);
 void initSCIAFIFO(void);
 
 __interrupt void cpuTimer0ISR(void);
@@ -45,5 +45,5 @@ __interrupt void cpuTimer2ISR(void);
 #define EncoderRes              4096
 #define LeadscrewSlope          1.5
 #define OneInch                 25.4
-#define RPMSampleTime           2
+#define RPMSampleTime           5           //Sample Rate RPM in Hz
 #endif /* CONFIGURATION_H_ */
