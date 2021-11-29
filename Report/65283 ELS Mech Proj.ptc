@@ -18,9 +18,41 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Theoretical Background}{2}{chapter.2}%
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Numerical Mathmatic}{2}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Fractional Mathmatic}{2}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Floatingpoint Mathmatic}{2}{subsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Hardware and Software}{3}{chapter.3}%
 \defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Hardware}{3}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Software}{3}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Matlab - Simulink}{3}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Code Composer Studio}{3}{subsection.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.3}Python}{3}{subsection.3.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.4}Git}{3}{subsection.3.2.4}%
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Experimental}{4}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Initial Considerations}{4}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Parameter Identification}{4}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Simulink Model}{4}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.4}Code Generation}{4}{section.4.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.5}Mechanical Implementation}{4}{section.4.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.6}System Testing}{4}{section.4.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.6.1}Numerical Mathmatic}{4}{subsection.4.6.1}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {5}Results and Discussion}{5}{chapter.5}%
 \defcounter {refsection}{0}\relax 
@@ -47,4 +79,7 @@
 \contentsline {chapter}{\numberline {E}Source Code}{VII}{appendix.E}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {E.1}Transmission evaluation}{VIII}{section.E.1}%
+\babel@toc {ngerman}{}\relax 
+\babel@toc {english}{}\relax 
+\ttl@stoptoc {appendix@1}
 \contentsfinish 
