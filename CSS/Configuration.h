@@ -2,7 +2,7 @@
  * Configuration.h
  *
  *  Created on: 26 Oct 2021
- *      Author: Lukas Schwörer
+ *      Author: Lukas Schwoerer
  */
 #include "F28x_Project.h"
 

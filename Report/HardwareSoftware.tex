@@ -1,15 +1,49 @@
 \chapter{Hardware and Software}
 \label{hardwareandsoftware}
 
+In this Chapter the needed background information for the used hardware and software will be described.
+
 \section{Hardware}
+\subsection{Electro mechanical actuators}
+\subsubsection{Stepper Motors}
+\subsubsection{Closed Loop Servos}
+
+\subsection{Microcontroller}
+\subsubsection{TI LaunchXL F280049C}
+\subsubsection{Logic Level Shifter}
+
+\subsection{Raspberry Pi}
+A Raspberry Pi is a Single board computer.
+\subsubsection{Touchscreen}
+Touchscreens can be either resistive or capacitive. The react to them being touched and are used to interact with electronic devices.
 
 \section{Software}
-\subsection{Matlab - Simulink}
+\subsection{Matlab and Matlab-Simulink}
+MATrix LABoratory (MATLAB) is an Integrated Development Environment (IDE)
+and programming language. MATLAB was developed in the need of a numerical algebraic
+system at the university of New Mexico. On this base, the company MathWorks (see
+Appendix B) was created. Since 1984 MathWorks is further developing MATLAB and
+%TODO add Appendix B (Companies)
+additional software for numerical algebraic computing. To support different hardware
+packages MathWorks offers so called toolboxes. These toolboxes contain functions and
+scripts for communication, data acquisition, motion control etc.
+MATLAB is mainly used in technical development and research.
+
 \subsection{Code Composer Studio}
+\subsubsection{C Code}
+C is a programming language which is used when quick code execution and a small program size is needed.
+
 \subsection{Python}
+Python is a object oriented programming language.
+\subsubsection{Kivy}
+Kivy is a Python software Package for the creation of graphical user interfaces.
+
 \subsection{Git}
-\subsection{Stepper Motors}
-\subsection{Touchscreen}
-\subsection{Raspberry Pi}
-\subsection{TI LaunchXL F280049C}
-\subsection{Logic Level Shifter}
+Git is an software tool for source code management and versioning, as well as for parallel development. Git was developed by Linus Torvald in 2005. Git was developed in the need of source code management software for the development of the operating system Linux. [25]
+Git allows development in so-called branches. These are independent copies of an already existing and probably used software. This ensures that modifications or enhancements are not affecting already used software. If a feature is finished, it can be merged back into the higher-level branch. Merging is the process of bringing two files, directories or branches together.
+Different developers, working on different features of the same project is called parallel development.
+Further Git is a tool for software versioning. Software versioning is a tracking of changes in a project. In case of an mistake the project can be recovered to every tracked point.
+Git was very heavily used for software development after and during our testing. At some time 4 developers where working in parallel on software tooling for data recording and data analysis. The structure used for this development was the “git-flow” Workflow [26]. This structure is shown in Figure 13. It features a master branch, an development branch and separate branches for new features. To be able to fix Bugs on the Master-branch quickly, this is done as “Hotfix” on a separate branch.
+
+
+

@@ -16,7 +16,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.0.1}University of Aalen}{1}{subsection.1.0.1}%
+\contentsline {section}{\numberline {1.1}Working environment}{1}{section.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.1}University of Aalen}{1}{subsection.1.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.2}Home office}{1}{subsection.1.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Metall workshop}{1}{subsubsection*.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}Project background}{1}{section.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.1}Aim of study}{1}{subsection.1.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.2.2}Limitations}{1}{subsection.1.2.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Theoretical Background}{2}{chapter.2}%
 \defcounter {refsection}{0}\relax 
@@ -26,75 +38,105 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1.2}Floatingpoint Mathmatic}{2}{subsection.2.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Motors}{2}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Manufactoring}{2}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Manufactoring}{2}{section.2.3}%
+\contentsline {subsection}{\numberline {2.2.1}Additive Manufactoring}{2}{subsection.2.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Additive Manufactoring}{2}{subsection.2.3.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Subtractive Manufactoring}{2}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.2.2}Subtractive Manufactoring}{2}{subsection.2.2.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Hardware and Software}{3}{chapter.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.1}Hardware}{3}{section.3.1}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Electro mechanical actuators}{3}{subsection.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Stepper Motors}{3}{subsubsection*.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Closed Loop Servos}{3}{subsubsection*.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Microcontroller}{3}{subsection.3.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline TI LaunchXL F280049C}{3}{subsubsection*.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Logic Level Shifter}{3}{subsubsection*.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.3}Raspberry Pi}{3}{subsection.3.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{\nonumberline Touchscreen}{3}{subsubsection*.17}%
+\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Software}{3}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Matlab - Simulink}{3}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.1}Matlab and Matlab-Simulink}{3}{subsection.3.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Code Composer Studio}{3}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.2}Code Composer Studio}{4}{subsection.3.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Python}{3}{subsection.3.2.3}%
+\contentsline {subsubsection}{\nonumberline C Code}{4}{subsubsection*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.4}Git}{3}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.3}Python}{4}{subsection.3.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.5}Stepper Motors}{3}{subsection.3.2.5}%
+\contentsline {subsubsection}{\nonumberline Kivy}{4}{subsubsection*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.6}Touchscreen}{3}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.4}Git}{4}{subsection.3.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.7}Raspberry Pi}{3}{subsection.3.2.7}%
+\contentsline {chapter}{\numberline {4}Experimental}{5}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.8}TI LaunchXL F280049C}{3}{subsection.3.2.8}%
+\contentsline {section}{\numberline {4.1}Model in the Loop}{5}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.9}Logic Level Shifter}{3}{subsection.3.2.9}%
+\contentsline {subsection}{\numberline {4.1.1}Initial Considerations}{5}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Experimental}{4}{chapter.4}%
+\contentsline {subsection}{\numberline {4.1.2}Parameter Identification}{5}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Initial Considerations}{4}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.3}Simulink Model}{5}{subsection.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Parameter Identification}{4}{section.4.2}%
+\contentsline {subsubsection}{\nonumberline Encoder and Spindel}{5}{subsubsection*.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Simulink Model}{4}{section.4.3}%
+\contentsline {subsubsection}{\nonumberline Microcontroler}{5}{subsubsection*.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Code Generation}{4}{section.4.4}%
+\contentsline {subsubsection}{\nonumberline Stepper Motor}{5}{subsubsection*.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Mechanical Implementation}{4}{section.4.5}%
+\contentsline {subsubsection}{\nonumberline Gearbox}{5}{subsubsection*.29}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}System Testing}{4}{section.4.6}%
+\contentsline {subsection}{\numberline {4.1.4}Code Generation}{5}{subsection.4.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.6.1}Arythmatic}{4}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.1.5}Mechanical Implementation}{5}{subsection.4.1.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.6.2}Threading}{4}{subsection.4.6.2}%
+\contentsline {section}{\numberline {4.2}Software in the Loop}{5}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.6.3}Turning}{4}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.2.1}Logic}{5}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results and Discussion}{5}{chapter.5}%
+\contentsline {subsection}{\numberline {4.2.2}Arithmetic}{5}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.0.1}Arythmatic}{5}{subsection.5.0.1}%
+\contentsline {section}{\numberline {4.3}Hardware in the Loop}{5}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.0.2}Threading}{5}{subsection.5.0.2}%
+\contentsline {subsection}{\numberline {4.3.1}Component Test}{5}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.0.3}Turning}{5}{subsection.5.0.3}%
+\contentsline {subsection}{\numberline {4.3.2}System Test}{5}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Conclusion}{6}{chapter.6}%
+\contentsline {subsection}{\numberline {4.3.3}Integration Test}{5}{subsection.4.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Outlook}{7}{chapter.7}%
+\contentsline {subsubsection}{\nonumberline Turning}{5}{subsubsection*.31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}List of Figures}{8}{chapter.8}%
+\contentsline {subsubsection}{\nonumberline Threading}{5}{subsubsection*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}List of Tables}{9}{chapter.9}%
+\contentsline {chapter}{\numberline {5}Results and Discussion}{6}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix}{I}{section*.6}%
+\contentsline {subsection}{\numberline {5.0.1}Arythmatic}{6}{subsection.5.0.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.0.2}Threading}{6}{subsection.5.0.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.0.3}Turning}{6}{subsection.5.0.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}System Validation}{7}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Outlook}{8}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Features}{8}{section.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}List of Figures}{9}{chapter.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}List of Tables}{10}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendix}{I}{section*.34}%
 \ttl@starttoc {appendix@1}
 \ttl@stoptoc {main@1}
 \defcounter {refsection}{0}\relax 
@@ -112,10 +154,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {E}Source Code}{VII}{appendix.E}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {E.1}C - Code}{VIII}{section.E.1}%
+\contentsline {section}{\numberline {E.1}main.c}{VIII}{section.E.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {E.2}Python Code}{X}{section.E.2}%
-\babel@toc {ngerman}{}\relax 
-\babel@toc {english}{}\relax 
-\ttl@stoptoc {appendix@1}
+\contentsline {section}{\numberline {E.2}Configuration.h}{XV}{section.E.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.3}Configuration.c}{XVII}{section.E.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {E.4}MainUI.py}{XXIV}{section.E.4}%
 \contentsfinish 

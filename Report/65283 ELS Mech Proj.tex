@@ -12,7 +12,7 @@
 
 %Bibliography
 %\usepackage{cite} %Paket für Literaturverweise
-\usepackage[backend=bibtex, sorting=none]{biblatex}
+\usepackage[backend=biber, sorting=none]{biblatex}
 \addbibresource{literatur.bib}
 %\bibliography{literatur.bib} %Literaturverzeichnis
 
@@ -42,7 +42,9 @@
 %Graphs
 \usepackage{graphicx} %Insert graphics
 \usepackage{subfig}
-
+\usepackage{xcolor}
+\definecolor{titlepagecolor}{cmyk}{1,.60,0,.40}
+\definecolor{namecolor}{cmyk}{1,.50,0,.10} 
 
 %Sourcecode
 \usepackage{scrhack}
@@ -87,8 +89,8 @@
 %%Leerseite
 \thispagestyle{empty}
 \hspace{1mm}\\
-
 \newpage
+
 \pagenumbering{roman} %römische Seitenzahlen
 \setcounter{page}{1} %Seitenzähler zurücksetzen
 
@@ -183,7 +185,7 @@
 \include{AppendixSourceCode}
 \stopcontents[appendix]
 
-\include{EidesVers} 
+%\include{EidesVers} 
 
 
 \end{document}

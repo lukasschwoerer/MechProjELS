@@ -1,3 +1,15 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 \label{abstract}
+
+This Project is about the development, setup, testing and qualification of an Electronic Leadscrew (ELS). This project was proposed to the university by myself. 
+Its aim is to develop a system to replace the gearbox inside a conventional lathe which will synchronize the rotation of the Leadscrew to the rotation of the spindle.
+The ELS needs to be able to keep up with the spindle rotation during conventional turning with different feeds and speeds. In addition to this it should be possible to cut 
+precise metric and imperial threads.\\
+
+The electro-mechanical system of the ELS is build around an encoder to read rotational position of the main spindle and a servo motor to control the position of the Leadscrew.
+A micro-controller computes the information gathered by the encoder and commands the servo-motor to the correct positions.\\
+
+To be able to easily change and add Features as well as to predict the behavior of the system the development of the ELS needs to be model based. This model needs to incorporate all aspects
+of the system including the spindle, the encoder, the micro-controller and the servo motor. As comparison the conventional gearbox should also be modeled.\\
+

@@ -100,7 +100,7 @@ void main(void)
     while(1)
     {
         //
-        // Send RPM via UART on ComBit High
+        // Send RPM via UART
         //
         if(EQep1Regs.QFLG.bit.UTO==1)
         {

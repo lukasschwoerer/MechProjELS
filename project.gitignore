@@ -75,7 +75,12 @@ octave-workspace
 *.lof
 *.log
 *.lot
+*.bcf
+*.blg
 *.fls
+*.ptc
+*.fls
+*.bbl
 *.out
 *.toc
 *.fmt

@@ -2,7 +2,7 @@
  * Configuration.c
  *
  *  Created on: 26 Oct 2021
- *      Author: Lukas Schwörer
+ *      Author: Lukas Schwoerer
  */
 
 #include "Configuration.h"
