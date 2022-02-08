@@ -78,7 +78,7 @@
 
 @Misc{RaspberryPiFoundation,
   author       = {Raspberry Pi Foundation},
-  howpublished = {\url{https://www.raspberrypi.org/help/what-\%20is-a-raspberry-pi/}},
+  howpublished = {\url{https://www.raspberrypi.org/help/what-%20is-a-raspberry-pi/}},
   title        = {What is a Raspberry Pi?},
 }
 
