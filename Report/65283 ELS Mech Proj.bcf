@@ -2344,16 +2344,20 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">literatur.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">SchrittmotorenFaulhaber2022</bcf:citekey>
-    <bcf:citekey order="2">ServoSuh2008</bcf:citekey>
-    <bcf:citekey order="3">UensalanMicrocont2022</bcf:citekey>
-    <bcf:citekey order="4">TILAUNCHXL</bcf:citekey>
-    <bcf:citekey order="5">RaspberryPiFoundation</bcf:citekey>
-    <bcf:citekey order="6">Mathworks</bcf:citekey>
-    <bcf:citekey order="7">ISO2022</bcf:citekey>
-    <bcf:citekey order="8">PythonFoundation2022</bcf:citekey>
-    <bcf:citekey order="9">Kivy.org2022</bcf:citekey>
-    <bcf:citekey order="10">Instruments2022</bcf:citekey>
+    <bcf:citekey order="1">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="2">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="3">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="4">FraunhoferInstitutAM</bcf:citekey>
+    <bcf:citekey order="5">SchrittmotorenFaulhaber2022</bcf:citekey>
+    <bcf:citekey order="6">ServoSuh2008</bcf:citekey>
+    <bcf:citekey order="7">UensalanMicrocont2022</bcf:citekey>
+    <bcf:citekey order="8">TILAUNCHXL</bcf:citekey>
+    <bcf:citekey order="9">RaspberryPiFoundation</bcf:citekey>
+    <bcf:citekey order="10">Mathworks</bcf:citekey>
+    <bcf:citekey order="11">ISO2022</bcf:citekey>
+    <bcf:citekey order="12">PythonFoundation2022</bcf:citekey>
+    <bcf:citekey order="13">Kivy.org2022</bcf:citekey>
+    <bcf:citekey order="14">Instruments2022</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

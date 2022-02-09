@@ -78,8 +78,17 @@
 
 @Misc{RaspberryPiFoundation,
   author       = {Raspberry Pi Foundation},
-  howpublished = {\url{https://www.raspberrypi.org/help/what-%20is-a-raspberry-pi/}},
+  howpublished = {\url{https://www.raspberrypi.org/help/what-\%20is-a-raspberry-pi/}},
   title        = {What is a Raspberry Pi?},
+}
+
+@Book{quarteroni2007numerical,
+  author    = {Quarteroni, Alfio},
+  publisher = {Springer},
+  title     = {Numerical Mathematics},
+  year      = {2007},
+  address   = {New York, NY},
+  isbn      = {9781475773941},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
