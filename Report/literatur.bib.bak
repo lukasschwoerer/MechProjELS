@@ -91,4 +91,10 @@
   isbn      = {9781475773941},
 }
 
+@Misc{FraunhoferInstitutAM,
+  author       = {Fraunhofer-Institut IGCV},
+  howpublished = {\url{https://www.igcv.fraunhofer.de/de/forschung/kompetenzen/additive_fertigung_am.html}},
+  title        = {Additive Manufacturing},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
