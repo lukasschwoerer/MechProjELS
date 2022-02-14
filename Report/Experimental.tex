@@ -8,7 +8,7 @@ This chapter will show the complete developement process of the Electronic Leads
 In this section the developement process in the first part of the V-Modell will be described. As shown in figure \ref{V Model Requirements} this part is split into two. The requirements describe the fundamental properties of the system in order to function.
 The system Logical Architecture describes how the different system components are supposed to interact with each other.
 
-\begin{figure}[h!]
+\begin{figure}
     \begin{center}
     \includegraphics[width=12cm]{Pictures/V Model Requirements.png}
     \caption[V Model Requirements]{V Model Requirements Stage; Green - Developement status}
@@ -44,7 +44,7 @@ The developement of the System requirements was the first step in the developeme
 
 The next step in the developement process of the ELS was to create the Logical Architecture of the System. This was done as a Toplevel Blockdiagramm as shown in Figure \ref{Logical Architecture}.
 
-\begin{figure}[h!]
+\begin{figure}
     \begin{center}
     \includegraphics[width=12cm]{Pictures/Logical Architecture.png}
     \caption[Logical Architecture]{Logical Architecture}
@@ -56,7 +56,7 @@ The next step in the developement process of the ELS was to create the Logical A
 This section describes the second half of the developement process, divided into system and component design as well as the integration of the components. This is the most time consuming process of the developement.For the system and component design, every function of each system and subsystem must be specified in detail. During the implementation phase, these functions are than transferred into the real system.\\
 This developement stage is represented by the Software in the Loop (SIL) stage and is shown in Figure \ref{V Model System Design}.
 
-\begin{figure}[h!]
+\begin{figure}
     \begin{center}
     \includegraphics[width=12cm]{Pictures/V Model System Design.png}
     \caption[V Model System Design]{V Model SIL Stage; green - Developement steps SIL stage}
@@ -65,6 +65,21 @@ This developement stage is represented by the Software in the Loop (SIL) stage a
 \end{figure}
 
 \subsection{System Design}
+%%TODO: add Picture security pin
+%%TODO: add Picture System design
+
+The system design design is executed based on the previously developed system requirements and its logical architecture. The system design was approached by filling the requirements list as well as the block diagram of the logical architecture with component specific parameters. These parameters either need to be defined or found during the system design process.\\
+A good example for this process is the required torque of the Leadscrew servo during a cutting process. This parameter can be found by measuring the power consumption of the AC motor for different cutting parameters with the old Leadscrew drive train. However while disassembling the original Leadscrew drive train in order to find a good place to mount the servo motor, an easier way to determine the required motor torque was found. In order to protect the Leadscrew the manufacturer secured the gear, that is driving the leadscrew with a brass pin. According to the manufacturer, this pin will shear off when more than 1.2Nm is acting on the leadscrew.\\
+After this, all other parameter were determined in a similar matter. The resulting logical structure is shown in Figure \ref{System design}.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[width=12cm]{Pictures/SystemDesign.png}
+    \caption[Block diagram of the system design]{Block diagram of the system design}
+    \label{System design}
+    \end{center}
+\end{figure}
+
 
 \subsection{Component Design}
 \subsubsection{HMI}
@@ -95,7 +110,7 @@ This lead to the selection of a Encoder from the manufacturer Opkon (see Appendi
 %%TODO Put Steppers Online in Appendix List of Companies
 The motor was selected based the requirements list as well as recommendations from James Clough \cite{CloughELS}. The selected motor is from the company Steppers Online (see Appendix \ref{AppendixListOfCompanies}). It is a so called "integrated servo moter". This means, the motor consist of a brushless DC-motor, an encoder as well as the corresponding motor controller. All three of these parts are packaged into one unit as shown in Figure \ref{Integrated Servo Motor}.\\
 
-\begin{figure}[h!]
+\begin{figure}
     \begin{center}
     \includegraphics[width=12cm]{Pictures/IntegratedServo.png}
     \caption[Integrated Servo Motor]{Integrated Servo Motor; 1 - BLDC Motor, 2 - Encoder Unit, 3 - Control Unit}
@@ -108,10 +123,22 @@ The motor controller in combination with the required software represent an easy
 The interface to the motor is provided by a simple digital protocol. It consists of a direction and a step pin. The direction reacts to a logical 5V signal, where a logical 1 (5V) corresponds to clockwise rotation and a logical 0 (0V) corresponds to counterclockwise rotation. The step input reacts to logical pulses with a minimum pulse width of 1$\mu$s. Each puls will than move the motor by $\frac{1}{motor-resulution}$.
 
 \subsubsection{Gearbox}
-Because the motor is mounted underneath the leadscrew, a a coupling between both elements was needed. This was done with the already existing gears from the old gearbox of the lathe. This decision was made because it needed the least modification (only a coupler from the motor to the gear had to be manufactured) and was the cheapest option. The gear ratio of 25/80 was selected to optimze the feed range of the lathe with the available RPM of the motor. This is shown in Figure
+Because the motor is mounted underneath the Leadscrew, a a coupling between both elements was needed. This was done with the already existing gears from the old gearbox of the lathe. This decision was made because it needed the least modification (only a coupler from the motor to the gear had to be manufactured) and was the cheapest option. The gear ratio of 25/80 was selected to optimize the feed range of the lathe with the available RPM of the motor. This is shown in Figure \ref{Chart Leadscrew Dynamics}.
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[width=12cm]{Pictures/TransmissionDynamics.png}
+    \caption[Chart of the Leadscrew dynamics]{Chart of the Leadscrew dynamics; green - reachable Leadscrew RPM with a 25/80 transmission, red - not reachable Leadscrew RPM with a 25/80 transmission}
+    \label{Chart Leadscrew Dynamics}
+    \end{center}
+\end{figure}
+
+The transmission of the gearbox also increases the torque of the motor by a factor of 3.2. This way, the motor meets the specified torque of 1.2 Nm.
+
+
 
 \section{System Testing}
-\begin{figure}[h!]
+\begin{figure}
     \begin{center}
     \includegraphics[width=12cm]{Pictures/V Model Component Test.png}
     \caption[V Model Component Test]{V Model Component Test Stage}
