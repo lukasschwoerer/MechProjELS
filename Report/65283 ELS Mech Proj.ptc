@@ -74,12 +74,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.5}Git}{8}{subsection.3.2.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Assembly}{8}{section.3.3}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Hardware Assembly}{8}{subsection.3.3.1}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Programming}{8}{subsection.3.3.2}%
-\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Experimental}{9}{chapter.4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.1}Requirements and Logical Architecture}{9}{section.4.1}%
@@ -96,59 +90,69 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\nonumberline HMI}{12}{subsubsection*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Micro Controller}{12}{subsubsection*.23}%
+\contentsline {subsubsection}{\nonumberline Micro Controller}{12}{subsubsection*.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Encoder}{12}{subsubsection*.25}%
+\contentsline {subsubsection}{\nonumberline Encoder}{14}{subsubsection*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Motor and Motor Controller}{12}{subsubsection*.28}%
+\contentsline {subsubsection}{\nonumberline Motor and Motor Controller}{14}{subsubsection*.31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Gearbox}{13}{subsubsection*.31}%
+\contentsline {subsubsection}{\nonumberline Gearbox}{15}{subsubsection*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}System Testing}{15}{section.4.3}%
+\contentsline {subsection}{\numberline {4.2.3}Software Implementation}{16}{subsection.4.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.1}Component Test}{15}{subsection.4.3.1}%
+\contentsline {subsubsection}{\nonumberline Micro Controller}{16}{subsubsection*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Encoder}{15}{subsubsection*.35}%
+\contentsline {subsubsection}{\nonumberline HMI}{17}{subsubsection*.40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline HMI}{15}{subsubsection*.37}%
+\contentsline {subsection}{\numberline {4.2.4}Hardware Implementation}{18}{subsection.4.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Micro Controller}{15}{subsubsection*.39}%
+\contentsline {subsubsection}{\nonumberline Touchscreen}{18}{subsubsection*.42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Motor}{15}{subsubsection*.41}%
+\contentsline {subsubsection}{\nonumberline Encoder}{19}{subsubsection*.45}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Motor Controller}{15}{subsubsection*.43}%
+\contentsline {subsubsection}{\nonumberline Motor}{19}{subsubsection*.48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Gearbox}{15}{subsubsection*.45}%
+\contentsline {section}{\numberline {4.3}Testing}{20}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.2}System Test}{15}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.1}Component Test}{20}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3.3}Integration Test}{15}{subsection.4.3.3}%
+\contentsline {subsubsection}{\nonumberline HMI}{21}{subsubsection*.52}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Turning}{15}{subsubsection*.47}%
+\contentsline {subsubsection}{\nonumberline Micro Controller}{21}{subsubsection*.54}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\nonumberline Threading}{15}{subsubsection*.49}%
+\contentsline {subsection}{\numberline {4.3.2}System Test}{21}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Results and Discussion}{16}{chapter.5}%
+\contentsline {subsubsection}{\nonumberline Matlab Simulink}{21}{subsubsection*.56}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Arithmetic}{16}{section.5.1}%
+\contentsline {subsubsection}{\nonumberline Test Bench}{23}{subsubsection*.60}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Turning}{16}{section.5.2}%
+\contentsline {subsection}{\numberline {4.3.3}Integration Test}{23}{subsection.4.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Threading}{16}{section.5.3}%
+\contentsline {subsubsection}{\nonumberline Turning}{23}{subsubsection*.62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}System Validation}{17}{chapter.6}%
+\contentsline {subsubsection}{\nonumberline Threading}{24}{subsubsection*.64}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Outlook}{18}{chapter.7}%
+\contentsline {chapter}{\numberline {5}Results and Discussion}{25}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Features}{18}{section.7.1}%
+\contentsline {section}{\numberline {5.1}Arithmetic}{25}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}List of Figures}{19}{chapter.8}%
+\contentsline {section}{\numberline {5.2}Turning}{25}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}List of Tables}{20}{chapter.9}%
+\contentsline {section}{\numberline {5.3}Threading}{25}{section.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {10}References}{21}{chapter.10}%
+\contentsline {chapter}{\numberline {6}System Validation}{26}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendix}{I}{section*.50}%
+\contentsline {chapter}{\numberline {7}Outlook}{27}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7.1}Features}{27}{section.7.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}List of Figures}{28}{chapter.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}List of Tables}{29}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {10}References}{30}{chapter.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Appendix}{I}{section*.65}%
 \ttl@starttoc {appendix@1}
 \ttl@stoptoc {main@1}
 \defcounter {refsection}{0}\relax 
