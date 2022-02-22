@@ -2344,21 +2344,25 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">literatur.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">quarteroni2007numerical</bcf:citekey>
-    <bcf:citekey order="2">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="1">Aalen</bcf:citekey>
+    <bcf:citekey order="2">CloughELS</bcf:citekey>
     <bcf:citekey order="3">quarteroni2007numerical</bcf:citekey>
-    <bcf:citekey order="4">FraunhoferInstitutAM</bcf:citekey>
-    <bcf:citekey order="5">SchrittmotorenFaulhaber2022</bcf:citekey>
-    <bcf:citekey order="6">ServoSuh2008</bcf:citekey>
-    <bcf:citekey order="7">UensalanMicrocont2022</bcf:citekey>
-    <bcf:citekey order="8">TILAUNCHXL</bcf:citekey>
-    <bcf:citekey order="9">RaspberryPiFoundation</bcf:citekey>
-    <bcf:citekey order="10">Mathworks</bcf:citekey>
-    <bcf:citekey order="11">ISO2022</bcf:citekey>
-    <bcf:citekey order="12">PythonFoundation2022</bcf:citekey>
-    <bcf:citekey order="13">Kivy.org2022</bcf:citekey>
-    <bcf:citekey order="14">Instruments2022</bcf:citekey>
-    <bcf:citekey order="15">CloughELS</bcf:citekey>
+    <bcf:citekey order="4">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="5">quarteroni2007numerical</bcf:citekey>
+    <bcf:citekey order="6">FraunhoferInstitutAM</bcf:citekey>
+    <bcf:citekey order="7">MotionOptischerEncoder</bcf:citekey>
+    <bcf:citekey order="8">SchrittmotorenFaulhaber2022</bcf:citekey>
+    <bcf:citekey order="9">ServoSuh2008</bcf:citekey>
+    <bcf:citekey order="10">UensalanMicrocont2022</bcf:citekey>
+    <bcf:citekey order="11">TILAUNCHXL</bcf:citekey>
+    <bcf:citekey order="12">berle2018tabellenbuch</bcf:citekey>
+    <bcf:citekey order="13">RaspberryPiFoundation</bcf:citekey>
+    <bcf:citekey order="14">Mathworks</bcf:citekey>
+    <bcf:citekey order="15">ISO2022</bcf:citekey>
+    <bcf:citekey order="16">PythonFoundation2022</bcf:citekey>
+    <bcf:citekey order="17">Kivy.org2022</bcf:citekey>
+    <bcf:citekey order="18">Instruments2022</bcf:citekey>
+    <bcf:citekey order="19">CloughELS</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">
